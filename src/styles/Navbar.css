@@ -1,0 +1,261 @@
+.navbar {
+  background: black;
+  color: white;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 20px;
+}
+
+.search-bar {
+  display: flex;
+  align-items: center;
+  background: linear-gradient(
+    270.37deg,
+    #f9f9f9 -29.27%,
+    rgba(249, 249, 249, 0) 191.25%
+  );
+  border-radius: 7px;
+  padding: 4px;
+  max-width: 150px;
+}
+
+.search-bar input {
+  border: none;
+  outline: none;
+  padding: 7px;
+  overflow: hidden;
+  background: linear-gradient(
+    270.37deg,
+    #f9f9f9 -29.27%,
+    rgba(249, 249, 249, 0) 191.25%
+  );
+}
+
+.search-icon {
+  display: flex;
+  align-items: center;
+  margin: 6px;
+  color: #999;
+}
+
+.logo {
+  text-align: left;
+}
+
+.logo img {
+  max-width: 100%;
+  height: auto;
+  width: 150px;
+}
+
+.menu-toggle {
+  display: none;
+  background: none;
+  border: none;
+  color: white;
+  font-size: 24px;
+  cursor: pointer;
+}
+
+.menu-toggle.open {
+  transform: rotate(90deg);
+}
+
+.nav-list {
+  display: flex;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.nav-item {
+  margin-right: 20px;
+}
+
+.nav-item:last-child {
+  margin-right: 0;
+}
+
+.nav-item a {
+  font-family: "Montserrat", sans-serif;
+  color: #fafafa;
+  text-decoration: none;
+  transition: color 0.3s ease, background-color 0.3s ease;
+}
+.nav-item a:hover {
+  color: rgb(157, 157, 157);
+  text-decoration: underline;
+  /* background-color: linear-gradient(to right, #666666, #888888); */
+  transform: scale(1.2);
+  /* box-shadow: 0 0 10px rgba(0, 0, 0, 0.3); */
+}
+
+.nav-actions {
+  display: flex;
+  align-items: center;
+}
+
+.btn-link {
+  background: none;
+  border: none;
+  color: white;
+  font-size: 20px;
+  cursor: pointer;
+  margin-right: 10px;
+  transition: opacity 0.3s ease;
+}
+.btn-login {
+  background-color: grey;
+  padding: 10px;
+  color: white;
+  border-radius: 20px;
+  text-decoration: none;
+  border: none;
+}
+.circular-login {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(
+    270.37deg,
+    #313131 -29.27%,
+    rgba(249, 249, 249, 0) 191.25%
+  );
+  color: #fff;
+  font-size: 20px;
+  margin-left: 10px;
+  text-decoration: none;
+  transition: background-color 0.3s ease;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  border: 2.5px solid rgb(238, 236, 236);
+  cursor: pointer;
+}
+.circular-login svg {
+  font-size: 24px !important;
+}
+.circular-login:hover {
+  background-color: gray;
+}
+
+.circular-login .icon {
+  margin-top: 1px;
+}
+
+.circular-login.fi-user .icon {
+  font-size: 20px;
+}
+
+/* ... Additional styles for other circular icons ... */
+
+.btn-login:hover {
+  opacity: 0.8;
+  background-color: black;
+}
+.btn-login a {
+  color: white;
+  text-decoration: none;
+  font-size: 15px;
+  letter-spacing: 1px;
+}
+
+.btn-link:hover {
+  opacity: 0.8;
+}
+
+.cart-icon {
+  position: relative;
+  font-size: 30px;
+  color: rgb(242, 241, 241);
+  margin-left: 10px;
+}
+
+.cart-icon::after {
+  content: "";
+  position: absolute;
+  top: -5px;
+  right: -8px;
+  width: 15px;
+  height: 15px;
+  background-color: grey;
+  border-radius: 50%;
+}
+
+.cart-icon:hover::after {
+  background-color: white;
+}
+
+@media screen and (max-width: 768px) {
+  .navbar {
+    flex-direction: column;
+    align-items: center;
+    padding: 10px;
+  }
+
+  .menu-toggle {
+    display: block;
+    order: -1;
+  }
+
+  .nav-list {
+    flex-direction: column;
+    align-items: flex-start;
+    display: none;
+    padding: 10px;
+  }
+
+  .nav-list.show {
+    display: flex;
+  }
+
+  .nav-item {
+    margin-right: 0;
+    margin-bottom: 10px;
+  }
+
+  .nav-actions {
+    order: 1;
+  }
+
+  .btn-link {
+    margin-right: 0;
+  }
+}
+@media screen and (max-width: 768px) {
+  .navbar {
+    justify-content: center;
+    padding: 10px;
+  }
+
+  .menu-toggle {
+    display: block;
+    order: -1;
+  }
+
+  .nav-list {
+    flex-direction: column;
+    align-items: flex-start;
+    display: none;
+    padding: 10px;
+  }
+
+  .nav-list.show {
+    display: flex;
+  }
+
+  .nav-item {
+    margin-right: 0;
+    margin-bottom: 10px;
+  }
+
+  .nav-actions {
+    order: 1;
+  }
+
+  .btn-link {
+    margin-right: 0;
+  }
+}

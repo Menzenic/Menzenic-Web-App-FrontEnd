@@ -1,0 +1,15 @@
+.promotion-bar {
+  background: linear-gradient(to bottom, #000, #484747);
+  color: white;
+  padding: 8px 0;
+  max-height: 50px;
+  overflow: hidden;
+  text-align: center;
+}
+
+.promotion-bar p {
+  font-family: "Merriweather", serif;
+  margin: 2px;
+  font-size: 10px;
+  letter-spacing: 1px;
+}

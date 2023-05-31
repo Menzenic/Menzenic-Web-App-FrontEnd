@@ -1,0 +1,81 @@
+/* Add this to your BestSellers.css */
+
+.slick-prev,
+.slick-next {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 1;
+  font-size: 24px;
+  color: #fff;
+  opacity: 0.5;
+  cursor: pointer;
+  transition: opacity 0.3s;
+}
+
+.slick-prev:hover,
+.slick-next:hover {
+  opacity: 1;
+}
+
+.slick-prev {
+  left: 10px;
+}
+
+.slick-next {
+  right: 10px;
+}
+
+.best-sellers {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.best-sellers h2 {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.slick-slide div {
+  padding: 20px;
+}
+
+.slick-slide img {
+  max-width: 100%;
+  height: auto;
+  margin-bottom: 10px;
+}
+
+.slick-dots {
+  text-align: center;
+  margin-top: 20px;
+}
+
+.slick-dots li button:before {
+  font-size: 12px;
+  color: #fff;
+  opacity: 0.75;
+}
+
+.slick-dots li.slick-active button:before {
+  opacity: 1;
+}
+
+.slick-arrow {
+  background-color: transparent;
+  border: none;
+  font-size: 24px;
+  color: #fff;
+  opacity: 0.75;
+  transition: opacity 0.3s;
+}
+
+.slick-arrow:hover {
+  opacity: 1;
+}
+
+@media (max-width: 768px) {
+  .slick-slide div {
+    padding: 15px;
+  }
+}
