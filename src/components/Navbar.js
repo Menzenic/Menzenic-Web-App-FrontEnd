@@ -6,6 +6,7 @@ import logo from "../images/menzenic_logo.png";
 import SearchPopup from "./SearchPopup";
 import LoginForm from "./LoginForm";
 import { UserLoginLogo } from "../utils/assets";
+import { Strings } from "../utils/constants/Strings/Strings";
 
 const Navbar = () => {
   const [isMenuOpen, setMenuOpen] = useState(false);
@@ -53,7 +54,7 @@ const Navbar = () => {
             <Link to="/products">Products</Link>
           </li>
           <li className="nav-item">
-            <Link to="/about-us">About Us</Link>
+            <Link to="/about-us">{Strings.ABOUT_US}</Link>
           </li>
         </ul>
         <div className="nav-actions">
