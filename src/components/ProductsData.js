@@ -1,10 +1,9 @@
 import product1 from "../images/product1.png";
-import product2 from "../images/product2.jpg";
-import product3 from "../images/product3.jpg";
-import product4 from "../images/product4.jpg";
-import product5 from "../images/product5.jpg";
-import product6 from "../images/product6.jpg";
-import product7 from "../images/product7.jpg";
+import product2 from "../images/product1.png";
+import product3 from "../images/product1.png";
+import product4 from "../images/product1.png";
+import product5 from "../images/product1.png";
+import product6 from "../images/product1.png";
 
 const productsData = [
   {
@@ -42,12 +41,6 @@ const productsData = [
     image: product6,
     title: "Product 6",
     price: "₹211.99",
-  },
-  {
-    id: 7,
-    image: product7,
-    title: "Product 7",
-    price: "₹216.99",
   },
 ];
 

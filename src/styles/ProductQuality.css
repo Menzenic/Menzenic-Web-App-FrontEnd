@@ -1,0 +1,87 @@
+.product-quality {
+  background: linear-gradient(
+    180deg,
+    #000000 0%,
+    rgba(28, 28, 28, 0.479167) 151.51%,
+    rgba(53, 53, 53, 0) 303.21%
+  );
+  /* url("../images/image.png"); */
+  background-size: auto 100%, object-fit;
+  background-position: right, end;
+  background-repeat: no-repeat;
+  padding: 50px 0;
+  text-align: center;
+  position: relative;
+}
+.product-image {
+  position: absolute;
+  right: 0;
+  top: 0;
+  height: 100%;
+  width: 40%;
+  z-index: -10;
+  /* margin-left: auto;  */
+  /* margin-right: 0;  */
+}
+
+.product-quality-content {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.product-quality-title {
+  text-align: center;
+  margin-top: 0;
+  height: 51px;
+  left: 458px;
+  top: 1464px;
+  font-family: "Arial";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 44px;
+  line-height: 51px;
+  color: #ffffff;
+}
+
+.product-quality-icons {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 15px;
+  font-size: 24px;
+}
+
+.product-quality-icon {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: #fff;
+  margin-top: 40px;
+  padding: 10px 0;
+}
+
+.icon-label {
+  font-family: "Arial";
+  font-style: normal;
+  font-weight: 400;
+  margin-top: 15px;
+  font-size: 24px;
+  line-height: 28px;
+  color: #ffffff;
+}
+
+/* Responsive Styles */
+
+@media (max-width: 768px) {
+  .product-quality-title {
+    font-size: 24px;
+  }
+
+  .product-quality-icons {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .icon-label {
+    font-size: 14px;
+  }
+}

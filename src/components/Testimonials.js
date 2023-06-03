@@ -1,58 +1,70 @@
-// Testimonials.js
-import React from "react";
-import TestimonialData from "./TestimonialData";
-import Slider from "react-slick";
-import "slick-carousel/slick/slick.css";
-import "slick-carousel/slick/slick-theme.css";
+import React, { useState } from "react";
+import { FaChevronLeft, FaChevronRight, FaStar } from "react-icons/fa";
+import testimonialData from "./TestimonialData";
 import "../styles/Testimonials.css";
 
 const Testimonials = () => {
-  const PrevArrow = (props) => {
-    const { className, onClick } = props;
-    return (
-      <button
-        className={`${className} testimonial-arrow prev-arrow`}
-        onClick={onClick}
-      />
+  const [currentSlide, setCurrentSlide] = useState(0);
+
+  const handlePreviousSlide = () => {
+    setCurrentSlide((prevSlide) =>
+      prevSlide === 0 ? testimonialData.length - 2 : prevSlide - 1
     );
   };
 
-  const NextArrow = (props) => {
-    const { className, onClick } = props;
-    return (
-      <button
-        className={`${className} testimonial-arrow next-arrow`}
-        onClick={onClick}
-      />
+  const handleNextSlide = () => {
+    setCurrentSlide((prevSlide) =>
+      prevSlide >= testimonialData.length - 2 ? 0 : prevSlide + 1
     );
   };
 
-  const settings = {
-    dots: false,
-    infinite: true,
-    speed: 500,
-    slidesToShow: 2,
-    slidesToScroll: 1,
-    prevArrow: <PrevArrow />,
-    nextArrow: <NextArrow />,
-  };
+  const visibleTestimonials = [
+    testimonialData[currentSlide],
+    testimonialData[currentSlide + 1],
+  ];
 
   return (
-    <div className="testimonials">
-      <h1>What people say about Us</h1>
-      <Slider {...settings}>
-        {TestimonialData.map((testimonial, index) => (
-          <div className="testimonial-card" key={index}>
-            <img src={testimonial.img} alt={testimonial.name} />
-            <p>{testimonial.description}</p>
-            <div className="testimonial-info">
-              <span>{testimonial.rating}</span>
-              <span>{testimonial.name}</span>
+    <section className="testimonials">
+      <h2 className="section-title">Customer Testimonials</h2>
+      <div className="slider-container">
+        <button
+          className="slider-arrow slider-arrow-left"
+          onClick={handlePreviousSlide}
+        >
+          <FaChevronLeft />
+        </button>
+        <div className="testimonials-list">
+          {visibleTestimonials.map((testimonial, index) => (
+            <div key={index} className="testimonial-item">
+              <div className="testimonial-rating">{testimonial.rating}</div>
+              <p className="testimonial-text">{testimonial.description}</p>
+              <div className="testimonial-details">
+                <div className="testimonial-author">
+                  <span className="author-name">{testimonial.name}</span>
+                </div>
+                <hr className="testimonial-divider" />
+                <div className="testimonial-product">
+                  <img
+                    src={testimonial.productImage}
+                    alt={testimonial.productName}
+                    className="testimonial-image"
+                  />
+                  <span className="testimonial-product-name">
+                    {testimonial.productName}
+                  </span>
+                </div>
+              </div>
             </div>
-          </div>
-        ))}
-      </Slider>
-    </div>
+          ))}
+        </div>
+        <button
+          className="slider-arrow slider-arrow-right"
+          onClick={handleNextSlide}
+        >
+          <FaChevronRight />
+        </button>
+      </div>
+    </section>
   );
 };
 

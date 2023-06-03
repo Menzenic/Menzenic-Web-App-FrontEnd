@@ -9,17 +9,19 @@ import Blogs from "./components/Blogs";
 // import ChatSystem from "./components/ChatSystem";
 // import WhatChatSystem from "./components/WhatChatSystem";
 import BestSellers from "./components/BestSellers";
+import ProductQuality from "./components/ProductQuality";
 
 function App() {
   return (
     <div className="App">
       <Header />
       <Products />
-      <About />
-      <BestSellers />
-      <Ingredients />
-      <Blogs />
+      <ProductQuality />
       <Testimonials />
+      {/* <About /> */}
+      {/* <BestSellers /> */}
+      {/* <Ingredients /> */}
+      {/* <Blogs /> */}
       <Footer />
       {/* <ChatSystem /> */}
       {/* <WhatChatSystem /> */}
