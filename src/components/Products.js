@@ -1,8 +1,9 @@
 import React, { useState } from "react";
-import { FaChevronLeft, FaChevronRight, FaHeart } from "react-icons/fa";
+import { FaChevronLeft, FaChevronRight } from "react-icons/fa";
 import { WishListIcon } from "../utils/assets";
 import "../styles/Products.css";
 import ProductsData from "./ProductsData";
+import { Strings } from "../utils/constants/Strings/Strings";
 
 const Products = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
@@ -23,7 +24,7 @@ const Products = () => {
 
   return (
     <section className="products">
-      <h2 className="section-title">Featured Products</h2>
+      <h2 className="products-section-title">{Strings.PRODUCTS_TITLE}</h2>
       <div className="slider-container">
         <button
           className="slider-arrow slider-arrow-left"
@@ -45,7 +46,9 @@ const Products = () => {
               <h3 className="product-title">{product.title}</h3>
               <span className="product-price">{product.price}</span>
               <div className="product-actions">
-                <button className="btn-add-to-cart">Add to Cart</button>
+                <button className="btn-add-to-cart">
+                  {Strings.PRODUCTS_BUTTON}
+                </button>
               </div>
             </div>
           ))}

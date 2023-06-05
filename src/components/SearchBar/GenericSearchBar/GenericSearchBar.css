@@ -1,24 +1,24 @@
 .generic-search-container {
-    position: relative;
+  position: relative;
 }
 
 .generic-search-icon {
-    position: absolute;
-    left: 5px;
-    top: 7px;
-    color: black;
+  position: absolute;
+  left: 5px;
+  top: 7px;
+  color: black;
 }
 
 .generic-search-input {
-    padding-left: 25px;
-    width: 129px;
-    height: 30px;
-    box-shadow: inset 4px 4px 5px rgba(0, 0, 0, 0.25);
-    border-radius: 10px;
-    outline: none;
-    border: none;
+  padding-left: 25px;
+  width: 129px;
+  height: 30px;
+  box-shadow: inset 4px 4px 5px rgba(0, 0, 0, 0.25);
+  border-radius: 4px;
+  outline: none;
+  border: none;
 }
 
 .generic-search-input::placeholder {
-    color: black;
+  color: black;
 }

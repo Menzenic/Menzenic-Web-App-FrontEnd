@@ -13,7 +13,7 @@
   text-align: center;
   position: relative;
 }
-.product-image {
+.product-quality-image {
   position: absolute;
   right: 0;
   top: 0;
@@ -47,7 +47,7 @@
 .product-quality-icons {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 15px;
+  gap: 1px;
   font-size: 24px;
 }
 
@@ -64,7 +64,7 @@
   font-family: "Arial";
   font-style: normal;
   font-weight: 400;
-  margin-top: 15px;
+  margin-top: 13px;
   font-size: 24px;
   line-height: 28px;
   color: #ffffff;

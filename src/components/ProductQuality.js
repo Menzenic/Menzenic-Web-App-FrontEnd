@@ -56,7 +56,7 @@ const ProductQuality = () => {
       <img
         src={productQualityImg}
         alt="prdouct quality img"
-        className="product-image"
+        className="product-quality-image"
       />
     </div>
   );

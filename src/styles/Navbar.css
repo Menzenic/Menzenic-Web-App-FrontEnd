@@ -139,7 +139,7 @@
 }
 
 .cart-icon::after {
-  content: "";
+  /* content: ""; */
   position: absolute;
   top: -5px;
   right: -8px;

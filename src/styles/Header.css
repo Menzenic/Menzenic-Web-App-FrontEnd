@@ -4,7 +4,7 @@
 
 .left-content {
   position: absolute;
-  top: 50%;
+  top: 46%;
   left: 50px;
   transform: translateY(-50%);
   text-align: left;
@@ -51,6 +51,7 @@
   line-height: 21px;
   color: #000000;
 }
+
 .greater-symbol {
   font-size: 18px;
   color: #000000;
@@ -68,18 +69,57 @@
   object-fit: cover;
 }
 
+/* Responsive Styles */
+
 @media (max-width: 768px) {
   .header-content {
     flex-direction: column;
     align-items: center;
   }
 
-  .left-content,
-  .right-content {
-    flex: 0 0 100%;
-    max-width: 100%;
-    text-align: center;
+  .left-content {
     position: static;
     transform: none;
+    text-align: center;
+    margin-bottom: 20px;
+    left: 0;
+  }
+
+  .right-content {
+    position: static;
+    text-align: center;
+  }
+
+  .hamburger-menu {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    z-index: 1;
+  }
+
+  .navbar {
+    display: none;
+  }
+
+  .right-content {
+    margin-bottom: 20px;
+  }
+
+  .login-card {
+    width: 80%;
+    max-width: 300px;
+    margin: 0 auto;
+  }
+
+  .login-card li {
+    opacity: 0;
+    transform: translateX(-20px);
+    transition: opacity 0.3s ease, transform 0.3s ease;
+  }
+
+  .login-card.show li {
+    opacity: 1;
+    transform: translateX(0);
+    transition-delay: 0.2s;
   }
 }
