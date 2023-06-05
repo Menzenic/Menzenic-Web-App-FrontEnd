@@ -4,6 +4,8 @@ import { WishListIcon } from "../utils/assets";
 import "../styles/Products.css";
 import ProductsData from "./ProductsData";
 import { Strings } from "../utils/constants/Strings/Strings";
+import { HomeProductCard } from "./Card";
+import clsx from "clsx";
 
 const Products = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
@@ -32,25 +34,26 @@ const Products = () => {
         >
           <FaChevronLeft />
         </button>
-        <div className="product-list">
+        <div className="slider-container">
           {visibleProducts.map((product) => (
-            <div key={product.id} className="product-item">
-              <div className="wishlist-icon">
-                <WishListIcon />
-              </div>
-              <img
-                src={product.image}
-                alt={product.title}
-                className="product-image"
-              />
-              <h3 className="product-title">{product.title}</h3>
-              <span className="product-price">{product.price}</span>
-              <div className="product-actions">
-                <button className="btn-add-to-cart">
-                  {Strings.PRODUCTS_BUTTON}
-                </button>
-              </div>
-            </div>
+            <HomeProductCard likeicon={<WishListIcon />} image={product.image} title={product.title} rate={product.price} />
+            // <div key={product.id} className="product-item">
+            //   <div className="wishlist-icon">
+            //     <WishListIcon />
+            //   </div>
+            //   <img
+            //     src={product.image}
+            //     alt={product.title}
+            //     className="product-image"
+            //   />
+            //   <h3 className="product-title">{product.title}</h3>
+            //   <span className="product-price">{product.price}</span>
+            //   <div className="product-actions">
+            //     <button className="btn-add-to-cart">
+            //       {Strings.PRODUCTS_BUTTON}
+            //     </button>
+            //   </div>
+            // </div>
           ))}
         </div>
         <button
