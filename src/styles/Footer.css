@@ -1,6 +1,7 @@
 .footer {
-  background-color: #f5f5f5;
-  padding: 40px;
+  background-color: #f0f0f0;
+  padding: 37px 20px 10px 77px;
+  min-height: 400px;
 }
 
 .footer-title {
@@ -74,7 +75,6 @@
 
 .email-subscription input[type="email"] {
   padding: 15px;
-  border-radius: 4px;
   margin-right: 10px;
   box-sizing: border-box;
   width: 283px;
@@ -93,6 +93,7 @@
   font-family: "Arial";
   font-size: 16px;
   line-height: 24px;
+  cursor: pointer;
 }
 
 .email-subscription button:hover {
@@ -111,13 +112,22 @@
 }
 
 .footer-section-img {
-  width: 70%;
+  width: 50%;
   height: auto;
 }
 
 .footer-logo {
-  width: 100%;
-  height: auto;
+  width: 369px;
+  height: 48px;
+  text-transform: uppercase;
+  font-family: "Baskerville Old Face";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 55px;
+  margin-right: 81px;
+  line-height: 87%;
+  letter-spacing: 0.2em;
+  color: #000000;
 }
 
 /* Responsive Styles */

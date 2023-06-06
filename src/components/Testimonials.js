@@ -1,6 +1,7 @@
 import React, { useState } from "react";
-import { FaChevronLeft, FaChevronRight, FaStar } from "react-icons/fa";
 import testimonialData from "./TestimonialData";
+import { HomeTestimonialCard } from "./Card";
+import { LeftSliderArrow, RightSliderArrow } from "../utils/assets/svg";
 import "../styles/Testimonials.css";
 
 const Testimonials = () => {
@@ -31,37 +32,24 @@ const Testimonials = () => {
           className="slider-arrow slider-arrow-left"
           onClick={handlePreviousSlide}
         >
-          <FaChevronLeft />
+          <LeftSliderArrow />
         </button>
         <div className="testimonials-list">
-          {visibleTestimonials.map((testimonial, index) => (
-            <div key={index} className="testimonial-item">
-              <div className="testimonial-rating">{testimonial.rating}</div>
-              <p className="testimonial-text">{testimonial.description}</p>
-              <div className="testimonial-details">
-                <div className="testimonial-author">
-                  <span className="author-name">{testimonial.name}</span>
-                </div>
-                <hr className="testimonial-divider" />
-                <div className="testimonial-product">
-                  <img
-                    src={testimonial.productImage}
-                    alt={testimonial.productName}
-                    className="testimonial-image"
-                  />
-                  <span className="testimonial-product-name">
-                    {testimonial.productName}
-                  </span>
-                </div>
-              </div>
-            </div>
+          {visibleTestimonials.map((testimonial) => (
+            <HomeTestimonialCard
+              rating={testimonial.rating}
+              description={testimonial.description}
+              name={testimonial.name}
+              productImage={testimonial.productImage}
+              productName={testimonial.productName}
+            />
           ))}
         </div>
         <button
           className="slider-arrow slider-arrow-right"
           onClick={handleNextSlide}
         >
-          <FaChevronRight />
+          <RightSliderArrow />
         </button>
       </div>
     </section>

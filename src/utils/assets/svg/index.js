@@ -7,6 +7,8 @@ import HandIcon from "./HandIcon.js";
 import AtomIcon from "./AtomIcon.js";
 import EarthIcon from "./EarthIcon.js";
 import LeafIcon from "./LeafIcon.js";
+import LeftSliderArrow from "./LeftSliderArrow.js";
+import RightSliderArrow from "./RightSliderArrow.js";
 
 export {
   UserLoginLogo,
@@ -18,4 +20,6 @@ export {
   AtomIcon,
   EarthIcon,
   LeafIcon,
+  LeftSliderArrow,
+  RightSliderArrow,
 };

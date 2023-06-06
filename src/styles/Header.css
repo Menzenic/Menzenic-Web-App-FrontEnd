@@ -5,7 +5,7 @@
 .left-content {
   position: absolute;
   top: 46%;
-  left: 50px;
+  left: 75px;
   transform: translateY(-50%);
   text-align: left;
   color: #ffffff;
@@ -13,8 +13,8 @@
 }
 
 .heading {
-  font-size: 30px;
-  max-width: 390px;
+  font-size: 32px;
+  max-width: 410px;
   font-family: "Arial";
   font-style: normal;
   font-weight: 400;

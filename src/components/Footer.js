@@ -32,9 +32,10 @@ const Footer = () => {
           </div>
         </div>
         <div className="right-section">
-          <div className="footer-section-img">
+          <h1 className="footer-logo">Menzenic</h1>
+          {/* <div className="footer-section-img">
             <img src={logoImage} alt="Logo" className="footer-logo" />
-          </div>
+          </div> */}
         </div>
       </div>
     </footer>

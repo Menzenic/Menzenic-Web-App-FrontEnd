@@ -1,11 +1,12 @@
 import React, { useState } from "react";
-import { FaChevronLeft, FaChevronRight } from "react-icons/fa";
+// import { FaChevronLeft, FaChevronRight } from "react-icons/fa";
 import { WishListIcon } from "../utils/assets";
 import "../styles/Products.css";
 import ProductsData from "./ProductsData";
 import { Strings } from "../utils/constants/Strings/Strings";
 import { HomeProductCard } from "./Card";
-import clsx from "clsx";
+import { LeftSliderArrow, RightSliderArrow } from "../utils/assets/svg";
+// import clsx from "clsx";
 
 const Products = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
@@ -32,11 +33,16 @@ const Products = () => {
           className="slider-arrow slider-arrow-left"
           onClick={handlePreviousSlide}
         >
-          <FaChevronLeft />
+          <LeftSliderArrow />
         </button>
         <div className="slider-container">
           {visibleProducts.map((product) => (
-            <HomeProductCard likeicon={<WishListIcon />} image={product.image} title={product.title} rate={product.price} />
+            <HomeProductCard
+              likeicon={<WishListIcon />}
+              image={product.image}
+              title={product.title}
+              rate={product.price}
+            />
             // <div key={product.id} className="product-item">
             //   <div className="wishlist-icon">
             //     <WishListIcon />
@@ -60,7 +66,7 @@ const Products = () => {
           className="slider-arrow slider-arrow-right"
           onClick={handleNextSlide}
         >
-          <FaChevronRight />
+          <RightSliderArrow />
         </button>
       </div>
     </section>
