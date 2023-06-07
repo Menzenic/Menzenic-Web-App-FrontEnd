@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 // import { FaChevronLeft, FaChevronRight } from "react-icons/fa";
 import { WishListIcon } from "../utils/assets";
-import "../styles/Products.css";
+// import "../styles/Products.css";
 import ProductsData from "./ProductsData";
 import { Strings } from "../utils/constants/Strings/Strings";
 import { HomeProductCard } from "./Card";
@@ -43,23 +43,6 @@ const Products = () => {
               title={product.title}
               rate={product.price}
             />
-            // <div key={product.id} className="product-item">
-            //   <div className="wishlist-icon">
-            //     <WishListIcon />
-            //   </div>
-            //   <img
-            //     src={product.image}
-            //     alt={product.title}
-            //     className="product-image"
-            //   />
-            //   <h3 className="product-title">{product.title}</h3>
-            //   <span className="product-price">{product.price}</span>
-            //   <div className="product-actions">
-            //     <button className="btn-add-to-cart">
-            //       {Strings.PRODUCTS_BUTTON}
-            //     </button>
-            //   </div>
-            // </div>
           ))}
         </div>
         <button

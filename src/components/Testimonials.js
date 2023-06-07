@@ -34,7 +34,7 @@ const Testimonials = () => {
         >
           <LeftSliderArrow />
         </button>
-        <div className="testimonials-list">
+        <div className="slider-container">
           {visibleTestimonials.map((testimonial) => (
             <HomeTestimonialCard
               rating={testimonial.rating}
