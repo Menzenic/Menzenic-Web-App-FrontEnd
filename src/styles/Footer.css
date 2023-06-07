@@ -1,107 +1,160 @@
 .footer {
-  background: linear-gradient(to right, #000000, #454545);
-  padding: 40px 10px;
-  color: #fff;
+  background-color: #f0f0f0;
+  padding: 37px 20px 10px 77px;
+  min-height: 400px;
 }
 
-.footer__container {
+.footer-title {
+  text-align: left;
+  font-family: "Arial";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 45px;
+  line-height: 40px;
+  color: #000000;
+}
+.footer-setion-title-para {
+  text-align: left;
+  margin: 0;
+}
+.footer-setion-title-paras {
+  text-align: left;
+  margin-top: 5px;
+}
+.footer-content {
   display: flex;
-  flex-wrap: wrap;
   justify-content: space-between;
+  align-items: flex-start;
+  /* flex-wrap: wrap; */
 }
 
-.footer__section {
+.left-section {
+  display: flex;
+  flex-direction: column;
+  padding-left: 10px;
+}
+
+.left-section-top {
+  display: flex;
+  justify-content: space-between;
   margin-bottom: 20px;
 }
 
-.footer__section-title {
-  font-size: 18px;
-  margin-bottom: 10px;
+.footer-section {
+  margin-right: 20px;
 }
 
-.footer__section-list {
-  list-style-type: none;
+.footer-section-title {
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 24px;
+  line-height: 29px;
+  color: #000000;
+  text-align: left;
+}
+
+.footer-links {
+  list-style: none;
   padding: 0;
   margin: 0;
 }
 
-.footer__section-list li {
+.footer-links li {
   margin-bottom: 5px;
 }
 
-.footer__section-list li a {
-  color: #fff;
-  text-decoration: none;
+.left-section-bottom {
+  margin-top: 20px;
 }
 
-.footer__subscribe-form {
+.email-subscription {
   display: flex;
-  margin-top: 10px;
-}
-
-.footer__subscribe-form input[type="email"] {
-  width: 200px;
-  padding: 8px;
-  border: 1px solid #ccc;
-  border-radius: 3px;
-  font-size: 14px;
-}
-
-.footer__subscribe-form button {
-  padding: 8px 16px;
-  margin-left: 10px;
-  background-color: #333;
-  color: #fff;
-  border: none;
-  border-radius: 3px;
-  cursor: pointer;
-  font-size: 14px;
-}
-
-.footer__copy {
-  font-size: 14px;
-  margin-bottom: 10px;
-}
-
-.footer__social-icons {
-  display: flex;
-  justify-content: space-between;
   align-items: center;
 }
 
-.footer__social-media {
-  display: flex;
+.email-subscription input[type="email"] {
+  padding: 15px;
+  margin-right: 10px;
+  box-sizing: border-box;
+  width: 283px;
+  height: 48px;
+  background: #f0f0f0;
+  border: 1px solid #000000;
 }
 
-.footer__social-media a {
-  margin-right: 10px;
-  color: #fff;
-  text-decoration: none;
+.email-subscription button {
+  padding: 12px 32px;
+  width: 136px;
+  height: 48px;
+  color: #ffffff;
+  background: #000000;
+  border: 1px solid #000000;
+  font-family: "Arial";
+  font-size: 16px;
+  line-height: 24px;
+  cursor: pointer;
 }
+
+.email-subscription button:hover {
+  background-color: transparent;
+  color: #000000;
+}
+
+.right-section {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 20px;
+  display: flex;
+  align-items: center;
+  flex-grow: 1;
+  height: 150px;
+}
+
+.footer-section-img {
+  width: 50%;
+  height: auto;
+}
+
+.footer-logo {
+  width: 369px;
+  height: 48px;
+  text-transform: uppercase;
+  font-family: "Baskerville Old Face";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 55px;
+  margin-right: 81px;
+  line-height: 87%;
+  letter-spacing: 0.2em;
+  color: #000000;
+}
+
+/* Responsive Styles */
 
 @media (max-width: 768px) {
-  .footer__container {
+  .footer-content {
     flex-direction: column;
+    align-items: center;
   }
 
-  .footer__section {
+  .left-section,
+  .right-section {
+    flex: 0 0 100%;
+    max-width: 100%;
+    text-align: center;
+    position: static;
+    transform: none;
+  }
+
+  .left-section-bottom {
+    margin-top: 0;
+    margin-bottom: 20px;
+  }
+
+  .email-subscription input[type="email"] {
     width: 100%;
-  }
-
-  .footer__subscribe-form {
-    flex-direction: column;
-  }
-
-  .footer__subscribe-form input[type="email"] {
-    width: 100%;
+    margin-right: 0;
     margin-bottom: 10px;
-  }
-
-  .footer__social-icons {
-    flex-direction: column;
-  }
-
-  .footer__social-media {
-    margin-top: 10px;
   }
 }

@@ -12,8 +12,9 @@ const Header = () => {
       <div className="header-content">
         <div className="left-content">
           <h1 className="heading">{Strings.HEADER_TITLE}</h1>
-          <button className="shop-now">
-            Shop Now <FaChevronRight className="shop-now-icon" />
+          <button className="shop-now-button">
+            <span className="shop-now-text">Shop now</span>
+            <FaChevronRight className="greater-symbol" />
           </button>
         </div>
         <div className="right-content">

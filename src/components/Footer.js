@@ -1,93 +1,41 @@
 import React from "react";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import {
-  faFacebookF,
-  faInstagram,
-  faPinterest,
-  faLinkedinIn,
-  faYoutube,
-  faTwitter,
-} from "@fortawesome/free-brands-svg-icons";
 import "../styles/Footer.css";
+import logoImage from "../images/main_logo.png";
 
 const Footer = () => {
   return (
     <footer className="footer">
-      <div className="footer__container">
-        <div className="footer__section">
-          <h3 className="footer__section-title">Information</h3>
-          <ul className="footer__section-list">
-            <li>
-              <a href="/about">About Us</a>
-            </li>
-            <li>
-              <a href="/faq">FAQ</a>
-            </li>
-            <li>
-              <a href="/terms">Terms of Service</a>
-            </li>
-            <li>
-              <a href="/privacy">Privacy Policy</a>
-            </li>
-          </ul>
+      <h1 className="footer-title">Contact Us</h1>
+      <div className="footer-content">
+        <div className="left-section">
+          <div className="left-section-top">
+            <div className="footer-section">
+              <h3 className="footer-section-title">Visit Us</h3>
+              <p className="footer-setion-title-para">2972 Westheimer Rd. </p>
+              <p className="footer-setion-title-paras">
+                Santa Ana, Illinois 85486
+              </p>
+            </div>
+            <div className="footer-section">
+              <h3 className="footer-section-title">Contact</h3>
+              <p className="footer-setion-title-para">contact@menzenic.com </p>
+              <p className="footer-setion-title-paras">+915654623164</p>
+            </div>
+          </div>
+          <div className="left-section-bottom">
+            <div className="footer-section">
+              <div className="email-subscription">
+                <input type="email" placeholder="Email" />
+                <button>Subscribe</button>
+              </div>
+            </div>
+          </div>
         </div>
-        <div className="footer__section">
-          <h3 className="footer__section-title">Policy</h3>
-          <ul className="footer__section-list">
-            <li>
-              <a href="/shipping">Shipping Policy</a>
-            </li>
-            <li>
-              <a href="/returns">Returns &amp; Refunds</a>
-            </li>
-            <li>
-              <a href="/payment">Payment Methods</a>
-            </li>
-          </ul>
-        </div>
-        <div className="footer__section">
-          <h3 className="footer__section-title">Contact</h3>
-          <ul className="footer__section-list">
-            <li>Email: info@example.com</li>
-            <li>Phone: +1 123 456 7890</li>
-            <li>Address: 123 Street, City, Country</li>
-          </ul>
-        </div>
-        <div className="footer__section">
-          <h3 className="footer__section-title">Subscribe</h3>
-          <p>
-            Subscribe to our newsletter for the latest updates and promotions.
-          </p>
-          <form className="footer__subscribe-form">
-            <input type="email" placeholder="Enter your email" />
-            <button type="submit">Subscribe</button>
-          </form>
-        </div>
-      </div>
-      <hr />
-      <div className="footer__social-icons">
-        <p className="footer__copy">
-          © 2023 Your Company. All rights reserved.
-        </p>
-        <div className="footer__social-media">
-          <a href="https://www.facebook.com">
-            <FontAwesomeIcon icon={faFacebookF} />
-          </a>
-          <a href="https://www.instagram.com">
-            <FontAwesomeIcon icon={faInstagram} />
-          </a>
-          <a href="https://www.pinterest.com">
-            <FontAwesomeIcon icon={faPinterest} />
-          </a>
-          <a href="https://www.linkedin.com">
-            <FontAwesomeIcon icon={faLinkedinIn} />
-          </a>
-          <a href="https://www.youtube.com">
-            <FontAwesomeIcon icon={faYoutube} />
-          </a>
-          <a href="https://www.twitter.com">
-            <FontAwesomeIcon icon={faTwitter} />
-          </a>
+        <div className="right-section">
+          <h1 className="footer-logo">Menzenic</h1>
+          {/* <div className="footer-section-img">
+            <img src={logoImage} alt="Logo" className="footer-logo" />
+          </div> */}
         </div>
       </div>
     </footer>

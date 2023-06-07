@@ -4,40 +4,49 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 0 20px;
+  padding: 10px 20px;
 }
 
-.search-bar {
-  display: flex;
-  align-items: center;
-  background: linear-gradient(
-    270.37deg,
-    #f9f9f9 -29.27%,
-    rgba(249, 249, 249, 0) 191.25%
-  );
-  border-radius: 7px;
-  padding: 4px;
-  max-width: 150px;
-}
-
-.search-bar input {
+.search-bar .search-input {
   border: none;
   outline: none;
   padding: 7px;
-  overflow: hidden;
-  background: linear-gradient(
-    270.37deg,
-    #f9f9f9 -29.27%,
-    rgba(249, 249, 249, 0) 191.25%
-  );
+  background: transparent;
+  width: 100%;
+  color: white;
+  font-family: "Arial";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 16px;
 }
 
-.search-icon {
+.search-bar .search-input::placeholder {
+  color: black;
+  font-family: "Arial";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 16px;
+}
+
+.search-input::placeholder {
+  margin-left: 20px;
+}
+
+.search-bar .search-icon {
   display: flex;
   align-items: center;
   margin: 6px;
-  color: #999;
+  color: black;
+  font-size: 24px;
 }
+
+/* .search-icon {
+  position: absolute;
+  right: 0;
+  top: 0;
+} */
 
 .logo {
   text-align: left;
@@ -46,7 +55,8 @@
 .logo img {
   max-width: 100%;
   height: auto;
-  width: 150px;
+  width: 160px;
+  padding-top: 6px;
 }
 
 .menu-toggle {
@@ -78,92 +88,47 @@
 }
 
 .nav-item a {
-  font-family: "Montserrat", sans-serif;
-  color: #fafafa;
+  font-family: "Arial";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 23px;
+  color: #ffffff;
   text-decoration: none;
+  position: relative; /* Add position relative */
   transition: color 0.3s ease, background-color 0.3s ease;
 }
+
 .nav-item a:hover {
-  color: rgb(157, 157, 157);
-  text-decoration: underline;
-  /* background-color: linear-gradient(to right, #666666, #888888); */
-  transform: scale(1.2);
-  /* box-shadow: 0 0 10px rgba(0, 0, 0, 0.3); */
+  color: rgb(224, 224, 224);
 }
 
+.nav-item a::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -3px;
+  width: 100%;
+  height: 2px;
+  background-color: rgb(224, 224, 224);
+  transform: scaleX(0); /* Initially hide the underline */
+  transition: transform 0.3s ease; /* Add transition for smooth animation */
+}
+
+.nav-item a:hover::after {
+  transform: scaleX(1); /* Show the underline on hover */
+}
+
+.nav-item.active {
+  border-bottom: 2px solid rgb(224, 224, 224);
+}
 .nav-actions {
   display: flex;
   align-items: center;
 }
 
-.btn-link {
-  background: none;
-  border: none;
-  color: white;
-  font-size: 20px;
-  cursor: pointer;
-  margin-right: 10px;
-  transition: opacity 0.3s ease;
-}
-.btn-login {
-  background-color: grey;
-  padding: 10px;
-  color: white;
-  border-radius: 20px;
-  text-decoration: none;
-  border: none;
-}
-.circular-login {
-  width: 40px;
-  height: 40px;
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background: linear-gradient(
-    270.37deg,
-    #313131 -29.27%,
-    rgba(249, 249, 249, 0) 191.25%
-  );
-  color: #fff;
-  font-size: 20px;
-  margin-left: 10px;
-  text-decoration: none;
-  transition: background-color 0.3s ease;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-  border: 2.5px solid rgb(238, 236, 236);
-  cursor: pointer;
-}
-.circular-login svg {
-  font-size: 24px !important;
-}
-.circular-login:hover {
-  background-color: gray;
-}
-
-.circular-login .icon {
-  margin-top: 1px;
-}
-
-.circular-login.fi-user .icon {
-  font-size: 20px;
-}
-
-/* ... Additional styles for other circular icons ... */
-
-.btn-login:hover {
-  opacity: 0.8;
-  background-color: black;
-}
-.btn-login a {
-  color: white;
-  text-decoration: none;
-  font-size: 15px;
-  letter-spacing: 1px;
-}
-
-.btn-link:hover {
-  opacity: 0.8;
+.login_logo {
+  margin-left: 15px;
 }
 
 .cart-icon {
@@ -174,7 +139,7 @@
 }
 
 .cart-icon::after {
-  content: "";
+  /* content: ""; */
   position: absolute;
   top: -5px;
   right: -8px;
@@ -218,44 +183,5 @@
 
   .nav-actions {
     order: 1;
-  }
-
-  .btn-link {
-    margin-right: 0;
-  }
-}
-@media screen and (max-width: 768px) {
-  .navbar {
-    justify-content: center;
-    padding: 10px;
-  }
-
-  .menu-toggle {
-    display: block;
-    order: -1;
-  }
-
-  .nav-list {
-    flex-direction: column;
-    align-items: flex-start;
-    display: none;
-    padding: 10px;
-  }
-
-  .nav-list.show {
-    display: flex;
-  }
-
-  .nav-item {
-    margin-right: 0;
-    margin-bottom: 10px;
-  }
-
-  .nav-actions {
-    order: 1;
-  }
-
-  .btn-link {
-    margin-right: 0;
   }
 }

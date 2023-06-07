@@ -44,7 +44,9 @@ const Blogs = () => {
   return (
     <section className="blogs">
       <div className="container">
-        <h2 className="section-title">Exciting and Insightful Blog Updates</h2>
+        <h2 className="blog-section-title">
+          Exciting and Insightful Blog Updates
+        </h2>
         <div className="blog-grid">
           {blogPosts.map((blog) => (
             <a

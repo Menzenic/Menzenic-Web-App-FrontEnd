@@ -1,90 +1,60 @@
 .testimonials {
-  width: 100%;
-  max-width: 800px;
-  margin: 0 auto;
-  padding: 20px;
-}
-
-.slick-prev:before,
-.slick-next:before {
-  content: "";
-  font-size: 32px;
-  color: black;
-  padding: 2px;
-}
-
-.slick-prev:before {
-  content: "←";
-}
-
-.slick-next:before {
-  content: "→";
-}
-
-.testimonial-card {
-  padding: 20px;
-  text-align: center;
-  border-radius: 20px;
-  color: white;
-  box-shadow: 0 0 49px rgb(245 241 241 / 20%);
-  transition: transform 0.3s ease;
-  background-color: black;
-}
-
-.testimonial-card:hover {
-  transform: scale(1.05);
-}
-
-.testimonial-card img {
-  width: 80px;
-  height: 80px;
-  border-radius: 50%;
-  margin: 0 auto 10px;
-}
-
-.testimonial-card p {
-  margin-bottom: 10px;
-}
-
-.testimonial-info {
+  padding: 10px;
+  min-height: 528px;
   display: flex;
-  align-items: center;
-  justify-content: center;
   flex-direction: column;
+  align-items: center;
+  overflow-x: hidden;
 }
 
-.testimonial-info span {
-  margin: 5px 0;
+.section-title {
+  width: 60%;
+  height: 51px;
+  font-family: "Arial";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 44px;
+  line-height: 51px;
+  color: #000000;
+  margin-bottom: 0;
 }
 
-.testimonial-arrow {
+.slider-container {
+    position: relative;
+    margin-left: 100px;
+    margin-right: 100px;
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    align-items: center;
+    min-height: 500px;
+}
+
+.slider-arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
   background-color: transparent;
   border: none;
-  font-size: 20px;
   cursor: pointer;
-  color: white;
-  transition: transform 0.3s ease;
 }
 
-.testimonial-arrow:hover {
-  transform: scale(1.1);
+.slider-arrow-left {
+  left: 10px;
 }
 
-@media (max-width: 768px) {
-  .testimonial-card {
-    padding: 15px;
+.slider-arrow-right {
+  right: 10px;
+}
+
+@media screen and (max-width: 768px) {
+  .slider-container {
+    flex-direction: column;
   }
 
-  .testimonial-card img {
-    width: 60px;
-    height: 60px;
-  }
-
-  .testimonial-info span {
-    margin: 3px 0;
-  }
-
-  .slick-arrow {
-    font-size: 16px;
+  .slider-arrow {
+    position: static;
+    transform: none;
+    margin-top: 10px;
   }
 }
