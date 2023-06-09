@@ -1,124 +1,8 @@
-.footer {
-  background-color: #f0f0f0;
-  padding: 37px 20px 10px 77px;
-  min-height: 400px;
-}
-
-.footer-title {
-  text-align: left;
-  font-family: "Arial";
-  font-style: normal;
-  font-weight: 700;
-  font-size: 45px;
-  line-height: 40px;
-  color: #000000;
-}
-.footer-setion-title-para {
-  text-align: left;
-  margin: 0;
-}
-.footer-setion-title-paras {
-  text-align: left;
-  margin-top: 5px;
-}
-.footer-content {
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-start;
-  /* flex-wrap: wrap; */
-}
-
-.left-section {
-  display: flex;
-  flex-direction: column;
-  padding-left: 10px;
-}
-
-.left-section-top {
-  display: flex;
-  justify-content: space-between;
-  margin-bottom: 20px;
-}
-
-.footer-section {
-  margin-right: 20px;
-}
-
-.footer-section-title {
-  font-family: "Inter";
-  font-style: normal;
-  font-weight: 700;
-  font-size: 24px;
-  line-height: 29px;
-  color: #000000;
-  text-align: left;
-}
-
-.footer-links {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-}
-
-.footer-links li {
-  margin-bottom: 5px;
-}
-
-.left-section-bottom {
-  margin-top: 20px;
-}
-
-.email-subscription {
-  display: flex;
-  align-items: center;
-}
-
-.email-subscription input[type="email"] {
-  padding: 15px;
-  margin-right: 10px;
-  box-sizing: border-box;
-  width: 283px;
-  height: 48px;
-  background: #f0f0f0;
-  border: 1px solid #000000;
-}
-
-.email-subscription button {
-  padding: 12px 32px;
-  width: 136px;
-  height: 48px;
-  color: #ffffff;
-  background: #000000;
-  border: 1px solid #000000;
-  font-family: "Arial";
-  font-size: 16px;
-  line-height: 24px;
-  cursor: pointer;
-}
-
-.email-subscription button:hover {
-  background-color: transparent;
-  color: #000000;
-}
-
-.right-section {
-  display: flex;
-  justify-content: flex-end;
-  margin-top: 20px;
-  display: flex;
-  align-items: center;
-  flex-grow: 1;
-  height: 150px;
-}
-
-.footer-section-img {
-  width: 50%;
-  height: auto;
-}
-
 .footer-logo {
   width: 369px;
   height: 48px;
+  left: 820px;
+  top: 3394px;
   text-transform: uppercase;
   font-family: "Baskerville Old Face";
   font-style: normal;
@@ -127,6 +11,15 @@
   margin-right: 81px;
   line-height: 87%;
   letter-spacing: 0.2em;
+  color: #000000;
+}
+.footer-para,
+.footer-paras {
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 18px;
   color: #000000;
 }
 

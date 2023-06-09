@@ -21,7 +21,7 @@ function App() {
       {/* <About /> */}
       {/* <BestSellers /> */}
       {/* <Ingredients /> */}
-      {/* <Blogs /> */}
+      <Blogs />
       <Footer />
       {/* <ChatSystem /> */}
       {/* <WhatChatSystem /> */}
