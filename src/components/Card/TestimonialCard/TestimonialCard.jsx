@@ -1,31 +1,25 @@
-import "./TestimonialCard.css"
-
 const TestimonialCard = (props) => {
-    const { rating, description, name, productImage, productName } = props
-
     return (
-        <div className="testimonial-container">
-            {rating && <div className="testimonial-rating">{rating}</div>}
-            {description ? (
-                <p className="testimonial-text">{description}</p>
-            ) : (
-                <p>HEADING</p>
+        <div className="min-h-[20.188rem] w-[33.813rem] shadow-2xl flex flex-col">
+            {props.rating && (
+                <div className="mt-10 w-full justify-center text-2xl">
+                    {props.rating}
+                </div>
             )}
-            <div className="testimonial-details">
-                <div className="testimonial-author">
-                    <span className="author-name">{name}</span>
+            {props.description && (
+                <div className="w-full mt-7 flex justify-center">
+                    <p className="w-[26.938rem] max-h-[4.5rem] overflow-scroll">
+                        {props.description}
+                    </p>
                 </div>
-                <hr className="testimonial-divider" />
-                <div className="testimonial-product">
-                    <img
-                        src={productImage}
-                        alt={productName}
-                        className="testimonial-image"
-                    />
-                    <span className="testimonial-product-name">
-                        {productName}
-                    </span>
-                </div>
+            )}
+            {props.name && <p className="mt-7 w-full flex justify-end pr-16">{props.name}</p>}
+            <div className="flex w-full justify-center mt-6 px-20">
+                <div className="border border-[#CECECE] w-full"></div>
+            </div>
+            <div className="w-full flex pl-16 my-5">
+                {props.productImage && <img src={props.productImage} alt={props.productName} className="h-[3.125rem] w-[2rem]" />}
+                {props.productName && <div className="ml-3 flex items-center">{props.productName}</div>}
             </div>
         </div>
     )

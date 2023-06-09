@@ -16,8 +16,7 @@ import LoginForm from "./LoginForm"
 import { UserLoginLogo } from "../utils/assets"
 import { ShoppingCart } from "../utils/assets"
 import { Strings } from "../utils/constants/Strings/Strings"
-import GenericSearchBar from "./SearchBar/GenericSearchBar/GenericSearchBar"
-import HomeSearchBar from "./SearchBar/HomeSearchbar/HomeSearchBar"
+import SearchBar from "./SearchBar/SearchBar"
 
 const Navbar = () => {
     const location = useLocation()
@@ -81,7 +80,7 @@ const Navbar = () => {
                 </li>
             </ul>
             <div className="nav-actions">
-                <HomeSearchBar />
+                <SearchBar icon={<FiSearch />} />
                 <UserLoginLogo
                     onClick={() => console.log("USER LOGIN")}
                     className="login_logo"

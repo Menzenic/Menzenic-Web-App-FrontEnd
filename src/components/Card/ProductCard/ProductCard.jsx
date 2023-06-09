@@ -1,7 +1,6 @@
 import clsx from 'clsx'
-import './GenericProductCard.css'
 
-const GenericProductCard = (props) => {
+const ProductCard = (props) => {
     return (
         <div className="flex flex-col bg-white shadow-xl w-[18.77rem] h-[22.0625rem] items-center relative my-10">
             {props.likeicon ? <div className={clsx('absolute top-2 right-2', 'hover:cursor-pointer')}>{props.likeicon}</div> : ''}
@@ -13,4 +12,4 @@ const GenericProductCard = (props) => {
     )
 }
 
-export default GenericProductCard
+export default ProductCard
