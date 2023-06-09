@@ -1,7 +1,7 @@
 import { useState } from "react"
-import "./GenericSearchBar.css"
+import "./SearchBar.css"
 
-const GenericSearchBar = (props) => {
+const SearchBar = (props) => {
     const [inputValue, setInputValue] = useState("")
 
     return (
@@ -21,4 +21,4 @@ const GenericSearchBar = (props) => {
     )
 }
 
-export default GenericSearchBar
+export default SearchBar

@@ -1,44 +1,42 @@
-import React from "react";
-import "./TestimonialCard.css";
-
 const TestimonialCard = (props) => {
-  const { rating, description, name, productImage, productName } = props;
+    return (
+        <div className="min-h-[20.188rem] w-[33.813rem] shadow-2xl flex flex-col">
+            {props.rating && (
+                <div className="mt-10 w-full justify-center text-2xl">
+                    {props.rating}
+                </div>
+            )}
+            {props.description && (
+                <div className="w-full mt-7 flex justify-center">
+                    <p className="w-[26.938rem] max-h-[4.5rem] overflow-scroll">
+                        {props.description}
+                    </p>
+                </div>
+            )}
+            {props.name && (
+                <p className="mt-7 w-full flex justify-end pr-16">
+                    {props.name}
+                </p>
+            )}
+            <div className="flex w-full justify-center mt-6 px-20">
+                <div className="border border-[#CECECE] w-full"></div>
+            </div>
+            <div className="w-full flex pl-16 my-5">
+                {props.productImage && (
+                    <img
+                        src={props.productImage}
+                        alt={props.productName}
+                        className="h-[3.125rem] w-[2rem]"
+                    />
+                )}
+                {props.productName && (
+                    <div className="ml-3 flex items-center">
+                        {props.productName}
+                    </div>
+                )}
+            </div>
+        </div>
+    )
+}
 
-  return (
-    <div
-      className="testimonial-card bg-white py-6 px-10 m-2 "
-      style={{
-        width: "511px",
-        height: "303px",
-        boxShadow: "19px 14px 77px rgba(0, 0, 0, 0.11)",
-      }}
-    >
-      {rating && (
-        <div className="testimonial-rating text-3xl font-bold mb-3">
-          {rating}
-        </div>
-      )}
-      {description ? (
-        <p className="testimonial-description text-left">{description}</p>
-      ) : (
-        <p className="testimonial-text text-center">HEADING</p>
-      )}
-      <div className="testimonial-details mt-auto">
-        <div className="testimonial-author text-right mt-3">
-          <span className="author-name italic font-medium text-xs">{name}</span>
-        </div>
-        <hr className="testimonial-divider border border-gray-300 w-full my-6" />
-        <div className="testimonial-product flex items-center justify-start">
-          <img
-            src={productImage}
-            alt={productName}
-            className="testimonial-image w-8 h-12 mr-2"
-          />
-          <span className="testimonial-product-name">{productName}</span>
-        </div>
-      </div>
-    </div>
-  );
-};
-
-export default TestimonialCard;
+export default TestimonialCard

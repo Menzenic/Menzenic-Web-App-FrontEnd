@@ -1,11 +1,7 @@
-import GenericProductCard from "./GenericProductCard/GenericProductCard";
-import HomeProductCard from "./HomeProductCard/HomeProductCard";
+import ProductCard from "./ProductCard/ProductCard";
 import TestimonialCard from "./TestimonialCard/TestimonialCard";
-import HomeTestimonialCard from "./HomeTestimonialCard/HomeTestimonialCard";
 
 export {
-  GenericProductCard,
-  HomeProductCard,
+  ProductCard,
   TestimonialCard,
-  HomeTestimonialCard,
 };
