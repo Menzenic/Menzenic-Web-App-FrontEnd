@@ -48,7 +48,7 @@ const Navbar = () => {
     return (
         <nav className="navbar">
             <Link to="/" className="logo">
-                <img src={logo} alt="Logo" />
+                <div className="h-[2.75rem] w-[15rem] mt-1 navbar-image"></div>
             </Link>
             <button
                 className={clsx("menu-toggle", isMenuOpen ? "open" : "")}
@@ -79,11 +79,11 @@ const Navbar = () => {
                     <Link to="/about-us">{Strings.ABOUT_US}</Link>
                 </li>
             </ul>
-            <div className="nav-actions">
+            <div className="mr-5 flex items-center">
                 <SearchBar icon={<FiSearch />} />
                 <UserLoginLogo
                     onClick={() => console.log("USER LOGIN")}
-                    className="login_logo"
+                    className="mx-4"
                 />
                 <Link to="/" className="cart-icon">
                     <ShoppingCart />

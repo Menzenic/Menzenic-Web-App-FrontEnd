@@ -1,3 +1,9 @@
+.navbar-image {
+    background: url('../images/logo.jpg');
+    background-size: cover;
+    background-position: center;
+}
+
 .navbar {
   background: black;
   color: white;
@@ -91,7 +97,7 @@
   font-family: "Arial";
   font-style: normal;
   font-weight: 400;
-  font-size: 18px;
+  font-size: 20px;
   line-height: 23px;
   color: #ffffff;
   text-decoration: none;
@@ -122,10 +128,6 @@
 .nav-item.active {
   border-bottom: 2px solid rgb(224, 224, 224);
 }
-.nav-actions {
-  display: flex;
-  align-items: center;
-}
 
 .login_logo {
   margin-left: 15px;
@@ -135,7 +137,6 @@
   position: relative;
   font-size: 30px;
   color: rgb(242, 241, 241);
-  margin-left: 10px;
 }
 
 .cart-icon::after {
@@ -179,9 +180,5 @@
   .nav-item {
     margin-right: 0;
     margin-bottom: 10px;
-  }
-
-  .nav-actions {
-    order: 1;
   }
 }
