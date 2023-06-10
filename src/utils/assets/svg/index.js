@@ -9,17 +9,21 @@ import EarthIcon from "./EarthIcon.js";
 import LeafIcon from "./LeafIcon.js";
 import LeftSliderArrow from "./LeftSliderArrow.js";
 import RightSliderArrow from "./RightSliderArrow.js";
+import AppleIcon from "./AppleIcon.js";
+import GoogleIcon from "./GoogleIcon.js";
 
 export {
-  UserLoginLogo,
-  ShoppingCart,
-  WishListIcon,
-  RabbitIcon,
-  TriangleIcon,
-  HandIcon,
-  AtomIcon,
-  EarthIcon,
-  LeafIcon,
-  LeftSliderArrow,
-  RightSliderArrow,
+    UserLoginLogo,
+    ShoppingCart,
+    WishListIcon,
+    RabbitIcon,
+    TriangleIcon,
+    HandIcon,
+    AtomIcon,
+    EarthIcon,
+    LeafIcon,
+    LeftSliderArrow,
+    RightSliderArrow,
+    AppleIcon,
+    GoogleIcon,
 };
