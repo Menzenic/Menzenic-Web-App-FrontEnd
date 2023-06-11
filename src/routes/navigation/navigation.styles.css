@@ -1,0 +1,5 @@
+.navbar-image {
+    background: url('../../images/logo.jpg');
+    background-size: cover;
+    background-position: center;
+}
