@@ -2,7 +2,7 @@ const TestimonialCard = (props) => {
     return (
         <div className="min-h-[20.188rem] w-[33.813rem] shadow-2xl flex flex-col">
             {props.rating && (
-                <div className="mt-10 w-full justify-center text-2xl">
+                <div className="mt-10 w-full justify-center text-center text-2xl">
                     {props.rating}
                 </div>
             )}
@@ -36,7 +36,7 @@ const TestimonialCard = (props) => {
                 )}
             </div>
         </div>
-    )
-}
+    );
+};
 
-export default TestimonialCard
+export default TestimonialCard;

@@ -1,0 +1,13 @@
+@media (max-width: 640px) {
+  .testimonial-card {
+    width: 100%; 
+    height: auto; 
+  }
+}
+
+@media (min-width: 641px) and (max-width: 1024px) {
+  .testimonial-card {
+    width: 250px; 
+    height: 200px; 
+  }
+}

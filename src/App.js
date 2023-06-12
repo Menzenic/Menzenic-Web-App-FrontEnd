@@ -1,32 +1,41 @@
-import "./App.css";
-import Header from "./components/Header/Header";
-import Products from "./components/Products";
-import About from "./components/About";
-import Ingredients from "./components/Ingredients";
-import Testimonials from "./components/Testimonials";
-import Footer from "./components/Footer";
-import Blogs from "./components/Blogs";
-// import ChatSystem from "./components/ChatSystem";
-// import WhatChatSystem from "./components/WhatChatSystem";
-import BestSellers from "./components/BestSellers";
-import ProductQuality from "./components/ProductQuality";
+import React, { useState } from "react";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import Navbar from "./components/Navbar/Navbar";
+import AllRoutes from "./routes/AllRoutes";
+import Auth from "./Screens/Auth/Auth";
+import Blogs from "./components/Blogs/Blogs";
+import About from "./components/AboutUs/About";
+import ResetPassword from "./Screens/ResetPassword/ResetPassword";
 
-function App() {
-  return (
-    <div className="App">
-      <Header />
-      <Products />
-      <ProductQuality />
-      <Testimonials />
-      {/* <About /> */}
-      {/* <BestSellers /> */}
-      {/* <Ingredients /> */}
-      <Blogs />
-      <Footer />
-      {/* <ChatSystem /> */}
-      {/* <WhatChatSystem /> */}
-    </div>
-  );
-}
+const App = () => {
+    const [isAuthorizationOpen, setAuthorizationOpen] = useState(false);
+
+    const closeAuthorization = () => {
+        setAuthorizationOpen(false);
+    };
+
+    const openAuthorization = () => {
+        setAuthorizationOpen(true);
+    };
+
+    return (
+        <Router>
+            <div className="sticky top-0 z-10">
+                <Navbar />
+            </div>
+            {isAuthorizationOpen && <Auth onClose={closeAuthorization} />}
+            <Routes>
+                <Route path="/" element={<AllRoutes />} />
+                <Route
+                    path="/login"
+                    element={<Auth onLogin={openAuthorization} />}
+                />
+                <Route path="/blogs" element={<Blogs />} />
+                <Route path="/reset-password" element={<ResetPassword />} />
+                <Route path="/about" element={<About />} />
+            </Routes>
+        </Router>
+    );
+};
 
 export default App;

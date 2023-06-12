@@ -1,32 +1,34 @@
-import React, { useState } from "react"
-import testimonialData from "./TestimonialData"
-import { TestimonialCard } from "./Card"
-import { LeftSliderArrow, RightSliderArrow } from "../utils/assets/svg"
-import "../styles/Testimonials.css"
+import React, { useState } from "react";
+import testimonialData from "../../data/TestimonialData";
+import { TestimonialCard } from "../Card";
+import { LeftSliderArrow, RightSliderArrow } from "../../utils/assets/svg";
+import "./Testimonials.css";
 
 const Testimonials = () => {
-    const [currentSlide, setCurrentSlide] = useState(0)
+    const [currentSlide, setCurrentSlide] = useState(0);
 
     const handlePreviousSlide = () => {
         setCurrentSlide((prevSlide) =>
             prevSlide === 0 ? testimonialData.length - 2 : prevSlide - 1
-        )
-    }
+        );
+    };
 
     const handleNextSlide = () => {
         setCurrentSlide((prevSlide) =>
             prevSlide >= testimonialData.length - 2 ? 0 : prevSlide + 1
-        )
-    }
+        );
+    };
 
     const visibleTestimonials = [
         testimonialData[currentSlide],
         testimonialData[currentSlide + 1],
-    ]
+    ];
 
     return (
         <section className="min-h-[638px]">
-            <h2 className="text-5xl mt-12">Customer Testimonials</h2>
+            <h2 className="text-5xl text-center mt-12">
+                Customer Testimonials
+            </h2>
             <div className="flex w-full min-h-[500px] justify-between mt-10">
                 <button className="mx-8" onClick={handlePreviousSlide}>
                     <LeftSliderArrow />
@@ -49,7 +51,7 @@ const Testimonials = () => {
                 </button>
             </div>
         </section>
-    )
-}
+    );
+};
 
-export default Testimonials
+export default Testimonials;
