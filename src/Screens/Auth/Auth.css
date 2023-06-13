@@ -6,3 +6,8 @@
 .toggle-form-link:hover {
     color: #fff;
 }
+
+.authorization-container {
+    /* background-color: #1e1e1e; */
+    background-color: #000;
+}
