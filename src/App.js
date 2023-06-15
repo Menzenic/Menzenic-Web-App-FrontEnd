@@ -6,6 +6,8 @@ import Auth from "./Screens/Auth/Auth";
 import Blogs from "./components/Blogs/Blogs";
 import About from "./components/AboutUs/About";
 import ResetPassword from "./Screens/ResetPassword/ResetPassword";
+import Cart from "./Screens/Cart/Cart";
+import Profile from "./Screens/Profile/Profile";
 
 const App = () => {
     const [isAuthorizationOpen, setAuthorizationOpen] = useState(false);
@@ -20,7 +22,7 @@ const App = () => {
 
     return (
         <Router>
-            <div className="sticky top-0 z-10">
+            <div className="top-0 z-10">
                 <Navbar />
             </div>
             {isAuthorizationOpen && <Auth onClose={closeAuthorization} />}
@@ -33,6 +35,8 @@ const App = () => {
                 <Route path="/blogs" element={<Blogs />} />
                 <Route path="/reset-password" element={<ResetPassword />} />
                 <Route path="/about" element={<About />} />
+                <Route path="/cart" element={<Cart />} />
+                <Route path="/profile" element={<Profile />} />
             </Routes>
         </Router>
     );

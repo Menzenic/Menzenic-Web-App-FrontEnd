@@ -3,7 +3,7 @@ import { FiMenu, FiSearch, FiX } from "react-icons/fi";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import clsx from "clsx";
 import "./Navbar.css";
-import { ShoppingCart, UserLoginLogo } from "../../utils/assets";
+import { ShoppingCart, UserLoginLogo, WishListIcon } from "../../utils/assets";
 import { Strings } from "../../utils/constants/Strings/Strings";
 import SearchBar from "../SearchBar/SearchBar";
 
@@ -56,7 +56,7 @@ const Navbar = () => {
                 </li>
                 <li
                     className={`nav-item nav-link ${
-                        location.pathname === "/about-us" ? "active" : ""
+                        location.pathname === "/about" ? "active" : ""
                     }`}
                 >
                     <Link to="/about">{Strings.ABOUT_US}</Link>
@@ -77,6 +77,9 @@ const Navbar = () => {
                         onClick={openLoginInSameTab}
                     />
                 </div>
+                <Link to="/wishlist" className="wishlist-icon mr-4">
+                    <WishListIcon />
+                </Link>
                 <Link to="/cart" className="cart-icon">
                     <ShoppingCart />
                 </Link>

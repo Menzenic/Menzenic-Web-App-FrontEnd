@@ -3,7 +3,7 @@ import { GoogleIcon, AppleIcon } from "../../utils/assets";
 import LoginForm from "../../components/LogIn/LoginIn";
 import SignupForm from "../../components/SignUp/SignUp";
 import SignInBackgroundImg from "../../images/auth-background.png";
-import "./Auth.css";
+import "../../utils/styles/styles.css";
 // import firebase from "firebase/app";
 // import "firebase/auth";
 
@@ -45,9 +45,9 @@ const Authorization = ({ onClose }) => {
     };
 
     return (
-        <div className="authorization-container flex justify-between">
-            <div className="left-section p-16">
-                <div className="rounded-lg shadow-lg">
+        <div className="newpage-container flex justify-between">
+            <div className="left-section pl-32 pr-14 py-3">
+                <div className="rounded-lg">
                     {isSignup ? (
                         <SignupForm onClose={onClose} toggleForm={toggleForm} />
                     ) : (
@@ -55,34 +55,36 @@ const Authorization = ({ onClose }) => {
                     )}
 
                     {/* Line */}
-                    <div className="line bg-white w-full h-px mt-4 mb-8 flex items-center justify-center mx-auto max-w-xs">
+                    <div className="line  bg-white h-px mt-4 mb-5 flex items-center justify-center mx-auto border-2 border-gray-300">
                         <div className="line-box bg-white flex items-center justify-center mx-2">
-                            <span className="text-black-400 text-xs font-medium px-1">
-                                Or
-                            </span>
+                            <span className="span-or p-1">Or</span>
                         </div>
                     </div>
 
                     {/* Social Login */}
-                    <div className="social-login flex pt-4">
+                    <div className="social-login justify-around flex pt-4">
                         <button
-                            className="google-login bg-transparent border border-white text-white px-1 py-2 rounded-lg mr-2 w-48 h-8 flex items-center"
+                            className="google-login bg-transparent border border-white text-white px-4 py-2 rounded-lg mr-2 w-48 h-8 flex items-center"
                             onClick={handleGoogleLogin}
                         >
-                            <GoogleIcon />
-                            <span className="ml-2">Sign in with Google</span>
+                            <GoogleIcon className="p-2" />
+                            <span className="ml-2 button-span">
+                                Sign in with Google
+                            </span>
                         </button>
                         <button
-                            className="apple-login bg-transparent border border-white text-white px-1 py-2 rounded-lg mr-2 w-48 h-8 flex items-center"
+                            className="apple-login bg-transparent border border-white text-white px-4 py-2 rounded-lg mr-2 w-48 h-8 flex items-center"
                             onClick={handleAppleLogin}
                         >
                             <AppleIcon className="mr-2" />
-                            <span className="ml-2">Sign in with Apple</span>
+                            <span className="ml-2 button-span">
+                                Sign in with Apple
+                            </span>
                         </button>
                     </div>
 
                     {/* Toggle Form */}
-                    <p className="toggle-form-link text-white text-center mt-4">
+                    <p className="toggle-form-link text-white text-sm label-arial text-center mt-4">
                         <span>
                             {isSignup
                                 ? "Don't have an account?"
@@ -107,8 +109,12 @@ const Authorization = ({ onClose }) => {
                 </div>
             </div>
 
-            <div className="right-section">
-                <img src={SignInBackgroundImg} alt="Background" />
+            <div className="right-section relative">
+                <img
+                    src={SignInBackgroundImg}
+                    alt="Background"
+                    className="custom-image filter drop-shadow(-16px 9px 61px rgba(0, 0, 0, 0.25))"
+                />
             </div>
         </div>
     );

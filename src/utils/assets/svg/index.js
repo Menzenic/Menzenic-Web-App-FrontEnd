@@ -11,6 +11,11 @@ import LeftSliderArrow from "./LeftSliderArrow.js";
 import RightSliderArrow from "./RightSliderArrow.js";
 import AppleIcon from "./AppleIcon.js";
 import GoogleIcon from "./GoogleIcon.js";
+import VisionIcon from "./VisionIcon.js";
+import MissionIcon from "./MissionIcon.js";
+import RatingIcon from "./RatingIcon.js";
+import RatingSliderArrow from "./RatingSliderArrow.js";
+import WishListedIcon from "./WishListedIcon.js";
 
 export {
     UserLoginLogo,
@@ -26,4 +31,9 @@ export {
     RightSliderArrow,
     AppleIcon,
     GoogleIcon,
+    VisionIcon,
+    MissionIcon,
+    RatingIcon,
+    RatingSliderArrow,
+    WishListedIcon,
 };

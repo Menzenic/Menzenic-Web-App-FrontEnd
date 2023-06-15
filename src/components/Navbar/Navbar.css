@@ -1,7 +1,16 @@
 .navbar-image {
-    background: url("../../images/logo.jpg");
+    background-color: #1e1e1e;
+    background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
+}
+
+.special-navbar .special-logo {
+    background-image: url("../../images/main_logo.png");
+}
+
+.logo .navbar-image {
+    background-image: url("../../images/logo.jpg");
 }
 
 .navbar {
@@ -11,6 +20,17 @@
     justify-content: space-between;
     align-items: center;
     padding: 10px 20px;
+}
+
+.special-navbar {
+    background-color: #1e1e1e;
+}
+
+.special-logo img {
+    display: block;
+    height: 100%;
+    width: 100%;
+    object-fit: contain;
 }
 
 .search-bar .search-input {
@@ -47,12 +67,6 @@
     color: black;
     font-size: 24px;
 }
-
-/* .search-icon {
-  position: absolute;
-  right: 0;
-  top: 0;
-} */
 
 .logo {
     text-align: left;
@@ -101,7 +115,7 @@
     line-height: 23px;
     color: #ffffff;
     text-decoration: none;
-    position: relative; /* Add position relative */
+    position: relative;
     transition: color 0.3s ease, background-color 0.3s ease;
 }
 
@@ -117,16 +131,20 @@
     width: 100%;
     height: 2px;
     background-color: rgb(224, 224, 224);
-    transform: scaleX(0); /* Initially hide the underline */
-    transition: transform 0.3s ease; /* Add transition for smooth animation */
+    transform: scaleX(0);
+    transition: transform 0.3s ease;
 }
 
 .nav-item a:hover::after {
-    transform: scaleX(1); /* Show the underline on hover */
+    transform: scaleX(1);
 }
 
 .nav-item.active {
     border-bottom: 2px solid rgb(224, 224, 224);
+    font-weight: bold;
+}
+.nav-item a.active {
+    font-weight: bold;
 }
 
 .login_logo {

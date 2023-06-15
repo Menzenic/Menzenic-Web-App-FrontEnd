@@ -3,8 +3,9 @@ import "./Home.css";
 import Header from "../../components/Header/Header";
 import Products from "../../components/FeatureProducts/FeatureProducts";
 import ProductQuality from "../../components/ProductQuality/ProductQuality";
-// import Blogs from "../../components/Blogs/Blogs";
+import Ingredients from "../../components/Ingredients/Ingredients";
 import Testimonials from "../../components/Testimonials/Testimonials";
+import Blogs from "../../components/Blogs/Blogs";
 import Footer from "../../components/Footer/Footer";
 // import Ingredients from "./components/Ingredients";
 // import About from "./components/About";
@@ -18,8 +19,9 @@ function Home() {
             <Header />
             <Products />
             <ProductQuality />
-            {/* <Blogs /> */}
+            {/* <Ingredients /> */}
             <Testimonials />
+            <Blogs />
             <Footer />
             {/* <About /> */}
             {/* <BestSellers /> */}

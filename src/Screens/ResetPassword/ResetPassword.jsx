@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 import SignInBackgroundImg from "../../images/auth-background.png";
+import clsx from "clsx";
+import "../../utils/styles/styles.css";
 
 const ResetPassword = () => {
     const [email, setEmail] = useState("");
@@ -10,51 +12,57 @@ const ResetPassword = () => {
 
     const handleResetCodeSubmit = (e) => {
         e.preventDefault();
-        // TODO: Send API request to verify the reset code
-        // and proceed to the next step
         setResetStep(2);
     };
 
     const handlePasswordReset = (e) => {
         e.preventDefault();
-        // TODO: Send API request to reset the password
-        // based on the reset code and new password
-        // Display success message or redirect to login page
-        // upon successful password reset
         setResetStep(3);
     };
 
     return (
-        <div className="flex h-screen bg-black">
-            <div className="flex-1 flex flex-col justify-center items-center text-white">
+        <div className="newpage-container flex justify-between">
+            <div className="left-section text-white pl-32 pr-14 py-10">
                 {resetStep === 1 && (
                     <>
-                        <h2 className="text-2xl font-bold mb-4">
-                            Reset Password
+                        <h2 className="reset-title  mb-3">
+                            <span className="label-arial text-4xl">
+                                Reset Password
+                            </span>
                         </h2>
-                        <p className="mb-4">
+                        <p className="mb-7 label-arial">
                             Please enter your email to receive a reset code.
                         </p>
                         <form
                             onSubmit={handleResetCodeSubmit}
-                            className="flex flex-col"
+                            className="reset-form flex flex-col"
                         >
-                            <label htmlFor="email" className="mb-2">
-                                Email
-                            </label>
-                            <input
-                                type="email"
-                                id="email"
-                                name="email"
-                                className="border rounded px-2 py-1"
-                                value={email}
-                                onChange={(e) => setEmail(e.target.value)}
-                                required
-                            />
-
+                            <div className="flex flex-col mb-6">
+                                <label
+                                    htmlFor="email"
+                                    className="mb-2 label-arial"
+                                >
+                                    Email
+                                </label>
+                                <input
+                                    type="email"
+                                    id="email"
+                                    name="email"
+                                    className={clsx(
+                                        "border rounded px-2 py-1 w-96 h-12 bg-transparent",
+                                        "focus:bg-transparent focus:outline-none",
+                                        "appearance-none"
+                                    )}
+                                    value={email}
+                                    onChange={(e) => setEmail(e.target.value)}
+                                    required
+                                />
+                            </div>
                             <button
                                 type="submit"
-                                className="bg-white hover:bg-gray-200 text-black font-bold py-2 px-4 mt-4 rounded"
+                                className={clsx(
+                                    "submit-button label-arial text-lg hover:bg-gray-200 font-bold py-2 px-4 mb-2 w-96 h-12 rounded shadow-button mt-6"
+                                )}
                             >
                                 Send Reset Code
                             </button>
@@ -64,61 +72,93 @@ const ResetPassword = () => {
 
                 {resetStep === 2 && (
                     <>
-                        <h2 className="text-2xl font-bold mb-4">
-                            Reset Password
+                        <h2 className="reset-title  mb-3">
+                            <span className="label-arial text-4xl">
+                                Reset Password
+                            </span>
                         </h2>
-                        <p className="mb-4">
+                        <p className="mb-7 label-arial">
                             Please enter the reset code sent to your email and
                             set a new password.
                         </p>
                         <form
                             onSubmit={handlePasswordReset}
-                            className="flex flex-col"
+                            className="reset-form flex flex-col"
                         >
-                            <label htmlFor="resetCode" className="mb-2">
-                                Reset Code
-                            </label>
-                            <input
-                                type="text"
-                                id="resetCode"
-                                name="resetCode"
-                                className="border rounded px-2 py-1"
-                                value={resetCode}
-                                onChange={(e) => setResetCode(e.target.value)}
-                                required
-                            />
-
-                            <label htmlFor="newPassword" className="mb-2">
-                                New Password
-                            </label>
-                            <input
-                                type="password"
-                                id="newPassword"
-                                name="newPassword"
-                                className="border rounded px-2 py-1"
-                                value={newPassword}
-                                onChange={(e) => setNewPassword(e.target.value)}
-                                required
-                            />
-
-                            <label htmlFor="confirmPassword" className="mb-2">
-                                Confirm Password
-                            </label>
-                            <input
-                                type="password"
-                                id="confirmPassword"
-                                name="confirmPassword"
-                                className="border rounded px-2 py-1"
-                                value={confirmPassword}
-                                onChange={(e) =>
-                                    setConfirmPassword(e.target.value)
-                                }
-                                required
-                            />
-
+                            <div className="flex flex-col mb-6">
+                                <label
+                                    htmlFor="resetCode"
+                                    className="mb-2 label-arial"
+                                >
+                                    Reset Code
+                                </label>
+                                <input
+                                    type="text"
+                                    id="resetCode"
+                                    name="resetCode"
+                                    className={clsx(
+                                        "border rounded px-2 py-1 w-96 h-12 bg-transparent",
+                                        "focus:bg-transparent focus:outline-none",
+                                        "appearance-none"
+                                    )}
+                                    value={resetCode}
+                                    onChange={(e) =>
+                                        setResetCode(e.target.value)
+                                    }
+                                    required
+                                />
+                            </div>
+                            <div className="flex flex-col mb-6">
+                                <label
+                                    htmlFor="newPassword"
+                                    className="mb-2 label-arial"
+                                >
+                                    New Password
+                                </label>
+                                <input
+                                    type="password"
+                                    id="newPassword"
+                                    name="newPassword"
+                                    className={clsx(
+                                        "border rounded px-2 py-1 w-96 h-12 bg-transparent",
+                                        "focus:bg-transparent focus:outline-none",
+                                        "appearance-none"
+                                    )}
+                                    value={newPassword}
+                                    onChange={(e) =>
+                                        setNewPassword(e.target.value)
+                                    }
+                                    required
+                                />
+                            </div>
+                            <div className="flex flex-col mb-6">
+                                <label
+                                    htmlFor="confirmPassword"
+                                    className="mb-2 label-arial"
+                                >
+                                    Confirm Password
+                                </label>
+                                <input
+                                    type="password"
+                                    id="confirmPassword"
+                                    name="confirmPassword"
+                                    className={clsx(
+                                        "border rounded px-2 py-1 w-96 h-12 bg-transparent",
+                                        "focus:bg-transparent focus:outline-none",
+                                        "appearance-none"
+                                    )}
+                                    value={confirmPassword}
+                                    onChange={(e) =>
+                                        setConfirmPassword(e.target.value)
+                                    }
+                                    required
+                                />
+                            </div>
                             <button
                                 type="submit"
-                                className="bg-white hover:bg-gray-200 text-black font-bold py-2 px-4 mt-4 rounded"
+                                className={clsx(
+                                    "submit-button label-arial text-lg hover:bg-gray-200 font-bold py-2 px-4 mb-2 w-96 h-12 rounded shadow-button mt-6"
+                                )}
                             >
                                 Reset Password
                             </button>
@@ -128,27 +168,30 @@ const ResetPassword = () => {
 
                 {resetStep === 3 && (
                     <>
-                        <h2 className="text-2xl font-bold mb-4">
-                            Password Reset Success
+                        <h2 className="text-4xl label-arial font-bold mb-4">
+                            Reset Success!
                         </h2>
-                        <p className="mb-4">
+                        <p className="mb-4 label-arial">
                             Your password has been successfully reset.
                         </p>
-                        <a href="/login" className="text-white">
-                            Go to Login
+                        <a href="/login" className="text-white label-arial">
+                            <button
+                                type="submit"
+                                className={clsx(
+                                    "submit-button label-arial text-lg hover:bg-gray-200 font-bold py-2 px-4 mb-2 w-96 h-12 rounded shadow-button mt-6"
+                                )}
+                            >
+                                Go to Login
+                            </button>
                         </a>
                     </>
                 )}
             </div>
-            <div className="right-section flex-1">
+            <div className="right-section relative">
                 <img
                     src={SignInBackgroundImg}
                     alt="Background"
-                    className="w-558 h-629 left-771 top-131"
-                    style={{
-                        background: "url(6383e5ca483b677c8ad621119c6d27f8.jpg)",
-                        filter: "drop-shadow(-16px 9px 61px rgba(0, 0, 0, 0.25))",
-                    }}
+                    className="custom-image"
                 />
             </div>
         </div>
