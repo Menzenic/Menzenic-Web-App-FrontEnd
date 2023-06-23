@@ -3,6 +3,7 @@ import testimonialData from "../../data/TestimonialData";
 import { TestimonialCard } from "../Card";
 import { LeftSliderArrow, RightSliderArrow } from "../../utils/assets/svg";
 import "./Testimonials.css";
+import "../../utils/styles/styles.css";
 
 const Testimonials = () => {
     const [currentSlide, setCurrentSlide] = useState(0);
@@ -26,10 +27,10 @@ const Testimonials = () => {
 
     return (
         <section className="min-h-[638px]">
-            <h2 className="text-5xl text-center mt-12">
+            <h2 className=" heading text-center mt-12">
                 Customer Testimonials
             </h2>
-            <div className="flex w-full min-h-[500px] justify-between mt-10">
+            <div className="flex w-full min-h-[500px] justify-between">
                 <button className="mx-8" onClick={handlePreviousSlide}>
                     <LeftSliderArrow />
                 </button>

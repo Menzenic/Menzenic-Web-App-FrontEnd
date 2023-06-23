@@ -7,6 +7,8 @@ import About from "../components/AboutUs/About";
 import Cart from "../Screens/Cart/Cart";
 import ProductDetail from "../Screens/ProductDetail/ProductDetail";
 import ResetPassword from "../Screens/ResetPassword/ResetPassword";
+import HealthAssessment from "../Screens/HealthAssessment/HealthAssessment";
+import Products from "../Screens/Products/Products";
 
 const AllRoutes = () => {
     const location = useLocation();
@@ -21,6 +23,11 @@ const AllRoutes = () => {
                 <Route path="/reset-password" element={<ResetPassword />} />
                 <Route path="/blogs" element={<Blogs />} />
                 <Route path="/about" element={<About />} />
+                <Route
+                    path="/healthassessment"
+                    element={<HealthAssessment />}
+                />
+                <Route path="/products" element={<Products />} />
             </Routes>
 
             {isAuthorizationOpen && <Auth />}

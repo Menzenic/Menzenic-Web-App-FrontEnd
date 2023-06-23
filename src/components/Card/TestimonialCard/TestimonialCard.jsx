@@ -8,7 +8,7 @@ const TestimonialCard = (props) => {
             )}
             {props.description && (
                 <div className="w-full mt-7 flex justify-center">
-                    <p className="w-[26.938rem] max-h-[4.5rem] overflow-scroll">
+                    <p className="w-[26.938rem] max-h-[4.5rem] overflow-auto">
                         {props.description}
                     </p>
                 </div>

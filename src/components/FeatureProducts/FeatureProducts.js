@@ -3,6 +3,7 @@ import { WishListIcon } from "../../utils/assets";
 import ProductsData from "../../data/ProductsData";
 import { Strings } from "../../utils/constants/Strings/Strings";
 import { ProductCard } from "../Card";
+import "../../utils/styles/styles.css";
 import { LeftSliderArrow, RightSliderArrow } from "../../utils/assets/svg";
 import clsx from "clsx";
 // import { cloneDeep } from "lodash"
@@ -55,7 +56,7 @@ const Products = () => {
 
     return (
         <section className="min-h-[638px]">
-            <p className="text-5xl text-center mt-12">
+            <p className="heading text-center mt-12">
                 {Strings.PRODUCTS_TITLE}
             </p>
             <div className="flex w-full min-h-[500px] justify-between mt-10">

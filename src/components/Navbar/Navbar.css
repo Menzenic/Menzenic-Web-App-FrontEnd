@@ -1,3 +1,13 @@
+.navbar {
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    background: black;
+    color: white;
+}
+
 .navbar-image {
     background-color: #1e1e1e;
     background-repeat: no-repeat;
@@ -5,78 +15,8 @@
     background-position: center;
 }
 
-.special-navbar .special-logo {
-    background-image: url("../../images/main_logo.png");
-}
-
 .logo .navbar-image {
     background-image: url("../../images/logo.jpg");
-}
-
-.navbar {
-    background: black;
-    color: white;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 10px 20px;
-}
-
-.special-navbar {
-    background-color: #1e1e1e;
-}
-
-.special-logo img {
-    display: block;
-    height: 100%;
-    width: 100%;
-    object-fit: contain;
-}
-
-.search-bar .search-input {
-    border: none;
-    outline: none;
-    padding: 7px;
-    background: transparent;
-    width: 100%;
-    color: white;
-    font-family: "Arial";
-    font-style: normal;
-    font-weight: 400;
-    font-size: 14px;
-    line-height: 16px;
-}
-
-.search-bar .search-input::placeholder {
-    color: black;
-    font-family: "Arial";
-    font-style: normal;
-    font-weight: 400;
-    font-size: 16px;
-    line-height: 16px;
-}
-
-.search-input::placeholder {
-    margin-left: 20px;
-}
-
-.search-bar .search-icon {
-    display: flex;
-    align-items: center;
-    margin: 6px;
-    color: black;
-    font-size: 24px;
-}
-
-.logo {
-    text-align: left;
-}
-
-.logo img {
-    max-width: 100%;
-    height: auto;
-    width: 160px;
-    padding-top: 6px;
 }
 
 .menu-toggle {
@@ -107,6 +47,35 @@
     margin-right: 0;
 }
 
+.nav-item.active {
+    position: relative;
+    border-bottom: 2px solid #fff;
+    font-weight: bold;
+}
+
+.nav-item.active::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    border-radius: 10px;
+    background-color: #000;
+}
+
+.nav-item:not(.active):not(:hover) {
+    border-bottom: 2px solid transparent;
+}
+
+.nav-item:not(.active):hover {
+    border-bottom: 2px solid #000;
+}
+
+.nav-item.active:hover {
+    border-bottom: 2px solid #fff;
+}
+
 .nav-item a {
     font-family: "Arial";
     font-style: normal;
@@ -116,39 +85,28 @@
     color: #ffffff;
     text-decoration: none;
     position: relative;
-    transition: color 0.3s ease, background-color 0.3s ease;
+    transition: color 0.3s ease;
 }
 
-.nav-item a:hover {
-    color: rgb(224, 224, 224);
-}
-
-.nav-item a::after {
+.nav-item:not(.active) a::after {
     content: "";
     position: absolute;
     left: 0;
     bottom: -3px;
     width: 100%;
     height: 2px;
-    background-color: rgb(224, 224, 224);
+    background-color: #fff;
+    border-radius: 10px;
     transform: scaleX(0);
     transition: transform 0.3s ease;
 }
 
-.nav-item a:hover::after {
+.nav-item:not(.active) a:hover::after {
     transform: scaleX(1);
 }
 
-.nav-item.active {
-    border-bottom: 2px solid rgb(224, 224, 224);
-    font-weight: bold;
-}
-.nav-item a.active {
-    font-weight: bold;
-}
-
-.login_logo {
-    margin-left: 15px;
+.search-input::placeholder {
+    margin-left: 20px;
 }
 
 .cart-icon {
@@ -158,7 +116,6 @@
 }
 
 .cart-icon::after {
-    /* content: ""; */
     position: absolute;
     top: -5px;
     right: -8px;

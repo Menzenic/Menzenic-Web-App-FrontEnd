@@ -1,38 +1,91 @@
-import React from "react";
-import clsx from "clsx";
+import React, { useState } from "react";
+import { ProductCard } from "../../components/Card";
+import ProductsData from "../../data/ProductsData";
+import Footer from "../../components/Footer/Footer";
 
 const Cart = () => {
-    const products = [
-        { id: 1, name: "Product 1" },
-        { id: 2, name: "Product 2" },
-        { id: 3, name: "Product 3" },
-        // Add more products as needed
-    ];
+    const [cart, setCart] = useState([]);
 
-    const userProfile = {
-        name: "John Doe",
-        email: "johndoe@example.com",
-        // Add more user profile data as needed
+    const visibleProducts = ProductsData.slice(0, 5);
+
+    const handleAddToCart = (product) => {
+        if (cart.length < 5) {
+            setCart([...cart, product]);
+        }
     };
 
+    const handleRemoveFromCart = (productId) => {
+        const updatedCart = cart.filter((item) => item.id !== productId);
+        setCart(updatedCart);
+    };
+
+    const totalPrice = cart.reduce((total, item) => total + item.price, 0);
+
     return (
-        <div className="flex bg-black text-white">
-            <div className="w-1/2 p-4">
-                <h2 className="text-xl font-bold">Products</h2>
-                <ul>
-                    {products.map((product) => (
-                        <li key={product.id}>{product.name}</li>
+        <div className="cart">
+            <div className="cart-container newpage-container">
+                <div className="grid grid-cols-1 sm:grid-cols-1 md:grid-cols-3 lg:grid-cols-3 xl:grid-cols-3 gap-4 mx-auto">
+                    {visibleProducts.map((product) => (
+                        <a
+                            key={product.id}
+                            href={`/product/${product.name}`} // Assuming the product name is part of the URL
+                        >
+                            <ProductCard
+                                likeicon={product.likeicon}
+                                image={product.image}
+                                title={product.title}
+                                rate={product.price}
+                                onAddToCart={() => handleAddToCart(product)}
+                            />
+                        </a>
                     ))}
-                </ul>
-            </div>
-            <div className="w-1/2 p-4">
-                <h2 className="text-xl font-bold">User Profile</h2>
-                <div>
-                    <p>Name: {userProfile.name}</p>
-                    <p>Email: {userProfile.email}</p>
-                    {/* Add more user profile information */}
                 </div>
             </div>
+            <div className="cart-section bg-gray-100 py-8">
+                <div className="container mx-auto">
+                    <h2 className="text-2xl font-bold mb-4">Cart</h2>
+                    <p className="mb-4">
+                        Number of products in cart: {cart.length}
+                    </p>
+                    <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4">
+                        {cart.map((item) => (
+                            <div
+                                key={item.id}
+                                className="bg-white rounded shadow-md p-4"
+                            >
+                                <div className="flex items-center justify-between mb-2">
+                                    <img
+                                        src={item.image}
+                                        alt={item.title}
+                                        className="w-20 h-20 object-cover"
+                                    />
+                                    <button
+                                        className="text-red-500 font-semibold"
+                                        onClick={() =>
+                                            handleRemoveFromCart(item.id)
+                                        }
+                                    >
+                                        Remove
+                                    </button>
+                                </div>
+                                <p className="font-bold">{item.title}</p>
+                                <p>${item.price}</p>
+                            </div>
+                        ))}
+                    </div>
+                    {cart.length > 0 && (
+                        <div className="mt-8 flex items-center justify-between">
+                            <p className="text-lg">
+                                Total items: {cart.length}
+                            </p>
+                            <p className="text-lg">
+                                Total Price: ${totalPrice}
+                            </p>
+                        </div>
+                    )}
+                </div>
+            </div>
+            <Footer />
         </div>
     );
 };

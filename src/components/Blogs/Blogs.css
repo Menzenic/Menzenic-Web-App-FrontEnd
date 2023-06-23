@@ -1,93 +1,29 @@
-.blogs {
-  width: 100%;
-  min-height: 440px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  background: linear-gradient(
-    180deg,
-    #000000 0%,
-    rgba(28, 28, 28, 0.479167) 151.51%,
-    rgba(53, 53, 53, 0) 303.21%
-  );
+.blogs-container {
+    width: 100%;
+    min-height: 619px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background: linear-gradient(
+        180deg,
+        #000000 0%,
+        rgba(28, 28, 28, 0.479167) 151.51%,
+        rgba(53, 53, 53, 0) 303.21%
+    );
 }
 
-/* .blog-container {
-  display: flex;
-  justify-content: center;
-  gap: 20px;
-  width: 90%;
-} */
-
-/* .blog-data {
-  width: 286px;
-  height: 209px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  text-align: center;
-  padding: 10px;
-  border-radius: 5px;
+.read-more:hover {
+    color: #bfbaba;
 }
-
-.blog-image {
-  width: 286px;
-  height: 209px;
-  left: 653px;
-  top: 2818px;
-  filter: drop-shadow(7px 4px 5px rgba(0, 0, 0, 0.25));
-  border-radius: 3px;
-}
-
-.blog-section-title {
-  width: 114px;
-  height: 51px;
-  left: 583px;
-  top: 2687px;
-  font-family: "Arial";
-  font-style: normal;
-  font-weight: 400;
-  font-size: 44px;
-  line-height: 51px;
-  color: #ffffff;
-}
-
-.blog-heading {
-  text-align: left;
-  font-family: "Arial";
-  font-style: normal;
-  font-weight: 700;
-  font-size: 20px;
-  line-height: 23px;
-  color: #ffffff;
-}
-
-.read-more {
-  height: 23px;
-  left: 657px;
-  top: 3096px;
-
-  font-family: "Arial";
-  font-style: normal;
-  font-weight: 400;
-  font-size: 18px;
-  line-height: 20px;
-  width: 100%;
-  display: flex;
-  align-items: flex-end;
-  text-decoration-line: underline;
-
-  color: #ffffff;
-} */
 
 @media (max-width: 768px) {
-  .blog-container {
-    justify-content: flex-start;
-    flex-wrap: wrap;
-  }
+    .blog-container {
+        justify-content: flex-start;
+        flex-wrap: wrap;
+    }
 
-  .blog-data {
-    width: calc(50% - 10px);
-    max-width: none;
-  }
+    .blog-data {
+        width: calc(50% - 10px);
+        max-width: none;
+    }
 }

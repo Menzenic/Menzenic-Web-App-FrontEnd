@@ -5,6 +5,7 @@ import PersonalInfo from "../PersonalInfo/PersonalInfo";
 import OrderHistory from "../OrderHistory/OrderHistory";
 import Wishlist from "../WishList/WishList";
 import Footer from "../../components/Footer/Footer";
+import "../../utils/styles/styles.css";
 
 const Profile = () => {
     const [activeSection, setActiveSection] = useState("profile");
@@ -15,9 +16,9 @@ const Profile = () => {
 
     return (
         <div className="profile flex flex-col min-h-screen">
-            <div className="profile-container newpage-container flex flex-row flex-grow">
+            <div className="profile-container pt-12 newpage-container flex flex-row flex-grow">
                 <div className="profile-left-section w-1/4 pr-2">
-                    <div className="profile-section mt-14 flex flex-col text-white justify-center items-center p-8">
+                    <div className="profile-section mt-6 flex flex-col text-white justify-center items-center p-6">
                         <div className="profile-info text-center  overflow-hidden">
                             <img
                                 src={profilePic}
@@ -31,11 +32,11 @@ const Profile = () => {
                                 johns@gmail.com
                             </p>
                         </div>
-                        <div className="profile-links mt-14 flex flex-row space-x-4 mb-4">
+                        <div className="profile-links mt-12 flex flex-row space-x-4 mb-4">
                             <ul className="text-center text-white label-arial">
                                 <li
                                     className={clsx(
-                                        "py-1 label-arial cursor-pointer",
+                                        "py-4 label-arial cursor-pointer",
                                         {
                                             "font-bold":
                                                 activeSection === "profile",
@@ -49,7 +50,7 @@ const Profile = () => {
                                 </li>
                                 <li
                                     className={clsx(
-                                        "py-3 label-arial cursor-pointer",
+                                        "py-4 label-arial cursor-pointer",
                                         {
                                             "font-bold":
                                                 activeSection ===
@@ -64,7 +65,7 @@ const Profile = () => {
                                 </li>
                                 <li
                                     className={clsx(
-                                        "py-3 label-arial cursor-pointer",
+                                        "py-4 label-arial cursor-pointer",
                                         {
                                             "font-bold":
                                                 activeSection === "wishlist",
@@ -80,7 +81,7 @@ const Profile = () => {
                         </div>
                     </div>
                 </div>
-                <div className="vertical-line w-px h-96 bg-white my-auto"></div>
+                <div className="vertical-line w-px bg-white my-auto"></div>
 
                 <div className="profile-right-section w-3/4 pl-2">
                     <div className="p-8">

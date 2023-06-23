@@ -8,6 +8,8 @@ import About from "./components/AboutUs/About";
 import ResetPassword from "./Screens/ResetPassword/ResetPassword";
 import Cart from "./Screens/Cart/Cart";
 import Profile from "./Screens/Profile/Profile";
+import HealthAssessment from "./Screens/HealthAssessment/HealthAssessment";
+import Products from "./Screens/Products/Products";
 
 const App = () => {
     const [isAuthorizationOpen, setAuthorizationOpen] = useState(false);
@@ -37,6 +39,11 @@ const App = () => {
                 <Route path="/about" element={<About />} />
                 <Route path="/cart" element={<Cart />} />
                 <Route path="/profile" element={<Profile />} />
+                <Route
+                    path="/healthassessment"
+                    element={<HealthAssessment />}
+                />
+                <Route path="/products" element={<Products />} />
             </Routes>
         </Router>
     );
