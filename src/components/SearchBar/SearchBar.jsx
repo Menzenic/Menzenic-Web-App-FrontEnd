@@ -7,9 +7,9 @@ const SearchBar = (props) => {
     const [inputValue, setInputValue] = useState("")
 
     return (
-        <div className={clsx("generic-search-container", props.className)}>
+        <div className={clsx("relative", props.className)}>
             {props.icon ? (
-                <div className="generic-search-icon">{props.icon}</div>
+                <div className="absolute left-1 top-1.5 text-black">{props.icon}</div>
             ) : (
                 ""
             )}
@@ -17,7 +17,7 @@ const SearchBar = (props) => {
                 onChange={(e) => setInputValue(e.target.value)}
                 value={inputValue}
                 placeholder={props.placeholder ?? "Search"}
-                className="pl-6 w-[10.063rem] h-[1.875rem] search-input"
+                className="pl-6 w-[10.063rem] h-[1.875rem] text-black search-input"
             />
         </div>
     )

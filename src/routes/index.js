@@ -1,8 +1,9 @@
-import Auth from "./auth/auth.component";
-import Checkout from "./checkout/checkout.component";
-import Navigation from "./navigation/navigation.component";
-import Profile from "./profile/profile.component";
-import Shop from "./shop/shop.component";
-import Router from "./router/router.component";
+import Auth from "./auth/auth.routes";
+import Checkout from "./checkout/checkout.routes";
+import Navigation from "./navigation/navigation.routes";
+import Profile from "./profile/profile.routes";
+import Products from "./products/products.routes";
+import Home from "./home/home.routes";
+// import Blogs from "./blogs/blogs.routes";
 
-export { Auth, Checkout, Navigation, Profile, Router, Shop }
+export { Auth, Checkout, Navigation, Profile, Home, Products }

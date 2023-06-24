@@ -1,15 +1,16 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { WishListIcon } from "../../utils/assets";
 import ProductsData from "../../data/ProductsData";
 import { Strings } from "../../utils/constants/Strings/Strings";
 import { ProductCard } from "../Card";
 import { LeftSliderArrow, RightSliderArrow } from "../../utils/assets/svg";
 import clsx from "clsx";
+import { CategoriesContext } from "../../contexts/categories.context";
 // import { cloneDeep } from "lodash"
 
-const Products = () => {
+const FeaturedProducts = () => {
     const [currentSlide, setCurrentSlide] = useState(0);
-    // const [cards, setCards] = useState(3)
+    const { categoriesMap } = useContext(CategoriesContext)
 
     const [windowSize, setWindowSize] = useState({
         width: window.innerWidth,
@@ -38,6 +39,10 @@ const Products = () => {
     };
 
     // useEffect(() => {
+    //     setValues(products)
+    // }, [products])
+
+    // useEffect(() => {
     //     const windowWidth = windowSize.width
 
     //     if (windowWidth < 640) setCards(1)
@@ -52,6 +57,8 @@ const Products = () => {
             window.removeEventListener("resize", handleResize);
         };
     }, []);
+
+    console.log('visibleProducts:', visibleProducts)
 
     return (
         <section className="min-h-[638px]">
@@ -70,14 +77,16 @@ const Products = () => {
                             : "justify-between"
                     )}
                 >
-                    {visibleProducts.map((product) => (
+                    {/* {Object.keys(products.products).map((product) => {
+                        console.log('product:', typeof product, product)
+                        return (
                         <ProductCard
                             likeicon={<WishListIcon />}
                             image={product.image}
                             title={product.title}
                             rate={product.price}
                         />
-                    ))}
+                    )})} */}
                 </div>
                 <button className="mx-8" onClick={handleNextSlide}>
                     <RightSliderArrow />
@@ -87,4 +96,4 @@ const Products = () => {
     );
 };
 
-export default Products;
+export default FeaturedProducts;

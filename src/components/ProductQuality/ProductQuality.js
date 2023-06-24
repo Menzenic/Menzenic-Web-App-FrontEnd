@@ -68,11 +68,11 @@ const ProductQuality = () => {
                     </div>
                 </div>
             </div>
-            <img
+            {/* <img
                 src={productQualityImg}
                 alt="product quality img"
                 className="product-quality-image absolute top-0 right-0 h-full w-1/3 z-[-10]"
-            />
+            /> */}
         </div>
     );
 };

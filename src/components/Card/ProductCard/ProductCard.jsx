@@ -18,7 +18,7 @@ const ProductCard = ({product = {
     }
 
     return (
-        <div className="flex flex-col bg-white shadow-xl w-[18.77rem] h-[22.0625rem] items-center relative my-10">
+        <div className="flex flex-col bg-white shadow-xl w-[18.77rem] h-[22.0625rem] items-center relative m-10">
             {likeicon ? (
                 <div
                     className={clsx(

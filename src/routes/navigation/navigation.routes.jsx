@@ -3,11 +3,11 @@ import { FiSearch } from "react-icons/fi"
 import { Link, Outlet } from "react-router-dom"
 
 import { UserContext } from "../../contexts/user.context"
-import SearchBar from "../../components/SearchBar/SearchBar"
-import { UserLoginLogo, ShoppingCart } from "../../utils/assets"
-
-import "./navigation.styles.css"
 import { CartContext } from "../../contexts/cart.context"
+import SearchBar from "../../components/SearchBar/SearchBar"
+
+import { UserLoginLogo, ShoppingCart, WishListIcon } from "../../utils/assets"
+import "./navigation.styles.css"
 
 const Navigation = () => {  
     const { currentUser } = useContext(UserContext)
@@ -29,10 +29,10 @@ const Navigation = () => {
         <>
             <div className="bg-black text-white flex justify-between items-center px-5 py-2">
                 <Link to="/">
-                    <div className="h-[2.75rem] w-[15rem] mt-1 navbar-image"></div>
+                    <div className="h-[3.75rem] w-[20rem] mt-2 navbar-image"></div>
                 </Link>
 
-                <div className="flex w-[20.563rem] justify-between text-xl font-normal">
+                <div className="flex w-[40.563rem] justify-between text-2xl font-normal">
                     <Link to='/'>
                         <p>Home</p>
                     </Link>
@@ -42,12 +42,15 @@ const Navigation = () => {
                     <Link to='/about-us'>
                         <p>About us</p>
                     </Link>
+                    <Link>
+                        <p>Health Assesment</p>
+                    </Link>
                     <Link to='/blogs'>
                         <p>Blogs</p>
                     </Link>
                 </div>
 
-                <div className="mr-5 flex items-center">
+                <div className="mr-2 flex items-center">
                     <SearchBar icon={<FiSearch />} />
                     {currentUser?.displayName && <p className="ml-5 border p-3 hover:cursor-pointer">Hello {currentUser.displayName}</p>} 
                     <Link to={!currentUser ? "/auth" : '/profile'}>
@@ -56,9 +59,12 @@ const Navigation = () => {
                             className="mx-4"
                         />
                     </Link>
-                    <Link to="/shop" className="cart-icon">
+                    <Link to="/shop" className="relative">
                         <ShoppingCart />
-                        <span>{cartCount}</span>
+                        <span className="absolute top-1 left-1 bg-gray-800">{cartCount}</span>
+                    </Link>
+                    <Link to="/wishlist" className="ml-4">
+                        <WishListIcon className="h-7 w-7" />
                     </Link>
                 </div>
             </div>

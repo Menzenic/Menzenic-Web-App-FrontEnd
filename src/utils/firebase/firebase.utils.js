@@ -173,3 +173,22 @@ export const signOutUser = async () => {
  */
 export const onAuthStateChangedListener = (callback) =>
     onAuthStateChanged(auth, callback)
+
+/**
+ * create wishlist for a user
+ */
+export const createWishlist = async (userAuth, itemToAdd) => {
+    if(!userAuth) {
+        console.log('Log in first')
+        return
+    }
+
+    try {
+        const wishListRef = doc(db, 'wishlist', userAuth.uuid)
+        const wishListSnapShot = await getDoc(wishListRef)
+
+        console.log('wishListSnapShot', wishListSnapShot)
+    } catch (err) {
+        console.log('Error while creating wishlist')
+    }   
+}
