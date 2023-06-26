@@ -1,6 +1,6 @@
 import React, { useContext } from "react"
 import { FiSearch } from "react-icons/fi"
-import { Link, Outlet, useLocation } from "react-router-dom"
+import { Link, Outlet, useLocation, useNavigate } from "react-router-dom"
 
 import { UserContext } from "../../contexts/user.context"
 import { CartContext } from "../../contexts/cart.context"
@@ -13,6 +13,7 @@ const Navigation = () => {
     const { currentUser } = useContext(UserContext)
     const { cartCount } = useContext(CartContext)
 
+    const navigate = useNavigate()
     // const location = useLocation()
 
     return (
@@ -42,7 +43,7 @@ const Navigation = () => {
 
                 <div className="mr-2 flex items-center">
                     <SearchBar icon={<FiSearch />} />
-                    {currentUser?.displayName && <p className="ml-5 border p-3 hover:cursor-pointer">Hello {currentUser.displayName}</p>} 
+                    {currentUser?.displayName && <p className="ml-5 border p-3 hover:cursor-pointer" onClick={() => navigate('/profile')}>Hello {currentUser.displayName}</p>} 
                     <Link to={!currentUser ? "/auth" : '/profile'}>
                         <UserLoginLogo
                             onClick={() => {}}

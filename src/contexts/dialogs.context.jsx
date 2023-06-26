@@ -1,13 +1,13 @@
 import { createContext, useState } from "react"
 
 export const DialogContext = createContext({
-    logInDialog: false,
-    signUpDialog: false,
+    dialog: false,
+    setDialog: () => null
 })
 
 export const DialogProvider = ({ children }) => {
-    const [dialogState, setDialogState] = useState(false)
-    const value = { dialogState, setDialogState }
+    const [dialog, setDialog] = useState(false)
+    const value = { dialog, setDialog }
 
     return <DialogContext.Provider value={value}>{children}</DialogContext.Provider>
 }

@@ -1,17 +1,29 @@
-import React from "react";
+import React, { useContext, useState } from "react";
 import clsx from "clsx";
 import "../../utils/styles/styles.css";
+import { UserContext } from "../../contexts/user.context";
+
+const defaultFormFields = {
+    displayName: "",
+    email: "",
+    password: "",
+}
 
 const PersonalInfo = () => {
+    const [fields, setFields] = useState(defaultFormFields)
+    const { displayName, email, password } = fields
+
+    const { currentUser } = useContext(UserContext)
+
     return (
-        <div className="user-info-container text-white pl-10 py-4 ml-6">
+        <div className="user-info-container text-white text-xl pl-10 py-4 ml-6">
             {/* <h2 className="text-2xl text-white font-bold mb-4 label-arial">
                 Your Information
             </h2> */}
             <div className="flex flex-wrap">
                 <div className="mb-4 w-1/2 pr-2">
                     <label className="block mb-2">Name</label>
-                    <input type="text" className={clsx("input-field")} />
+                    <input type="text" className={clsx("input-field", 'h-[3.25rem] w-[20rem] text-lg')} value={currentUser?.displayName && currentUser?.displayName} />
                 </div>
                 <div className="mb-4 w-1/2 pl-2">
                     <label className="block mb-2">Email</label>
@@ -40,7 +52,7 @@ const PersonalInfo = () => {
                 </div>
             </div>
 
-            <h2 className="text-2xl font-bold mb-4">Address</h2>
+            <h2 className="font-bold mb-4 mt-10">Address</h2>
             <div className="flex flex-wrap">
                 <div className="mb-4 w-1/2 pr-2">
                     <label className="block mb-2">House/Flat Number</label>

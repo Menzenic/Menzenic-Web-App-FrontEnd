@@ -1,7 +1,7 @@
-import React, { useContext, useState } from "react"
+import React, { useState } from "react"
 import { GoogleIcon, AppleIcon } from "../../utils/assets"
 
-import { Login, Signup } from "../../components"
+import { GlobalDialog, Login, Signup } from "../../components"
 
 import SignInBackgroundImg from "../../images/Pngs/auth-background.png"
 import "../../utils/styles/styles.css"
@@ -9,15 +9,10 @@ import { Link } from "react-router-dom"
 
 import { AiOutlineArrowLeft } from "react-icons/ai"
 import { signInWithGooglePopup } from "../../utils/firebase/firebase.utils"
-import { DialogContext } from "../../contexts/dialogs.context"
 
 const Auth = ({ onClose }) => {
-    const {logInDialog, signUpDialog } = useContext(DialogContext)
-    console.log('logInDialog', logInDialog)
-    console.log('signUpDialog', signUpDialog)
-
     const [isSignup, setIsSignup] = useState(false)
-    const [ loading, setLoading ] = useState('')
+    const [ dialog, setDialog ] = useState(false)
 
     const toggleForm = () => {
         setIsSignup(!isSignup)
@@ -29,8 +24,11 @@ const Auth = ({ onClose }) => {
 
     const handleGoogleLogin = async () => {
         try {
-            setLoading()
-            await signInWithGooglePopup()        
+            setDialog(true)
+            await signInWithGooglePopup()    
+            setTimeout(() => {
+                setDialog(false)
+            }, 500)    
         } catch (error) {
             console.log('error:', error)
         }
@@ -57,6 +55,7 @@ const Auth = ({ onClose }) => {
                     "linear-gradient(180deg, #000000 0%, rgba(26, 25, 25, 0.679) 151.51%, rgba(15, 15, 15, 0.3) 303.21%)",
             }}
         >
+            {dialog && <GlobalDialog />}
             <Link className="absolute rounded-md top-10 left-10" to={".."}>
                 <button>
                     <AiOutlineArrowLeft className="text-white h-10 w-10" />

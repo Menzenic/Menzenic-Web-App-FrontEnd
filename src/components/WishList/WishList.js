@@ -2,7 +2,7 @@ import React from "react";
 import { WishListedIcon } from "../../utils/assets";
 import ProductsData from "../../data/ProductsData";
 import { Strings } from "../../utils/constants/Strings/Strings";
-import { ProductCard } from "../../components/Card";
+import { ProductCard } from "../Card";
 
 const WishList = () => {
     const visibleProducts = ProductsData.slice(0, 2);

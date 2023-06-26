@@ -6,5 +6,6 @@ import Footer from "./Footer/Footer"
 import Header from "./Header/Header"
 import ProductQuality from "./ProductQuality/ProductQuality"
 import Testimonials from "./Testimonials/Testimonials"
+import GlobalDialog from "./GlobalDialog/GlobalDialog";
 
-export { Login, Signup, Blogs, Footer, Header, ProductQuality, FeaturedProducts, Testimonials }
+export { Login, Signup, Blogs, Footer, Header, ProductQuality, FeaturedProducts, Testimonials, GlobalDialog }
