@@ -1,6 +1,14 @@
+import React from "react";
+import clsx from "clsx";
+
 const TestimonialCard = (props) => {
     return (
-        <div className="min-h-[20.188rem] w-[33.813rem] shadow-2xl flex flex-col">
+        <div
+            className={clsx(
+                "min-h-[20.188rem] w-[33.813rem] shadow-2xl flex flex-col",
+                props.testimonialBg
+            )}
+        >
             {props.rating && (
                 <div className="mt-10 w-full justify-center text-center text-2xl">
                     {props.rating}

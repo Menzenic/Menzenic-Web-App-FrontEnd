@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { ProductCard } from "../../components/Card";
+import { WishListIcon } from "../../utils/assets";
 import ProductsData from "../../data/ProductsData";
 import Footer from "../../components/Footer/Footer";
 
@@ -31,7 +32,7 @@ const Cart = () => {
                             href={`/product/${product.name}`} // Assuming the product name is part of the URL
                         >
                             <ProductCard
-                                likeicon={product.likeicon}
+                                likeicon={<WishListIcon />}
                                 image={product.image}
                                 title={product.title}
                                 rate={product.price}

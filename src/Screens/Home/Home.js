@@ -4,6 +4,7 @@ import Header from "../../components/Header/Header";
 import Products from "../../components/FeatureProducts/FeatureProducts";
 import ProductQuality from "../../components/ProductQuality/ProductQuality";
 import Ingredients from "../../components/Ingredients/Ingredients";
+import WhyMenzenic from "../../components/WhyMenzenic/WhyMenzenic";
 import Testimonials from "../../components/Testimonials/Testimonials";
 import Blogs from "../../components/Blogs/Blogs";
 import Footer from "../../components/Footer/Footer";
@@ -20,6 +21,7 @@ function Home() {
             <Products />
             <ProductQuality />
             {/* <Ingredients /> */}
+            <WhyMenzenic />
             <Testimonials />
             <Blogs />
             <Footer />

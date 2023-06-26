@@ -6,11 +6,7 @@ import clsx from "clsx";
 
 const Footer = () => {
     return (
-        <footer
-            className={clsx(
-                "footer bg-gray-100 pt-12 pb-16 px-16 sm:pl-77 min-h-400"
-            )}
-        >
+        <footer className={clsx("footer pt-12 pb-16 px-16 sm:pl-77 min-h-400")}>
             <h1 className="footer-title text-left font-bold font-Arial text-5xl text-black">
                 Contact Us
             </h1>

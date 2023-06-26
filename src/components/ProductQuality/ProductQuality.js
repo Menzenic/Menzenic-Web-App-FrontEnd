@@ -12,17 +12,26 @@ import clsx from "clsx";
 import "./ProductQuality.css";
 import "../../utils/styles/styles.css";
 
+const iconSize = {
+    width: "99",
+    height: "119",
+};
+
 const ProductQuality = () => {
     return (
         <div className="product-quality bg-gradient-to-r from-black via-gray-700 to-transparent bg-contain bg-right bg-no-repeat text-center relative">
             <div className={clsx("max-w-6xl mx-auto px-4")}>
                 <h2 className="product-quality-title mt-0 mb-10 heading font-normal text-white">
-                    Our Products Are
+                    Our Brand Promises
                 </h2>
                 <div className="product-quality-icons p-6 grid grid-cols-3 gap-14 items-stretch">
                     {/* Icon 1 */}
                     <div className="product-quality-icon flex flex-col items-center justify-center text-white">
-                        <RabbitIcon className="product-quality-icon-image w-2/3 h-auto" />
+                        <RabbitIcon
+                            width={iconSize.width}
+                            height={iconSize.height}
+                            className="product-quality-icon-image w-2/3 h-auto"
+                        />
                         <span className="icon-label mt-3 font-normal text-2xl leading-7 text-white">
                             No animal testing
                         </span>
@@ -30,7 +39,11 @@ const ProductQuality = () => {
 
                     {/* Icon 2 */}
                     <div className="product-quality-icon flex flex-col items-center justify-center text-white h-full">
-                        <TriangleIcon className="product-quality-icon-image w-2/3 h-auto" />
+                        <TriangleIcon
+                            width={iconSize.width}
+                            height={iconSize.height}
+                            className="product-quality-icon-image w-2/3 h-auto"
+                        />
                         <span className="icon-label mt-3 font-normal text-2xl leading-7 text-white">
                             Non Toxic
                         </span>
@@ -38,7 +51,11 @@ const ProductQuality = () => {
 
                     {/* Icon 3 */}
                     <div className="product-quality-icon flex flex-col items-center justify-center text-white h-full">
-                        <HandIcon className="product-quality-icon-image w-2/3 h-auto" />
+                        <HandIcon
+                            width={iconSize.width}
+                            height={iconSize.height}
+                            className="product-quality-icon-image w-2/3 h-auto"
+                        />
                         <span className="icon-label mt-3 font-normal text-2xl leading-7 text-white">
                             100% Natural
                         </span>
@@ -46,7 +63,11 @@ const ProductQuality = () => {
 
                     {/* Icon 4 */}
                     <div className="product-quality-icon flex flex-col items-center justify-center text-white">
-                        <AtomIcon className="product-quality-icon-image w-2/3 h-auto" />
+                        <AtomIcon
+                            width={iconSize.width}
+                            height={iconSize.height}
+                            className="product-quality-icon-image w-2/3 h-auto"
+                        />
                         <span className="icon-label mt-3 font-normal text-2xl leading-7 text-white">
                             No animal testing
                         </span>
@@ -54,15 +75,23 @@ const ProductQuality = () => {
 
                     {/* Icon 5 */}
                     <div className="product-quality-icon flex flex-col items-center justify-center text-white">
-                        <EarthIcon className="product-quality-icon-image w-2/3 h-auto" />
+                        <EarthIcon
+                            width={iconSize.width}
+                            height={iconSize.height}
+                            className="product-quality-icon-image w-2/3 h-auto"
+                        />
                         <span className="icon-label mt-3 font-normal text-2xl leading-7 text-white">
-                            Non Toxic
+                            Environment Friendly
                         </span>
                     </div>
 
                     {/* Icon 6 */}
                     <div className="product-quality-icon flex flex-col items-center justify-center text-white h-full">
-                        <LeafIcon className="product-quality-icon-image w-2/3 h-auto" />
+                        <LeafIcon
+                            width={iconSize.width}
+                            height={iconSize.height}
+                            className="product-quality-icon-image w-2/3 h-auto"
+                        />
                         <span className="icon-label mt-3 font-normal text-2xl leading-7 text-white">
                             100% Natural
                         </span>

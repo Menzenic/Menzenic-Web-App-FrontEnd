@@ -9,7 +9,9 @@ import ResetPassword from "./Screens/ResetPassword/ResetPassword";
 import Cart from "./Screens/Cart/Cart";
 import Profile from "./Screens/Profile/Profile";
 import HealthAssessment from "./Screens/HealthAssessment/HealthAssessment";
+import HealthChatbot from "./Screens/HealthChatbot/HealthChatbot";
 import Products from "./Screens/Products/Products";
+import ProductDetail from "./Screens/ProductDetail/ProductDetail";
 
 const App = () => {
     const [isAuthorizationOpen, setAuthorizationOpen] = useState(false);
@@ -43,7 +45,9 @@ const App = () => {
                     path="/healthassessment"
                     element={<HealthAssessment />}
                 />
+                <Route path="/health-chatbot" element={<HealthChatbot />} />
                 <Route path="/products" element={<Products />} />
+                <Route path="/productdetail/:id" element={<ProductDetail />} />
             </Routes>
         </Router>
     );

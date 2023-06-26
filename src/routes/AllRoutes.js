@@ -8,6 +8,7 @@ import Cart from "../Screens/Cart/Cart";
 import ProductDetail from "../Screens/ProductDetail/ProductDetail";
 import ResetPassword from "../Screens/ResetPassword/ResetPassword";
 import HealthAssessment from "../Screens/HealthAssessment/HealthAssessment";
+import HealthChatbot from "../Screens/HealthChatbot/HealthChatbot";
 import Products from "../Screens/Products/Products";
 
 const AllRoutes = () => {
@@ -27,6 +28,7 @@ const AllRoutes = () => {
                     path="/healthassessment"
                     element={<HealthAssessment />}
                 />
+                <Route path="/health-chatbot" element={<HealthChatbot />} />
                 <Route path="/products" element={<Products />} />
             </Routes>
 
