@@ -1,18 +1,23 @@
-import React, { useState } from "react"
+import React, { useContext, useState } from "react"
 import { GoogleIcon, AppleIcon } from "../../utils/assets"
-import LoginForm from "../../components/LogIn/LoginIn"
-import SignupForm from "../../components/SignUp/SignUp"
-import SignInBackgroundImg from "../../images/auth-background.png"
+
+import { Login, Signup } from "../../components"
+
+import SignInBackgroundImg from "../../images/Pngs/auth-background.png"
 import "../../utils/styles/styles.css"
 import { Link } from "react-router-dom"
 
 import { AiOutlineArrowLeft } from "react-icons/ai"
+import { signInWithGooglePopup } from "../../utils/firebase/firebase.utils"
+import { DialogContext } from "../../contexts/dialogs.context"
 
-// import firebase from "firebase/app";
-// import "firebase/auth";
+const Auth = ({ onClose }) => {
+    const {logInDialog, signUpDialog } = useContext(DialogContext)
+    console.log('logInDialog', logInDialog)
+    console.log('signUpDialog', signUpDialog)
 
-const Authorization = ({ onClose }) => {
     const [isSignup, setIsSignup] = useState(false)
+    const [ loading, setLoading ] = useState('')
 
     const toggleForm = () => {
         setIsSignup(!isSignup)
@@ -22,17 +27,13 @@ const Authorization = ({ onClose }) => {
         toggleForm()
     }
 
-    const handleGoogleLogin = () => {
-        // const provider = new firebase.auth.GoogleAuthProvider();
-        // firebase
-        //     .auth()
-        //     .signInWithPopup(provider)
-        //     .then((result) => {
-        //         // Handle successful login
-        //     })
-        //     .catch((error) => {
-        //         // Handle login error
-        //     });
+    const handleGoogleLogin = async () => {
+        try {
+            setLoading()
+            await signInWithGooglePopup()        
+        } catch (error) {
+            console.log('error:', error)
+        }
     }
 
     const handleAppleLogin = () => {
@@ -63,10 +64,10 @@ const Authorization = ({ onClose }) => {
             </Link>
             <div className="flex justify-between">
                 <div className="ml-60 rounded-lg w-full">
-                    {!isSignup ? (
-                        <SignupForm onClose={onClose} toggleForm={toggleForm} />
+                    {isSignup ? (
+                        <Signup onClose={onClose} toggleForm={toggleForm} />
                     ) : (
-                        <LoginForm onClose={onClose} toggleForm={toggleForm} />
+                        <Login onClose={onClose} toggleForm={toggleForm} />
                     )}
 
                     {/* Line */}
@@ -135,4 +136,4 @@ const Authorization = ({ onClose }) => {
     )
 }
 
-export default Authorization
+export default Auth

@@ -1,6 +1,6 @@
 import React, { useContext } from "react"
 import { FiSearch } from "react-icons/fi"
-import { Link, Outlet } from "react-router-dom"
+import { Link, Outlet, useLocation } from "react-router-dom"
 
 import { UserContext } from "../../contexts/user.context"
 import { CartContext } from "../../contexts/cart.context"
@@ -13,17 +13,7 @@ const Navigation = () => {
     const { currentUser } = useContext(UserContext)
     const { cartCount } = useContext(CartContext)
 
-    // const [name, setName] = useState('')
-
-    // useEffect(() => {
-    //     (async function () {
-    //         if(currentUser === null) return
-    
-    //         const res = await getUserDetails(currentUser)
-    //         console.log("res: ", res)
-    //     })()
-
-    // }, [currentUser])
+    // const location = useLocation()
 
     return (
         <>

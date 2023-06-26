@@ -1,26 +1,20 @@
-import React, { useState } from "react"
-import { BsEye, BsEyeSlash } from 'react-icons/bs'
-import "../../utils/styles/styles.css"
-
-import {
-    createAuthUserEmailPassword,
-    createUserDocumentFromAuth,
-} from "../../utils/firebase/firebase.utils"
-
-import { ERROR_CODES } from "../../utils/constants"
-import FormInput from "../FormInput/FormInput"
+import React, { useState } from "react";
+import "../../utils/styles/styles.css";
+import { signInWithEmailPass } from "../../utils/firebase/firebase.utils";
+import { ERROR_CODES } from "../../utils/constants";
+import FormInput from "../FormInput/FormInput";
+import { BsEye, BsEyeSlash } from "react-icons/bs";
 
 const defaultFormFields = {
-    displayName: "",
     email: "",
     password: "",
 }
 
-const Signup = () => {
+const Login = () => {
     const [loading, setLoading] = useState("")
     const [show, setShow] = useState(false)
     const [formFields, setFormFields] = useState(defaultFormFields)
-    const { displayName, email, password } = formFields
+    const { email, password } = formFields
 
     const onChangeHandler = (e) => {
         const { name, value } = e.target
@@ -30,53 +24,43 @@ const Signup = () => {
     const onSubmitHandler = async (e) => {
         e.preventDefault()
         try {
-            setLoading("Loading...")
+            setLoading("Laoding...")
+            await signInWithEmailPass(email, password)
+
             setTimeout(() => {
-                setLoading("")
                 setFormFields(defaultFormFields)
+                setLoading("")
             }, 5000)
-            const { user } = await createAuthUserEmailPassword(email, password)
-            await createUserDocumentFromAuth(user, {
-                displayName,
-            })
         } catch (error) {
             switch (error.code) {
-                case ERROR_CODES.EMAIL_ALREADY_IN_USE:
-                    console.log("Email already in use")
+                case ERROR_CODES.WRONG_PASSWORD:
+                    console.log("Wrong password")
                     break
-                case ERROR_CODES.PASSWORD_LESS_THAN_SIX_CHARACTERS:
-                    console.log("Password should be greater than 6 characters")
+                case ERROR_CODES.EMAIL_NOT_FOUND:
+                    console.log("Email not found. Sign up first")
                     break
                 case ERROR_CODES.USER_NOT_FOUND:
-                    console.log("User not found consider signing up first")
+                    console.log("User not found. Please sign up first")
                     break
                 default:
-                    console.log("User could not be logged in", error)
+                    console.log("Error in signing in", error.code)
             }
+            setLoading("")
         }
     }
 
     return (
-        <div className="flex flex-col items-start text-white">
+       <div className="flex flex-col items-start text-white">
             {loading ? (
                 loading
             ) : (
                 <>
-                    <p className="text-4xl mb-4">Get Started Now</p>
+                    <p className="text-4xl mb-4">Welcome back!</p>
+                    <p className="text-xl">Enter your Credentials to access your account</p>
                     <form
-                        className="flex justify-start flex-col h-full w-full"
+                        className="flex mt-9 justify-start flex-col h-full w-full"
                         onSubmit={onSubmitHandler}
                     >
-                        <FormInput
-                            label="Name"
-                            type="text"
-                            id="name"
-                            name="displayName"
-                            className="mb-2"
-                            onChange={onChangeHandler}
-                            value={displayName}
-                            required
-                        />
                         <FormInput
                             label="Email"
                             type="email"
@@ -106,13 +90,13 @@ const Signup = () => {
                             type="submit"
                             className="bg-white hover:bg-white-700 text-black font-bold py-3 px-4 rounded mt-2 text-xl"
                         >
-                            Sign Up
+                            Login
                         </button>
                     </form>
                 </>
             )}
         </div>
     )
-}
+};
 
-export default Signup
+export default Login;

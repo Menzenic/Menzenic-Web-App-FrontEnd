@@ -1,4 +1,4 @@
-const TriangleIcon = () => {
+const TriangleIcon = (props) => {
   return (
     <svg
       width="113"
@@ -6,6 +6,7 @@ const TriangleIcon = () => {
       viewBox="0 0 113 133"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
+      {...props}
     >
       <g clip-path="url(#clip0_343_43)">
         <path

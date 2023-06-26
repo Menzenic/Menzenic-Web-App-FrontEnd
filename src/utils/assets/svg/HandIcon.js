@@ -6,6 +6,7 @@ const HandIcon = (props) => {
       viewBox="0 0 125 134"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
+      {...props}
     >
       <g clip-path="url(#clip0_343_72)">
         <path

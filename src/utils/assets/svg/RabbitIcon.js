@@ -1,4 +1,4 @@
-const RabbitIcon = () => {
+const RabbitIcon = (props) => {
   return (
     <svg
       width="123"
@@ -6,6 +6,7 @@ const RabbitIcon = () => {
       viewBox="0 0 123 147"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
+      {...props}
     >
       <g clip-path="url(#clip0_343_23)">
         <path

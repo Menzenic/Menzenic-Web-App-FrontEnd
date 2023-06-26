@@ -1,5 +1,5 @@
 import React from "react";
-import productQualityImg from "../../images/image.png";
+import clsx from "clsx";
 import {
     RabbitIcon,
     TriangleIcon,
@@ -8,61 +8,61 @@ import {
     EarthIcon,
     LeafIcon,
 } from "../../utils/assets";
-import clsx from "clsx";
+
 import "./ProductQuality.css";
 
 const ProductQuality = () => {
     return (
-        <div className="product-quality bg-gradient-to-r from-black via-gray-700 to-transparent bg-contain bg-right bg-no-repeat py-16 text-center relative">
-            <div className={clsx("max-w-4xl mx-auto px-4")}>
-                <h2 className="product-quality-title mt-0 mb-10 text-5xl font-normal text-white">
-                    Our Products Are
+        <div className="product-quality min-h-[638px] bg-cover bg-no-repeat py-16 text-center relative">
+            <div className={clsx("w-full mx-auto px-4")}>
+                <h2 className="product-quality-title text-5xl font-normal text-white">
+                    Our Brand Promises
                 </h2>
-                <div className="product-quality-icons p-4 grid grid-cols-3 gap-10">
+                <div className="mt-20 p-4 grid grid-cols-3 gap-20">
                     {/* Icon 1 */}
-                    <div className="product-quality-icon flex flex-col items-center text-white">
-                        <RabbitIcon className="product-quality-icon-image w-2/3 h-auto" />
-                        <span className="icon-label mt-3 font-normal text-2xl leading-7 text-white">
+                    <div className="flex flex-col items-center text-white">
+                        <RabbitIcon className="h-[12.75rem] w-[10.313rem]" />
+                        <span className="mt-3 font-normal text-2xl leading-7 text-white">
                             No animal testing
                         </span>
                     </div>
 
                     {/* Icon 2 */}
-                    <div className="product-quality-icon flex flex-col items-center text-white">
-                        <TriangleIcon className="product-quality-icon-image w-2/3 h-auto" />
-                        <span className="icon-label mt-3 font-normal text-2xl leading-7 text-white">
+                    <div className="flex flex-col items-center text-white">
+                        <TriangleIcon className="h-[12.75rem] w-[10.313rem]" />
+                        <span className="mt-3 font-normal text-2xl leading-7 text-white">
                             Non Toxic
                         </span>
                     </div>
 
                     {/* Icon 3 */}
-                    <div className="product-quality-icon flex flex-col items-center text-white">
-                        <HandIcon className="product-quality-icon-image w-2/3 h-auto" />
-                        <span className="icon-label mt-3 font-normal text-2xl leading-7 text-white">
+                    <div className="flex flex-col items-center text-white">
+                        <HandIcon className="h-[13.75rem] w-[10.313rem]" />
+                        <span className="font-normal text-2xl leading-7 text-white">
                             100% Natural
                         </span>
                     </div>
 
                     {/* Icon 4 */}
-                    <div className="product-quality-icon flex flex-col items-center text-white">
-                        <AtomIcon className="product-quality-icon-image w-2/3 h-auto" />
-                        <span className="icon-label mt-3 font-normal text-2xl leading-7 text-white">
+                    <div className="flex flex-col items-center text-white">
+                        <AtomIcon className="h-[12.75rem] w-[10.313rem]" />
+                        <span className=" mt-3 font-normal text-2xl leading-7 text-white">
                             No animal testing
                         </span>
                     </div>
 
                     {/* Icon 5 */}
-                    <div className="product-quality-icon flex flex-col items-center text-white">
-                        <EarthIcon className="product-quality-icon-image w-2/3 h-auto" />
-                        <span className="icon-label mt-3 font-normal text-2xl leading-7 text-white">
-                            Non Toxic
+                    <div className="flex flex-col items-center text-white">
+                        <EarthIcon className="h-[12.75rem] w-[10.313rem]" />
+                        <span className="mt-4 font-normal text-2xl leading-7 text-white">
+                            Environment Friendly
                         </span>
                     </div>
 
                     {/* Icon 6 */}
-                    <div className="product-quality-icon flex flex-col items-center text-white">
-                        <LeafIcon className="product-quality-icon-image w-2/3 h-auto" />
-                        <span className="icon-label mt-3 font-normal text-2xl leading-7 text-white">
+                    <div className="flex flex-col items-center text-white">
+                        <LeafIcon className="h-[12.75rem] w-[10.313rem]" />
+                        <span className=" mt-3 font-normal text-2xl leading-7 text-white">
                             100% Natural
                         </span>
                     </div>

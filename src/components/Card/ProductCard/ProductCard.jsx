@@ -1,15 +1,15 @@
 import clsx from "clsx"
 import { useContext } from "react"
 import { CartContext } from "../../../contexts/cart.context"
+import { WishListIcon } from "../../../utils/assets"
 
 const ProductCard = ({product = {
     id: null,
-    likeicon: null,
     image: null,
     title: null,
     rate: null,
 }}) => {
-    const {likeicon, image, title, rate } = product
+    const {image, title, rate } = product
     const { cartitems, addItemToCart } = useContext(CartContext)
     const addItemToCartHandler = () => {
         console.log('hit')
@@ -18,19 +18,15 @@ const ProductCard = ({product = {
     }
 
     return (
-        <div className="flex flex-col bg-white shadow-xl w-[18.77rem] h-[22.0625rem] items-center relative m-10">
-            {likeicon ? (
+        <div className="flex flex-col bg-white shadow-2xl shadow-gray-500 w-[18.77rem] min-h-[20.0625rem] items-center relative m-10">
                 <div
                     className={clsx(
                         "absolute top-2 right-2",
                         "hover:cursor-pointer"
                     )}
                 >
-                    {likeicon}
+                    <WishListIcon />
                 </div>
-            ) : (
-                ""
-            )}
             {image ? (
                 <img
                     className="w-[6.625rem] h-[10.25rem]"
@@ -41,7 +37,7 @@ const ProductCard = ({product = {
                 <div>IMAGE</div>
             )}
             {title ? (
-                <p className="text-2xl mt-4">{title}</p>
+                <p className="text-xl mt-4">{title}</p>
             ) : (
                 <p>HEADING</p>
             )}
@@ -50,16 +46,28 @@ const ProductCard = ({product = {
             ) : (
                 <p>200</p>
             )}
-            <button
-                className={clsx(
-                    "mt-4 border rounded-md px-6 py-2",
-                    "hover:bg-black hover:text-white",
-                    "transition-all duration-200"
-                )}
-                onClick={addItemToCartHandler}
-            >
-                ADD TO CART
-            </button>
+            <div className="flex w-full justify-between px-5 mt-4">
+                <button
+                    className={clsx(
+                        "border border-[#A4A4A4] rounded-md px-6 py-2",
+                        "hover:bg-black hover:text-white",
+                        "transition-all duration-200"
+                    )}
+                    onClick={addItemToCartHandler}
+                >
+                    Add to cart
+                </button>
+                <button
+                    className={clsx(
+                        "border rounded-md px-8 py-2",
+                        "bg-[#0D0A0A] text-white",
+                        "transition-all duration-200"
+                    )}
+                    onClick={addItemToCartHandler}
+                >
+                    Buy Now
+                </button>
+            </div>
         </div>
     )
 }
