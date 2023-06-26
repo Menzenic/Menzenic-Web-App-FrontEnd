@@ -137,7 +137,7 @@ const ProductDetail = () => {
                 <h2 className="label arial text-4xl mt-6 px-10 text-white">
                     You Might Also Like
                 </h2>
-                <div className="grid ">
+                <div className="grid grid-cols-1 sm:grid-cols-1 md:grid-cols-3 lg:grid-cols-3 xl:grid-cols-3 gap-4 mx-auto">
                     {visibleProducts.map((product) => (
                         <div className="p-2" key={product.id}>
                             <ProductCard
