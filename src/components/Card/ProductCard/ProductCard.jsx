@@ -18,10 +18,10 @@ const ProductCard = ({product = {
     }
 
     return (
-        <div className="flex flex-col bg-white shadow-2xl shadow-gray-500 w-[18.77rem] min-h-[20.0625rem] items-center relative m-10">
+        <div className="flex flex-col rounded-xl bg-white shadow-2xl shadow-gray-800 w-[18.77rem] min-h-[20.0625rem] items-center relative m-10">
                 <div
                     className={clsx(
-                        "absolute top-2 right-2",
+                        "absolute top-5 right-5",
                         "hover:cursor-pointer"
                     )}
                 >
