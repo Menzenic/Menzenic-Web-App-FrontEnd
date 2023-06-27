@@ -1,9 +1,9 @@
-import product1 from "../images/product1.png";
-import product2 from "../images/product1.png";
-import product3 from "../images/product1.png";
-import product4 from "../images/product1.png";
-import product5 from "../images/product1.png";
-import product6 from "../images/product1.png";
+import product1 from "../images/Pngs/product1.png";
+import product2 from "../images/Pngs/product1.png";
+import product3 from "../images/Pngs/product1.png";
+import product4 from "../images/Pngs/product1.png";
+import product5 from "../images/Pngs/product1.png";
+import product6 from "../images/Pngs/product1.png";
 
 const testimonialData = [
   {

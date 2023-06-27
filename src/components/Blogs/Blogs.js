@@ -1,6 +1,6 @@
 import React from "react";
 import blogData from "../../data/BlogData";
-import blogsbackgroundImg from "../../images/blogsbackground.png";
+import blogsbackgroundImg from "../../images/Pngs/blogsbackground.png";
 import clsx from "clsx";
 import "./Blogs.css";
 import "../../utils/styles/styles.css";

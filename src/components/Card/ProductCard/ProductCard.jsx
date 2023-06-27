@@ -1,74 +1,75 @@
-import clsx from "clsx";
+import clsx from "clsx"
+import { useContext } from "react"
+import { CartContext } from "../../../contexts/cart.context"
+import { WishListIcon } from "../../../utils/assets"
 
-const ProductCard = (props) => {
+const ProductCard = ({product = {
+    id: null,
+    image: null,
+    title: null,
+    rate: null,
+}}) => {
+    const {image, title, rate } = product
+    const { cartitems, addItemToCart } = useContext(CartContext)
+    const addItemToCartHandler = () => {
+        console.log('hit')
+        console.log('product', product)
+        addItemToCart(product)
+    }
+
     return (
-        <div
-            className={clsx(
-                "hover:cursor-pointer flex flex-col bg-white shadow-xl w-[18.77rem] h-[22.0625rem] items-center relative my-10",
-                props.productClassName
-            )}
-        >
-            {props.likeicon ? (
+        <div className="flex flex-col rounded-xl bg-white shadow-2xl shadow-gray-800 w-[18.77rem] min-h-[20.0625rem] items-center relative m-10">
                 <div
                     className={clsx(
-                        "absolute top-2 right-2",
-                        props.iconClassName
+                        "absolute top-5 right-5",
+                        "hover:cursor-pointer"
                     )}
                 >
-                    {props.likeicon}
+                    <WishListIcon />
                 </div>
-            ) : (
-                ""
-            )}
-            {props.image ? (
+            {image ? (
                 <img
-                    className={clsx(
-                        "w-[6.625rem] h-[10.25rem]",
-                        props.imageClassName
-                    )}
-                    src={props.image}
-                    alt={props.title}
+                    className="w-[6.625rem] h-[10.25rem]"
+                    src={image}
+                    alt={title}
                 />
             ) : (
                 <div>IMAGE</div>
             )}
-            {props.title ? (
-                <p className={clsx("text-2xl mt-4", props.titleClassName)}>
-                    {props.title}
-                </p>
+            {title ? (
+                <p className="text-xl mt-4">{title}</p>
             ) : (
                 <p>HEADING</p>
             )}
-            {props.rate ? (
-                <p className="text-xl mt-2">{props.rate}</p>
+            {rate ? (
+                <p className="text-xl mt-2">{rate}</p>
             ) : (
                 <p>200</p>
             )}
-
-            <div className="flex mt-4 gap-4">
+            <div className="flex w-full justify-between px-5 mt-4">
                 <button
                     className={clsx(
-                        "border rounded-md px-3 py-2",
+                        "border border-[#A4A4A4] rounded-md px-6 py-2",
                         "hover:bg-black hover:text-white",
-                        "transition-all duration-200",
-                        props.buttonClassName
+                        "transition-all duration-200"
                     )}
+                    onClick={addItemToCartHandler}
                 >
-                    ADD TO CART
+                    Add to cart
                 </button>
                 <button
                     className={clsx(
-                        "border bg-black text-white rounded-md px-6 py-2",
-                        "hover:bg-white hover:text-black",
-                        "transition-all duration-200",
-                        props.buttonClassName
+                        "border rounded-md px-8 py-2",
+                        "bg-[#0D0A0A] text-white",
+                        "transition-all duration-200"
                     )}
+                    onClick={addItemToCartHandler}
                 >
-                    BUY NOW
+                    Buy Now
                 </button>
             </div>
         </div>
-    );
-};
+    )
+}
 
 export default ProductCard;

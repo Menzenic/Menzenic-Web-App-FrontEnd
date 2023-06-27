@@ -11,7 +11,6 @@ const Header = () => {
 
     return (
         <div className="min-h-[638px] relative">
-            {/* <Navbar /> */}
             <div className="h-[750px] header-image"></div>
             <div className="absolute top-80 left-14">
                 <div className="text-5xl text-white text-left font-light font-['Arial'] leading-10">

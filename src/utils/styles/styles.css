@@ -26,14 +26,6 @@
 .submit-button:hover {
     background: rgb(245, 245, 245);
 }
-.line {
-    color: rgba(245, 245, 245, 1);
-    border: 2px solid #f5f5f5;
-    width: 400px;
-}
-.vertical-line {
-    height: 484px;
-}
 .horizontal-line {
     width: 1190px;
     background-color: rgba(255, 255, 255, 1);
@@ -45,14 +37,6 @@
     border-radius: 104px;
     background: #fff;
 }
-.span-or {
-    font-family: "Poppins";
-    font-style: normal;
-    font-weight: 700;
-    font-size: 9px;
-    line-height: 14px;
-    color: #000000;
-}
 .button-span {
     font-family: "Poppins";
     font-style: normal;
@@ -61,10 +45,10 @@
     line-height: 18px;
     color: #e3e3e3;
 }
-.custom-image {
+/* .custom-image {
     width: 498px;
     height: 595px;
-}
+} */
 .newpage-container {
     background: linear-gradient(
         180deg,
