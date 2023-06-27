@@ -1,32 +1,40 @@
-import clsx from "clsx"
-import { useContext } from "react"
-import { CartContext } from "../../../contexts/cart.context"
-import { WishListIcon } from "../../../utils/assets"
+import clsx from "clsx";
+import { useContext } from "react";
+import { useNavigate } from "react-router-dom";
+import { CartContext } from "../../../contexts/cart.context";
+import { WishListIcon } from "../../../utils/assets";
 
-const ProductCard = ({product = {
-    id: null,
-    image: null,
-    title: null,
-    rate: null,
-}}) => {
-    const {image, title, rate } = product
-    const { cartitems, addItemToCart } = useContext(CartContext)
+const ProductCard = ({
+    product = {
+        id: null,
+        image: null,
+        title: null,
+        rate: null,
+    },
+}) => {
+    const navigate = useNavigate();
+
+    const { image, title, rate } = product;
+    const { cartitems, addItemToCart } = useContext(CartContext);
     const addItemToCartHandler = () => {
-        console.log('hit')
-        console.log('product', product)
-        addItemToCart(product)
-    }
+        console.log("hit");
+        console.log("product", product);
+        addItemToCart(product);
+    };
+    const buyNowHandler = () => {
+        navigate("/billing");
+    };
 
     return (
         <div className="flex flex-col bg-white shadow-2xl shadow-gray-500 w-[18.77rem] min-h-[20.0625rem] items-center relative m-10">
-                <div
-                    className={clsx(
-                        "absolute top-2 right-2",
-                        "hover:cursor-pointer"
-                    )}
-                >
-                    <WishListIcon />
-                </div>
+            <div
+                className={clsx(
+                    "absolute top-2 right-2",
+                    "hover:cursor-pointer"
+                )}
+            >
+                <WishListIcon />
+            </div>
             {image ? (
                 <img
                     className="w-[6.625rem] h-[10.25rem]"
@@ -36,16 +44,8 @@ const ProductCard = ({product = {
             ) : (
                 <div>IMAGE</div>
             )}
-            {title ? (
-                <p className="text-xl mt-4">{title}</p>
-            ) : (
-                <p>HEADING</p>
-            )}
-            {rate ? (
-                <p className="text-xl mt-2">{rate}</p>
-            ) : (
-                <p>200</p>
-            )}
+            {title ? <p className="text-xl mt-4">{title}</p> : <p>HEADING</p>}
+            {rate ? <p className="text-xl mt-2">{rate}</p> : <p>200</p>}
             <div className="flex w-full justify-between px-5 mt-4">
                 <button
                     className={clsx(
@@ -63,13 +63,13 @@ const ProductCard = ({product = {
                         "bg-[#0D0A0A] text-white",
                         "transition-all duration-200"
                     )}
-                    onClick={addItemToCartHandler}
+                    onClick={buyNowHandler}
                 >
                     Buy Now
                 </button>
             </div>
         </div>
-    )
-}
+    );
+};
 
-export default ProductCard
+export default ProductCard;
