@@ -16,6 +16,7 @@ import MissionIcon from "./MissionIcon.js";
 import RatingIcon from "./RatingIcon.js";
 import RatingSliderArrow from "./RatingSliderArrow.js";
 import WishListedIcon from "./WishListedIcon.js";
+import DropdownIcon from "./DropdownIcon.jsx";
 
 export {
     UserLoginLogo,
@@ -36,4 +37,5 @@ export {
     RatingIcon,
     RatingSliderArrow,
     WishListedIcon,
+    DropdownIcon,
 };

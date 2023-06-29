@@ -36,13 +36,22 @@
     );
 }
 .billingpage-bg {
-    background: linear-gradient(
-        180deg,
-        #000 0%,
-        rgba(117, 113, 113, 0.46) 80.73%,
-        rgba(164, 164, 164, 0) 100%
-    );
+    background: transparent;
+    color: black;
+    border: 1px solid white;
 }
+.country-field select option {
+    color: black;
+}
+.remove-dropdown-arrow {
+    appearance: none;
+    -moz-appearance: none;
+    -webkit-appearance: none;
+    background-repeat: no-repeat;
+    background-position: right center;
+    padding-right: 30px;
+}
+
 .custom-opacity-51 {
     opacity: 0.51;
 }
