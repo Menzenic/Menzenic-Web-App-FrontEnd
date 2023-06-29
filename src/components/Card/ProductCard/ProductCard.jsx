@@ -1,9 +1,9 @@
-import clsx from "clsx"
-import { useContext, useEffect, useState } from "react"
-import { CartContext } from "../../../contexts/cart.context"
-import { WishListIcon } from "../../../utils/assets"
-
-import { WishListContext } from "../../../contexts/wishlist.context"
+import clsx from "clsx";
+import { useContext, useEffect, useState } from "react";
+import { CartContext } from "../../../contexts/cart.context";
+import { WishListIcon } from "../../../utils/assets";
+import { WishListedIcon } from "../../../utils/assets";
+import { WishListContext } from "../../../contexts/wishlist.context";
 
 const ProductCard = ({
     product = {
@@ -14,23 +14,23 @@ const ProductCard = ({
     },
 }) => {
     const { wishList, addItemToWishList, checkItem } =
-        useContext(WishListContext)
-    const { addItemToCart } = useContext(CartContext)
+        useContext(WishListContext);
+    const { addItemToCart } = useContext(CartContext);
 
-    const [bool, setBool] = useState(false)
-    const { image, title, rate, id } = product
+    const [bool, setBool] = useState(false);
+    const { image, title, rate, id } = product;
 
     const addItemToCartHandler = () => {
-        addItemToCart(product)
-    }
+        addItemToCart(product);
+    };
 
     const addToWishListHelper = () => {
-        addItemToWishList(id)
-    }
+        addItemToWishList(id);
+    };
 
     useEffect(() => {
-        setBool(checkItem(id))
-    }, [wishList, id, checkItem])
+        setBool(checkItem(id));
+    }, [wishList, id, checkItem]);
 
     return (
         <div className="flex flex-col rounded-xl bg-white shadow-2xl shadow-gray-800 w-[18.77rem] min-h-[20.0625rem] items-center relative m-10">
@@ -41,7 +41,7 @@ const ProductCard = ({
                 )}
                 onClick={() => addToWishListHelper()}
             >
-                {bool ? "WHIS LISTED" : <WishListIcon />}
+                {bool ? <WishListedIcon /> : <WishListIcon />}
             </div>
             {image ? (
                 <img
@@ -77,7 +77,7 @@ const ProductCard = ({
                 </button>
             </div>
         </div>
-    )
-}
+    );
+};
 
-export default ProductCard
+export default ProductCard;
