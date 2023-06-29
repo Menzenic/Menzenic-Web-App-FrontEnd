@@ -7,5 +7,8 @@ import Header from "./Header/Header"
 import ProductQuality from "./ProductQuality/ProductQuality"
 import Testimonials from "./Testimonials/Testimonials"
 import GlobalDialog from "./GlobalDialog/GlobalDialog";
+import PersonalInfo from "./PersonalInfo/PersonalInfo";
+import OrderHistory from "./OrderHistory/OrderHistory";
+import WishList from "./WishList/WishList";
 
-export { Login, Signup, Blogs, Footer, Header, ProductQuality, FeaturedProducts, Testimonials, GlobalDialog }
+export { Login, Signup, Blogs, Footer, Header, ProductQuality, FeaturedProducts, Testimonials, GlobalDialog, PersonalInfo, OrderHistory, WishList }

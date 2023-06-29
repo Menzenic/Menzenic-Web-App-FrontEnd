@@ -1,9 +1,11 @@
 import React, { useState } from "react";
-import "../../utils/styles/styles.css";
+import { BsEye, BsEyeSlash } from "react-icons/bs";
+
+import FormInput from "../FormInput/FormInput";
 import { signInWithEmailPass } from "../../utils/firebase/firebase.utils";
 import { ERROR_CODES } from "../../utils/constants";
-import FormInput from "../FormInput/FormInput";
-import { BsEye, BsEyeSlash } from "react-icons/bs";
+
+import "../../utils/styles/styles.css";
 
 const defaultFormFields = {
     email: "",

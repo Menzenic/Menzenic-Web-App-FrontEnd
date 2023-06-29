@@ -92,7 +92,7 @@ export const addCollectionAndDocuments = async (
  * retreive data from firebase
  */
 export const getCategoriesAndDocument = async () => {
-    const collectionRef = collection(db, 'categories')
+    const collectionRef = collection(db, "categories")
     const q = query(collectionRef)
 
     const querySnapShot = await getDocs(q)
@@ -177,18 +177,60 @@ export const onAuthStateChangedListener = (callback) =>
 /**
  * create wishlist for a user
  */
-export const createWishlist = async (userAuth, itemToAdd) => {
-    if(!userAuth) {
-        console.log('Log in first')
+export const addToWishlist = async (itemToAdd) => {
+    if (!auth) {
+        console.log("Log in first")
         return
     }
 
     try {
-        const wishListRef = doc(db, 'wishlist', userAuth.uuid)
+        const wishListRef = doc(db, "users", auth.currentUser.uid)
         const wishListSnapShot = await getDoc(wishListRef)
+        const data = wishListSnapShot.data()
 
-        console.log('wishListSnapShot', wishListSnapShot)
+        if (data) {
+            let currWishlist = data.wishlist || []
+
+            const existingIndex = currWishlist.findIndex((item) => {
+                return item.id === itemToAdd
+            })
+
+            if (existingIndex === -1) {
+                currWishlist.push({ id: itemToAdd })
+            } else {
+                currWishlist.splice(existingIndex, 1)
+            }
+
+            try {
+                await setDoc(wishListRef, {
+                    ...data,
+                    wishlist: currWishlist,
+                })
+
+                console.log("Wishlist updated successfully")
+                return (await getDoc(wishListRef)).data().wishlist
+            } catch (err) {
+                console.log("Error while updating wishlist:", err)
+            }
+        }
     } catch (err) {
-        console.log('Error while creating wishlist')
-    }   
+        console.log("Error while creating wishlist:", err)
+    }
+}
+
+/**
+ * get wishlisted items for user
+ */
+export const getWishList = async (uid) => {
+    try {
+        console.log('::::', uid)
+        const userDocRef = doc(db, "users", uid)
+        const userDocSnapShot = await getDoc(userDocRef)
+
+        const data = userDocSnapShot.data()
+        console.log("data:", data.wishlist)
+        return data.wishlist
+    } catch (err) {
+        console.log("Could not get the firebase data:", err)
+    }
 }

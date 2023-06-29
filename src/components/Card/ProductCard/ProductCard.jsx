@@ -1,32 +1,48 @@
 import clsx from "clsx"
-import { useContext } from "react"
+import { useContext, useEffect, useState } from "react"
 import { CartContext } from "../../../contexts/cart.context"
 import { WishListIcon } from "../../../utils/assets"
 
-const ProductCard = ({product = {
-    id: null,
-    image: null,
-    title: null,
-    rate: null,
-}}) => {
-    const {image, title, rate } = product
-    const { cartitems, addItemToCart } = useContext(CartContext)
+import { WishListContext } from "../../../contexts/wishlist.context"
+
+const ProductCard = ({
+    product = {
+        id: null,
+        image: null,
+        title: null,
+        rate: null,
+    },
+}) => {
+    const { wishList, addItemToWishList, checkItem } =
+        useContext(WishListContext)
+    const { addItemToCart } = useContext(CartContext)
+
+    const [bool, setBool] = useState(false)
+    const { image, title, rate, id } = product
+
     const addItemToCartHandler = () => {
-        console.log('hit')
-        console.log('product', product)
         addItemToCart(product)
     }
 
+    const addToWishListHelper = () => {
+        addItemToWishList(id)
+    }
+
+    useEffect(() => {
+        setBool(checkItem(id))
+    }, [wishList, id, checkItem])
+
     return (
         <div className="flex flex-col rounded-xl bg-white shadow-2xl shadow-gray-800 w-[18.77rem] min-h-[20.0625rem] items-center relative m-10">
-                <div
-                    className={clsx(
-                        "absolute top-5 right-5",
-                        "hover:cursor-pointer"
-                    )}
-                >
-                    <WishListIcon />
-                </div>
+            <div
+                className={clsx(
+                    "absolute top-5 right-5",
+                    "hover:cursor-pointer"
+                )}
+                onClick={() => addToWishListHelper()}
+            >
+                {bool ? "WHIS LISTED" : <WishListIcon />}
+            </div>
             {image ? (
                 <img
                     className="w-[6.625rem] h-[10.25rem]"
@@ -36,16 +52,8 @@ const ProductCard = ({product = {
             ) : (
                 <div>IMAGE</div>
             )}
-            {title ? (
-                <p className="text-xl mt-4">{title}</p>
-            ) : (
-                <p>HEADING</p>
-            )}
-            {rate ? (
-                <p className="text-xl mt-2">{rate}</p>
-            ) : (
-                <p>200</p>
-            )}
+            {title ? <p className="text-xl mt-4">{title}</p> : <p>HEADING</p>}
+            {rate ? <p className="text-xl mt-2">{rate}</p> : <p>200</p>}
             <div className="flex w-full justify-between px-5 mt-4">
                 <button
                     className={clsx(
@@ -72,4 +80,4 @@ const ProductCard = ({product = {
     )
 }
 
-export default ProductCard;
+export default ProductCard

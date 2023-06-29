@@ -1,7 +1,9 @@
 import React, { useContext, useState } from "react";
 import clsx from "clsx";
-import "../../utils/styles/styles.css";
+
 import { UserContext } from "../../contexts/user.context";
+
+import "../../utils/styles/styles.css";
 
 const defaultFormFields = {
     displayName: "",
@@ -16,7 +18,7 @@ const PersonalInfo = () => {
     const { currentUser } = useContext(UserContext)
 
     return (
-        <div className="user-info-container text-white text-xl pl-10 py-4 ml-6">
+        <div className="text-white text-xl pl-10 ml-6 min-h-[26rem]">
             {/* <h2 className="text-2xl text-white font-bold mb-4 label-arial">
                 Your Information
             </h2> */}
@@ -68,7 +70,7 @@ const PersonalInfo = () => {
                     <label className="block mb-2">Landmark</label>
                     <input type="text" className={clsx("input-field")} />
                 </div>
-                <div className="mb-4 w-1/2 pl-2">
+                <div className="w-1/2 pl-2">
                     <label className="block mb-2">Pincode</label>
                     <input type="text" className={clsx("input-field")} />
                 </div>
