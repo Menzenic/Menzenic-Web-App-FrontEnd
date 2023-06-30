@@ -10,5 +10,6 @@ import GlobalDialog from "./GlobalDialog/GlobalDialog";
 import PersonalInfo from "./PersonalInfo/PersonalInfo";
 import OrderHistory from "./OrderHistory/OrderHistory";
 import WishList from "./WishList/WishList";
+import WhyIntimateCare from "./WhyIntimateCare/WhyIntimateCare";
 
-export { Login, Signup, Blogs, Footer, Header, ProductQuality, FeaturedProducts, Testimonials, GlobalDialog, PersonalInfo, OrderHistory, WishList }
+export { Login, Signup, Blogs, Footer, Header, ProductQuality, FeaturedProducts, Testimonials, GlobalDialog, PersonalInfo, OrderHistory, WishList, WhyIntimateCare }

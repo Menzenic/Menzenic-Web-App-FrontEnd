@@ -5,12 +5,14 @@ import {
     Testimonials,
     Blogs,
     Footer,
+    WhyIntimateCare,
 } from "../../components"
 
 const Home = () => {
     return (
         <>
             <Header />
+            <WhyIntimateCare />
             <FeaturedProducts />
             <ProductQuality />
             <Testimonials />
