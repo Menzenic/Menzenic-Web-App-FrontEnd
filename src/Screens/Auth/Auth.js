@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { GoogleIcon, AppleIcon } from "../../utils/assets";
 import LoginForm from "../../components/LogIn/LoginIn";
-import SignupForm from "../../components/SignUp/SignUp";
+import SignupForm from "../../components/Signup/SignUp";
 import SignInBackgroundImg from "../../images/auth-background.png";
 import "../../utils/styles/styles.css";
 // import firebase from "firebase/app";
