@@ -23,15 +23,24 @@ import {
     updateDoc,
 } from "firebase/firestore";
 
+// const firebaseConfig = {
+//     apiKey: process.env.REACT_APP_API_KEY,
+//     authDomain: process.env.REACT_APP_AUTH_DOMAIN,
+//     projectId: process.env.REACT_APP_PROJECT_ID,
+//     storageBucket: process.env.REACT_APP_STORAGE_BUCKET,
+//     messagingSenderId: process.env.REACT_APP_MESSAGING_SENDER_ID,
+//     appId: process.env.REACT_APP_APP_ID,
+//     measurementId: process.env.REACT_APP_MEASUREMENT_ID,
+// };
 const firebaseConfig = {
-    apiKey: process.env.REACT_APP_API_KEY,
-    authDomain: process.env.REACT_APP_AUTH_DOMAIN,
-    projectId: process.env.REACT_APP_PROJECT_ID,
-    storageBucket: process.env.REACT_APP_STORAGE_BUCKET,
-    messagingSenderId: process.env.REACT_APP_MESSAGING_SENDER_ID,
-    appId: process.env.REACT_APP_APP_ID,
-    measurementId: process.env.REACT_APP_MEASUREMENT_ID,
-};
+    apiKey: "AIzaSyDnI6MQQeg2WzseNQb-JXIObMP8bLlW440",
+    authDomain: "menzenic-1.firebaseapp.com",
+    projectId: "menzenic-1",
+    storageBucket: "menzenic-1.appspot.com",
+    messagingSenderId: "90752618745",
+    appId: "1:90752618745:web:f62a8de16d7a19cdb09228",
+    measurementId: "G-L86MN8B68H"
+  };
 
 /**
  * initialize the app
