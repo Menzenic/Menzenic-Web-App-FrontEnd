@@ -4,7 +4,7 @@ import { useParams } from "react-router-dom";
 import { WishListIcon } from "../../utils/assets";
 import ProductsData from "../../data/ProductsData";
 import { ProductCard } from "../../components/Card";
-import CurtomerReview from "../../components/CustomerReview/CustomerReview";
+import CustomerReview from "../../components/CustomerReview/CustomerReview";
 import OurProduct from "../../components/OurProduct/OurProduct";
 import Footer from "../../components/Footer/Footer";
 
@@ -132,7 +132,7 @@ const ProductDetail = () => {
                 </div>
             </div>
             <OurProduct />
-            <CurtomerReview />
+            <CustomerReview />
             <div className="product-suggestion-container p-6">
                 <h2 className="label arial text-4xl mt-6 px-10 text-white">
                     You Might Also Like

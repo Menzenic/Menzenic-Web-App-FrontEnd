@@ -6,12 +6,8 @@ import { WishListedIcon } from "../../../utils/assets";
 import { WishListContext } from "../../../contexts/wishlist.context";
 
 const ProductCard = ({
-    product = {
-        id: null,
-        image: null,
-        title: null,
-        rate: null,
-    },
+    product = { id: null, image: null, title: null, rate: null },
+    ProductSize,
 }) => {
     const { wishList, addItemToWishList, checkItem } =
         useContext(WishListContext);
@@ -33,7 +29,12 @@ const ProductCard = ({
     }, [wishList, id, checkItem]);
 
     return (
-        <div className="flex flex-col rounded-xl bg-white shadow-2xl shadow-gray-800 w-[18.77rem] min-h-[20.0625rem] items-center relative m-10">
+        <div
+            className={clsx(
+                "flex flex-col rounded-xl bg-white shadow-2xl shadow-gray-800 w-[18.77rem] min-h-[20.0625rem] items-center relative m-10",
+                ProductSize
+            )}
+        >
             <div
                 className={clsx(
                     "absolute top-5 right-5",

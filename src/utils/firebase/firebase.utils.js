@@ -34,7 +34,7 @@ const firebaseConfig = {
 };
 
 /**
- * initialise the app
+ * initialize the app
  */
 const app = initializeApp(firebaseConfig);
 /**
@@ -91,7 +91,7 @@ export const addCollectionAndDocuments = async (
 };
 
 /**
- * retreive data from firebase
+ * retrieve data from firebase
  */
 export const getCategoriesAndDocument = async () => {
     const collectionRef = collection(db, "categories");

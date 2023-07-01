@@ -1,6 +1,7 @@
 import React, { useContext, useEffect, useState, useMemo } from "react";
 import clsx from "clsx";
 import { WishListedIcon } from "../../utils/assets";
+import { ProductCard } from "../Card";
 import { Strings } from "../../utils/constants/Strings/Strings";
 import { WishListContext } from "../../contexts/wishlist.context";
 import { CategoriesContext } from "../../contexts/categories.context";
@@ -47,54 +48,15 @@ const WishList = () => {
                         const categoryProduct = getCategoryProduct(product.id);
 
                         if (categoryProduct) {
-                            const { image, title, price } = categoryProduct;
-
                             return (
-                                <div
-                                    className="flex flex-col rounded-xl bg-white shadow-2xl shadow-gray-800 w-[14.77rem] min-h-[19.0625rem] items-center relative mx-1 my-10 hover:shadow-white hover:scale-105 cursor-pointer"
+                                <ProductCard
                                     key={index}
-                                >
-                                    <div
-                                        className={clsx(
-                                            "absolute top-5 right-5",
-                                            "hover:cursor-pointer"
-                                        )}
-                                        onClick={() =>
-                                            handleRemoveFromWishlist(product.id)
-                                        }
-                                    >
-                                        <WishListedIcon />
-                                    </div>
-                                    <img
-                                        className="w-[6.625rem] h-[10.25rem]"
-                                        src={image}
-                                        alt={title}
-                                    />
-                                    <p className="text-xl mt-4">{title}</p>
-                                    <p className="text-xl mt-2">{price}</p>
-                                    <div className="flex w-full justify-between px-2 mt-4 pb-4">
-                                        <button
-                                            className={clsx(
-                                                "border border-[#A4A4A4] rounded-md px-4 py-2",
-                                                "hover:bg-black hover:text-white",
-                                                "transition-all duration-200"
-                                            )}
-                                            // onClick={addItemToCartHandler}
-                                        >
-                                            Add to cart
-                                        </button>
-                                        <button
-                                            className={clsx(
-                                                "border rounded-md px-4 py-2",
-                                                "bg-[#0D0A0A] text-white",
-                                                "transition-all duration-200"
-                                            )}
-                                            // onClick={buyNowHandler}
-                                        >
-                                            Buy Now
-                                        </button>
-                                    </div>
-                                </div>
+                                    product={categoryProduct}
+                                    onRemove={() =>
+                                        handleRemoveFromWishlist(product.id)
+                                    }
+                                    ProductSize="w-[12.25rem] h-[12.25rem]"
+                                />
                             );
                         } else {
                             return null;
