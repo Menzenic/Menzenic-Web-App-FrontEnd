@@ -18,7 +18,7 @@ const CurtomerReview = () => {
     };
 
     return (
-        <div className="product-review-section px-20">
+        <div className="px-20">
             <h1 className="text-white text-4xl mb-5">Customer Review</h1>
             <div className="horizontal-line h-px mx-auto"></div>
             <div className="customer-review-top flex justify-between pt-8">
@@ -89,7 +89,7 @@ const CurtomerReview = () => {
                 <h2 className="label arial text-xl text-white">
                     Showing Reviews
                 </h2>
-                <div className="flex w-full min-h-[500px] justify-between">
+                <div className="flex w-full min-h-[400px] items-center justify-between">
                     <button className="mx-8" onClick={handlePreviousSlide}>
                         <LeftSliderArrow />
                     </button>

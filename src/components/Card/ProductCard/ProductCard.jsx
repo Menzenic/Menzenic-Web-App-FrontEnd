@@ -1,8 +1,7 @@
 import clsx from "clsx";
 import { useContext, useEffect, useState } from "react";
 import { CartContext } from "../../../contexts/cart.context";
-import { WishListIcon } from "../../../utils/assets";
-import { WishListedIcon } from "../../../utils/assets";
+import { WishListedIcon, WishListedProductCard } from "../../../utils/assets";
 import { WishListContext } from "../../../contexts/wishlist.context";
 
 const ProductCard = ({
@@ -29,12 +28,7 @@ const ProductCard = ({
     }, [wishList, id, checkItem]);
 
     return (
-        <div
-            className={clsx(
-                "flex flex-col rounded-xl bg-white shadow-2xl shadow-gray-800 w-[18.77rem] min-h-[20.0625rem] items-center relative m-10",
-                ProductSize
-            )}
-        >
+        <div className="flex flex-col bg-white shadow-xl w-[21.77rem] min-h-[22.063rem] items-center relative m-5">
             <div
                 className={clsx(
                     "absolute top-5 right-5",
@@ -42,11 +36,11 @@ const ProductCard = ({
                 )}
                 onClick={() => addToWishListHelper()}
             >
-                {bool ? <WishListedIcon /> : <WishListIcon />}
+                {bool ? <WishListedIcon /> : <WishListedProductCard />}
             </div>
             {image ? (
                 <img
-                    className="w-[6.625rem] h-[10.25rem]"
+                    className="w-[6.625rem] h-[10.25rem] mt-10"
                     src={image}
                     alt={title}
                 />

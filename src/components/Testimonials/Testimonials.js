@@ -1,58 +1,82 @@
-import React, { useState } from "react";
-import testimonialData from "../../data/TestimonialData";
-import { TestimonialCard } from "../Card";
-import { LeftSliderArrow, RightSliderArrow } from "../../utils/assets/svg";
-import "./Testimonials.css";
-import "../../utils/styles/styles.css";
+import React, { useEffect, useState } from "react"
+import {
+    CarouselProvider,
+    Slider,
+    Slide,
+    ButtonBack,
+    ButtonNext,
+} from "pure-react-carousel"
+import "pure-react-carousel/dist/react-carousel.es.css"
+
+import testimonialData from "../../data/TestimonialData"
+import { TestimonialCard } from "../Card"
+import { LeftSliderArrow, RightSliderArrow } from "../../utils/assets/svg"
+
+import "./Testimonials.css"
+import "../../utils/styles/styles.css"
 
 const Testimonials = () => {
-    const [currentSlide, setCurrentSlide] = useState(0);
+    const [slidesVisible, setSlidesVisible] = useState(4)
+    const [isSmall, setIsSmall] = useState(false)
 
-    const handlePreviousSlide = () => {
-        setCurrentSlide((prevSlide) =>
-            prevSlide === 0 ? testimonialData.length - 2 : prevSlide - 1
-        );
-    };
+    useEffect(() => {
+        const handleResize = () => {
+			if (window.innerWidth < 1440 || window.innerHeight < 940) {
+				setIsSmall(true)
+			} else {
+				setIsSmall(false)
+			}
+		}
+		window.addEventListener('resize', handleResize)
+		handleResize()
 
-    const handleNextSlide = () => {
-        setCurrentSlide((prevSlide) =>
-            prevSlide >= testimonialData.length - 2 ? 0 : prevSlide + 1
-        );
-    };
+        if (isSmall) {
+            setSlidesVisible(2)
+        } else {
+            setSlidesVisible(3)
+        }
+        return () => window.removeEventListener('resize', handleResize)
+    }, [isSmall])
 
-    const visibleTestimonials = [
-        testimonialData[currentSlide],
-        testimonialData[currentSlide + 1],
-    ];
 
     return (
-        <section className="min-h-[638px]">
-            <h2 className=" heading text-center mt-12">
+        <section className="min-h-[500px]">
+            <h2 className="font-semibold text-[44px] text-center mt-12">
                 Customer Testimonials
             </h2>
-            <div className="flex w-full min-h-[500px] justify-between">
-                <button className="mx-8" onClick={handlePreviousSlide}>
-                    <LeftSliderArrow />
-                </button>
-                <div className="flex flex-wrap items-center w-[79.5rem] justify-between">
-                    {visibleTestimonials.map((testimonial) => (
-                        <TestimonialCard
-                            rating={testimonial.rating}
-                            description={
-                                "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum."
-                            }
-                            name={testimonial.name}
-                            productImage={testimonial.productImage}
-                            productName={testimonial.productName}
-                        />
-                    ))}
-                </div>
-                <button className="mx-8" onClick={handleNextSlide}>
-                    <RightSliderArrow />
-                </button>
+            <div className="w-full mt-10">
+                <CarouselProvider
+                    className="relative h-[450px]"
+                    naturalSlideHeight={50}
+                    naturalSlideWidth={50}
+                    visibleSlides={slidesVisible}
+                    totalSlides={6}
+                >
+                    <Slider className="w-full pr-10 pl-24">
+                        {testimonialData.map((testimonial, idx) => (
+                            <Slide index={idx}>
+                                <TestimonialCard
+                                    rating={testimonial.rating}
+                                    description={
+                                        "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum."
+                                    }
+                                    name={testimonial.name}
+                                    productImage={testimonial.productImage}
+                                    productName={testimonial.productName}
+                                />
+                            </Slide>
+                        ))}
+                    </Slider>
+                    <ButtonBack className="absolute top-[9rem] left-5">
+                        <LeftSliderArrow />
+                    </ButtonBack>
+                    <ButtonNext className="absolute top-[9rem] right-5">
+                        <RightSliderArrow />
+                    </ButtonNext>
+                </CarouselProvider>
             </div>
         </section>
-    );
-};
+    )
+}
 
-export default Testimonials;
+export default Testimonials

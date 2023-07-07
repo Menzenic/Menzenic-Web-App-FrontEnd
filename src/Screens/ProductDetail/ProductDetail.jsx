@@ -1,18 +1,20 @@
-import React, { useState, useEffect } from "react";
-import clsx from "clsx";
-import { useParams } from "react-router-dom";
-import { WishListIcon } from "../../utils/assets";
+import React, { useState, useEffect, useContext } from "react"
+import clsx from "clsx"
+import { Link, useParams } from "react-router-dom"
+import { WishListIcon } from "../../utils/assets"
 import ProductsData from "../../data/ProductsData";
-import { ProductCard } from "../../components/Card";
-import CustomerReview from "../../components/CustomerReview/CustomerReview";
-import OurProduct from "../../components/OurProduct/OurProduct";
-import Footer from "../../components/Footer/Footer";
+import { ProductCard } from "../../components/Card"
+import CustomerReview from "../../components/CustomerReview/CustomerReview"
+import OurProduct from "../../components/OurProduct/OurProduct"
+import Footer from "../../components/Footer/Footer"
+import { CategoriesContext } from "../../contexts/categories.context"
 
 const ProductDetail = () => {
-    const { id } = useParams();
+    const { id } = useParams()
+    const { categoriesMap } = useContext(CategoriesContext)
     const visibleProducts = ProductsData.slice(0, 3);
-    const [product, setProduct] = useState(null);
-    const [quantity, setQuantity] = useState(1);
+    const [product, setProduct] = useState(null)
+    const [quantity, setQuantity] = useState(1)
 
     useEffect(() => {
         const fetchProductDetails = () => {
@@ -28,12 +30,12 @@ const ProductDetail = () => {
     }, [id]);
 
     if (!product) {
-        return <div>Loading...</div>;
+        return <div>Loading...</div>
     }
 
     const handleQuantityChange = (value) => {
-        setQuantity((prevQuantity) => Math.max(1, prevQuantity + value));
-    };
+        setQuantity((prevQuantity) => Math.max(1, prevQuantity + value))
+    }
 
     return (
         <section className="newpage-container">
@@ -138,21 +140,20 @@ const ProductDetail = () => {
                     You Might Also Like
                 </h2>
                 <div className="grid grid-cols-1 sm:grid-cols-1 md:grid-cols-3 lg:grid-cols-3 xl:grid-cols-3 gap-4 mx-auto">
-                    {visibleProducts.map((product) => (
+                {visibleProducts.map((product) => (
                         <div className="p-2" key={product.id}>
-                            <ProductCard
-                                likeicon={<WishListIcon />}
-                                image={product.image}
-                                title={product.title}
-                                rate={product.price}
-                            />
+                             <Link to={`/product-details/${product.id}`}>
+                                <ProductCard
+                                    product={product}
+                                />
+                             </Link>
                         </div>
                     ))}
                 </div>
             </div>
             <Footer />
         </section>
-    );
-};
+    )
+}
 
-export default ProductDetail;
+export default ProductDetail

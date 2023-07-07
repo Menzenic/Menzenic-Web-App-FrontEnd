@@ -5,16 +5,20 @@ import {
     Testimonials,
     Blogs,
     Footer,
-    WhyIntimateCare,
+    HomeAboutUs,
+    WhyIntimateHygiene,
+    Hampers
 } from "../../components"
 
 const Home = () => {
     return (
         <>
             <Header />
-            <WhyIntimateCare />
+            <HomeAboutUs />
+            <WhyIntimateHygiene />
             <FeaturedProducts />
             <ProductQuality />
+            <Hampers />
             <Testimonials />
             <Blogs />
             <Footer />

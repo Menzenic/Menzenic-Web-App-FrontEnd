@@ -5,7 +5,7 @@ const ReviewTestimonial = (props) => {
     return (
         <div
             className={clsx(
-                "h-[177px] w-[521px] shadow-2xl flex flex-col",
+                "min-h-[177px] w-[521px] shadow-2xl flex flex-col",
                 props.reviewTestimonialBg
             )}
         >

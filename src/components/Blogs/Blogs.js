@@ -4,22 +4,24 @@ import blogsbackgroundImg from "../../images/Pngs/blogsbackground.png";
 import clsx from "clsx";
 import "./Blogs.css";
 import "../../utils/styles/styles.css";
+import { useLocation } from "react-router";
 
 const Blogs = () => {
+    const location = useLocation()
+
     return (
         <div className="blogs">
             <section
-                className={clsx("blogs-container relative bg-white-100 py-6")}
+                className={clsx("blogs-container relative flex flex-col items-center py-6", location.pathname === '/blogs' ? 'pt-32 h-screen' : 'h-full')}
             >
-                <h2 className="blog-section-title heading font-normal my-8 text-white">
+                <h2 className={clsx("blog-section-title font-semibold text-[44px] text-white text-left w-full px-16", location.pathname === '/blogs' ? 'text-left' : 'text-center')}>
                     Blogs
                 </h2>
-                <div className="blog-container  py-4 max-w-7xl w-full mx-auto  flex justify-center gap-8">
+                <div className="blog-container py-4 mt-20 w-full mx-auto flex justify-between px-20">
                     {blogData.map((blog) => (
                         <div
                             className={clsx(
-                                "blog-data flex flex-col items-center text-center p-4 rounded-md",
-                                "w-full h-full"
+                                "blog-data flex flex-col text-center rounded-md w-80",
                             )}
                             key={blog.id}
                         >
