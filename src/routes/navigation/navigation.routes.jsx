@@ -8,7 +8,12 @@ import { CartContext } from "../../contexts/cart.context"
 
 import { SearchBar } from "../../components"
 
-import { UserLoginLogo, ShoppingCart, WishListIcon, MenzenicFullLogo } from "../../utils/assets"
+import {
+    UserLoginLogo,
+    ShoppingCart,
+    WishListIcon,
+    MenzenicFullLogo,
+} from "../../utils/assets"
 
 import "./navigation.styles.css"
 
@@ -25,17 +30,21 @@ const Navigation = () => {
 
     return (
         <>
-            <div className={clsx("text-white flex justify-between items-center px-5 mt-7 absolute top-0 w-full z-[999]", pathName === '/' ? 'bg-transparent' : 'bg-black')}>
+            <div
+                className={clsx(
+                    "text-white flex justify-between items-center px-5 mt-7 absolute top-0 w-full z-[999]",
+                    pathName === "/" ? "bg-transparent" : "bg-black"
+                )}
+            >
                 <Link to="/">
-                    <MenzenicFullLogo className='h-7 w-[215px]' />
-                    {/* <div className="h-[1.75rem] w-[13.438rem] navbar-image"></div> */}
+                    <MenzenicFullLogo className="h-7 w-[215px]" />
                 </Link>
 
                 <div className="flex w-[32.813rem] justify-between text-xl font-medium -mt-2">
                     <Link
                         to="/"
                         className={clsx(
-                            'hover-underline-animation',
+                            "hover-underline-animation",
                             pathName === "/" &&
                                 "underline underline-offset-[5px] font-bold"
                         )}
@@ -45,7 +54,7 @@ const Navigation = () => {
                     <Link
                         to="/products"
                         className={clsx(
-                            'hover-underline-animation',
+                            "hover-underline-animation",
                             pathName === "/products" &&
                                 "underline underline-offset-[5px] font-bold"
                         )}
@@ -55,20 +64,27 @@ const Navigation = () => {
                     <Link
                         to="/about-us"
                         className={clsx(
-                            'hover-underline-animation',
+                            "hover-underline-animation",
                             pathName === "/about-us" &&
                                 "underline underline-offset-[5px] font-bold"
                         )}
                     >
                         <p>About us</p>
                     </Link>
-                    <Link>
+                    <Link
+                        to="/health-assesment"
+                        className={clsx(
+                            "hover-underline-animation",
+                            pathName === "/health-assesment" &&
+                                "underline underline-offset-[5px] font-bold"
+                        )}
+                    >
                         <p>Health Assesment</p>
                     </Link>
                     <Link
                         to="/blogs"
                         className={clsx(
-                            'hover-underline-animation',
+                            "hover-underline-animation",
                             pathName === "/blogs" &&
                                 "underline underline-offset-[5px] font-bold"
                         )}
@@ -82,9 +98,7 @@ const Navigation = () => {
                     {/* {currentUser?.displayName && <p className="ml-5 border p-3 hover:cursor-pointer" onClick={() => navigate('/profile')}>Hello {currentUser.displayName}</p>}  */}
                     <Link to={!currentUser ? "/auth" : "/profile"}>
                         <div className="mx-4">
-                                <UserLoginLogo
-                                    onClick={() => {}}
-                                />
+                            <UserLoginLogo onClick={() => {}} />
                         </div>
                     </Link>
                     <Link to="/shop" className="relative">

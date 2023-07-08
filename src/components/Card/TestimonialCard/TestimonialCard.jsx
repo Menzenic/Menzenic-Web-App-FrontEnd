@@ -5,7 +5,7 @@ const TestimonialCard = (props) => {
     return (
         <div
             className={clsx(
-                "min-h-[20.188rem] w-[33.813rem] shadow-2xl flex flex-col",
+                "min-h-[20.188rem] w-[33.813rem] shadow-xl flex flex-col",
                 props.testimonialBg
             )}
         >

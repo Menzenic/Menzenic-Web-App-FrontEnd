@@ -23,8 +23,8 @@ const Cart = () => {
     const totalPrice = cart.reduce((total, item) => total + item.price, 0);
 
     return (
-        <div className="cart">
-            <div className="cart-container newpage-container">
+        <>
+            <div className="newpage-container">
                 <div className="grid grid-cols-1 sm:grid-cols-1 md:grid-cols-3 lg:grid-cols-3 xl:grid-cols-3 gap-4 mx-auto">
                     {visibleProducts.map((product) => (
                         <a
@@ -87,7 +87,7 @@ const Cart = () => {
                 </div>
             </div>
             <Footer />
-        </div>
+        </>
     );
 };
 

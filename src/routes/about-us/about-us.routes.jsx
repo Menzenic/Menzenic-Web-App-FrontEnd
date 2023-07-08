@@ -1,13 +1,12 @@
 import React from "react"
-import "./about_us.css"
-import { useLocation } from "react-router-dom"
+
+import { Footer } from "../../components/index"
 import { VisionIcon, MissionIcon } from "../../utils/assets"
 import menZenicImage from "../../images/Jpgs/menzenic.jpeg"
-import { Footer } from "../../components/index"
+
+import "./about-us.css"
 
 const AboutUs = () => {
-    const location = useLocation()
-    console.log(location)
     return (
         <div className="about-section flex flex-col pt-20">
             <div className="about-top flex items-start my-10">
@@ -30,9 +29,22 @@ const AboutUs = () => {
                         intimate care products that are as unique as you are.
                         <br />
                         <br />
-                        We understand that style isn't just about what you wear or how you groom, it's about embracing a mindset that shows confidence. Our precisely curated selection of intimate care products reflects our commitment to quality, and timeless appeal. Each item in our intimate care roster is designed to improve your self-confidence and to make a lasting impression.
+                        We understand that style isn't just about what you wear
+                        or how you groom, it's about embracing a mindset that
+                        shows confidence. Our precisely curated selection of
+                        intimate care products reflects our commitment to
+                        quality, and timeless appeal. Each item in our intimate
+                        care roster is designed to improve your self-confidence
+                        and to make a lasting impression. At Menzenic it's each
+                        about creating a community of like minded people who
+                        value the finer things in life. Our brand is a place
+                        where you can find alleviation, engage in meaningful
+                        exchanges, and discover new possibilities.
 
-                        At Menzenic it's each about creating a community of like minded people who value the finer things in life. Our brand is a place where you can find alleviation, engage in meaningful exchanges, and discover new possibilities.
+                        <br />
+                        <br />
+
+                        With Menzenic's intimate care range, don't just be better, be the best.
                     </p>
                     <div className="about-icons flex mt-16 text-xl leading-8">
                         <div className="icon flex flex-col items-start">

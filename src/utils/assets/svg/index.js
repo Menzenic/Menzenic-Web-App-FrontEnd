@@ -20,8 +20,10 @@ import HeartIcon from "./HeartIcon.js";
 import FilterIcon from "./FilterIcon.js";
 import MenzenicFullLogo from "./MenzenicFullLogo.js";
 import WishListedProductCard from "./WishListedProductCard.js";
+import HealthAssesmentRobot from "./HealthAssesmentRobot.js";
 
 export {
+    HealthAssesmentRobot,
     WishListedProductCard,
     MenzenicFullLogo,
     UserLoginLogo,

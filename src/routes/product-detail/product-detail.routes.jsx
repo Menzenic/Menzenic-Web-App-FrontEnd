@@ -1,13 +1,14 @@
 import React, { useState, useEffect, useContext } from "react"
 import clsx from "clsx"
 import { Link, useParams } from "react-router-dom"
-import { WishListIcon } from "../../utils/assets"
-import ProductsData from "../../data/ProductsData";
+
+import { CategoriesContext } from "../../contexts/categories.context"
 import { ProductCard } from "../../components/Card"
 import CustomerReview from "../../components/CustomerReview/CustomerReview"
 import OurProduct from "../../components/OurProduct/OurProduct"
 import Footer from "../../components/Footer/Footer"
-import { CategoriesContext } from "../../contexts/categories.context"
+import ProductsData from "../../data/ProductsData";
+import { WishListIcon } from "../../utils/assets"
 
 const ProductDetail = () => {
     const { id } = useParams()

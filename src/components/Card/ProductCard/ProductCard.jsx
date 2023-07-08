@@ -1,78 +1,121 @@
-import clsx from "clsx";
-import { useContext, useEffect, useState } from "react";
-import { CartContext } from "../../../contexts/cart.context";
-import { WishListedIcon, WishListedProductCard } from "../../../utils/assets";
-import { WishListContext } from "../../../contexts/wishlist.context";
+import { useContext, useEffect, useState } from "react"
+import clsx from "clsx"
+
+import { CartContext } from "../../../contexts/cart.context"
+import { WishListedIcon, WishListedProductCard } from "../../../utils/assets"
+import { WishListContext } from "../../../contexts/wishlist.context"
 
 const ProductCard = ({
-    product = { id: null, image: null, title: null, rate: null },
-    ProductSize,
+    product = {
+        id: null,
+        image: null,
+        title: null,
+        price: null,
+    },
+    card = {
+        height: "18.375rem",
+        width: "16.125rem",
+        minWidth: "16.125rem",
+    },
+    imageSize = {
+        height: "7.875rem",
+        width: "5.125rem",
+    },
+    wishListIcon = {
+        height: "1.5rem",
+        width: "1.75rem",
+    },
+    titleFontSize = "26px",
+    priceFontSize = "22px",
 }) => {
+    const [bool, setBool] = useState(false)
+
     const { wishList, addItemToWishList, checkItem } =
-        useContext(WishListContext);
-    const { addItemToCart } = useContext(CartContext);
-
-    const [bool, setBool] = useState(false);
-    const { image, title, rate, id } = product;
-
-    const addItemToCartHandler = () => {
-        addItemToCart(product);
-    };
-
-    const addToWishListHelper = () => {
-        addItemToWishList(id);
-    };
+        useContext(WishListContext)
+    const { addItemToCart } = useContext(CartContext)
 
     useEffect(() => {
-        setBool(checkItem(id));
-    }, [wishList, id, checkItem]);
+        setBool(checkItem(product.id))
+    }, [wishList, product.id, checkItem])
 
     return (
-        <div className="flex flex-col bg-white shadow-xl w-[21.77rem] min-h-[22.063rem] items-center relative m-5">
+        <div
+            className={clsx(
+                "flex flex-col bg-white min-w-[16.125rem] min-h-[18.375rem] items-center relative"
+            )}
+            style={{
+                boxShadow: "19px 14px 77px 0px rgba(0, 0, 0, 0.11)",
+                height: card.height,
+                width: card.width,
+                minWidth: card.minWidth,
+            }}
+        >
             <div
                 className={clsx(
                     "absolute top-5 right-5",
                     "hover:cursor-pointer"
                 )}
-                onClick={() => addToWishListHelper()}
+                onClick={() => addItemToWishList(product.id)}
             >
-                {bool ? <WishListedIcon /> : <WishListedProductCard />}
+                <div
+                    style={{
+                        height: wishListIcon.height,
+                        width: wishListIcon.width,
+                    }}
+                >
+                    {bool ? <WishListedIcon /> : <WishListedProductCard />}
+                </div>
             </div>
-            {image ? (
-                <img
-                    className="w-[6.625rem] h-[10.25rem] mt-10"
-                    src={image}
-                    alt={title}
-                />
-            ) : (
-                <div>IMAGE</div>
-            )}
-            {title ? <p className="text-xl mt-4">{title}</p> : <p>HEADING</p>}
-            {rate ? <p className="text-xl mt-2">{rate}</p> : <p>200</p>}
-            <div className="flex w-full justify-between px-5 mt-4">
+            <img
+                className={clsx("w-[6.625rem] h-[10.25rem] mt-2")}
+                style={{
+                    height: imageSize.height,
+                    width: imageSize.width,
+                }}
+                src={product.image}
+                alt={product.title}
+            />
+            <p
+                className={clsx("text-[26px] mt-3")}
+                style={{
+                    fontSize: titleFontSize,
+                }}
+            >
+                {product.title}
+            </p>
+
+            <p
+                className={clsx("text-[22px] mt-2")}
+                style={{
+                    fontSize: priceFontSize,
+                }}
+            >
+                {product.price}
+            </p>
+            <div className="flex w-full px-3 mt-3 mb-6">
                 <button
                     className={clsx(
-                        "border border-[#A4A4A4] rounded-md px-6 py-2",
+                        "flex-grow border border-[#A4A4A4] rounded-md py-2 mr-1",
                         "hover:bg-black hover:text-white",
                         "transition-all duration-200"
                     )}
-                    onClick={addItemToCartHandler}
+                    onClick={() => addItemToCart(product)}
                 >
                     Add to cart
                 </button>
                 <button
                     className={clsx(
-                        "border rounded-md px-8 py-2",
+                        "flex-grow border rounded-md py-2",
                         "bg-[#0D0A0A] text-white",
                         "transition-all duration-200"
                     )}
-                    onClick={addItemToCartHandler}
+                    onClick={() => addItemToCart(product)}
                 >
                     Buy Now
                 </button>
             </div>
         </div>
-    );
-};
+    )
+}
 
-export default ProductCard;
+export default ProductCard
