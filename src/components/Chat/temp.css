@@ -1,0 +1,13 @@
+.pic {
+    /* margin: 10px; demo spacing */
+    display: inline-block;
+    vertical-align: middle;
+    width: 0;
+    height: 0;
+}
+
+.arrow-left-pic {
+    border-top: 5px solid transparent;
+    border-bottom: 5px solid transparent;
+    border-right: 5px solid #ffff;
+}

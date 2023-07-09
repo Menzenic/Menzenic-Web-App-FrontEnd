@@ -86,7 +86,7 @@ const CurtomerReview = () => {
                 </div>
             </div>
             <div className="review-bottom">
-                <h2 className="label arial text-xl text-white">
+                <h2 className="text-3xl text-white">
                     Showing Reviews
                 </h2>
                 <div className="flex w-full min-h-[400px] items-center justify-between">

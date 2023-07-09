@@ -6,8 +6,9 @@ import App from "./App"
 import { UserProvider } from "./contexts/user.context"
 import { CategoriesProvider } from "./contexts/categories.context"
 import { CartProvider } from "./contexts/cart.context"
-import { DialogProvider } from "./contexts/dialogs.context"
+// import { DialogProvider } from "./contexts/dialogs.context"
 import { WishListProvider } from "./contexts/wishlist.context"
+import { ChatProvider } from "./contexts/chat.context"
 
 import "./index.css"
 
@@ -20,7 +21,9 @@ const render = () => {
                     <CategoriesProvider>
                         <CartProvider>
                             <WishListProvider>
-                                <App />
+                                <ChatProvider>
+                                    <App />
+                                </ChatProvider>
                             </WishListProvider>
                         </CartProvider>
                     </CategoriesProvider>

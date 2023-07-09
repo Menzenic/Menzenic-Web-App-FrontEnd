@@ -36,11 +36,11 @@ const WishList = () => {
     }
 
     return (
-        <section className="wishlist-container">
-            <p className="wishlist-title text-3xl text-white font-bold mx-16 label-arial">
+        <section className="">
+            <p className="text-3xl text-white font-bold mx-16 label-arial">
                 {Strings.WISHLIST_TITLE}
             </p>
-            <div className="wishlist-items grid grid-cols-4">
+            <div className="grid grid-cols-3 ">
                 {intersectedProducts.length > 0 ? (
                     intersectedProducts.map((product, index) => {
                         const categoryProduct = getCategoryProduct(product.id)
@@ -53,7 +53,6 @@ const WishList = () => {
                                     onRemove={() =>
                                         handleRemoveFromWishlist(product.id)
                                     }
-                                    ProductSize="w-[12.25rem] h-[12.25rem]"
                                 />
                             );
                         } else {

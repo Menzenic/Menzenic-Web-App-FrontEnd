@@ -15,10 +15,10 @@ import Button from "./Buttons/Button"
 import WhyIntimateHygiene from "./WhyIntimateHygiene/WhyIntimateHygiene"
 import SearchBar from "./SearchBar/SearchBar"
 import Hampers from "./Hampers/Hampers"
-import ChatBubble from "./ChatBubble/ChatBubble"
+import ChatRoom from "./Chat/ChatRoom"
 
 export {
-    ChatBubble,
+    ChatRoom,
     SearchBar,
     Button,
     Login,

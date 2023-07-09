@@ -4,6 +4,7 @@ import clsx from "clsx"
 import { CartContext } from "../../../contexts/cart.context"
 import { WishListedIcon, WishListedProductCard } from "../../../utils/assets"
 import { WishListContext } from "../../../contexts/wishlist.context"
+import { Link } from "react-router-dom"
 
 const ProductCard = ({
     product = {
@@ -66,23 +67,27 @@ const ProductCard = ({
                     {bool ? <WishListedIcon /> : <WishListedProductCard />}
                 </div>
             </div>
-            <img
-                className={clsx("w-[6.625rem] h-[10.25rem] mt-2")}
-                style={{
-                    height: imageSize.height,
-                    width: imageSize.width,
-                }}
-                src={product.image}
-                alt={product.title}
-            />
-            <p
-                className={clsx("text-[26px] mt-3")}
-                style={{
-                    fontSize: titleFontSize,
-                }}
-            >
-                {product.title}
-            </p>
+            <Link to={`/product-details/${product.id}`}>
+                <img
+                    className={clsx("w-[6.625rem] h-[10.25rem] mt-2")}
+                    style={{
+                        height: imageSize.height,
+                        width: imageSize.width,
+                    }}
+                    src={product.image}
+                    alt={product.title}
+                />
+            </Link>
+            <Link to={`/product-details/${product.id}`}>
+                <p
+                    className={clsx("text-[26px] mt-3")}
+                    style={{
+                        fontSize: titleFontSize,
+                    }}
+                >
+                    {product.title}
+                </p>
+            </Link>
 
             <p
                 className={clsx("text-[22px] mt-2")}

@@ -1,4 +1,4 @@
-const HealthAssesmentRobot = (props) => {
+const HealthAssesmentRobotIcon = (props) => {
     return (
         <svg
             width="62"
@@ -25,4 +25,4 @@ const HealthAssesmentRobot = (props) => {
     )
 }
 
-export default HealthAssesmentRobot
+export default HealthAssesmentRobotIcon

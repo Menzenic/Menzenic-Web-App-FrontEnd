@@ -20,15 +20,15 @@ const Products = () => {
                     <h1 className="label-arial text-left text-4xl text-white">
                         All Products
                     </h1>
-                    <div className="flex items-center justify-between">
+                    <div className="flex items-center justify-between text-xl text-white">
                         <FilterIcon />
                         <button
-                            className={`ml-2 label-arial text-white`}
+                            className={`ml-2 font-bold underline underline-offset-8`}
                         >
                             In Stock
                         </button>
                         <button
-                            className={`ml-2 label-arial text-white`}
+                            className={`ml-2 text-gray-500`}
                         >
                             Out of Stock
                         </button>
@@ -40,7 +40,7 @@ const Products = () => {
                                 <ProductCard product={product} 
                                     card={{
                                         height: '22.0625rem',
-                                        minWidth: '21.76969rem',
+                                        // minWidth: '21.76969rem',
                                     }}
                                     imageSize={{
                                         height: '10.25rem',
