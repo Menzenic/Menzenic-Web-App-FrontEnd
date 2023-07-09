@@ -1,5 +1,5 @@
-import React, { useContext, useEffect, useRef, useState } from "react"
-import clsx from "clsx"
+import React, { useContext, useEffect, useRef, useState } from "react";
+import clsx from "clsx";
 
 import {
     CarouselProvider,
@@ -7,52 +7,52 @@ import {
     Slide,
     ButtonBack,
     ButtonNext,
-} from "pure-react-carousel"
-import "pure-react-carousel/dist/react-carousel.es.css"
+} from "pure-react-carousel";
+import "pure-react-carousel/dist/react-carousel.es.css";
 
-import { Strings } from "../../utils/constants/Strings/Strings"
-import { ProductCard } from "../Card"
-import { CategoriesContext } from "../../contexts/categories.context"
+import { Strings } from "../../utils/constants/Strings/Strings";
+import { ProductCard } from "../Card";
+import { CategoriesContext } from "../../contexts/categories.context";
 
 import {
     LeftSliderArrow,
     RightSliderArrow,
     WishListedIcon,
-} from "../../utils/assets/svg"
+} from "../../utils/assets/svg";
 
 const FeaturedProducts = () => {
-    const { categoriesMap } = useContext(CategoriesContext)
-    const [slidesVisible, setSlidesVisible] = useState(4)
-    const [isSmall, setIsSmall] = useState(false)
+    const { categoriesMap } = useContext(CategoriesContext);
+    const [slidesVisible, setSlidesVisible] = useState(4);
+    const [isSmall, setIsSmall] = useState(false);
 
     useEffect(() => {
         const handleResize = () => {
             if (window.innerHeight < 740) {
-                setIsSmall(true)
+                setIsSmall(true);
             } else {
-                setIsSmall(false)
+                setIsSmall(false);
             }
-        }
-        window.addEventListener("resize", handleResize)
-        handleResize()
+        };
+        window.addEventListener("resize", handleResize);
+        handleResize();
 
         if (isSmall) {
-            setSlidesVisible(3)
+            setSlidesVisible(3);
         } else {
-            setSlidesVisible(4)
+            setSlidesVisible(4);
         }
-        return () => window.removeEventListener("resize", handleResize)
-    }, [isSmall])
+        return () => window.removeEventListener("resize", handleResize);
+    }, [isSmall]);
 
     const FeaturedProducts = Object.keys(categoriesMap)
         .filter((categoryMap) => categoryMap === "featured")
         .map((categoryMap) => categoriesMap[categoryMap])
-        .flat()
+        .flat();
 
     const Hampers = Object.keys(categoriesMap)
         .filter((categoryMap) => categoryMap === "hampers")
         .map((categoryMap) => categoriesMap[categoryMap])
-        .flat()
+        .flat();
 
     return (
         <section className="min-h-[500px]">
@@ -75,8 +75,8 @@ const FeaturedProducts = () => {
                                     key={idx}
                                     product={prod}
                                     card={{
-                                        height: "18.375rem",
-                                        width: "16.125rem",
+                                        height: "20.375rem",
+                                        width: "16.175rem",
                                     }}
                                     imageSize={{
                                         height: "7.875rem",
@@ -123,7 +123,7 @@ const FeaturedProducts = () => {
                                             <div
                                                 className={clsx(
                                                     "absolute top-5 right-5",
-                                                    "hover:cursor-pointer"
+                                                    "hover:cursor-pointer",
                                                 )}
                                                 // onClick={() =>
                                                 //     addToWishListHelper()
@@ -159,7 +159,7 @@ const FeaturedProducts = () => {
                                                     className={clsx(
                                                         "border border-[#A4A4A4] rounded-md px-6 py-2",
                                                         "hover:bg-black hover:text-white",
-                                                        "transition-all duration-200"
+                                                        "transition-all duration-200",
                                                     )}
                                                     // onClick={addItemToCartHandler}
                                                 >
@@ -169,7 +169,7 @@ const FeaturedProducts = () => {
                                                     className={clsx(
                                                         "border rounded-md px-8 py-2",
                                                         "bg-[#0D0A0A] text-white",
-                                                        "transition-all duration-200"
+                                                        "transition-all duration-200",
                                                     )}
                                                     // onClick={addItemToCartHandler}
                                                 >
@@ -191,7 +191,7 @@ const FeaturedProducts = () => {
                 </div>
             </div>
         </section>
-    )
-}
+    );
+};
 
-export default FeaturedProducts
+export default FeaturedProducts;

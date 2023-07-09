@@ -42,7 +42,7 @@ const ProductCard = ({
     return (
         <div
             className={clsx(
-                "flex flex-col bg-white min-w-[16.125rem] min-h-[18.375rem] items-center relative"
+                "flex flex-col bg-white min-w-[16.125rem] min-h-[18.375rem] items-center relative rounded-[5px]"
             )}
             style={{
                 boxShadow: "19px 14px 77px 0px rgba(0, 0, 0, 0.11)",
@@ -97,10 +97,10 @@ const ProductCard = ({
             >
                 {product.price}
             </p>
-            <div className="flex w-full px-3 mt-3 mb-6">
+            <div className="flex w-full px-3 mt-4 mb-6">
                 <button
                     className={clsx(
-                        "flex-grow border border-[#A4A4A4] rounded-md py-2 mr-1",
+                        "flex-grow border border-[#A4A4A4] rounded-md mr-1 py-3",
                         "hover:bg-black hover:text-white",
                         "transition-all duration-200"
                     )}
@@ -110,7 +110,7 @@ const ProductCard = ({
                 </button>
                 <button
                     className={clsx(
-                        "flex-grow border rounded-md py-2",
+                        "flex-grow border rounded-md px-1 py-3",
                         "bg-[#0D0A0A] text-white",
                         "transition-all duration-200"
                     )}
