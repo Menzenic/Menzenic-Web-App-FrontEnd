@@ -10,6 +10,10 @@ import GlobalDialog from "./GlobalDialog/GlobalDialog";
 import PersonalInfo from "./PersonalInfo/PersonalInfo";
 import OrderHistory from "./OrderHistory/OrderHistory";
 import WishList from "./WishList/WishList";
-import WhyIntimateCare from "./WhyIntimateCare/WhyIntimateCare";
+import HomeAboutUs from "./HomeAboutUs/HomeAboutUs";
+import Button from "./Buttons/Button";
+import WhyIntimateHygiene from './WhyIntimateHygiene/WhyIntimateHygiene'
+import SearchBar from "./SearchBar/SearchBar";
+import Hampers from './Hampers/Hampers'
 
-export { Login, Signup, Blogs, Footer, Header, ProductQuality, FeaturedProducts, Testimonials, GlobalDialog, PersonalInfo, OrderHistory, WishList, WhyIntimateCare }
+export { SearchBar, Button, Login, Signup, Blogs, Footer, Header, ProductQuality, FeaturedProducts, Testimonials, GlobalDialog, PersonalInfo, OrderHistory, WishList, HomeAboutUs, WhyIntimateHygiene, Hampers }

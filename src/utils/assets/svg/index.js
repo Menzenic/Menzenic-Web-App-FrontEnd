@@ -18,8 +18,12 @@ import RatingSliderArrow from "./RatingSliderArrow.js";
 import WishListedIcon from "./WishListedIcon.js";
 import HeartIcon from "./HeartIcon.js";
 import FilterIcon from "./FilterIcon.js";
+import MenzenicFullLogo from "./MenzenicFullLogo.js";
+import WishListedProductCard from "./WishListedProductCard.js";
 
 export {
+    WishListedProductCard,
+    MenzenicFullLogo,
     UserLoginLogo,
     ShoppingCart,
     WishListIcon,

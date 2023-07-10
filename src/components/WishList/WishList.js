@@ -1,41 +1,39 @@
 import React, { useContext, useEffect, useState, useMemo } from "react";
-import clsx from "clsx";
-import { WishListedIcon } from "../../utils/assets";
 import { ProductCard } from "../Card";
 import { Strings } from "../../utils/constants/Strings/Strings";
 import { WishListContext } from "../../contexts/wishlist.context";
 import { CategoriesContext } from "../../contexts/categories.context";
 
 const WishList = () => {
-    const { wishList, removeItemFromWishList } = useContext(WishListContext);
-    const { categoriesMap } = useContext(CategoriesContext);
+    const { wishList, removeItemFromWishList } = useContext(WishListContext)
+    const { categoriesMap } = useContext(CategoriesContext)
 
-    const [noItems, setNoItems] = useState("");
-    const [intersectedProducts, setIntersectedProducts] = useState([]);
+    const [noItems, setNoItems] = useState("")
+    const [intersectedProducts, setIntersectedProducts] = useState([])
 
     const getCategoryProduct = useMemo(() => {
         return (productId) => {
-            return categoriesMap.products.find((item) => item.id === productId);
-        };
-    }, [categoriesMap.products]);
+            return categoriesMap.products.find((item) => item.id === productId)
+        }
+    }, [categoriesMap.products])
 
     useEffect(() => {
         if (wishList?.length > 0) {
             const intersection = wishList.filter((product) =>
                 categoriesMap.products.some((item) => item.id === product.id)
-            );
-            setIntersectedProducts(intersection);
+            )
+            setIntersectedProducts(intersection)
         } else {
-            setNoItems("Add items to wishlist");
+            setNoItems("Add items to wishlist")
         }
-    }, [wishList, categoriesMap.products]);
+    }, [wishList, categoriesMap.products])
 
     const handleRemoveFromWishlist = (productId) => {
-        removeItemFromWishList(productId);
+        removeItemFromWishList(productId)
         setIntersectedProducts((prevProducts) =>
             prevProducts.filter((product) => product.id !== productId)
-        );
-    };
+        )
+    }
 
     return (
         <section className="wishlist-container">
@@ -45,7 +43,7 @@ const WishList = () => {
             <div className="wishlist-items grid grid-cols-4">
                 {intersectedProducts.length > 0 ? (
                     intersectedProducts.map((product, index) => {
-                        const categoryProduct = getCategoryProduct(product.id);
+                        const categoryProduct = getCategoryProduct(product.id)
 
                         if (categoryProduct) {
                             return (
@@ -59,7 +57,7 @@ const WishList = () => {
                                 />
                             );
                         } else {
-                            return null;
+                            return null
                         }
                     })
                 ) : (
@@ -67,7 +65,7 @@ const WishList = () => {
                 )}
             </div>
         </section>
-    );
-};
+    )
+}
 
-export default WishList;
+export default WishList

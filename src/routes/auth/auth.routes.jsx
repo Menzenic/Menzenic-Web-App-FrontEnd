@@ -49,18 +49,18 @@ const Auth = ({ onClose }) => {
 
     return (
         <div
-            className="flex items-center justify-between h-screen relative"
+            className="flex items-center justify-between h-full relative pt-10 overflow-hidden"
             style={{
                 background:
                     "linear-gradient(180deg, #000000 0%, rgba(26, 25, 25, 0.679) 151.51%, rgba(15, 15, 15, 0.3) 303.21%)",
             }}
         >
             {dialog && <GlobalDialog />}
-            <Link className="absolute rounded-md top-10 left-10" to={".."}>
+            {/* <Link className="absolute rounded-md top-10 left-10" to={".."}>
                 <button>
                     <AiOutlineArrowLeft className="text-white h-10 w-10" />
                 </button>
-            </Link>
+            </Link> */}
             <div className="flex justify-between">
                 <div className="ml-60 rounded-lg w-full">
                     {isSignup ? (

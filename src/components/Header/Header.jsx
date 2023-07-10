@@ -1,37 +1,29 @@
-import React from "react";
-import { useNavigate } from "react-router-dom";
-import "./Header.css";
+import React from "react"
+import { useNavigate } from "react-router-dom"
+
+import Button from "../Buttons/Button"
+
+import "./Header.css"
 
 const Header = () => {
-    const navigate = useNavigate();
+    const navigate = useNavigate()
 
-    const handleShopNowClick = () => {
-        navigate("/products");
-    };
+    // const handleShopNowClick = () => {
+    //     navigate("/products")
+    // }
 
     return (
         <div className="min-h-[638px] relative">
-            <div className="h-[750px] header-image"></div>
-            <div className="absolute top-80 left-14">
-                <div className="text-5xl text-white text-left font-light font-['Arial'] leading-10">
+            <div className="h-[682px] header-image"></div>
+            <div className="absolute top-[17.688rem] left-[3.188rem]">
+                <div className="text-5xl text-white text-left font-['Arial'] leading-[55px] font-normal">
                     <p>When it comes to your body,</p>
                     <p className="mt-3"> cleanliness is key</p>
                 </div>
-                <div
-                    className="hover:cursor-pointer mt-6 w-[8.1rem] h-[2.438rem] flex justify-between items-center px-3 rounded-sm"
-                    style={{
-                        background:
-                            "linear-gradient(270.37deg,#f9f9f9 -29.27%, rgba(249, 249, 249, 0) 191.25%",
-                    }}
-                >
-                    <button className="text-lg" onClick={handleShopNowClick}>
-                        Shop Now
-                    </button>
-                    <div className="shop-arrow right"></div>
-                </div>
+                <Button title={'Shop Now'} onClick={() => navigate('/products')} />
             </div>
         </div>
-    );
-};
+    )
+}
 
-export default Header;
+export default Header

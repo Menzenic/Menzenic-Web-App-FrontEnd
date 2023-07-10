@@ -1,16 +1,4 @@
 .header-image {
-    background: url('../../images/Jpgs/header_bg.jpg');
+    background: url('../../images/Jpgs/header_bg.jpg') no-repeat center center;
     background-size: cover;
-    background-position: center;
-}
-
-.shop-arrow {
-    border: solid black;
-    border-width: 0 2px 2px 0;
-    display: inline-block;
-    padding: 4px;
-}
-.right {
-    transform: rotate(-45deg);
-    -webkit-transform: rotate(-45deg);
 }
