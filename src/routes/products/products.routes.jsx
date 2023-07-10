@@ -13,7 +13,8 @@ const Products = () => {
                     if (title === "products") {
                         return (
                             <div className="h-full w-full flex flex-wrap">
-                                <h1>All Products</h1>
+                                <h1>{title}</h1>
+
                                 <div className="flex flex-wrap">
                                     {categoriesMap[title].map((product) => {
                                         console.log("product:", product);
