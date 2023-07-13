@@ -11,3 +11,8 @@
     border-bottom: 5px solid transparent;
     border-right: 5px solid #ffff;
 }
+.arrow-right-pic {
+    border-top: 10px solid #fff;
+    border-left: 10px solid transparent;
+    border-bottom: 10px solid transparent;
+}
