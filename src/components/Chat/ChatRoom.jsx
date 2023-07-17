@@ -5,11 +5,13 @@ import chatbotData from "../../data/ChatBotData";
 import { ProductCard } from "../Card";
 import { CategoriesContext } from "../../contexts/categories.context";
 
-const ChatRoom = () => {
+const ChatRoom = ({ loggedInUserName, loggedInUserImage }) => {
     const [inputVal, setInputVal] = useState("");
     const [chatVal, setChatVal] = useState([]);
     const [selectedFlow, setSelectedFlow] = useState(null);
     const [selectedProductId, setSelectedProductId] = useState(null);
+    const [testDone, setTestDone] = useState(false);
+
     const chatContainerRef = useRef(null);
     const userIconRef = useRef(null);
     const botIconRef = useRef(null);
@@ -19,13 +21,16 @@ const ChatRoom = () => {
         setSelectedFlow(flow);
         setSelectedProductId(productId);
         setChatVal([]);
+        setTestDone(false); // Reset testDone
 
         // Initialize chat with relevant messages based on the selected flow
         const welcomeMessage = {
             message: {
                 isDelivered: true,
                 isSent: false,
-                message: `Welcome to the ${flow} conversation! How can I assist you today?`,
+                message: `Welcome to the ${flow} Health Assessment, ${
+                    loggedInUserName ? loggedInUserName : ""
+                }! How can I assist you today?`,
             },
             isUser: false,
         };
@@ -47,86 +52,93 @@ const ChatRoom = () => {
                 isUser: true,
             };
 
-            if (inputVal.toLowerCase() === "done" && selectedProductId) {
+            if (inputVal.trim().toLowerCase() === "done" && selectedProductId) {
                 const suggestedProduct = getCategoryProduct(selectedProductId);
 
                 if (suggestedProduct) {
-                    const productSuggestionMessage = {
-                        message: {
-                            isDelivered: true,
-                            isSent: false,
-                            message: (
-                                <ProductCard
-                                    key={selectedProductId}
-                                    product={suggestedProduct}
-                                    onRemove={() => {}}
-                                />
-                            ),
-                        },
-                        isUser: false,
-                    };
+                    // Clear the input field
+                    setInputVal("");
 
-                    setChatVal((prevChatVal) => [
-                        ...prevChatVal,
-                        userMessage,
-                        productSuggestionMessage,
-                    ]);
-                    scrollToBottom();
-                }
-            } else {
-                const matchedQuestion = chatbotData.find(
-                    (data) =>
-                        data.question.toLowerCase() === inputVal.toLowerCase()
-                );
+                    // Add user message to the chat
+                    setChatVal((prevChatVal) => [...prevChatVal, userMessage]);
 
-                if (matchedQuestion) {
-                    const botMessages = matchedQuestion.answer
-                        .split("\n")
-                        .map((line, index) => ({
+                    // Delayed display of the "Thank you! Test has been done." message
+                    setTimeout(() => {
+                        const doneMessage = {
                             message: {
                                 isDelivered: true,
                                 isSent: false,
-                                message: line,
+                                message: "Thank you! Test has been done.",
                             },
                             isUser: false,
-                        }));
+                        };
 
-                    setChatVal((prevChatVal) => [...prevChatVal, userMessage]);
-
-                    // Delayed display of bot messages
-                    setTimeout(() => {
                         setChatVal((prevChatVal) => [
                             ...prevChatVal,
-                            ...botMessages,
+                            doneMessage,
                         ]);
+                        setTestDone(true);
                         scrollToBottom();
                     }, 1000);
-                } else {
-                    const defaultBotMessage = {
+
+                    return;
+                }
+            }
+
+            const matchedQuestion = chatbotData.find(
+                (data) => data.question.toLowerCase() === inputVal.toLowerCase()
+            );
+
+            if (matchedQuestion) {
+                const botMessages = matchedQuestion.answer
+                    .split("\n")
+                    .map((line, index) => ({
                         message: {
                             isDelivered: true,
                             isSent: false,
-                            message:
-                                "I'm sorry, I don't have the answer to that.",
+                            message: line,
                         },
                         isUser: false,
-                    };
+                    }));
 
+                setChatVal((prevChatVal) => [...prevChatVal, userMessage]);
+
+                // Delayed display of bot messages
+                setTimeout(() => {
                     setChatVal((prevChatVal) => [
                         ...prevChatVal,
-                        userMessage,
-                        defaultBotMessage,
+                        ...botMessages,
                     ]);
                     scrollToBottom();
-                }
+                }, 1000);
+            } else {
+                const defaultBotMessage = {
+                    message: {
+                        isDelivered: true,
+                        isSent: false,
+                        message: "I'm sorry, I don't have the answer to that.",
+                    },
+                    isUser: false,
+                };
+
+                setChatVal((prevChatVal) => [
+                    ...prevChatVal,
+                    userMessage,
+                    defaultBotMessage,
+                ]);
+
+                scrollToBottom();
             }
+
+            // Clear the input field
+            setInputVal("");
         } else {
-            // error message if no conversation flow is selected
             const errorMessage = {
                 message: {
                     isDelivered: true,
                     isSent: false,
-                    message: "Please select a conversation flow first.",
+                    message:
+                        "Please select your top concern first for the assessment.",
                 },
                 isUser: false,
             };
@@ -134,8 +146,6 @@ const ChatRoom = () => {
             setChatVal((prevChatVal) => [...prevChatVal, errorMessage]);
             scrollToBottom();
         }
-
-        setInputVal("");
     };
 
     const scrollToBottom = () => {
@@ -154,7 +164,17 @@ const ChatRoom = () => {
                 message: {
                     isDelivered: true,
                     isSent: false,
-                    message: "Hi!",
+                    message: `Hi${
+                        loggedInUserName ? ` ${loggedInUserName}` : ""
+                    }!`,
+                },
+                isUser: false,
+            },
+            {
+                message: {
+                    isDelivered: true,
+                    isSent: false,
+                    message: <ProductCard />,
                 },
                 isUser: false,
             },
@@ -164,15 +184,6 @@ const ChatRoom = () => {
                     isSent: false,
                     message:
                         "I am HealthBuddy, your intimate personal health coach.",
-                },
-                isUser: false,
-            },
-            {
-                message: {
-                    isDelivered: true,
-                    isSent: false,
-                    message:
-                        "I am here to help you with your self Health Assessment",
                 },
                 isUser: false,
             },
@@ -232,9 +243,9 @@ const ChatRoom = () => {
     }, [chatVal]);
 
     return (
-        <div className="relative mx-[14.063rem] max-h-[50%]">
+        <div className="relative mx-[13.063rem] max-h-[50%]">
             <div
-                className="px-[70px] overflow-y-scroll hide-scroll-bar"
+                className="px-[40px] overflow-y-scroll hide-scroll-bar"
                 style={{ height: "300px" }}
                 ref={chatContainerRef}
             >
@@ -242,8 +253,8 @@ const ChatRoom = () => {
                     {/* Render the user's message as a chat bubble */}
                     {inputVal && (
                         <div className="flex items-start justify-end m-2">
-                            <div className="message-bubble user-bubble">
-                                {inputVal}
+                            <div>
+                                <ChatBubble message={inputVal} />
                             </div>
                         </div>
                     )}
@@ -252,9 +263,12 @@ const ChatRoom = () => {
                         style={{ position: "absolute", zIndex: 1 }}
                         ref={userIconRef}
                     >
-                        <UserLoginLogo className="h-[2rem] w-[2rem] text-white" />
+                        <UserLoginLogo
+                            className="h-[2rem] w-[2rem]"
+                            src={loggedInUserImage}
+                        />
                     </div>
-                    {/* Render the chat bubbles */}
+                    {/* Render the bot responses as chat bubbles */}
                     {chatVal.map((chat, idx) => (
                         <div
                             key={idx}
@@ -267,6 +281,17 @@ const ChatRoom = () => {
                             />
                         </div>
                     ))}
+                    {/* Conditionally render the "Hello test has been done" message */}
+                    {testDone && (
+                        <div className="flex items-start justify-start m-2">
+                            <div>
+                                <ChatBubble
+                                    message="Hello test has been done"
+                                    isUser={false}
+                                />
+                            </div>
+                        </div>
+                    )}
                 </div>
                 {chatVal.length > 0 && (
                     <div

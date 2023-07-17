@@ -1,49 +1,50 @@
-import React, { useEffect, useRef, useState } from "react"
-import { flushSync } from "react-dom"
-import clsx from "clsx"
-import { useNavigate } from "react-router-dom"
+import React, { useEffect, useRef, useState } from "react";
+import { flushSync } from "react-dom";
+import clsx from "clsx";
+import { useNavigate } from "react-router-dom";
 
-import HealthChatbot from "../../Screens/HealthChatbot/HealthChatbot.jsx"
-import { Button, ChatRoom } from "../../components"
+import HealthChatbot from "../../Screens/HealthChatbot/HealthChatbot.jsx";
+import { Button, ChatRoom } from "../../components";
+import HealthAssesmentImage from "../../images/Pngs/Frame.png";
 
-import { HealthAssesmentImage, HealthAssesmentRobotIcon } from "../../utils/"
+import { HealthAssesmentRobotIcon } from "../../utils/";
 
 const HealthAssessment = () => {
     // const navigate = useNavigate()
-    const [height, setHeight] = useState(350)
-    const [loader, setLoader] = useState(false)
-    const ref = useRef()
+    const [height, setHeight] = useState(350);
+    const [loader, setLoader] = useState(false);
+    const ref = useRef();
 
-    const [showChatbot, setShowChatbot] = useState(false)
-    const [showTopEle, setShowTopEle] = useState(true)
+    const [showChatbot, setShowChatbot] = useState(false);
+    const [showTopEle, setShowTopEle] = useState(true);
 
     const handleButtonClick = () => {
-        setLoader(true)
+        setLoader(true);
         setTimeout(() => {
-            setLoader(false)
+            setLoader(false);
             flushSync(() => {
-                setShowChatbot(true)
-            })
-            ref.current.scrollIntoView({ behavior: "smooth" })
+                setShowChatbot(true);
+            });
+            ref.current.scrollIntoView({ behavior: "smooth" });
             setTimeout(() => {
-                setShowTopEle(false)
-            }, 2000)
-        }, 500)
-    }
+                setShowTopEle(false);
+            }, 2000);
+        }, 500);
+    };
 
     useEffect(() => {
         const handleResize = () => {
             if (window.innerHeight < 740) {
-                setHeight(200)
+                setHeight(200);
             } else {
-                setHeight(350)
+                setHeight(350);
             }
-        }
-        window.addEventListener("resize", handleResize)
-        handleResize()
+        };
+        window.addEventListener("resize", handleResize);
+        handleResize();
 
-        return () => window.removeEventListener("resize", handleResize)
-    }, [height])
+        return () => window.removeEventListener("resize", handleResize);
+    }, [height]);
 
     return (
         <>
@@ -53,10 +54,16 @@ const HealthAssessment = () => {
                     showTopEle ? "block" : "hidden"
                 )}
             >
-                <div className="absolute top-[14.75rem] left-[4.875rem] z-10">
-                    <div className="text-5xl text-white text-left label-arial leading-10">
-                        <p>Expert designed solutions</p>
-                        <p className="my-8 font-bold">80% Success Rate</p>
+                <div className="absolute top-[12.75rem] left-[4.875rem] z-10">
+                    <div className="text-2xl text-white text-left label-arial leading-10">
+                        <p className="font-bold">
+                            Ready to priorities your Intimate well-being?{" "}
+                        </p>
+                        <p className="my-8 w-7/12">
+                            Complete our health assessment in just a few minutes
+                            and gain valuable insights to optimise your Intimate
+                            health and lead a happier, healthier life.
+                        </p>
                     </div>
                     {!loader ? (
                         !showChatbot ? (
@@ -77,7 +84,7 @@ const HealthAssessment = () => {
                 <img
                     src={HealthAssesmentImage}
                     alt="health assesment img"
-                    className="absolute top-[9.438rem] right-0 h-[70%]"
+                    className="absolute top-[16.438rem] right-0 h-[60%]"
                 />
             </div>
             {/* <div id="chatBot" className={clsx("h-[900px] w-[900px] bg-red-400")}></div> */}
@@ -99,7 +106,7 @@ const HealthAssessment = () => {
                 <ChatRoom height={height} />
             </div>
         </>
-    )
-}
+    );
+};
 
-export default HealthAssessment
+export default HealthAssessment;

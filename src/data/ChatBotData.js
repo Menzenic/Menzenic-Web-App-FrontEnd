@@ -1,11 +1,11 @@
 const chatbotData = [
     {
         question: "Hello",
-        answer: "Hi! How can I assist you with Menzenic products today?",
+        answer: "Hello! How can I assist you with Menzenic products today?",
     },
     {
         question: "Hi",
-        answer: "Hello! How can I assist you with Menzenic products today?",
+        answer: "Hi! How can I assist you with Menzenic products today?",
     },
     {
         question: "What is Menzenic?",

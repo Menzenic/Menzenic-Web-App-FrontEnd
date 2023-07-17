@@ -1,39 +1,48 @@
 import React, { useContext, useEffect, useState, useMemo } from "react";
 import { ProductCard } from "../Card";
+import { NoWishlistIcon } from "../../utils/assets/svg";
 import { Strings } from "../../utils/constants/Strings/Strings";
 import { WishListContext } from "../../contexts/wishlist.context";
 import { CategoriesContext } from "../../contexts/categories.context";
+import "../../utils/styles/styles.css";
 
 const WishList = () => {
-    const { wishList, removeItemFromWishList } = useContext(WishListContext)
-    const { categoriesMap } = useContext(CategoriesContext)
+    const { wishList, removeItemFromWishList } = useContext(WishListContext);
+    const { categoriesMap } = useContext(CategoriesContext);
 
-    const [noItems, setNoItems] = useState("")
-    const [intersectedProducts, setIntersectedProducts] = useState([])
+    const [noItems, setNoItems] = useState("");
+    const [intersectedProducts, setIntersectedProducts] = useState([]);
 
     const getCategoryProduct = useMemo(() => {
         return (productId) => {
-            return categoriesMap.products.find((item) => item.id === productId)
-        }
-    }, [categoriesMap.products])
+            return categoriesMap.products.find((item) => item.id === productId);
+        };
+    }, [categoriesMap.products]);
 
     useEffect(() => {
         if (wishList?.length > 0) {
             const intersection = wishList.filter((product) =>
                 categoriesMap.products.some((item) => item.id === product.id)
-            )
-            setIntersectedProducts(intersection)
+            );
+            setIntersectedProducts(intersection);
         } else {
-            setNoItems("Add items to wishlist")
+            setNoItems(
+                <div className="flex flex-col items-center justify-center mt-32">
+                    <NoWishlistIcon />
+                    <h1 className="text-white label-arial text-2xl mt-2">
+                        No Items added in the wishlist
+                    </h1>
+                </div>
+            );
         }
-    }, [wishList, categoriesMap.products])
+    }, [wishList, categoriesMap.products]);
 
     const handleRemoveFromWishlist = (productId) => {
-        removeItemFromWishList(productId)
+        removeItemFromWishList(productId);
         setIntersectedProducts((prevProducts) =>
             prevProducts.filter((product) => product.id !== productId)
-        )
-    }
+        );
+    };
 
     return (
         <section className="">
@@ -43,7 +52,7 @@ const WishList = () => {
             <div className="grid grid-cols-3 ">
                 {intersectedProducts.length > 0 ? (
                     intersectedProducts.map((product, index) => {
-                        const categoryProduct = getCategoryProduct(product.id)
+                        const categoryProduct = getCategoryProduct(product.id);
 
                         if (categoryProduct) {
                             return (
@@ -56,15 +65,15 @@ const WishList = () => {
                                 />
                             );
                         } else {
-                            return null
+                            return null;
                         }
                     })
                 ) : (
-                    <p>{noItems}</p>
+                    <div className="w-[900px]">{noItems}</div>
                 )}
             </div>
         </section>
-    )
-}
+    );
+};
 
-export default WishList
+export default WishList;
