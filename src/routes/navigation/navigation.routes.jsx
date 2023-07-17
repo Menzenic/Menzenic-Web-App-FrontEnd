@@ -1,11 +1,11 @@
-import React, { useContext } from "react"
-import { FiSearch } from "react-icons/fi"
-import { Link, Outlet, useLocation, useNavigate } from "react-router-dom"
 import clsx from "clsx"
+import React from "react"
+import { useSelector } from "react-redux"
+import { Link, Outlet, useLocation } from "react-router-dom"
+import { FiSearch } from "react-icons/fi"
 
-import { UserContext } from "../../contexts/user.context"
-import { CartContext } from "../../contexts/cart.context"
 
+import { selectCurrentUser } from "../../store/user/user.selector"
 import { SearchBar } from "../../components"
 
 import {
@@ -14,18 +14,11 @@ import {
     WishListIcon,
     MenzenicFullLogo,
 } from "../../utils/assets"
-
 import "./navigation.styles.css"
 
 const Navigation = () => {
-    const { currentUser } = useContext(UserContext)
-    const { cartCount } = useContext(CartContext)
-
-    console.log("currentUser: ", currentUser)
-
-    // const navigate = useNavigate()
+    const currentUser = useSelector(selectCurrentUser)
     const location = useLocation()
-
     const pathName = location.pathname
 
     return (
@@ -33,7 +26,8 @@ const Navigation = () => {
             <div
                 className={clsx(
                     "text-white flex justify-between items-center px-5 mt-7 absolute top-0 w-full z-[999]",
-                    pathName === "/" ? "bg-transparent" : "bg-black"
+                    'bg-transparent'
+                    // pathName === "/" ? "bg-transparent" : "bg-black"
                 )}
             >
                 <Link to="/">

@@ -97,20 +97,6 @@
     line-height: 14px;
     color: #999999;
 }
-.ordered-product {
-    width: 312px;
-    height: 105px;
-    background: #ffffff;
-    box-shadow: 19px 14px 77px rgba(0, 0, 0, 0.11);
-    border-radius: 3px;
-}
-.rating-line {
-    margin: 0 20px;
-    height: 74px;
-    left: 568px;
-    top: 258px;
-    border: 1px solid #dbdbdb;
-}
 
 /* .input-field:focus {
     background-color: transparent;

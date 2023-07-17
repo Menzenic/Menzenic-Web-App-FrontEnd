@@ -1,14 +1,11 @@
 import React, { useState } from "react"
-import { GoogleIcon, AppleIcon } from "../../utils/assets"
 
 import { GlobalDialog, Login, Signup } from "../../components"
+import { signInWithGooglePopup } from "../../utils/firebase/firebase.utils"
 
 import SignInBackgroundImg from "../../images/Pngs/auth-background.png"
+import { GoogleIcon, AppleIcon } from "../../utils/assets"
 import "../../utils/styles/styles.css"
-import { Link } from "react-router-dom"
-
-import { AiOutlineArrowLeft } from "react-icons/ai"
-import { signInWithGooglePopup } from "../../utils/firebase/firebase.utils"
 
 const Auth = ({ onClose }) => {
     const [isSignup, setIsSignup] = useState(false)

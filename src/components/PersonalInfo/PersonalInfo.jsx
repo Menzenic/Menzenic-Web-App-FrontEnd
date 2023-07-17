@@ -1,7 +1,8 @@
-import React, { useContext, useState } from "react";
+import React, { useState } from "react";
+import { useSelector } from "react-redux";
 import clsx from "clsx";
 
-import { UserContext } from "../../contexts/user.context";
+import { selectCurrentUser } from "../../store/user/user.selector";
 
 import "../../utils/styles/styles.css";
 
@@ -15,7 +16,7 @@ const PersonalInfo = () => {
     const [fields, setFields] = useState(defaultFormFields)
     const { displayName, email, password } = fields
 
-    const { currentUser } = useContext(UserContext)
+    const currentUser = useSelector(selectCurrentUser)
 
     return (
         <div className="text-white text-xl pl-10 ml-6 min-h-[26rem]">

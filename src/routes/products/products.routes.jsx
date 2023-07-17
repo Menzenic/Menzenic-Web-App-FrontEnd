@@ -1,17 +1,18 @@
-import { useContext, useState } from "react"
+import clsx from "clsx";
+import { useSelector } from "react-redux";
 
-import { CategoriesContext } from "../../contexts/categories.context"
-import { ProductCard } from "../../components/Card"
-import { FilterIcon } from "../../utils/assets"
-import Footer from "../../components/Footer/Footer"
+import { selectProducts } from "../../store/categories/categories.selector";
+import { ProductCard } from "../../components/Card";
+import Footer from "../../components/Footer/Footer";
+
+import { FilterIcon } from "../../utils/assets";
 
 const Products = () => {
-    const { categoriesMap } = useContext(CategoriesContext)
+    const categoriesMap = useSelector(selectProducts)
 
     const Products = Object.keys(categoriesMap)
-        .filter((categoryMap) => categoryMap === "products")
         .map((categoryMap) => categoriesMap[categoryMap])
-        .flat()
+        .flat();
 
     return (
         <div className="newpage-container">
@@ -27,40 +28,31 @@ const Products = () => {
                         >
                             In Stock
                         </button>
-                        <button
-                            className={`ml-2 text-gray-500`}
-                        >
+                        <button className={`ml-2 text-gray-500`}>
                             Out of Stock
                         </button>
                     </div>
                 </div>
                 <div className="w-full px-14">
-                    <div className="py-12 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3 gap-12 w-full">
+                    <div
+                        className={clsx(
+                            "py-12 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-3 w-full",
+                            "gap-[3.56rem] md:gap-x-[10rem] lg:gap-x-[20rem] xl:gap-x-[6rem] 2xl:gap-x-[13rem]",
+                        )}
+                    >
                         {Products.map((product, idx) => (
-                                <ProductCard product={product} 
-                                    card={{
-                                        height: '22.0625rem',
-                                        // minWidth: '21.76969rem',
-                                    }}
-                                    imageSize={{
-                                        height: '10.25rem',
-                                        width: '6.625rem',
-                                    }}
-                                    priceFontSize="1.375rem"
-                                    titleFontSize="1.625rem"
-                                    wishListIcon={{
-                                        height: '2rem',
-                                        width: '2rem',
-                                    }}
-                                    key={idx}
-                                />
+                            <ProductCard
+                                product={product}
+                                key={product.id}
+                                variant={'product'}
+                            />
                         ))}
                     </div>
                 </div>
             </div>
             <Footer />
         </div>
-    )
-}
+    );
+};
 
-export default Products
+export default Products;

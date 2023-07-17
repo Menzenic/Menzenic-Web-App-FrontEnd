@@ -14,14 +14,9 @@ import {
     removeItemFromWishlist,
 } from "../../../store/wishlist/wishlist.action";
 
-import {
-    featuredProductsVariant,
-    productVariant,
-} from "./ProductCard.styles";
 import { WishListedIcon, WishListedProductCard } from "../../../utils/assets";
-import { addItemToOrderHistory } from "../../../utils/firebase/firebase.utils";
 
-const ProductCard = React.memo(
+const WishlistProductCard = React.memo(
     ({
         product = {
             id: null,
@@ -29,46 +24,17 @@ const ProductCard = React.memo(
             title: null,
             price: null,
         },
-        variant,
     }) => {
         const dispatch = useDispatch();
 
         const wishlistItems = useSelector(selectWishlistItems);
         const cartItems = useSelector(selectCartItems);
 
-        // const [orderHistory, setOrderHistory] = useState([])
-        const [dimensions, setDimensions] = useState(productVariant);
         const [bool, setBool] = useState({
             isPresentInCart: false,
             isPresentInWishList: false,
             hoverWishList: false,
         });
-
-        const addItemToOrderHistoryHandler = (product) => {
-            const getTheDataBrother = async () => {
-                return await addItemToOrderHistory(product)
-            }
-
-            getTheDataBrother()
-            // console.log('GET THE DATA: ', getTheDataBrother())
-        }
-
-        // useEffect(() => {
-        //     setOrderHistory(addItemToOrderHistoryHandler(product))
-        // }, [product])
-
-        // console.log('orderHistory:', orderHistory)
-
-        useEffect(() => {
-            if (variant === "product" && dimensions !== productVariant) {
-                setDimensions(productVariant);
-            } else if (
-                variant === "featured" &&
-                dimensions !== featuredProductsVariant
-            ) {
-                setDimensions(featuredProductsVariant);
-            }
-        }, [variant, dimensions]);
 
         useEffect(() => {
             setBool((prevBool) => ({
@@ -94,9 +60,8 @@ const ProductCard = React.memo(
                 className={clsx("flex flex-col bg-white items-center relative")}
                 style={{
                     boxShadow: "19px 14px 77px 0px rgba(0, 0, 0, 0.11)",
-                    height: dimensions.cardSize.height,
-                    width: dimensions.cardSize.width,
-                    borderRadius: dimensions.cardBorderRadius,
+                    height: "12.25rem",
+                    width: "12.25rem",
                 }}
             >
                 <div
@@ -131,27 +96,27 @@ const ProductCard = React.memo(
                 >
                     {bool.isPresentInWishList ? (
                         <WishListedProductCard
-                            height={dimensions.wishListIconSize.height}
-                            width={dimensions.wishListIconSize.width}
+                            height={"0.875rem"}
+                            width={"1rem"}
                         />
                     ) : bool.hoverWishList ? (
                         <WishListedProductCard
-                            height={dimensions.wishListIconSize.height}
-                            width={dimensions.wishListIconSize.width}
+                            height={"0.875rem"}
+                            width={"1rem"}
                         />
                     ) : (
                         <WishListedIcon
-                            height={dimensions.wishListIconSize.height}
-                            width={dimensions.wishListIconSize.width}
+                            height={"0.875rem"}
+                            width={"1rem"}
                         />
                     )}
                 </div>
                 <Link to={`/product-details/${product.id}`}>
                     <img
                         style={{
-                            height: dimensions.imageSize.height,
-                            width: dimensions.imageSize.width,
-                            marginTop: dimensions.marginTopImage,
+                            height: "5.375rem",
+                            width: "3.5rem",
+                            marginTop: "0.44rem",
                         }}
                         src={product.image}
                         alt={product.title}
@@ -160,8 +125,8 @@ const ProductCard = React.memo(
                 <Link to={`/product-details/${product.id}`}>
                     <p
                         style={{
-                            fontSize: dimensions.titleFontSize,
-                            marginTop: dimensions.marginTopImageTitle,
+                            fontSize: "0.875rem",
+                            marginTop: "0.31rem",
                         }}
                     >
                         {product.title}
@@ -170,8 +135,8 @@ const ProductCard = React.memo(
 
                 <p
                     style={{
-                        fontSize: dimensions.priceFontSize,
-                        marginTop: dimensions.marginTopTitlePrice,
+                        fontSize: "0.875rem",
+                        marginTop: "0.25rem",
                     }}
                 >
                     {product.price}
@@ -179,8 +144,8 @@ const ProductCard = React.memo(
                 <div
                     className="flex w-full px-3"
                     style={{
-                        marginTop: dimensions.marginTopPriceButton,
-                        fontSize: dimensions.buttonFontSize,
+                        marginTop: "0.5rem",
+                        fontSize: "0.75rem",
                     }}
                 >
                     <button
@@ -197,8 +162,8 @@ const ProductCard = React.memo(
                                 : dispatch(addItemToCart(cartItems, product));
                         }}
                         style={{
-                            height: dimensions.buttonSize.height,
-                            width: dimensions.buttonSize.width,
+                            height: "1.937rem",
+                            width: "5.125rem",
                         }}
                     >
                         {bool.isPresentInCart ? "Added" : "Add to cart"}
@@ -209,11 +174,10 @@ const ProductCard = React.memo(
                             "bg-[#0D0A0A] text-white",
                         )}
                         style={{
-                            height: dimensions.buttonSize.height,
-                            width: dimensions.buttonSize.width,
+                            height: "1.937rem",
+                            width: "5.125rem",
                         }}
                         // onClick={() => addItemToCartHandler(product)}
-                        onClick={() => addItemToOrderHistoryHandler(product)}
                     >
                         Buy Now
                     </button>
@@ -223,4 +187,4 @@ const ProductCard = React.memo(
     },
 );
 
-export default ProductCard;
+export default WishlistProductCard;

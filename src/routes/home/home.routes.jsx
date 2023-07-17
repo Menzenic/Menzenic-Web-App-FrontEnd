@@ -1,3 +1,6 @@
+import { useEffect } from "react";
+import { useDispatch } from "react-redux";
+
 import {
     Header,
     FeaturedProducts,
@@ -7,8 +10,10 @@ import {
     Footer,
     HomeAboutUs,
     WhyIntimateHygiene,
-    Hampers
-} from "../../components"
+    Hampers,
+} from "../../components";
+import { getCategoriesAndDocument } from "../../utils/firebase/firebase.utils";
+import { setCategories } from "../../store/categories/categories.action";
 
 const Home = () => {
     return (
@@ -23,7 +28,7 @@ const Home = () => {
             <Blogs />
             <Footer />
         </>
-    )
-}
+    );
+};
 
-export default Home
+export default Home;

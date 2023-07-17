@@ -1,18 +1,22 @@
-import React, { useState, useEffect, useContext } from "react"
 import clsx from "clsx"
+import { useSelector } from "react-redux"
+import React, { useState, useEffect } from "react"
 import { Link, useParams } from "react-router-dom"
 
-import { CategoriesContext } from "../../contexts/categories.context"
+import { selectCategoriesMap } from "../../store/categories/categories.selector"
 import { ProductCard } from "../../components/Card"
 import CustomerReview from "../../components/CustomerReview/CustomerReview"
 import OurProduct from "../../components/OurProduct/OurProduct"
 import Footer from "../../components/Footer/Footer"
+
 import ProductsData from "../../data/ProductsData";
 import { WishListIcon } from "../../utils/assets"
 
 const ProductDetail = () => {
     const { id } = useParams()
-    const { categoriesMap } = useContext(CategoriesContext)
+
+    const categoriesMap = useSelector(selectCategoriesMap)
+
     const visibleProducts = ProductsData.slice(0, 3);
     const [product, setProduct] = useState(null)
     const [quantity, setQuantity] = useState(1)

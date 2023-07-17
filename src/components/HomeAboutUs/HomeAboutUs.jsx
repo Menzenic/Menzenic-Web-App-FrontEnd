@@ -7,14 +7,20 @@ const HomeAboutUs = () => {
 
     return (
         <div className="w-full min-h-[438px] bg-white text-black flex flex-col items-center py-16 px-5 border border-black border-r-0">
-            <p className="font-bold text-[44px] text-center leading-[3rem]">
+            <p className="pl-16 font-bold text-[44px] text-center leading-[3rem]">
                 What is Menzenic? <br />
                 {/* <span className="font-sans font-thin">
                     hygiene {'≤'} intimate hygiene
                 </span> */}
             </p>
             <div className="flex w-full justify-center items-center mt-10">
-                <p className="text-left w-[600px] text-xl leading-8">
+                <img
+                    onClick={() => navigate("/about-us")}
+                    src={MZLogo}
+                    alt={"Menzenic logo"}
+                    className="h-36 cursor-pointer shadow-2xl"
+                />
+                <p className="text-left ml-28 w-[600px] text-xl leading-8">
                     Menzenic is more than a collection of products, here we
                     believe it is a celebration to be a{" "}
                     <span className="font-bold"> modern man </span> in today's
@@ -22,12 +28,6 @@ const HomeAboutUs = () => {
                     journey towards becoming the best version of yourself by
                     taking care of all your intimate (hygiene) needs.
                 </p>
-                <img
-                    onClick={() => navigate("/about-us")}
-                    src={MZLogo}
-                    alt={"Menzenic logo"}
-                    className="h-36 ml-28 cursor-pointer shadow-2xl shadow-black"
-                />
             </div>
             <div
                 className={clsx(

@@ -1,58 +1,62 @@
-import React, { useContext, useEffect, useRef, useState } from "react"
-import clsx from "clsx"
-
+import clsx from "clsx";
+import React, { useEffect, useState } from "react";
+import { useSelector } from "react-redux";
 import {
     CarouselProvider,
     Slider,
     Slide,
     ButtonBack,
     ButtonNext,
-} from "pure-react-carousel"
-import "pure-react-carousel/dist/react-carousel.es.css"
+} from "pure-react-carousel";
+import "pure-react-carousel/dist/react-carousel.es.css";
 
-import { Strings } from "../../utils/constants/Strings/Strings"
-import { ProductCard } from "../Card"
-import { CategoriesContext } from "../../contexts/categories.context"
+import {
+    selectFeaturedProducts,
+    selectHampers,
+} from "../../store/categories/categories.selector";
+import { ProductCard } from "../Card";
+import { Strings } from "../../utils/constants/Strings/Strings";
 
 import {
     LeftSliderArrow,
     RightSliderArrow,
     WishListedIcon,
-} from "../../utils/assets/svg"
+} from "../../utils/assets/svg";
 
 const FeaturedProducts = () => {
-    const { categoriesMap } = useContext(CategoriesContext)
-    const [slidesVisible, setSlidesVisible] = useState(4)
-    const [isSmall, setIsSmall] = useState(false)
+    const featuredProductsFromStore = useSelector(selectFeaturedProducts)
+    const hampersFromStore = useSelector(selectHampers)
+
+    const [featuredProducts, setFeaturedProducts] = useState(featuredProductsFromStore)
+    const [hampers, setHampers] = useState(hampersFromStore)
+
+    const [slidesVisible, setSlidesVisible] = useState(4);
+    const [isSmall, setIsSmall] = useState(false);
+
+    useEffect(() => {
+        setFeaturedProducts(featuredProductsFromStore)
+        setHampers(hampersFromStore)
+    }, [featuredProductsFromStore, hampersFromStore]);
+
 
     useEffect(() => {
         const handleResize = () => {
             if (window.innerHeight < 740) {
-                setIsSmall(true)
+                setIsSmall(true);
             } else {
-                setIsSmall(false)
+                setIsSmall(false);
             }
-        }
-        window.addEventListener("resize", handleResize)
-        handleResize()
+        };
+        window.addEventListener("resize", handleResize);
+        handleResize();
 
         if (isSmall) {
-            setSlidesVisible(3)
+            setSlidesVisible(3);
         } else {
-            setSlidesVisible(4)
+            setSlidesVisible(4);
         }
-        return () => window.removeEventListener("resize", handleResize)
-    }, [isSmall])
-
-    const FeaturedProducts = Object.keys(categoriesMap)
-        .filter((categoryMap) => categoryMap === "featured")
-        .map((categoryMap) => categoriesMap[categoryMap])
-        .flat()
-
-    const Hampers = Object.keys(categoriesMap)
-        .filter((categoryMap) => categoryMap === "hampers")
-        .map((categoryMap) => categoriesMap[categoryMap])
-        .flat()
+        return () => window.removeEventListener("resize", handleResize);
+    }, [isSmall]);
 
     return (
         <section className="min-h-[500px]">
@@ -69,28 +73,16 @@ const FeaturedProducts = () => {
                     infinite
                 >
                     <Slider className="min-h-[450px] w-full pr-10 pl-20 pt-10">
-                        {FeaturedProducts.map((prod, idx) => (
+                        {featuredProducts?.length > 0 && Object.keys(featuredProducts).map((prod, idx) => {
+                            return (
                             <Slide index={idx}>
                                 <ProductCard
                                     key={idx}
-                                    product={prod}
-                                    card={{
-                                        height: "18.375rem",
-                                        width: "16.125rem",
-                                    }}
-                                    imageSize={{
-                                        height: "7.875rem",
-                                        width: "5.125rem",
-                                    }}
-                                    wishListIcon={{
-                                        height: "1.5rem",
-                                        width: "1.75rem",
-                                    }}
-                                    titleFontSize="26px"
-                                    priceFontSize="22px"
+                                    product={featuredProducts[prod]}
+                                    variant={'featured'}
                                 />
                             </Slide>
-                        ))}
+                        )})}
                     </Slider>
                     <ButtonBack className="absolute top-[9rem] left-5">
                         <LeftSliderArrow />
@@ -117,13 +109,13 @@ const FeaturedProducts = () => {
                             infinite
                         >
                             <Slider className="h-[500px] w-full pr-10 pl-12">
-                                {Hampers.map((prod, idx) => (
+                                {hampers?.length > 0 && Object.keys(hampers).map((prod, idx) => (
                                     <Slide index={idx}>
                                         <div className="flex flex-col bg-white rounded-xl shadow-xl w-[21.77rem] min-h-[22.063rem] items-center relative m-5">
                                             <div
                                                 className={clsx(
                                                     "absolute top-5 right-5",
-                                                    "hover:cursor-pointer"
+                                                    "hover:cursor-pointer",
                                                 )}
                                                 // onClick={() =>
                                                 //     addToWishListHelper()
@@ -131,25 +123,25 @@ const FeaturedProducts = () => {
                                             >
                                                 <WishListedIcon />
                                             </div>
-                                            {prod.image ? (
+                                            {hampers[prod].image ? (
                                                 <img
                                                     className="w-full h-[12.25rem] rounded-t-xl"
-                                                    src={prod.image}
-                                                    alt={prod.title}
+                                                    src={hampers[prod].image}
+                                                    alt={hampers[prod].title}
                                                 />
                                             ) : (
                                                 <div>IMAGE</div>
                                             )}
-                                            {prod.title ? (
+                                            {hampers[prod].title ? (
                                                 <p className="text-xl mt-4">
                                                     {prod.title}
                                                 </p>
                                             ) : (
                                                 <p>HEADING</p>
                                             )}
-                                            {prod.rate ? (
+                                            {hampers[prod].rate ? (
                                                 <p className="text-xl mt-2">
-                                                    {prod.rate}
+                                                    {hampers[prod].rate}
                                                 </p>
                                             ) : (
                                                 <p>200</p>
@@ -159,7 +151,7 @@ const FeaturedProducts = () => {
                                                     className={clsx(
                                                         "border border-[#A4A4A4] rounded-md px-6 py-2",
                                                         "hover:bg-black hover:text-white",
-                                                        "transition-all duration-200"
+                                                        "transition-all duration-200",
                                                     )}
                                                     // onClick={addItemToCartHandler}
                                                 >
@@ -169,7 +161,7 @@ const FeaturedProducts = () => {
                                                     className={clsx(
                                                         "border rounded-md px-8 py-2",
                                                         "bg-[#0D0A0A] text-white",
-                                                        "transition-all duration-200"
+                                                        "transition-all duration-200",
                                                     )}
                                                     // onClick={addItemToCartHandler}
                                                 >
@@ -191,7 +183,7 @@ const FeaturedProducts = () => {
                 </div>
             </div>
         </section>
-    )
-}
+    );
+};
 
-export default FeaturedProducts
+export default FeaturedProducts;
