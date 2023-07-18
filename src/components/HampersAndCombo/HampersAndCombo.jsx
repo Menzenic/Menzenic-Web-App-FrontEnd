@@ -16,7 +16,7 @@ const ImageCard = () => (
 const HampersAndCombo = () => {
     return (
         <div
-            className="p-8 text-center min-h-[365px]"
+            className="p-8 text-center min-h-[365px] bg-cover bg-center bg-no-repeat"
             style={{
                 backgroundImage: `url(${HampersBg})`,
                 backgroundRepeat: "no-repeat",
@@ -26,10 +26,16 @@ const HampersAndCombo = () => {
             <h1 className="relative z-10 text-white label-arial text-4xl font-bold my-2">
                 Hampers & Combo
             </h1>
-            <div className="flex justify-center ">
-                <ImageCard />
-                <ImageCard />
-                <ImageCard />
+            <div className="flex flex-wrap justify-center ">
+                <div className="sm:w-auto flex justify-center">
+                    <ImageCard />
+                </div>
+                <div className="sm:w-auto flex justify-center">
+                    <ImageCard />
+                </div>
+                <div className="sm:w-auto flex justify-center">
+                    <ImageCard />
+                </div>
             </div>
         </div>
     );

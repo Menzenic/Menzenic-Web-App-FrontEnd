@@ -7,59 +7,6 @@
         ),
         url("../../utils/assets/png/product_quality_bg.png");
 }
-.product-quality-image {
-    position: absolute;
-    right: 0;
-    top: 0;
-    height: 100%;
-    width: 100%;
-    z-index: -10;
-}
-
-/* .product-quality-content {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 0 20px;
-}
-
-.product-quality-title {
-  text-align: center;
-  margin-top: 0;
-  height: 50px;
-  font-family: "Arial";
-  font-style: normal;
-  font-weight: 400;
-  font-size: 44px;
-  line-height: 51px;
-  color: #ffffff;
-} */
-
-/* .product-quality-icons {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  font-size: 24px;
-} */
-
-/* .product-quality-icon {
-  flex-basis: 25.33%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  color: #fff;
-  margin-top: 20px;
-  padding: 10px 0;
-}
-
-.icon-label {
-  font-family: "Arial";
-  font-style: normal;
-  font-weight: 400;
-  margin-top: 13px;
-  font-size: 24px;
-  line-height: 28px;
-  color: #ffffff;
-} */
 
 /* Responsive Styles */
 

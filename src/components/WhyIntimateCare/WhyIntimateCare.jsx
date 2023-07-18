@@ -8,14 +8,14 @@ const WhyIntimateCare = () => {
             <h2 className="text-4xl font-bold label-arial text-center">
                 Why Intimate Care Is Important?
             </h2>
-            <p className="text-2xl label-arial text-center mt-9 px-44">
+            <p className="text-2xl label-arial text-center mt-9 px-4 sm:px-44">
                 Neglecting intimate hygiene risks infections and discomfort.
                 Prioritize it to maintain a healthy genital area and overall
                 well-being.
             </p>
-            <div className="flex justify-center mt-14 p-16">
+            <div className="flex justify-center mt-14 p-4 sm:p-16 flex-wrap">
                 <div
-                    className="w-[297px] h-[275px] bg-white mx-8 relative rounded-[19px] transition-all duration-300 transform hover:scale-105"
+                    className="w-full sm:w-[297px] h-[275px] bg-white mx-2 sm:mx-8 my-10 sm:my-0 relative rounded-[19px] transition-all duration-300 transform hover:scale-105"
                     style={{
                         boxShadow: "19px 14px 77px 0px rgba(0, 0, 0, 0.11)",
                     }}
@@ -34,7 +34,7 @@ const WhyIntimateCare = () => {
                     </div>
                 </div>
                 <div
-                    className="w-[297px] h-[275px] bg-white mx-8 relative rounded-[19px] transition-all duration-300 transform hover:scale-105"
+                    className="w-full sm:w-[297px] h-[275px] bg-white mx-2 sm:mx-8  my-14 sm:my-8 relative rounded-[19px] transition-all duration-300 transform hover:scale-105 mt-8 sm:mt-0"
                     style={{
                         boxShadow: "19px 14px 77px 0px rgba(0, 0, 0, 0.11)",
                     }}
@@ -53,7 +53,7 @@ const WhyIntimateCare = () => {
                     </div>
                 </div>
                 <div
-                    className="w-[297px] h-[275px] bg-white mx-8 relative rounded-[19px] transition-all duration-300 transform hover:scale-105"
+                    className="w-full sm:w-[297px] h-[275px] bg-white mx-2 sm:mx-8 my-10 sm:my-8 relative rounded-[19px] transition-all duration-300 transform hover:scale-105 mt-8 sm:mt-0"
                     style={{
                         boxShadow: "19px 14px 77px 0px rgba(0, 0, 0, 0.11)",
                     }}

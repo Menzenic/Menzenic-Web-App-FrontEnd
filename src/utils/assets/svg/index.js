@@ -24,6 +24,7 @@ import HealthAssesmentRobotIcon from "./HealthAssesmentRobot.js";
 import HeartBeatIcon from "./HeartBeatIcon.js";
 import LikeIcon from "./LikeIcon.js";
 import SmileIcon from "./SmileIcon.js";
+import SearchIcon from "./SearchIcon.js";
 
 export {
     HealthAssesmentRobotIcon,
@@ -52,4 +53,5 @@ export {
     HeartBeatIcon,
     LikeIcon,
     SmileIcon,
+    SearchIcon,
 };

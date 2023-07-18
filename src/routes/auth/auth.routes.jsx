@@ -1,35 +1,35 @@
-import React, { useState } from "react"
+import React, { useState } from "react";
 
-import { GlobalDialog, Login, Signup } from "../../components"
-import { signInWithGooglePopup } from "../../utils/firebase/firebase.utils"
+import { GlobalDialog, Login, Signup } from "../../components";
+import { signInWithGooglePopup } from "../../utils/firebase/firebase.utils";
 
-import SignInBackgroundImg from "../../images/Pngs/auth-background.png"
-import { GoogleIcon, AppleIcon } from "../../utils/assets"
-import "../../utils/styles/styles.css"
+import SignInBackgroundImg from "../../images/Pngs/auth-background.png";
+import { GoogleIcon, AppleIcon } from "../../utils/assets";
+import "../../utils/styles/styles.css";
 
 const Auth = ({ onClose }) => {
-    const [isSignup, setIsSignup] = useState(false)
-    const [ dialog, setDialog ] = useState(false)
+    const [isSignup, setIsSignup] = useState(false);
+    const [dialog, setDialog] = useState(false);
 
     const toggleForm = () => {
-        setIsSignup(!isSignup)
-    }
+        setIsSignup(!isSignup);
+    };
 
     const handleToggleForm = () => {
-        toggleForm()
-    }
+        toggleForm();
+    };
 
     const handleGoogleLogin = async () => {
         try {
-            setDialog(true)
-            await signInWithGooglePopup()    
+            setDialog(true);
+            await signInWithGooglePopup();
             setTimeout(() => {
-                setDialog(false)
-            }, 500)    
+                setDialog(false);
+            }, 500);
         } catch (error) {
-            console.log('error:', error)
+            console.log("error:", error);
         }
-    }
+    };
 
     const handleAppleLogin = () => {
         // const provider = new firebase.auth.OAuthProvider("apple.com");
@@ -42,11 +42,11 @@ const Auth = ({ onClose }) => {
         //     .catch((error) => {
         //         // Handle login error
         //     });
-    }
+    };
 
     return (
         <div
-            className="flex items-center justify-between h-full relative pt-10 overflow-hidden"
+            className="flex items-center justify-between h-full relative pt-8 sm:pt-10 overflow-hidden"
             style={{
                 background:
                     "linear-gradient(180deg, #000000 0%, rgba(26, 25, 25, 0.679) 151.51%, rgba(15, 15, 15, 0.3) 303.21%)",
@@ -59,7 +59,7 @@ const Auth = ({ onClose }) => {
                 </button>
             </Link> */}
             <div className="flex justify-between">
-                <div className="ml-60 rounded-lg w-full">
+                <div className="ml-8 sm:ml-60 rounded-lg w-3/4 sm:w-full">
                     {isSignup ? (
                         <Signup onClose={onClose} toggleForm={toggleForm} />
                     ) : (
@@ -129,7 +129,7 @@ const Auth = ({ onClose }) => {
                 />
             </div>
         </div>
-    )
-}
+    );
+};
 
-export default Auth
+export default Auth;

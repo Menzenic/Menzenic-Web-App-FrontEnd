@@ -24,7 +24,7 @@ const ProductQuality = () => {
                 <h2 className="text-[2.75rem] font-semibold text-white">
                     Our Brand Promises
                 </h2>
-                <div className="mt-20 grid grid-cols-4 gap-20">
+                <div className="mt-20 grid grid-cols-2 sm:grid-cols-4 gap-4 sm:gap-20">
                     {/* Icon 1 */}
                     <div className="flex flex-col items-center text-white">
                         <RabbitIcon className="h-[7.4375rem] w-[6.1875rem]" />
@@ -57,14 +57,13 @@ const ProductQuality = () => {
                         </span>
                     </div>
 
+                    {/* Icon 5 */}
                     {/* <div className="flex flex-col items-center text-white">
                         <AtomIcon className="h-[12.75rem] w-[10.313rem]" />
                         <span className=" mt-3 font-normal text-2xl leading-7 text-white">
                             No animal testing
                         </span>
                     </div> */}
-
-                    {/* Icon 5 */}
 
                     {/* Icon 6 */}
                     {/* <div className="flex flex-col items-center text-white">
