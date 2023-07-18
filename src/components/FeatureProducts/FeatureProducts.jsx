@@ -24,20 +24,21 @@ import {
 } from "../../utils/assets/svg";
 
 const FeaturedProducts = () => {
-    const featuredProductsFromStore = useSelector(selectFeaturedProducts)
-    const hampersFromStore = useSelector(selectHampers)
+    const featuredProductsFromStore = useSelector(selectFeaturedProducts);
+    const hampersFromStore = useSelector(selectHampers);
 
-    const [featuredProducts, setFeaturedProducts] = useState(featuredProductsFromStore)
-    const [hampers, setHampers] = useState(hampersFromStore)
+    const [featuredProducts, setFeaturedProducts] = useState(
+        featuredProductsFromStore
+    );
+    const [hampers, setHampers] = useState(hampersFromStore);
 
     const [slidesVisible, setSlidesVisible] = useState(4);
     const [isSmall, setIsSmall] = useState(false);
 
     useEffect(() => {
-        setFeaturedProducts(featuredProductsFromStore)
-        setHampers(hampersFromStore)
+        setFeaturedProducts(featuredProductsFromStore);
+        setHampers(hampersFromStore);
     }, [featuredProductsFromStore, hampersFromStore]);
-
 
     useEffect(() => {
         const handleResize = () => {
@@ -73,16 +74,18 @@ const FeaturedProducts = () => {
                     infinite
                 >
                     <Slider className="min-h-[450px] w-full pr-10 pl-20 pt-10">
-                        {featuredProducts?.length > 0 && Object.keys(featuredProducts).map((prod, idx) => {
-                            return (
-                            <Slide index={idx}>
-                                <ProductCard
-                                    key={idx}
-                                    product={featuredProducts[prod]}
-                                    variant={'featured'}
-                                />
-                            </Slide>
-                        )})}
+                        {featuredProducts?.length > 0 &&
+                            Object.keys(featuredProducts).map((prod, idx) => {
+                                return (
+                                    <Slide index={idx}>
+                                        <ProductCard
+                                            key={idx}
+                                            product={featuredProducts[prod]}
+                                            variant={"featured"}
+                                        />
+                                    </Slide>
+                                );
+                            })}
                     </Slider>
                     <ButtonBack className="absolute top-[9rem] left-5">
                         <LeftSliderArrow />
@@ -94,7 +97,7 @@ const FeaturedProducts = () => {
             </div>
 
             {/* Hampers section */}
-            <div className="w-full px-20 mb-28">
+            {/* <div className="w-full px-20 mb-28">
                 <div className="newpage-container section-background-image w-full min-h-[400px] items-center rounded-3xl">
                     <p className="text-[44px] font-semibold pt-12 pb-10 text-center w-full text-white">
                         Hampers
@@ -181,7 +184,7 @@ const FeaturedProducts = () => {
                         </CarouselProvider>
                     </div>
                 </div>
-            </div>
+            </div> */}
         </section>
     );
 };

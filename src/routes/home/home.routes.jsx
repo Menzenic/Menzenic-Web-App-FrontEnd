@@ -9,6 +9,9 @@ import {
     WhyIntimateHygiene,
     Hampers,
 } from "../../components";
+import WhyIntimateCare from "../../components/WhyIntimateCare/WhyIntimateCare";
+import MenzenicSignature from "../../components/MenzenicSignature/MenzenicSignature";
+import HampersAndCombo from "../../components/HampersAndCombo/HampersAndCombo";
 
 const Home = () => {
     return (
@@ -18,9 +21,12 @@ const Home = () => {
             <WhyIntimateHygiene />
             <FeaturedProducts />
             <ProductQuality />
-            <Hampers />
+            <WhyIntimateCare />
+            {/* <Hampers /> */}
+            <HampersAndCombo />
             <Testimonials />
             <Blogs />
+            <MenzenicSignature />
             <Footer />
         </>
     );

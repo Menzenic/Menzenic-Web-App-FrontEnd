@@ -21,6 +21,9 @@ import FilterIcon from "./FilterIcon.js";
 import MenzenicFullLogo from "./MenzenicFullLogo.js";
 import WishListedProductCard from "./WishListedProductCard.js";
 import HealthAssesmentRobotIcon from "./HealthAssesmentRobot.js";
+import HeartBeatIcon from "./HeartBeatIcon.js";
+import LikeIcon from "./LikeIcon.js";
+import SmileIcon from "./SmileIcon.js";
 
 export {
     HealthAssesmentRobotIcon,
@@ -46,4 +49,7 @@ export {
     WishListedIcon,
     HeartIcon,
     FilterIcon,
+    HeartBeatIcon,
+    LikeIcon,
+    SmileIcon,
 };
