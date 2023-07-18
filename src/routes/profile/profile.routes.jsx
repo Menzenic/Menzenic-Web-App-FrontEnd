@@ -1,14 +1,21 @@
 import clsx from "clsx";
-import React from "react";
+import React, { useEffect } from "react";
 import { Link, Outlet, useLocation } from "react-router-dom";
 
 import Footer from "../../components/Footer/Footer";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { selectCurrentUser } from "../../store/user/user.selector";
 
 import profilePic from "../../images/Pngs/profile-pic.png";
+import { fetchOrderhistoryAsync } from "../../store/orderhistory/orderhistory.action";
 
 const Profile = () => {
+    const dispatch = useDispatch()
+
+    useEffect(() => {
+        dispatch(fetchOrderhistoryAsync())
+    }, [])
+
     const currentUser = useSelector(selectCurrentUser);
     const location = useLocation();
 
@@ -56,7 +63,7 @@ const Profile = () => {
                                         to="order-history"
                                         className={clsx(
                                             location.pathname ===
-                                                "profile/order-history" &&
+                                                "/profile/order-history" &&
                                                 "font-extrabold",
                                         )}
                                     >

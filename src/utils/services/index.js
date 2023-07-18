@@ -1,1 +1,3 @@
-export const IS_DEVELOPMENT = () => process.env.NODE_ENV !== 'production'
+export function IS_DEVELOPMENT() {
+    return process.env.NODE_ENV !== 'production';
+}

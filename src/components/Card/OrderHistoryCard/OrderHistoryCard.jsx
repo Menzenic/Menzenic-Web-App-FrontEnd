@@ -10,8 +10,14 @@ const OrderHistoryCard = (props) => {
             }}
         >
             <div className="flex flex-col items-center">
-                <img src={props.image ?? TemplateProductMockUp} alt={props.name} className="w-9 h-14" />
-                <h3 className="text-[0.75rem] text-center">{props.name ?? 'Intimate Body Wash'}</h3>
+                <img
+                    src={props.image ?? TemplateProductMockUp}
+                    alt={props.name}
+                    className="w-9 h-14"
+                />
+                <h3 className="text-[0.75rem] text-center">
+                    {props.name ?? "Intimate Body Wash"}
+                </h3>
             </div>
             <div className="mx-5 h-[4.625rem] border border-[#DBDBDB]"></div>
             <div className="p-2">
@@ -22,7 +28,9 @@ const OrderHistoryCard = (props) => {
                         </h4>
                         <div className="flex items-center">
                             {Array.from({ length: 5 }).map((_, index) => (
-                                <div><i className="fa-solid fa-star"/></div>
+                                <div>
+                                    <i className="fa-solid fa-star" />
+                                </div>
                             ))}
                         </div>
                     </div>

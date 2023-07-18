@@ -197,6 +197,8 @@ export const addItemToOrderHistory = async (product) => {
 
             console.log('before currOrderHistory:::: ', currOrderHistory)
 
+            console.log('product:', product)
+
             currOrderHistory.push({
                 id: product.id,
             });
@@ -218,6 +220,23 @@ export const addItemToOrderHistory = async (product) => {
         console.log("order hist error before only");
     }
 };
+
+export const getOrderhistory = async () => {
+    if(!auth){
+        console.log('not a valid user')
+        return
+    }
+
+    try {
+        const orderhistoryRef = doc(db, 'users', auth.currentUser.id)
+        const orderhistorySnap = await getDoc(orderhistoryRef)
+
+        const data = orderhistorySnap.data()
+        return data
+    } catch (err) {
+        console.log('error in getting stuff from orderhistory', err)
+    }
+}
 
 /**
  * Chat service firebase
@@ -269,43 +288,43 @@ export const getChatFromFirebase = async () => {
     }
 };
 
-export const addToWishlist = async (itemToAdd) => {
-    if (!auth) {
-        console.log("Log in first")
-        return
-    }
+// export const addToWishlist = async (itemToAdd) => {
+//     if (!auth) {
+//         console.log("Log in first")
+//         return
+//     }
 
-    try {
-        const wishListRef = doc(db, "users", auth.currentUser.uid)
-        const wishListSnapShot = await getDoc(wishListRef)
-        const data = wishListSnapShot.data()
+//     try {
+//         const wishListRef = doc(db, "users", auth.currentUser.uid)
+//         const wishListSnapShot = await getDoc(wishListRef)
+//         const data = wishListSnapShot.data()
 
-        if (data) {
-            const currWishlist = data.wishlist || []
+//         if (data) {
+//             const currWishlist = data.wishlist || []
 
-            const existingIndex = currWishlist.findIndex((item) => {
-                return item.id === itemToAdd
-            })
+//             const existingIndex = currWishlist.findIndex((item) => {
+//                 return item.id === itemToAdd
+//             })
 
-            if (existingIndex === -1) {
-                currWishlist.push({ id: itemToAdd })
-            } else {
-                currWishlist.splice(existingIndex, 1)
-            }
+//             if (existingIndex === -1) {
+//                 currWishlist.push({ id: itemToAdd })
+//             } else {
+//                 currWishlist.splice(existingIndex, 1)
+//             }
 
-            try {
-                await setDoc(wishListRef, {
-                    ...data,
-                    wishlist: currWishlist,
-                })
+//             try {
+//                 await setDoc(wishListRef, {
+//                     ...data,
+//                     wishlist: currWishlist,
+//                 })
 
-                console.log("Wishlist updated successfully")
-                return (await getDoc(wishListRef)).data().wishlist
-            } catch (err) {
-                console.log("Error while updating wishlist:", err)
-            }
-        }
-    } catch (err) {
-        console.log("Error while creating wishlist:", err)
-    }
-}
+//                 console.log("Wishlist updated successfully")
+//                 return (await getDoc(wishListRef)).data().wishlist
+//             } catch (err) {
+//                 console.log("Error while updating wishlist:", err)
+//             }
+//         }
+//     } catch (err) {
+//         console.log("Error while creating wishlist:", err)
+//     }
+// }

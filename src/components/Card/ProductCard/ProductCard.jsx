@@ -20,6 +20,7 @@ import {
 } from "./ProductCard.styles";
 import { WishListedIcon, WishListedProductCard } from "../../../utils/assets";
 import { addItemToOrderHistory } from "../../../utils/firebase/firebase.utils";
+import { fetchOrderhistoryAsync } from "../../../store/orderhistory/orderhistory.action";
 
 const ProductCard = React.memo(
     ({
@@ -44,20 +45,13 @@ const ProductCard = React.memo(
             hoverWishList: false,
         });
 
-        const addItemToOrderHistoryHandler = (product) => {
-            const getTheDataBrother = async () => {
-                return await addItemToOrderHistory(product)
-            }
-
-            getTheDataBrother()
-            // console.log('GET THE DATA: ', getTheDataBrother())
+        const addItemToOrderHistoryHandler = () => {
+            dispatch(fetchOrderhistoryAsync(product))
         }
 
         // useEffect(() => {
-        //     setOrderHistory(addItemToOrderHistoryHandler(product))
-        // }, [product])
-
-        // console.log('orderHistory:', orderHistory)
+        //     fe
+        // }, [])
 
         useEffect(() => {
             if (variant === "product" && dimensions !== productVariant) {
@@ -213,7 +207,7 @@ const ProductCard = React.memo(
                             width: dimensions.buttonSize.width,
                         }}
                         // onClick={() => addItemToCartHandler(product)}
-                        onClick={() => addItemToOrderHistoryHandler(product)}
+                        onClick={() => addItemToOrderHistoryHandler()}
                     >
                         Buy Now
                     </button>

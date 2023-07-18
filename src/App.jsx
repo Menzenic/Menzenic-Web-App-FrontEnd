@@ -14,12 +14,13 @@ import {
 } from "./routes";
 import { Blogs, OrderHistory, PersonalInfo, WishList } from "./components";
 import { setCurrentUser } from "./store/user/user.action";
+import { setCategories } from "./store/categories/categories.action";
+
 import {
     createUserDocumentFromAuth,
     getCategoriesAndDocument,
     onAuthStateChangedListener,
 } from "./utils/firebase/firebase.utils";
-import { setCategories } from "./store/categories/categories.action";
 
 const App = () => {
     const dispatch = useDispatch();

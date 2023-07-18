@@ -1,6 +1,3 @@
-import { useEffect } from "react";
-import { useDispatch } from "react-redux";
-
 import {
     Header,
     FeaturedProducts,
@@ -12,8 +9,6 @@ import {
     WhyIntimateHygiene,
     Hampers,
 } from "../../components";
-import { getCategoriesAndDocument } from "../../utils/firebase/firebase.utils";
-import { setCategories } from "../../store/categories/categories.action";
 
 const Home = () => {
     return (
