@@ -8,10 +8,10 @@ import {
     HomeAboutUs,
     WhyIntimateHygiene,
     Hampers,
+    WhyIntimateCare,
+    MenzenicSignature,
+    HampersAndCombos,
 } from "../../components";
-import WhyIntimateCare from "../../components/WhyIntimateCare/WhyIntimateCare";
-import MenzenicSignature from "../../components/MenzenicSignature/MenzenicSignature";
-import HampersAndCombos from "../../components/HampersAndCombos/HampersAndCombos";
 
 const Home = () => {
     return (
