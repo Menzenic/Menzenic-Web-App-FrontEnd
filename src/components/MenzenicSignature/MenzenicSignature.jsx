@@ -16,13 +16,14 @@ const MenzenicSignature = () => {
             style={{
                 backgroundImage: `url(${VectorImage})`,
                 backgroundRepeat: "no-repeat",
-                backgroundPosition: "calc(100% - 80px) 80%",
+                backgroundPosition: "center",
+                backgroundSize: "cover",
             }}
         >
-            <div className="flex justify-center text-center items-center">
-                <h1 className="footer-logo mt-12">Menzenic</h1>
+            <div className="w-full flex justify-center items-center">
+                <h1 className="signature-logo mt-12 text-center">Menzenic</h1>
             </div>
-            <p className="label-arial text-xl font-bold mt-12 mb-2 px-20">
+            <p className="text-xl font-bold mt-12 px-20">
                 Menzenic is more than a collection of products, here we believe
                 it is a celebration to be a modern man in today's world. We are
                 here to inspire and empower you on your journey towards becoming
@@ -31,7 +32,7 @@ const MenzenicSignature = () => {
             </p>
             <button
                 className={clsx(
-                    "border border-black rounded-md px-8 py-2 mt-2",
+                    "border border-black rounded-md px-8 py-2 mt-6",
                     "bg-[#0D0A0A] text-white",
                     "transition-all duration-200 hover:bg-white hover:text-black"
                 )}

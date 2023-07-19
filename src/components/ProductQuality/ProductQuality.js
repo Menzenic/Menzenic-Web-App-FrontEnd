@@ -19,7 +19,7 @@ const iconSize = {
 
 const ProductQuality = () => {
     return (
-        <div className="section-background-image min-h-[458px] py-16 text-center relative">
+        <div className="section-background-image bg-contain sm:bg-cover min-h-[458px] py-16 text-center relative">
             <div className={clsx("w-full mx-auto px-4")}>
                 <h2 className="text-[2.75rem] font-semibold text-white">
                     Our Brand Promises

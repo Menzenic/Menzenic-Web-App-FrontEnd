@@ -5,10 +5,10 @@ import { SmileIcon, LikeIcon, HeartBeatIcon } from "../../utils/assets/svg";
 const WhyIntimateCare = () => {
     return (
         <div className="p-4 min-h-[658px] mt-14">
-            <h2 className="text-4xl font-bold label-arial text-center">
+            <h2 className="text-[44px] font-bold text-center">
                 Why Intimate Care Is Important?
             </h2>
-            <p className="text-2xl label-arial text-center mt-9 px-4 sm:px-44">
+            <p className="text-2xl text-center mt-9 px-4 sm:px-44">
                 Neglecting intimate hygiene risks infections and discomfort.
                 Prioritize it to maintain a healthy genital area and overall
                 well-being.
@@ -20,8 +20,8 @@ const WhyIntimateCare = () => {
                         boxShadow: "19px 14px 77px 0px rgba(0, 0, 0, 0.11)",
                     }}
                 >
-                    <div className="absolute top-[-52px] left-0 right-0 flex justify-center items-end">
-                        <div className="w-[134px] h-[134px] bg-black rounded-full flex items-center justify-center">
+                    <div className="absolute top-[-82px] left-0 right-0 flex justify-center items-end">
+                        <div className="w-[164px] h-[164px] bg-black rounded-full flex items-center justify-center">
                             <SmileIcon />
                         </div>
                     </div>
@@ -39,8 +39,8 @@ const WhyIntimateCare = () => {
                         boxShadow: "19px 14px 77px 0px rgba(0, 0, 0, 0.11)",
                     }}
                 >
-                    <div className="absolute top-[-52px] left-0 right-0 flex justify-center items-end">
-                        <div className="w-[134px] h-[134px] bg-black rounded-full flex items-center justify-center">
+                    <div className="absolute top-[-82px] left-0 right-0 flex justify-center items-end">
+                        <div className="w-[164px] h-[164px] bg-black rounded-full flex items-center justify-center">
                             <LikeIcon />
                         </div>
                     </div>
@@ -58,8 +58,8 @@ const WhyIntimateCare = () => {
                         boxShadow: "19px 14px 77px 0px rgba(0, 0, 0, 0.11)",
                     }}
                 >
-                    <div className="absolute top-[-52px] left-0 right-0 flex justify-center items-end">
-                        <div className="w-[134px] h-[134px] bg-black rounded-full flex items-center justify-center">
+                    <div className="absolute top-[-82px] left-0 right-0 flex justify-center items-end">
+                        <div className="w-[164px] h-[164px] bg-black rounded-full flex items-center justify-center">
                             <HeartBeatIcon />
                         </div>
                     </div>

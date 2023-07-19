@@ -16,6 +16,20 @@
     letter-spacing: 0.2em;
     color: #000000;
 }
+.signature-logo {
+    width: 369px;
+    height: 48px;
+    left: 820px;
+    top: 3394px;
+    text-transform: uppercase;
+    font-family: "Baskerville Old Face";
+    font-style: normal;
+    font-weight: 400;
+    font-size: 55px;
+    line-height: 87%;
+    letter-spacing: 0.2em;
+    color: #000000;
+}
 .footer-para,
 .footer-paras {
     font-family: "Inter";
