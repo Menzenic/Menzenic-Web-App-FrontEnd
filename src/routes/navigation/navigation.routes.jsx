@@ -129,7 +129,7 @@ const Navigation = () => {
                     <Link to="/shop" className="relative">
                         <ShoppingCart />
                     </Link>
-                    <Link to="/wishlist" className="ml-2 sm:ml-4">
+                    <Link to="/profile/wishlist" className="ml-2 sm:ml-4">
                         <WishListIcon className="h-7 w-7" />
                     </Link>
                 </div>

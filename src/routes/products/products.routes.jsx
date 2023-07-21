@@ -5,10 +5,15 @@ import { selectProducts } from "../../store/categories/categories.selector";
 import { ProductCard } from "../../components/Card";
 import Footer from "../../components/Footer/Footer";
 
-import { FilterIcon } from "../../utils/assets";
+import {
+    FilterIcon,
+    OpenBoxImage,
+    OpenBoxImage2,
+    TemplateProductMockupBgRem,
+} from "../../utils/assets";
 
 const Products = () => {
-    const categoriesMap = useSelector(selectProducts)
+    const categoriesMap = useSelector(selectProducts);
 
     const Products = Object.keys(categoriesMap)
         .map((categoryMap) => categoriesMap[categoryMap])
@@ -40,11 +45,26 @@ const Products = () => {
                             "gap-[3.56rem] md:gap-x-[10rem] lg:gap-x-[20rem] xl:gap-x-[6rem] 2xl:gap-x-[13rem]",
                         )}
                     >
+                        <div className="min-h-[22.0625rem] min-w-[21.76969rem] relative">
+                            <img
+                                src={OpenBoxImage2}
+                                className="absolute h-[22.0625rem] w-[21.76969rem]"
+                                alt="box"
+                            />
+                            <img
+                                className="h-[10.25rem] w-[10.625rem] shadow-2xl shadow-black absolute top-[48%] left-[47.5%] -translate-y-1/2 -translate-x-1/2"
+                                src={TemplateProductMockupBgRem}
+                                alt="template pic"
+                            />
+                            <p className="border border-black py-5 text-white w-[80%] text-center text-2xl font-bold z-50 absolute top-[80%] left-1/2 transform -translate-x-1/2 -translate-y-1/2">
+                                INTIMATE BODY WASH
+                            </p>
+                        </div>
                         {Products.map((product, idx) => (
                             <ProductCard
                                 product={product}
                                 key={product.id}
-                                variant={'product'}
+                                variant={"product"}
                             />
                         ))}
                     </div>
