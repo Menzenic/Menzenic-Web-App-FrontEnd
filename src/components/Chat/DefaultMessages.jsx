@@ -1,10 +1,16 @@
 import React from "react";
 import {
-    FaHeart,
-    FaClinicMedical,
+    FaVenusMars,
+    FaMars,
     FaAssistiveListeningSystems,
-    FaHandMiddleFinger,
+    FaHandPaper,
 } from "react-icons/fa";
+
+const iconStyle = {
+    marginRight: "8px",
+    verticalAlign: "middle",
+    fontSize: "24px",
+};
 
 const DefaultMessages = {
     messages: [
@@ -21,6 +27,7 @@ const DefaultMessages = {
                 isDelivered: true,
                 isSent: false,
                 message: "I am Caroline, your personal health coach",
+                isFollowUp: true,
             },
             isUser: false,
         },
@@ -30,6 +37,7 @@ const DefaultMessages = {
                 isSent: false,
                 message:
                     "I will be your guide for this health assessment today",
+                isFollowUp: true,
             },
             isUser: false,
         },
@@ -39,6 +47,7 @@ const DefaultMessages = {
                 isSent: false,
                 message:
                     "How can I help you today? What are your top concerns?",
+                isFollowUp: true,
             },
             isUser: false,
         },
@@ -50,7 +59,7 @@ const DefaultMessages = {
                 isSent: false,
                 message: (
                     <>
-                        <FaHeart /> 1. Sexual Health
+                        <FaVenusMars style={iconStyle} /> Sexual Health
                     </>
                 ),
             },
@@ -63,7 +72,7 @@ const DefaultMessages = {
                 isSent: false,
                 message: (
                     <>
-                        <FaClinicMedical /> 2. Penile Health
+                        <FaMars style={iconStyle} /> Penile Health
                     </>
                 ),
             },
@@ -76,7 +85,8 @@ const DefaultMessages = {
                 isSent: false,
                 message: (
                     <>
-                        <FaAssistiveListeningSystems /> 3. Butt Health
+                        <FaAssistiveListeningSystems style={iconStyle} /> Butt
+                        Health
                     </>
                 ),
             },
@@ -89,7 +99,7 @@ const DefaultMessages = {
                 isSent: false,
                 message: (
                     <>
-                        <FaHandMiddleFinger /> 4. Armpit Health
+                        <FaHandPaper style={iconStyle} /> Armpit Health
                     </>
                 ),
             },

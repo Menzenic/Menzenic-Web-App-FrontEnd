@@ -105,10 +105,6 @@ const SexualHealthQuiz = {
             question: "Do you Drink?",
             options: ["Regularly", "Occasionally", "Never"],
         },
-        {
-            question: "Please type you age below",
-            options: ["Regularly", "Occasionally", "Never"],
-        },
     ],
 };
 

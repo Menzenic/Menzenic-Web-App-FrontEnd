@@ -230,7 +230,24 @@ const ChatRoom = () => {
                             message={{
                                 isDelivered: true,
                                 isSent: false,
-                                message: <button>{option}</button>,
+                                message: (
+                                    <div
+                                        style={{
+                                            display: "flex",
+                                            alignItems: "center",
+                                        }}
+                                    >
+                                        <span
+                                            style={{
+                                                fontSize: "34px",
+                                                marginRight: "5px",
+                                            }}
+                                        >
+                                            &bull;
+                                        </span>
+                                        <button>{option}</button>
+                                    </div>
+                                ),
                             }}
                         />
                     </div>
@@ -274,7 +291,7 @@ const ChatRoom = () => {
                         type="submit"
                         className="h-10 w-full mt-2 rounded font-bold bg-white text-black"
                     >
-                        Done
+                        Results
                     </button>
                 </form>
             </div>

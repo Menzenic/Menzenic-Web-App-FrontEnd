@@ -2,17 +2,8 @@ const ButtHealthQuiz = {
     questions: [
         {
             question:
-                "BUTT: How often do you experience discomfort or pain in your buttocks?",
+                "How often do you experience discomfort or pain in your buttocks?",
             options: ["Never", "Occasionally", "Frequently", "Constantly"],
-        },
-        {
-            question: "When was the last time you had sex?",
-            options: [
-                "Recently",
-                "6 to 12 months ago",
-                "Over a year ago",
-                "Never",
-            ],
         },
         {
             question: "How would you describe your bowel movements?",
@@ -39,27 +30,51 @@ const ButtHealthQuiz = {
             options: ["Excellent", "Good", "Fair", "Poor"],
         },
         {
-            question: "Have you ever had an STI in the past?",
-            options: ["Yes", "No", "I'm not sure"],
-        },
-        {
-            question: "How do you prefer to access sexual health information?",
+            question:
+                "Have you experienced occasional itching & rashes on the butt skin?",
             options: [
-                "Online resources",
-                "Healthcare provider",
-                "Sexual health workshops or seminars",
-                "Friends or peers",
-                "Other",
+                "No, I haven't experienced any itching or rashes",
+                "Yes, I occasionally experience itching or rashes",
             ],
         },
         {
-            question: "Have you ever been vaccinated against HPV?",
-            options: ["Yes", "No", "I'm not sure"],
+            question:
+                "Have you experienced any bad odour or moisture around your anus?",
+            options: [
+                "No nothing",
+                "Slight moisture, no odour",
+                "Moderate moisture and odour",
+                "A lot of moisture and odour",
+            ],
         },
         {
             question:
-                "Do you experience any sexual health concerns or symptoms currently?",
-            options: ["Yes", "No"],
+                "Do you have a sedentary lifestyle with limited physical activity?",
+            options: [
+                "No, I exercise regularly",
+                " I exercise occasionally",
+                " I rarely exercise",
+                "I'm completely sedentary",
+            ],
+        },
+        {
+            question: "How would you rate your diet in terms of fiber intake?",
+            options: [
+                "High-fiber diet",
+                "Moderate-fiber diet",
+                "Low-fiber diet",
+                "Very low-fiber diet",
+            ],
+        },
+        {
+            question:
+                "Have you noticed any lumps or protrusions around the anal area?",
+            options: [
+                "No lumps or protrusions",
+                "Occasionally",
+                "Frequently",
+                "Constantly",
+            ],
         },
     ],
 };

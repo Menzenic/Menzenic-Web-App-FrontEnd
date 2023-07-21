@@ -2,7 +2,7 @@ const PenileHealthQuiz = {
     questions: [
         {
             question:
-                "PENILE: Do you wash your penis and foreskin regularly with mild soap and warm water?",
+                "Do you wash your penis and foreskin regularly with mild soap and warm water?",
             options: [
                 "Yes, I follow this practice consistently.",
                 "No, I sometimes skip or use scented soaps or lotions",
@@ -65,23 +65,51 @@ const PenileHealthQuiz = {
             ],
         },
         {
-            question: "How do you prefer to access sexual health information?",
+            question: "On average, how often do you engage in masturbation?",
             options: [
-                "Online resources",
-                "Healthcare provider",
-                "Sexual health workshops or seminars",
-                "Friends or peers",
-                "Other",
+                "Multiple times per day",
+                "Once a day",
+                "Several times a week",
+                "Less than once a week or never.",
             ],
         },
         {
-            question: "Have you ever been vaccinated against HPV?",
-            options: ["Yes", "No", "I'm not sure"],
+            question:
+                "Have you experienced any of the following symptoms, which may indicate a urinary tract infection (UTI)?",
+            options: [
+                "Frequent urination or urgency",
+                "Blood in the urine",
+                "Pain or burning sensation during urination",
+                "I haven't experienced any of these symptoms",
+            ],
+        },
+        {
+            question: "Have you experienced any of the following symptoms?",
+            options: [
+                "Unexplained lumps or growths on the penis",
+                "Persistent sores or ulcers on the penis that don't heal.",
+                "Reddish or purplish discoloration of the penile skin.",
+                "None of the above",
+            ],
         },
         {
             question:
-                "Do you experience any sexual health concerns or symptoms currently?",
-            options: ["Yes", "No"],
+                "Have you noticed any persistent or unusual odour around your penile region?",
+            options: [
+                " No, I have not noticed any unusual or persistent odour",
+                "Yes, I have experienced a persistent odour that is different from my usual scent.",
+                "I occasionally notice an odour, but it is not persistent or bothersome.",
+                "I have not paid attention or have not noticed any specific odour around the penile region",
+            ], // (if chosen this, add a prompt, please check now) how??
+        },
+        {
+            question:
+                "Do you experience excessive sweating or moisture around your penile region?",
+            options: [
+                "No, I do not experience excessive sweating or moisture.",
+                "Yes, I often notice excessive sweating or moisture in the penile region",
+                "Occasionally, I may experience mild sweating or moisture.",
+            ],
         },
     ],
 };

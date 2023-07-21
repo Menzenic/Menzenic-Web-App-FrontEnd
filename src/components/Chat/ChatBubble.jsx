@@ -3,6 +3,7 @@ import "./temp.css";
 
 const ChatBubble = ({ message, isUser }) => {
     const messageContent = message.message;
+    const isFollowUp = message.isFollowUp;
 
     if (!messageContent) {
         return null;
@@ -14,11 +15,13 @@ const ChatBubble = ({ message, isUser }) => {
                 isUser ? "end" : "start"
             } m-2`}
         >
-            <div
-                className={`pic ${
-                    isUser ? "arrow-right-pic" : "arrow-left-pic"
-                }`}
-            ></div>{" "}
+            {!isFollowUp && (
+                <div
+                    className={`pic ${
+                        isUser ? "arrow-right-pic" : "arrow-left-pic"
+                    }`}
+                ></div>
+            )}
             <div
                 className={`message-bubble text-base border border-white text-white rounded-r-xl rounded-bl-xl px-5 py-1 ${
                     isUser ? "user-bubble" : "bot-bubble"
