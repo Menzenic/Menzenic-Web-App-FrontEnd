@@ -7,13 +7,15 @@ import SexualHealthQuiz from "./SexualHealthQuiz";
 import PenileHealthQuiz from "./PenileHealthQuiz";
 import ButtHealthQuiz from "./ButtHealthQuiz";
 import ArmpitHealthQuiz from "./ArmpitHealthQuiz";
+import InputQuestions from "./InputQuestions";
 
 const ChatRoom = () => {
     const [chatVal, setChatVal] = useState(DefaultMessages.messages);
-    const [inputVal, setInputVal] = useState();
+    const [inputVal, setInputVal] = useState("");
     const [selectedQuiz, setSelectedQuiz] = useState(null);
     const [currentQuestionIndex, setCurrentQuestionIndex] = useState(null);
     const [isLoading, setIsLoading] = useState(false);
+    const [isQuizFinished, setIsQuizFinished] = useState(false);
     const chatContainerRef = useRef(null);
 
     const scrollToBottom = () => {
@@ -34,22 +36,28 @@ const ChatRoom = () => {
             },
             isUser: true,
         };
-        const questionWithAnswer = {
-            message: {
-                isDelivered: true,
-                isSent: false,
-                message: question.question,
-            },
-            isUser: false,
-        };
-        setChatVal([...chatVal, questionWithAnswer, userResponse]);
-        setIsLoading(true);
-        setTimeout(() => {
-            setIsLoading(false);
-            setCurrentQuestionIndex((prevIndex) =>
-                prevIndex === null ? 0 : prevIndex + 1
-            );
-        }, 1000);
+
+        // Checking if the quiz has been completed
+        if (currentQuestionIndex === selectedQuiz.questions.length - 1) {
+            setIsQuizFinished(true);
+        } else {
+            const questionWithAnswer = {
+                message: {
+                    isDelivered: true,
+                    isSent: false,
+                    message: question.question,
+                },
+                isUser: false,
+            };
+            setChatVal([...chatVal, questionWithAnswer, userResponse]);
+            setIsLoading(true);
+            setTimeout(() => {
+                setIsLoading(false);
+                setCurrentQuestionIndex((prevIndex) =>
+                    prevIndex === null ? 0 : prevIndex + 1
+                );
+            }, 1000);
+        }
     };
 
     const startConversation = (flow) => {
@@ -95,6 +103,20 @@ const ChatRoom = () => {
         }
         setCurrentQuestionIndex(0);
         setChatVal([]);
+        setIsQuizFinished(false);
+    };
+
+    const handleInputQuestionSubmit = (e) => {
+        e.preventDefault();
+        // Collecting user's input and store it in the InputQuestions object
+        const updatedInputQuestions = InputQuestions.questions.map(
+            (questionObj) => ({
+                ...questionObj,
+                answer: questionObj.answer || "",
+            })
+        );
+        setChatVal([...chatVal, ...updatedInputQuestions]);
+        setIsQuizFinished(true);
     };
 
     const renderChatMessages = () => {
@@ -142,52 +164,58 @@ const ChatRoom = () => {
     };
 
     const renderQuizQuestions = () => {
-        if (!selectedQuiz) return null;
+        if (!selectedQuiz || !selectedQuiz.questions) return null;
 
         const quiz = selectedQuiz;
         const quizQuestions = quiz.questions;
 
         if (!quizQuestions || quizQuestions.length === 0) return null;
 
-        if (currentQuestionIndex >= quizQuestions.length) {
-            // we will suggest the product here
+        if (isQuizFinished) {
             return (
                 <div>
-                    {chatVal.map((chat, idx) => (
+                    {/* Render the input questions and input form */}
+                    {InputQuestions.questions.map((inputQuestion, index) => (
                         <div
-                            key={idx}
+                            key={index}
                             className={`${
-                                chat.isUser ? "justify-end" : "justify-start"
+                                chatVal[chatVal.length - 1]?.isUser
+                                    ? "justify-end"
+                                    : "justify-start"
                             } flex items-end`}
                         >
                             <ChatBubble
-                                message={chat.message}
-                                isUser={chat.isUser}
+                                message={{
+                                    isDelivered: true,
+                                    isSent: false,
+                                    message: inputQuestion.question,
+                                }}
                             />
+                            {chatVal[chatVal.length - 1]?.isUser ? (
+                                <input
+                                    type={inputQuestion.input}
+                                    value={inputQuestion.answer || ""}
+                                    onChange={(e) => {
+                                        const updatedInputQuestions = [
+                                            ...InputQuestions.questions,
+                                        ];
+                                        updatedInputQuestions[index].answer =
+                                            e.target.value;
+                                        setInputVal(e.target.value);
+                                    }}
+                                    className="border border-black rounded-lg px-2 py-1 ml-2"
+                                />
+                            ) : null}
                         </div>
                     ))}
-                    <ChatBubble
-                        message={{
-                            isDelivered: true,
-                            isSent: false,
-                            message:
-                                "According to your accessment i would like to suggest you this product",
-                        }}
-                    />
-                    <div
-                        className={`${
-                            chatVal[chatVal.length - 1]?.isUser
-                                ? "justify-center"
-                                : "justify-start"
-                        } flex`}
-                    >
-                        <ChatBubble
-                            message={{
-                                isDelivered: true,
-                                isSent: false,
-                                message: <ProductCard />,
-                            }}
-                        />
+                    {/* Render the submit button */}
+                    <div className="flex justify-start mt-2">
+                        <button
+                            onClick={handleInputQuestionSubmit}
+                            className="h-8 px-3 bg-white text-black rounded"
+                        >
+                            Generate OTP
+                        </button>
                     </div>
                 </div>
             );
@@ -275,6 +303,12 @@ const ChatRoom = () => {
                     {selectedQuiz &&
                         currentQuestionIndex !== null &&
                         renderQuizQuestions()}
+                    {isQuizFinished && (
+                        <div>
+                            <p>Quiz completed! Here's a suggested product:</p>
+                            <ProductCard />
+                        </div>
+                    )}
                 </div>
             </div>
             <div
@@ -285,14 +319,25 @@ const ChatRoom = () => {
                     <input
                         placeholder="Type a message"
                         value={inputVal}
+                        onChange={(e) => setInputVal(e.target.value)}
                         className="w-full text-base rounded-md px-3 py-2 bg-transparent border border-black text-white outline-none"
                     />
-                    <button
-                        type="submit"
-                        className="h-10 w-full mt-2 rounded font-bold bg-white text-black"
-                    >
-                        Results
-                    </button>
+                    {!isQuizFinished ? (
+                        <button
+                            type="submit"
+                            className="h-10 w-full mt-2 rounded font-bold bg-white text-black"
+                        >
+                            Results
+                        </button>
+                    ) : (
+                        <button
+                            type="submit"
+                            className="h-10 w-full mt-2 rounded font-bold bg-white text-black"
+                            onClick={handleInputQuestionSubmit}
+                        >
+                            Generate OTP
+                        </button>
+                    )}
                 </form>
             </div>
         </div>
