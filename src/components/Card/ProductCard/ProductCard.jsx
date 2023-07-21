@@ -14,10 +14,7 @@ import {
     removeItemFromWishlist,
 } from "../../../store/wishlist/wishlist.action";
 
-import {
-    featuredProductsVariant,
-    productVariant,
-} from "./ProductCard.styles";
+import { featuredProductsVariant, productVariant } from "./ProductCard.styles";
 import { WishListedIcon, WishListedProductCard } from "../../../utils/assets";
 import { addItemToOrderHistory } from "../../../utils/firebase/firebase.utils";
 import { fetchOrderhistoryAsync } from "../../../store/orderhistory/orderhistory.action";
@@ -46,8 +43,8 @@ const ProductCard = React.memo(
         });
 
         const addItemToOrderHistoryHandler = () => {
-            dispatch(fetchOrderhistoryAsync(product))
-        }
+            dispatch(fetchOrderhistoryAsync(product));
+        };
 
         // useEffect(() => {
         //     fe
@@ -195,7 +192,7 @@ const ProductCard = React.memo(
                             width: dimensions.buttonSize.width,
                         }}
                     >
-                        {bool.isPresentInCart ? "Added" : "Add to cart"}
+                        Add to cart
                     </button>
                     <button
                         className={clsx(

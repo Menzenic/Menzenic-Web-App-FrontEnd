@@ -222,16 +222,17 @@ export const addItemToOrderHistory = async (product) => {
 };
 
 export const getOrderhistory = async () => {
-    if(!auth){
+    if(!auth || !auth.currentUser.uid){
+        console.log('auth here:', auth)
         console.log('not a valid user')
         return
     }
 
     try {
-        const orderhistoryRef = doc(db, 'users', auth.currentUser.id)
+        const orderhistoryRef = doc(db, 'users', auth.currentUser.uid)
         const orderhistorySnap = await getDoc(orderhistoryRef)
 
-        const data = orderhistorySnap.data()
+        const data = orderhistorySnap.data() || []
         return data
     } catch (err) {
         console.log('error in getting stuff from orderhistory', err)
