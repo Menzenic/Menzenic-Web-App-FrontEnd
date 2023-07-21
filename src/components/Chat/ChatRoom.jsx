@@ -2,11 +2,11 @@ import React, { useState, useEffect, useRef } from "react";
 import ChatBubble from "./ChatBubble";
 import DefaultMessages from "./DefaultMessages";
 import { ProductCard } from "../Card";
-import { HealthAssesmentRobotIcon } from "../../utils";
+import { HealthAssesmentRobotIcon, UserLoginLogo } from "../../utils";
 import SexualHealthQuiz from "./SexualHealthQuiz";
 import PenileHealthQuiz from "./PenileHealthQuiz";
-import ButtHealthQuiz from "./PenileHealthQuiz";
-import ArmpitHealthQuiz from "./PenileHealthQuiz";
+import ButtHealthQuiz from "./ButtHealthQuiz";
+import ArmpitHealthQuiz from "./ArmpitHealthQuiz";
 
 const ChatRoom = () => {
     const [chatVal, setChatVal] = useState(DefaultMessages.messages);
@@ -73,20 +73,15 @@ const ChatRoom = () => {
     };
 
     const handleStartQuiz = (flow) => {
-        console.log("initiate");
         if (flow === "Sexual Health") {
-            console.log("sex health");
             setSelectedQuiz(SexualHealthQuiz);
         } else if (flow === "Penile Health") {
-            console.log("pen health");
             setSelectedQuiz(PenileHealthQuiz);
         } else if (flow === "Butt Health") {
             setSelectedQuiz(ButtHealthQuiz);
         } else if (flow === "Armpit Health") {
-            console.log("Armpit Health");
             setSelectedQuiz(ArmpitHealthQuiz);
         } else {
-            console.log("flow", flow);
             return undefined;
         }
         setCurrentQuestionIndex(0);
@@ -98,9 +93,9 @@ const ChatRoom = () => {
                 key={idx}
                 style={{ display: "flex", alignItems: "flex-start" }}
             >
-                {!chat.isUser && (
+                {/* {!chat.isUser && (
                     <HealthAssesmentRobotIcon className="h-6 w-6" />
-                )}
+                )} */}
                 <ChatBubble message={chat.message} isUser={chat.isUser} />
             </div>
         ));
@@ -135,7 +130,7 @@ const ChatRoom = () => {
             return (
                 <div>
                     <div style={{ display: "flex", alignItems: "flex-start" }}>
-                        <HealthAssesmentRobotIcon className="h-6 w-6" />
+                        {/* <HealthAssesmentRobotIcon className="h-6 w-6" /> */}
                         <ChatBubble
                             message={{
                                 isDelivered: true,
@@ -153,7 +148,7 @@ const ChatRoom = () => {
         return (
             <div>
                 <div style={{ display: "flex", alignItems: "flex-start" }}>
-                    <HealthAssesmentRobotIcon className="h-6 w-6" />
+                    {/* <HealthAssesmentRobotIcon className="h-6 w-6" /> */}
                     <ChatBubble
                         message={{
                             isDelivered: true,
@@ -181,24 +176,6 @@ const ChatRoom = () => {
                         />
                     </div>
                 ))}
-                <div
-                    className="mt-4 right-0 w-full px-10 h-[40px]"
-                    style={{ position: "", zIndex: 1 }}
-                >
-                    <form>
-                        <input
-                            placeholder="Type a message"
-                            value={inputVal}
-                            className="w-full text-base rounded-md px-3 py-2 bg-transparent border border-black text-white outline-none"
-                        />
-                        <button
-                            type="submit"
-                            className="h-10 w-full mt-2 rounded font-bold bg-white text-black"
-                        >
-                            Done
-                        </button>
-                    </form>
-                </div>
             </div>
         );
     };
@@ -211,12 +188,31 @@ const ChatRoom = () => {
                 ref={chatContainerRef}
             >
                 <div className="max-w-[100%] ml-auto">
+                    <HealthAssesmentRobotIcon className="relative h-8 w-8" />
                     {renderChatMessages()}
                     {!selectedQuiz && renderOptions()}
                     {selectedQuiz &&
                         currentQuestionIndex !== null &&
                         renderQuizQuestions()}
                 </div>
+            </div>
+            <div
+                className="mt-4 right-0 w-full px-10 h-[40px]"
+                style={{ position: "", zIndex: 1 }}
+            >
+                <form>
+                    <input
+                        placeholder="Type a message"
+                        value={inputVal}
+                        className="w-full text-base rounded-md px-3 py-2 bg-transparent border border-black text-white outline-none"
+                    />
+                    <button
+                        type="submit"
+                        className="h-10 w-full mt-2 rounded font-bold bg-white text-black"
+                    >
+                        Done
+                    </button>
+                </form>
             </div>
         </div>
     );
