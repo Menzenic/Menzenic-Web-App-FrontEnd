@@ -13,7 +13,7 @@ const ChatRoom = () => {
     const [inputVal, setInputVal] = useState();
     const [selectedQuiz, setSelectedQuiz] = useState(null);
     const [currentQuestionIndex, setCurrentQuestionIndex] = useState(null);
-    const [isLoading, setIsLoading] = useState(false); // Add the loading state
+    const [isLoading, setIsLoading] = useState(false);
     const chatContainerRef = useRef(null);
 
     const scrollToBottom = () => {
@@ -43,11 +43,9 @@ const ChatRoom = () => {
             isUser: false,
         };
         setChatVal([...chatVal, questionWithAnswer, userResponse]);
-        setIsLoading(true); // Set loading to true when the next question is coming
-
-        // Simulate loading time, you can replace this with actual API call or delay
+        setIsLoading(true);
         setTimeout(() => {
-            setIsLoading(false); // Set loading to false when the next question is ready
+            setIsLoading(false);
             setCurrentQuestionIndex((prevIndex) =>
                 prevIndex === null ? 0 : prevIndex + 1
             );
@@ -96,7 +94,7 @@ const ChatRoom = () => {
             return undefined;
         }
         setCurrentQuestionIndex(0);
-        setChatVal([]); // Remove the welcome message and start button
+        setChatVal([]);
     };
 
     const renderChatMessages = () => {
@@ -105,9 +103,24 @@ const ChatRoom = () => {
                 key={idx}
                 className={`${
                     chat.isUser ? "justify-end" : "justify-start"
-                } flex`}
+                } flex items-end`}
             >
-                <ChatBubble message={chat.message} isUser={chat.isUser} />
+                {chat.isUser ? (
+                    <>
+                        <ChatBubble
+                            message={chat.message}
+                            isUser={chat.isUser}
+                        />
+                        <UserLoginLogo className="h-8 w-8 ml-2" />
+                    </>
+                ) : (
+                    <>
+                        <ChatBubble
+                            message={chat.message}
+                            isUser={chat.isUser}
+                        />
+                    </>
+                )}
             </div>
         ));
     };
@@ -145,7 +158,7 @@ const ChatRoom = () => {
                             key={idx}
                             className={`${
                                 chat.isUser ? "justify-end" : "justify-start"
-                            } flex`}
+                            } flex items-end`}
                         >
                             <ChatBubble
                                 message={chat.message}
@@ -189,7 +202,7 @@ const ChatRoom = () => {
                         chatVal[chatVal.length - 1]?.isUser
                             ? ""
                             : "justify-start"
-                    } flex`}
+                    } flex items-end`}
                 >
                     <ChatBubble
                         message={{
@@ -211,7 +224,7 @@ const ChatRoom = () => {
                                 : "justify-start"
                         } flex ${
                             chatVal[chatVal.length - 1]?.isUser ? "" : "ml-2"
-                        }`}
+                        } items-end`}
                     >
                         <ChatBubble
                             message={{
@@ -222,9 +235,9 @@ const ChatRoom = () => {
                         />
                     </div>
                 ))}
-                {isLoading && ( // Render the loading animation if isLoading is true
+                {isLoading && (
                     <div className="flex justify-start mt-2">
-                        <div className="animate-spin h-5 w-5 border-t-2 border-b-2 border-white rounded-full" />
+                        <div className="animate-spin h-6 w-6 border-t-2 border-b-2 border-white rounded-full" />
                     </div>
                 )}
             </div>
@@ -239,7 +252,7 @@ const ChatRoom = () => {
                 ref={chatContainerRef}
             >
                 <div className="max-w-[100%] ml-auto">
-                    <HealthAssesmentRobotIcon className="relative h-8 w-8" />
+                    <HealthAssesmentRobotIcon className="h-8 w-8 mr-2" />
                     {renderChatMessages()}
                     {!selectedQuiz && renderOptions()}
                     {selectedQuiz &&
