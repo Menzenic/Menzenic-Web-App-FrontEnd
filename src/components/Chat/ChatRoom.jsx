@@ -13,6 +13,7 @@ const ChatRoom = () => {
     const [inputVal, setInputVal] = useState();
     const [selectedQuiz, setSelectedQuiz] = useState(null);
     const [currentQuestionIndex, setCurrentQuestionIndex] = useState(null);
+    const [isLoading, setIsLoading] = useState(false); // Add the loading state
     const chatContainerRef = useRef(null);
 
     const scrollToBottom = () => {
@@ -24,7 +25,7 @@ const ChatRoom = () => {
         scrollToBottom();
     }, [chatVal]);
 
-    const handleOptionClick = (option) => {
+    const handleOptionClick = (option, question) => {
         const userResponse = {
             message: {
                 isDelivered: true,
@@ -33,10 +34,20 @@ const ChatRoom = () => {
             },
             isUser: true,
         };
-        setChatVal([...chatVal, userResponse]);
+        const questionWithAnswer = {
+            message: {
+                isDelivered: true,
+                isSent: false,
+                message: question.question,
+            },
+            isUser: false,
+        };
+        setChatVal([...chatVal, questionWithAnswer, userResponse]);
+        setIsLoading(true); // Set loading to true when the next question is coming
 
-        // Moving to the next question after a short delay
+        // Simulate loading time, you can replace this with actual API call or delay
         setTimeout(() => {
+            setIsLoading(false); // Set loading to false when the next question is ready
             setCurrentQuestionIndex((prevIndex) =>
                 prevIndex === null ? 0 : prevIndex + 1
             );
@@ -85,17 +96,17 @@ const ChatRoom = () => {
             return undefined;
         }
         setCurrentQuestionIndex(0);
+        setChatVal([]); // Remove the welcome message and start button
     };
 
     const renderChatMessages = () => {
         return chatVal.map((chat, idx) => (
             <div
                 key={idx}
-                style={{ display: "flex", alignItems: "flex-start" }}
+                className={`${
+                    chat.isUser ? "justify-end" : "justify-start"
+                } flex`}
             >
-                {/* {!chat.isUser && (
-                    <HealthAssesmentRobotIcon className="h-6 w-6" />
-                )} */}
                 <ChatBubble message={chat.message} isUser={chat.isUser} />
             </div>
         ));
@@ -129,8 +140,34 @@ const ChatRoom = () => {
             // we will suggest the product here
             return (
                 <div>
-                    <div style={{ display: "flex", alignItems: "flex-start" }}>
-                        {/* <HealthAssesmentRobotIcon className="h-6 w-6" /> */}
+                    {chatVal.map((chat, idx) => (
+                        <div
+                            key={idx}
+                            className={`${
+                                chat.isUser ? "justify-end" : "justify-start"
+                            } flex`}
+                        >
+                            <ChatBubble
+                                message={chat.message}
+                                isUser={chat.isUser}
+                            />
+                        </div>
+                    ))}
+                    <ChatBubble
+                        message={{
+                            isDelivered: true,
+                            isSent: false,
+                            message:
+                                "According to your accessment i would like to suggest you this product",
+                        }}
+                    />
+                    <div
+                        className={`${
+                            chatVal[chatVal.length - 1]?.isUser
+                                ? "justify-center"
+                                : "justify-start"
+                        } flex`}
+                    >
                         <ChatBubble
                             message={{
                                 isDelivered: true,
@@ -147,8 +184,13 @@ const ChatRoom = () => {
 
         return (
             <div>
-                <div style={{ display: "flex", alignItems: "flex-start" }}>
-                    {/* <HealthAssesmentRobotIcon className="h-6 w-6" /> */}
+                <div
+                    className={`${
+                        chatVal[chatVal.length - 1]?.isUser
+                            ? ""
+                            : "justify-start"
+                    } flex`}
+                >
                     <ChatBubble
                         message={{
                             isDelivered: true,
@@ -160,12 +202,16 @@ const ChatRoom = () => {
                 {currentQuestion.options.map((option, index) => (
                     <div
                         key={index}
-                        onClick={() => handleOptionClick(option)}
-                        className="cursor-pointer"
-                        style={{
-                            display: "flex",
-                            alignItems: "flex-start",
-                        }}
+                        onClick={() =>
+                            handleOptionClick(option, currentQuestion)
+                        }
+                        className={`${
+                            chatVal[chatVal.length - 1]?.isUser
+                                ? ""
+                                : "justify-start"
+                        } flex ${
+                            chatVal[chatVal.length - 1]?.isUser ? "" : "ml-2"
+                        }`}
                     >
                         <ChatBubble
                             message={{
@@ -176,6 +222,11 @@ const ChatRoom = () => {
                         />
                     </div>
                 ))}
+                {isLoading && ( // Render the loading animation if isLoading is true
+                    <div className="flex justify-start mt-2">
+                        <div className="animate-spin h-5 w-5 border-t-2 border-b-2 border-white rounded-full" />
+                    </div>
+                )}
             </div>
         );
     };
