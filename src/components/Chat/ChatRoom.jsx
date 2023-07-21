@@ -1,246 +1,207 @@
-import React, { useState, useEffect, useRef, useContext } from "react";
-import { HealthAssesmentRobotIcon, UserLoginLogo } from "../../utils";
+import React, { useState, useEffect, useRef } from "react";
 import ChatBubble from "./ChatBubble";
-import chatbotData from "../../data/ChatBotData";
+import DefaultMessages from "./DefaultMessages";
 import { ProductCard } from "../Card";
-import { CategoriesContext } from "../../contexts/categories.context";
+import { HealthAssesmentRobotIcon } from "../../utils";
+import SexualHealthQuiz from "./SexualHealthQuiz";
+import PenileHealthQuiz from "./PenileHealthQuiz";
+import ButtHealthQuiz from "./PenileHealthQuiz";
+import ArmpitHealthQuiz from "./PenileHealthQuiz";
 
-const ChatRoom = ({ loggedInUserName, loggedInUserImage }) => {
-    const [inputVal, setInputVal] = useState("");
-    const [chatVal, setChatVal] = useState([]);
-    const [selectedFlow, setSelectedFlow] = useState(null);
-    const [selectedProductId, setSelectedProductId] = useState(null);
-    const [testDone, setTestDone] = useState(false);
-
+const ChatRoom = () => {
+    const [chatVal, setChatVal] = useState(DefaultMessages.messages);
+    const [inputVal, setInputVal] = useState();
+    const [selectedQuiz, setSelectedQuiz] = useState(null);
+    const [currentQuestionIndex, setCurrentQuestionIndex] = useState(null);
     const chatContainerRef = useRef(null);
-    const userIconRef = useRef(null);
-    const botIconRef = useRef(null);
-    const { categoriesMap } = useContext(CategoriesContext);
-
-    const startConversation = (flow, productId) => {
-        setSelectedFlow(flow);
-        setSelectedProductId(productId);
-        setChatVal([]);
-        setTestDone(false); // Reset testDone
-
-        // Initialize chat with relevant messages based on the selected flow
-        const welcomeMessage = {
-            message: {
-                isDelivered: true,
-                isSent: false,
-                message: `Welcome to the ${flow} Health Assessment, ${
-                    loggedInUserName ? loggedInUserName : ""
-                }! How can I assist you today?`,
-            },
-            isUser: false,
-        };
-
-        setChatVal([welcomeMessage]);
-        scrollToBottom();
-    };
-
-    const formSubmitHandler = (e) => {
-        e.preventDefault();
-
-        if (selectedFlow) {
-            const userMessage = {
-                message: {
-                    isDelivered: true,
-                    isSent: true,
-                    message: inputVal,
-                },
-                isUser: true,
-            };
-
-            if (inputVal.trim().toLowerCase() === "done" && selectedProductId) {
-                const suggestedProduct = getCategoryProduct(selectedProductId);
-
-                if (suggestedProduct) {
-                    // Clear the input field
-                    setInputVal("");
-
-                    // Add user message to the chat
-                    setChatVal((prevChatVal) => [...prevChatVal, userMessage]);
-
-                    // Delayed display of the "Thank you! Test has been done." message
-                    setTimeout(() => {
-                        const doneMessage = {
-                            message: {
-                                isDelivered: true,
-                                isSent: false,
-                                message: "Thank you! Test has been done.",
-                            },
-                            isUser: false,
-                        };
-
-                        setChatVal((prevChatVal) => [
-                            ...prevChatVal,
-                            doneMessage,
-                        ]);
-                        setTestDone(true);
-                        scrollToBottom();
-                    }, 1000);
-
-                    return;
-                }
-            }
-
-            const matchedQuestion = chatbotData.find(
-                (data) => data.question.toLowerCase() === inputVal.toLowerCase()
-            );
-
-            if (matchedQuestion) {
-                const botMessages = matchedQuestion.answer
-                    .split("\n")
-                    .map((line, index) => ({
-                        message: {
-                            isDelivered: true,
-                            isSent: false,
-                            message: line,
-                        },
-                        isUser: false,
-                    }));
-
-                setChatVal((prevChatVal) => [...prevChatVal, userMessage]);
-
-                // Delayed display of bot messages
-                setTimeout(() => {
-                    setChatVal((prevChatVal) => [
-                        ...prevChatVal,
-                        ...botMessages,
-                    ]);
-                    scrollToBottom();
-                }, 1000);
-            } else {
-                const defaultBotMessage = {
-                    message: {
-                        isDelivered: true,
-                        isSent: false,
-                        message: "I'm sorry, I don't have the answer to that.",
-                    },
-                    isUser: false,
-                };
-
-                setChatVal((prevChatVal) => [
-                    ...prevChatVal,
-                    userMessage,
-                    defaultBotMessage,
-                ]);
-
-                scrollToBottom();
-            }
-
-            // Clear the input field
-            setInputVal("");
-        } else {
-            const errorMessage = {
-                message: {
-                    isDelivered: true,
-                    isSent: false,
-                    message:
-                        "Please select your top concern first for the assessment.",
-                },
-                isUser: false,
-            };
-
-            setChatVal((prevChatVal) => [...prevChatVal, errorMessage]);
-            scrollToBottom();
-        }
-    };
 
     const scrollToBottom = () => {
         const chatContainer = chatContainerRef.current;
         chatContainer.scrollTop = chatContainer.scrollHeight;
     };
 
-    const getCategoryProduct = (productId) => {
-        return categoriesMap.products.find((item) => item.id === productId);
-    };
-
-    useEffect(() => {
-        // default messages when someone enters the chatroom
-        const defaultMessages = [
-            {
-                message: {
-                    isDelivered: true,
-                    isSent: false,
-                    message: `Hi${
-                        loggedInUserName ? ` ${loggedInUserName}` : ""
-                    }!`,
-                },
-                isUser: false,
-            },
-            {
-                message: {
-                    isDelivered: true,
-                    isSent: false,
-                    message: <ProductCard />,
-                },
-                isUser: false,
-            },
-            {
-                message: {
-                    isDelivered: true,
-                    isSent: false,
-                    message:
-                        "I am HealthBuddy, your intimate personal health coach.",
-                },
-                isUser: false,
-            },
-            {
-                message: {
-                    isDelivered: true,
-                    isSent: false,
-                    message:
-                        "How can I help you today? What are your top concerns?",
-                },
-                isUser: false,
-            },
-            {
-                message: {
-                    isDelivered: true,
-                    isSent: false,
-                    message: "1. Sexual Health",
-                },
-                isUser: false,
-                onClick: () => startConversation("Sexual Health", "productId1"),
-            },
-            {
-                message: {
-                    isDelivered: true,
-                    isSent: false,
-                    message: "2. Beard",
-                },
-                isUser: false,
-                onClick: () => startConversation("Beard", "productId2"),
-            },
-            {
-                message: {
-                    isDelivered: true,
-                    isSent: false,
-                    message: "3. Skin",
-                },
-                isUser: false,
-                onClick: () => startConversation("Skin", "productId3"),
-            },
-            {
-                message: {
-                    isDelivered: true,
-                    isSent: false,
-                    message: "4. Hair Scalp",
-                },
-                isUser: false,
-                onClick: () => startConversation("Hair Scalp", "productId4"),
-            },
-        ];
-
-        setChatVal(defaultMessages);
-        scrollToBottom();
-    }, []);
-
     useEffect(() => {
         scrollToBottom();
     }, [chatVal]);
+
+    const handleOptionClick = (option) => {
+        const userResponse = {
+            message: {
+                isDelivered: true,
+                isSent: false,
+                message: option,
+            },
+            isUser: true,
+        };
+        setChatVal([...chatVal, userResponse]);
+
+        // Moving to the next question after a short delay
+        setTimeout(() => {
+            setCurrentQuestionIndex((prevIndex) =>
+                prevIndex === null ? 0 : prevIndex + 1
+            );
+        }, 1000);
+    };
+
+    const startConversation = (flow) => {
+        console.log("flow", flow);
+        const welcomeMessage = {
+            message: {
+                isDelivered: true,
+                isSent: false,
+                message: `Welcome to the ${flow} assessment!`,
+            },
+        };
+        // Button to start the quiz
+        const startButton = {
+            message: {
+                isDelivered: true,
+                isSent: false,
+                message: (
+                    <button
+                        onClick={() => handleStartQuiz(flow)}
+                        className="h-10 w-full rounded font-bold bg-white text-black"
+                    >
+                        Click here to start
+                    </button>
+                ),
+            },
+        };
+
+        setChatVal([welcomeMessage, startButton]);
+        setSelectedQuiz(flow);
+    };
+
+    const handleStartQuiz = (flow) => {
+        console.log("initiate");
+        if (flow === "Sexual Health") {
+            console.log("sex health");
+            setSelectedQuiz(SexualHealthQuiz);
+        } else if (flow === "Penile Health") {
+            console.log("pen health");
+            setSelectedQuiz(PenileHealthQuiz);
+        } else if (flow === "Butt Health") {
+            setSelectedQuiz(ButtHealthQuiz);
+        } else if (flow === "Armpit Health") {
+            console.log("Armpit Health");
+            setSelectedQuiz(ArmpitHealthQuiz);
+        } else {
+            console.log("flow", flow);
+            return undefined;
+        }
+        setCurrentQuestionIndex(0);
+    };
+
+    const renderChatMessages = () => {
+        return chatVal.map((chat, idx) => (
+            <div
+                key={idx}
+                style={{ display: "flex", alignItems: "flex-start" }}
+            >
+                {!chat.isUser && (
+                    <HealthAssesmentRobotIcon className="h-6 w-6" />
+                )}
+                <ChatBubble message={chat.message} isUser={chat.isUser} />
+            </div>
+        ));
+    };
+
+    const renderOptions = () => {
+        return DefaultMessages.options.map((option, idx) => (
+            <div
+                key={idx}
+                onClick={() => startConversation(option.onClick.flow)}
+                className="cursor-pointer"
+                style={{
+                    display: "flex",
+                    alignItems: "flex-start",
+                }}
+            >
+                <ChatBubble message={option.message} isUser={option.isUser} />
+            </div>
+        ));
+    };
+
+    const renderQuizQuestions = () => {
+        if (!selectedQuiz) return null;
+
+        const quiz = selectedQuiz;
+        const quizQuestions = quiz.questions;
+
+        if (!quizQuestions || quizQuestions.length === 0) return null;
+
+        if (currentQuestionIndex >= quizQuestions.length) {
+            // we will suggest the product here
+            return (
+                <div>
+                    <div style={{ display: "flex", alignItems: "flex-start" }}>
+                        <HealthAssesmentRobotIcon className="h-6 w-6" />
+                        <ChatBubble
+                            message={{
+                                isDelivered: true,
+                                isSent: false,
+                                message: <ProductCard />,
+                            }}
+                        />
+                    </div>
+                </div>
+            );
+        }
+
+        const currentQuestion = quizQuestions[currentQuestionIndex];
+
+        return (
+            <div>
+                <div style={{ display: "flex", alignItems: "flex-start" }}>
+                    <HealthAssesmentRobotIcon className="h-6 w-6" />
+                    <ChatBubble
+                        message={{
+                            isDelivered: true,
+                            isSent: false,
+                            message: currentQuestion.question,
+                        }}
+                    />
+                </div>
+                {currentQuestion.options.map((option, index) => (
+                    <div
+                        key={index}
+                        onClick={() => handleOptionClick(option)}
+                        className="cursor-pointer"
+                        style={{
+                            display: "flex",
+                            alignItems: "flex-start",
+                        }}
+                    >
+                        <ChatBubble
+                            message={{
+                                isDelivered: true,
+                                isSent: false,
+                                message: <button>{option}</button>,
+                            }}
+                        />
+                    </div>
+                ))}
+                <div
+                    className="mt-4 right-0 w-full px-10 h-[40px]"
+                    style={{ position: "", zIndex: 1 }}
+                >
+                    <form>
+                        <input
+                            placeholder="Type a message"
+                            value={inputVal}
+                            className="w-full text-base rounded-md px-3 py-2 bg-transparent border border-black text-white outline-none"
+                        />
+                        <button
+                            type="submit"
+                            className="h-10 w-full mt-2 rounded font-bold bg-white text-black"
+                        >
+                            Done
+                        </button>
+                    </form>
+                </div>
+            </div>
+        );
+    };
 
     return (
         <div className="relative mx-[13.063rem] max-h-[50%]">
@@ -250,77 +211,12 @@ const ChatRoom = ({ loggedInUserName, loggedInUserImage }) => {
                 ref={chatContainerRef}
             >
                 <div className="max-w-[100%] ml-auto">
-                    {/* Render the user's message as a chat bubble */}
-                    {inputVal && (
-                        <div className="flex items-start justify-end m-2">
-                            <div>
-                                <ChatBubble message={inputVal} />
-                            </div>
-                        </div>
-                    )}
-                    <div
-                        className="absolute top-0 right-0 mt-2 mr-2"
-                        style={{ position: "absolute", zIndex: 1 }}
-                        ref={userIconRef}
-                    >
-                        <UserLoginLogo
-                            className="h-[2rem] w-[2rem]"
-                            src={loggedInUserImage}
-                        />
-                    </div>
-                    {/* Render the bot responses as chat bubbles */}
-                    {chatVal.map((chat, idx) => (
-                        <div
-                            key={idx}
-                            onClick={chat.onClick}
-                            className={chat.onClick ? "cursor-pointer" : ""}
-                        >
-                            <ChatBubble
-                                message={chat.message}
-                                isUser={chat.isUser}
-                            />
-                        </div>
-                    ))}
-                    {/* Conditionally render the "Hello test has been done" message */}
-                    {testDone && (
-                        <div className="flex items-start justify-start m-2">
-                            <div>
-                                <ChatBubble
-                                    message="Hello test has been done"
-                                    isUser={false}
-                                />
-                            </div>
-                        </div>
-                    )}
+                    {renderChatMessages()}
+                    {!selectedQuiz && renderOptions()}
+                    {selectedQuiz &&
+                        currentQuestionIndex !== null &&
+                        renderQuizQuestions()}
                 </div>
-                {chatVal.length > 0 && (
-                    <div
-                        className="absolute top-0 left-0 mt-2 ml-2"
-                        style={{ position: "absolute", zIndex: 1 }}
-                        ref={botIconRef}
-                    >
-                        <HealthAssesmentRobotIcon className="h-[2rem] w-[2rem]" />
-                    </div>
-                )}
-            </div>
-            <div
-                className="absolute right-0 w-full px-10 h-[40px]"
-                style={{ position: "absolute", zIndex: 1 }}
-            >
-                <form onSubmit={formSubmitHandler}>
-                    <input
-                        placeholder="Type a message"
-                        value={inputVal}
-                        onChange={(e) => setInputVal(e.target.value)}
-                        className="w-full text-base rounded-md px-3 py-2 bg-transparent border border-black text-white outline-none"
-                    />
-                    <button
-                        type="submit"
-                        className="h-10 w-full mt-2 rounded font-bold bg-white text-black"
-                    >
-                        Done
-                    </button>
-                </form>
             </div>
         </div>
     );
