@@ -66,7 +66,14 @@ const ChatRoom = () => {
             message: {
                 isDelivered: true,
                 isSent: false,
-                message: `Welcome to the ${flow} assessment!`,
+                message: `We got you with our doctor recommended questionnaire.`,
+            },
+        };
+        const PrivacyMessage = {
+            message: {
+                isDelivered: true,
+                isSent: false,
+                message: `Will just take few minutes of your time,`,
             },
         };
         // Button to start the quiz
@@ -85,11 +92,18 @@ const ChatRoom = () => {
             },
         };
 
-        setChatVal([welcomeMessage, startButton]);
+        setChatVal([welcomeMessage, PrivacyMessage, startButton]);
         setSelectedQuiz(flow);
     };
 
     const handleStartQuiz = (flow) => {
+        const startMessage = {
+            isDelivered: true,
+            isSent: false,
+            message: `Welcome to the ${flow} assessment!`,
+        };
+
+        setChatVal((prevChat) => [...prevChat, startMessage]);
         if (flow === "Sexual Health") {
             setSelectedQuiz(SexualHealthQuiz);
         } else if (flow === "Penile Health") {
@@ -99,10 +113,17 @@ const ChatRoom = () => {
         } else if (flow === "Armpit Health") {
             setSelectedQuiz(ArmpitHealthQuiz);
         } else {
-            return undefined;
+            const errorMessage = {
+                isDelivered: true,
+                isSent: false,
+                message: `Sorry, there is no quiz available for the selected flow: ${flow}`,
+            };
+            setChatVal((prevChat) => [...prevChat, errorMessage]);
+            return;
         }
-        setCurrentQuestionIndex(0);
+
         setChatVal([]);
+        setCurrentQuestionIndex(0);
         setIsQuizFinished(false);
     };
 

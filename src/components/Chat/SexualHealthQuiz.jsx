@@ -38,10 +38,10 @@ const SexualHealthQuiz = {
                 "Usually find it difficult to stay hard enough",
             ],
         },
-        {
-            question:
-                "Experiencing occasional erection issues is typically not a cause for concern, so there's no need to worry about it.",
-        },
+        // {
+        //     question:
+        //         "Experiencing occasional erection issues is typically not a cause for concern, so there's no need to worry about it.",
+        // },
         {
             question: "How hard is your erection during masturbation?",
             options: ["Very Hard", "Moderate", "Soft", "Don't masturbate"],
@@ -54,10 +54,10 @@ const SexualHealthQuiz = {
                 "I ejaculate before penetration",
             ],
         },
-        {
-            question:
-                "We will move on too a bit about your lifestyle to understand you & your needs better",
-        },
+        // {
+        //     question:
+        //         "We will move on too a bit about your lifestyle to understand you & your needs better",
+        // },
         {
             question: "How active are you?",
             options: [

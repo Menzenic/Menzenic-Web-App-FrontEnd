@@ -1,7 +1,6 @@
 .pic {
-    /* margin: 10px; demo spacing */
     display: inline-block;
-    vertical-align: middle;
+    vertical-align: top;
     width: 0;
     height: 0;
 }
@@ -12,7 +11,7 @@
     border-right: 5px solid #ffff;
 }
 .arrow-right-pic {
-    border-top: 10px solid #fff;
-    border-left: 10px solid transparent;
-    border-bottom: 10px solid transparent;
+    border-top: 5px solid transparent;
+    border-left: 5px solid #fff;
+    border-bottom: 5px solid transparent;
 }
