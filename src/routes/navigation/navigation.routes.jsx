@@ -33,9 +33,7 @@ const Navigation = () => {
         };
 
         handleResize();
-
         window.addEventListener("resize", handleResize);
-
         return () => {
             window.removeEventListener("resize", handleResize);
         };
@@ -45,7 +43,7 @@ const Navigation = () => {
         <>
             <div className="text-white flex justify-between items-center px-5 mt-7 absolute top-0 w-full z-[999] bg-transparent">
                 <button
-                    className="mr-0 sm:mr-4 text-2xl focus:outline-none md:hidden"
+                    className="mr-0 sm:mr-4 text-2xl focus:outline-none xl:hidden"
                     onClick={toggleMobileMenu}
                 >
                     {isMobileMenuOpen ? (
@@ -62,7 +60,7 @@ const Navigation = () => {
                     />
                 </Link>
 
-                <div className="hidden md:flex w-[32.813rem] justify-between text-xl font-medium -mt-2">
+                <div className="hidden xl:flex w-[32.813rem] justify-between text-xl font-medium -mt-2">
                     <Link
                         to="/"
                         className={clsx(
@@ -129,7 +127,7 @@ const Navigation = () => {
                     <Link to="/shop" className="relative">
                         <ShoppingCart />
                     </Link>
-                    <Link to="/profile/wishlist" className="ml-2 sm:ml-4">
+                    <Link to="/wishlist" className="ml-2 sm:ml-4">
                         <WishListIcon className="h-7 w-7" />
                     </Link>
                 </div>

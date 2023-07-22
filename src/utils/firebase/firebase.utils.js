@@ -182,46 +182,46 @@ export const onAuthStateChangedListener = (callback) =>
 /**
  * Order history handler
  */
-export const addItemToOrderHistory = async (product) => {
+export const addToOrders = async (product) => {
     if (!auth) return;
     try {
-        const orderHistoryRef = doc(db, "users", auth.currentUser.uid);
-        const orderHistorySnap = await getDoc(orderHistoryRef);
+        const ordersRef = doc(db, "users", auth.currentUser.uid);
+        const ordersSnap = await getDoc(ordersRef);
 
-        const data = orderHistorySnap.data();
+        const data = ordersSnap.data();
 
         console.log('order history data:::: ', data)
 
         if (data) {
-            const currOrderHistory = data.orderHistory || [];
+            const currOrders = data.orders || [];
 
-            console.log('before currOrderHistory:::: ', currOrderHistory)
+            console.log('before currOrders:::: ', currOrders)
 
             console.log('product:', product)
 
-            currOrderHistory.push({
+            currOrders.push({
                 id: product.id,
             });
 
-            console.log('after currOrderHistory:::: ', currOrderHistory)
+            console.log('after currOrders:::: ', currOrders)
 
             try {
-                await setDoc(orderHistoryRef, {
+                await setDoc(ordersRef, {
                     ...data,
-                    orderHistory: currOrderHistory,
+                    orders: currOrders,
                 });
             } catch (err) {
-                console.log("err while order history", err);
+                console.log("err while adding to orders", err);
             }
 
-            return (await getDoc(orderHistoryRef)).data().orderHistory
+            // return (await getDoc(orderHistoryRef)).data().orderHistory
         }
     } catch (err) {
         console.log("order hist error before only");
     }
 };
 
-export const getOrderhistory = async () => {
+export const getOrders = async () => {
     if(!auth || !auth.currentUser.uid){
         console.log('auth here:', auth)
         console.log('not a valid user')
@@ -229,13 +229,13 @@ export const getOrderhistory = async () => {
     }
 
     try {
-        const orderhistoryRef = doc(db, 'users', auth.currentUser.uid)
-        const orderhistorySnap = await getDoc(orderhistoryRef)
+        const ordersRef = doc(db, 'users', auth.currentUser.uid)
+        const ordersSnap = await getDoc(ordersRef)
 
-        const data = orderhistorySnap.data() || []
+        const data = ordersSnap.data() || []
         return data
     } catch (err) {
-        console.log('error in getting stuff from orderhistory', err)
+        console.log('error while fetching from orders', err)
     }
 }
 

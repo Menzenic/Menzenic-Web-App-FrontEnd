@@ -7,13 +7,13 @@ import { useDispatch, useSelector } from "react-redux";
 import { selectCurrentUser } from "../../store/user/user.selector";
 
 import profilePic from "../../images/Pngs/profile-pic.png";
-import { fetchOrderhistoryAsync } from "../../store/orderhistory/orderhistory.action";
+import { fetchOrdersAsync } from "../../store/orders/orders.action";
 
 const Profile = () => {
     const dispatch = useDispatch()
 
     useEffect(() => {
-        dispatch(fetchOrderhistoryAsync())
+        dispatch(fetchOrdersAsync())
     }, [])
 
     const currentUser = useSelector(selectCurrentUser);

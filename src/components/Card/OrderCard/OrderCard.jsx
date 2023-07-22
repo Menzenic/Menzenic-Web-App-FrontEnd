@@ -1,7 +1,7 @@
 import { RatingIcon, RatingSliderArrow } from "../../../utils/assets";
 import { TemplateProductMockUp } from "../../../utils/assets";
 
-const OrderHistoryCard = (props) => {
+const OrderCard = (props) => {
     return (
         <div
             className="w-[19.5rem] h-[6.563rem] bg-white flex items-center rounded-[0.1875rem]"
@@ -41,4 +41,4 @@ const OrderHistoryCard = (props) => {
     );
 };
 
-export default OrderHistoryCard;
+export default OrderCard;

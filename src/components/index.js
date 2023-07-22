@@ -8,7 +8,7 @@ import ProductQuality from "./ProductQuality/ProductQuality";
 import Testimonials from "./Testimonials/Testimonials";
 import GlobalDialog from "./GlobalDialog/GlobalDialog";
 import PersonalInfo from "./PersonalInfo/PersonalInfo";
-import OrderHistory from "./OrderHistory/OrderHistory";
+import Orders from "./Orders/Orders";
 import WishList from "./WishList/WishList";
 import HomeAboutUs from "./HomeAboutUs/HomeAboutUs";
 import Button from "./Buttons/Button";
@@ -34,7 +34,7 @@ export {
     Testimonials,
     GlobalDialog,
     PersonalInfo,
-    OrderHistory,
+    Orders,
     WishList,
     HomeAboutUs,
     WhyIntimateHygiene,

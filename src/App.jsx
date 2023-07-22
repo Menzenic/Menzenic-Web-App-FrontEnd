@@ -12,7 +12,7 @@ import {
     HealthAssessment,
     ProductDetail,
 } from "./routes";
-import { Blogs, OrderHistory, PersonalInfo, WishList } from "./components";
+import { Blogs, Orders, PersonalInfo, WishList } from "./components";
 import { setCurrentUser } from "./store/user/user.action";
 import { setCategories } from "./store/categories/categories.action";
 
@@ -54,7 +54,7 @@ const App = () => {
                 <Route path="/products" element={<Products />} />
                 <Route path="/profile" element={<Profile />}>
                     <Route index element={<PersonalInfo />} />
-                    <Route path="order-history" element={<OrderHistory />} />
+                    <Route path="orders" element={<Orders />} />
                     <Route path="wishlist" element={<WishList />} />
                 </Route>
                 <Route

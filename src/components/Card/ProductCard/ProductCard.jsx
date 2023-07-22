@@ -16,8 +16,8 @@ import {
 
 import { featuredProductsVariant, productVariant } from "./ProductCard.styles";
 import { WishListedIcon, WishListedProductCard } from "../../../utils/assets";
-import { addItemToOrderHistory } from "../../../utils/firebase/firebase.utils";
-import { fetchOrderhistoryAsync } from "../../../store/orderhistory/orderhistory.action";
+import { addToOrders } from "../../../utils/firebase/firebase.utils";
+import { fetchOrdersAsync } from "../../../store/orders/orders.action";
 
 const ProductCard = React.memo(
     ({
@@ -34,7 +34,6 @@ const ProductCard = React.memo(
         const wishlistItems = useSelector(selectWishlistItems);
         const cartItems = useSelector(selectCartItems);
 
-        // const [orderHistory, setOrderHistory] = useState([])
         const [dimensions, setDimensions] = useState(productVariant);
         const [bool, setBool] = useState({
             isPresentInCart: false,
@@ -42,8 +41,8 @@ const ProductCard = React.memo(
             hoverWishList: false,
         });
 
-        const addItemToOrderHistoryHandler = () => {
-            dispatch(fetchOrderhistoryAsync(product));
+        const addItemToOrdersHandler = () => {
+            dispatch(fetchOrdersAsync(product));
         };
 
         // useEffect(() => {
@@ -204,7 +203,7 @@ const ProductCard = React.memo(
                             width: dimensions.buttonSize.width,
                         }}
                         // onClick={() => addItemToCartHandler(product)}
-                        onClick={() => addItemToOrderHistoryHandler()}
+                        onClick={() => addItemToOrdersHandler()}
                     >
                         Buy Now
                     </button>
