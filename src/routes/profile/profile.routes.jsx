@@ -10,19 +10,19 @@ import profilePic from "../../images/Pngs/profile-pic.png";
 import { fetchOrdersAsync } from "../../store/orders/orders.action";
 
 const Profile = () => {
-    const dispatch = useDispatch()
+    const dispatch = useDispatch();
 
     useEffect(() => {
-        dispatch(fetchOrdersAsync())
-    }, [])
+        dispatch(fetchOrdersAsync());
+    }, []);
 
     const currentUser = useSelector(selectCurrentUser);
     const location = useLocation();
 
     return (
         <div className="flex flex-col min-h-[66rem]">
-            <div className="newpage-container flex items-center min-h-[47.87rem] w-full">
-                <div className="w-1/3 h-full">
+            <div className="newpage-container pt-14 sm:pt-0 flex flex-col md:flex-row items-center min-h-[47.87rem] w-full">
+                <div className="md:w-1/3 h-full">
                     <div className="flex flex-col text-white justify-center items-center">
                         <div className="flex flex-col items-center overflow-hidden">
                             <img
@@ -51,7 +51,7 @@ const Profile = () => {
                                     className={clsx(
                                         "cursor-pointer hover:font-extrabold",
                                         location.pathname === "/profile" &&
-                                            "font-extrabold",
+                                            "font-extrabold"
                                     )}
                                 >
                                     <Link to="/profile">
@@ -64,7 +64,7 @@ const Profile = () => {
                                         className={clsx(
                                             location.pathname ===
                                                 "/profile/order-history" &&
-                                                "font-extrabold",
+                                                "font-extrabold"
                                         )}
                                     >
                                         Order History
@@ -72,7 +72,7 @@ const Profile = () => {
                                 </li>
                                 <li
                                     className={clsx(
-                                        "cursor-pointer hover:font-extrabold",
+                                        "cursor-pointer hover:font-extrabold"
                                     )}
                                 >
                                     <Link
@@ -80,7 +80,7 @@ const Profile = () => {
                                         className={clsx(
                                             location.pathname ===
                                                 "/profile/wishlist" &&
-                                                "font-extrabold",
+                                                "font-extrabold"
                                         )}
                                     >
                                         Wishlist
@@ -90,9 +90,9 @@ const Profile = () => {
                         </div>
                     </div>
                 </div>
-                <div className="w-px h-[30.25rem] bg-white my-auto"></div>
+                <div className="w-[30.25rem] h-px sm:w-px sm:h-[30.25rem] bg-white my-auto"></div>
 
-                <div className="w-3/4 pl-2 h-[30rem] flex items-center justify-center">
+                <div className="md:w-3/4 pl-2 h-[30rem] flex items-center justify-center">
                     <div className="max-h-[31rem]">
                         <Outlet />
                     </div>

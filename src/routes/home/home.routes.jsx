@@ -27,7 +27,7 @@ const Home = () => {
             <Testimonials />
             <Blogs />
             <MenzenicSignature />
-            <Footer />
+            {/* <Footer /> */}
         </>
     );
 };

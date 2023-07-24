@@ -50,7 +50,7 @@ const AboutUs = () => {
                                 basic need i.e. their intimate well-being.
                             </p>
                         </div>
-                        <div className="icon flex flex-col items-start ml-0 mt-8 sm:mt-0 sm:ml-20">
+                        <div className="icon flex flex-col items-start ml-0 mt-8 sm:mt-0 md:ml-20">
                             <div className="flex items-center mb-2">
                                 <MissionIcon className="text-3xl mr-2" />
                                 <span className="icon-text text-2xl font-semibold ml-2">

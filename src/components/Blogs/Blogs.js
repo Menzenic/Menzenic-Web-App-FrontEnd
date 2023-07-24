@@ -27,11 +27,11 @@ const Blogs = () => {
                 >
                     Blogs
                 </h2>
-                <div className="blog-container py-2 mt-14 w-full mx-auto flex justify-between px-20">
+                <div className="blog-container py-2 mt-14 w-full mx-auto grid  grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-4 px-4 md:px-20">
                     {blogData.map((blog) => (
                         <div
                             className={clsx(
-                                "blog-data flex flex-col text-center rounded-md w-80 mx-4"
+                                "blog-data flex flex-col text-center rounded-md w-full mx-4"
                             )}
                             key={blog.id}
                         >
@@ -44,12 +44,12 @@ const Blogs = () => {
                                     src={blog.image}
                                     alt="Blog"
                                     className={clsx(
-                                        "blog-image w-72 h-64 object-cover rounded-md shadow transition-all duration-300 transform hover:scale-105 cursor-pointer"
+                                        "blog-image w-11/12 h-52 md:w-full md:h-64 object-cover rounded-md shadow transition-all duration-300 transform hover:scale-105 cursor-pointer"
                                     )}
                                 />
                             </a>
 
-                            <h2 className="blog-heading text-left label-arial font-bold text-white text-lg mt-4">
+                            <h2 className="blog-heading text-left w-3/4 sm:w-full label-arial font-bold text-white text-base sm:text-lg mt-4">
                                 {blog.heading}
                             </h2>
                             <a

@@ -33,7 +33,6 @@ const FeaturedProducts = () => {
     const [hampers, setHampers] = useState(hampersFromStore);
 
     const [slidesVisible, setSlidesVisible] = useState(4);
-    const [isSmall, setIsSmall] = useState(false);
 
     useEffect(() => {
         setFeaturedProducts(featuredProductsFromStore);
@@ -42,22 +41,22 @@ const FeaturedProducts = () => {
 
     useEffect(() => {
         const handleResize = () => {
-            if (window.innerHeight < 740) {
-                setIsSmall(true);
+            if (window.innerWidth < 640) {
+                setSlidesVisible(1);
+            } else if (window.innerWidth >= 640 && window.innerWidth < 1024) {
+                setSlidesVisible(2);
+            } else if (window.innerWidth >= 1024 && window.innerWidth < 1280) {
+                setSlidesVisible(3);
             } else {
-                setIsSmall(false);
+                setSlidesVisible(4);
             }
         };
+
         window.addEventListener("resize", handleResize);
         handleResize();
 
-        if (isSmall) {
-            setSlidesVisible(3);
-        } else {
-            setSlidesVisible(4);
-        }
         return () => window.removeEventListener("resize", handleResize);
-    }, [isSmall]);
+    }, []);
 
     return (
         <section className="min-h-[500px]">
@@ -70,22 +69,18 @@ const FeaturedProducts = () => {
                     naturalSlideHeight={50}
                     naturalSlideWidth={50}
                     visibleSlides={slidesVisible}
-                    totalSlides={4}
+                    totalSlides={featuredProducts?.length}
                     infinite
                 >
-                    <Slider className="min-h-[450px] w-full pr-10 pl-20 pt-10">
-                        {featuredProducts?.length > 0 &&
-                            Object.keys(featuredProducts).map((prod, idx) => {
-                                return (
-                                    <Slide index={idx}>
-                                        <ProductCard
-                                            key={idx}
-                                            product={featuredProducts[prod]}
-                                            variant={"featured"}
-                                        />
-                                    </Slide>
-                                );
-                            })}
+                    <Slider className="min-h-[450px] w-full pr-0 sm:pr-10 pl-20 pt-10">
+                        {featuredProducts?.map((prod, idx) => (
+                            <Slide index={idx} key={idx}>
+                                <ProductCard
+                                    product={prod}
+                                    variant={"featured"}
+                                />
+                            </Slide>
+                        ))}
                     </Slider>
                     <ButtonBack className="absolute top-[9rem] left-5">
                         <LeftSliderArrow />

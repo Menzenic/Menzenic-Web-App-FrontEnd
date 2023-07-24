@@ -12,7 +12,7 @@ const MenzenicSignature = () => {
 
     return (
         <div
-            className="px-8 text-center min-h-[365px]"
+            className="p-8 text-center min-h-[365px]"
             style={{
                 backgroundImage: `url(${VectorImage})`,
                 backgroundRepeat: "no-repeat",
@@ -23,7 +23,7 @@ const MenzenicSignature = () => {
             <div className="w-full flex justify-center items-center">
                 <h1 className="signature-logo mt-12 text-center">Menzenic</h1>
             </div>
-            <p className="text-xl font-bold mt-12 px-20">
+            <p className="text-xl font-bold mt-12 px-1 sm:px-20">
                 Menzenic is more than a collection of products, here we believe
                 it is a celebration to be a modern man in today's world. We are
                 here to inspire and empower you on your journey towards becoming
