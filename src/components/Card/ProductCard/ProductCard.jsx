@@ -17,7 +17,8 @@ import {
 import { featuredProductsVariant, productVariant } from "./ProductCard.styles";
 import { WishListedIcon, WishListedProductCard } from "../../../utils/assets";
 import { addToOrders } from "../../../utils/firebase/firebase.utils";
-import { fetchOrdersAsync } from "../../../store/orders/orders.action";
+import { addItemToOrders, fetchOrdersAsync } from "../../../store/orders/orders.action";
+import { selectOrders } from "../../../store/orders/orders.selector";
 
 const ProductCard = React.memo(
     ({
@@ -31,6 +32,7 @@ const ProductCard = React.memo(
     }) => {
         const dispatch = useDispatch();
 
+        const orders = useSelector(selectOrders)
         const wishlistItems = useSelector(selectWishlistItems);
         const cartItems = useSelector(selectCartItems);
 
@@ -42,7 +44,8 @@ const ProductCard = React.memo(
         });
 
         const addItemToOrdersHandler = () => {
-            dispatch(fetchOrdersAsync(product));
+            dispatch(addItemToOrders(orders, product))
+            // dispatch(fetchOrdersAsync(product));
         };
 
         // useEffect(() => {

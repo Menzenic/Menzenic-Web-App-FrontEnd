@@ -95,12 +95,12 @@ code {
 } */
 .section-background-image {
     background: linear-gradient(
-        180deg,
-        rgba(0, 0, 0, 0.5) 0%,
-        rgba(53, 53, 53, 0) 100%,
-        rgba(28, 28, 28, 0.24) 100%
-    ),
-    url('./utils/assets/png/product_quality_bg.png');
+            180deg,
+            rgba(0, 0, 0, 0.5) 0%,
+            rgba(53, 53, 53, 0) 100%,
+            rgba(28, 28, 28, 0.24) 100%
+        ),
+        url("./utils/assets/png/product_quality_bg.png");
     background-size: cover;
 }
 

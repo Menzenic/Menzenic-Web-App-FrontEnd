@@ -4,12 +4,9 @@ import { useDispatch, useSelector } from "react-redux";
 import { selectOrders } from "../../store/orders/orders.selector";
 
 import OrderCard from '../Card/OrderCard/OrderCard'
-// import { fetchOrderhistoryAsync } from "../../store/orders/orders.action";
 
 const Orders = () => {
-    // const [orderhistoryMap, setOrderhistoryMap] = useState({})
     const ordersMap = useSelector(selectOrders)
-    console.log('orderhistoryMap:', ordersMap)
     
     return (
         <div className="h-full w-max ml-[1.56rem]">

@@ -60,11 +60,11 @@ const Profile = () => {
                                 </li>
                                 <li className="cursor-pointer my-11 hover:font-extrabold">
                                     <Link
-                                        to="order-history"
+                                        to="orders"
                                         className={clsx(
                                             location.pathname ===
-                                                "/profile/order-history" &&
-                                                "font-extrabold"
+                                                "/profile/orders" &&
+                                                "font-extrabold",
                                         )}
                                     >
                                         Order History

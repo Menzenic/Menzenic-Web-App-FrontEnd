@@ -1,8 +1,11 @@
-import { createSelector } from "reselect"
+import { createSelector } from "reselect";
 
-const selectOrdersReducer = (state) => state.orders
+const selectOrdersReducer = (state) => state.orders;
 
 export const selectOrders = createSelector(
     [selectOrdersReducer],
-    (ordersSlice) => ordersSlice.orders
-)
+    (ordersSlice) => {
+        console.log("ordersSlice:", ordersSlice);
+        return ordersSlice.orders;
+    },
+);
