@@ -82,17 +82,17 @@ const Navigation = () => {
                 <>
                     <div
                         className={clsx(
-                            "text-white flex justify-between items-center px-5 top-0 w-full z-[999]",
+                            "text-white flex justify-between items-center px-5 top-0 w-full z-[999] lg:absolute lg:mt-7 lg:bg-transparent lg:py-0",
                             isMobileMenuOpen
                                 ? "fixed bg-black py-7"
                                 : "absolute mt-7",
                         )}
                     >
                         <Link to="/">
-                            <MenzenicFullLogo className="h-9 md:h-20 md:w-1/2" />
+                            <MenzenicFullLogo className="h-9 xl:h-7" />
                         </Link>
 
-                        <div className="hidden lg:flex lg:text-base xl:w-[32.813rem] justify-between xl:text-xl font-medium -mt-2">
+                        <div className="hidden lg:flex lg:text-base lg:w-[25.813rem] xl:h-[1.625rem] xl:w-[31.8125rem] items-center justify-between xl:text-xl font-medium -mt-2">
                             <Link
                                 to="/"
                                 className={clsx(
@@ -146,43 +146,53 @@ const Navigation = () => {
                         </div>
 
                         <div className="flex items-center">
-                            {isSmScreen ? (
+                            <div className="flex lg:hidden">
                                 <SearchIcon
                                     className="h-7 w-7"
                                     onClick={() => setBool(true)}
                                 />
-                            ) : (
-                                <SearchBar icon={<FiSearch />} />
-                            )}
-                            <Link to={!currentUser ? "/auth" : "/profile"}>
-                                <div className="hidden mx-2 sm:mx-4">
-                                    <UserLoginLogo onClick={() => {}} />
-                                </div>
-                            </Link>
-                            <Link to="/shop" className="relative hidden">
-                                <ShoppingCart />
-                            </Link>
-                            <Link
-                                to="/wishlist"
-                                className="hidden ml-4 sm:ml-4"
-                            >
-                                <WishListIcon className="h-7 w-7" />
-                            </Link>
 
-                            <button className="ml-2" onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}>
-                                {isMobileMenuOpen ? (
-                                    <FiX className="h-7 w-7" />
-                                ) : (
-                                    <FiMenu className="h-7 w-7" />
-                                )}
-                            </button>
+                                <button
+                                    className="ml-2"
+                                    onClick={() =>
+                                        setIsMobileMenuOpen((prop) => !prop)
+                                    }
+                                >
+                                    {isMobileMenuOpen ? (
+                                        <FiX className="h-7 w-7" />
+                                    ) : (
+                                        <FiMenu className="h-7 w-7" />
+                                    )}
+                                </button>
+                            </div>
+                            <SearchBar
+                                className="hidden lg:block"
+                                icon={<FiSearch />}
+                            />
+                            <Link to={!currentUser ? "/auth" : "/profile"}>
+                                <UserLoginLogo
+                                    className="hidden mx-2 sm:mx-4 lg:block"
+                                    onClick={() => {}}
+                                />
+                            </Link>
+                            <Link to="/shop">
+                                <ShoppingCart className="hidden lg:block" />
+                            </Link>
+                            <Link to="/wishlist">
+                                <WishListIcon className="h-7 w-7 hidden ml-4 sm:ml-4 lg:block" />
+                            </Link>
                         </div>
                     </div>
 
                     <div
-                        onClick={() => setIsMobileMenuOpen(isMobileMenuOpen)}
+                        onClick={() => setIsMobileMenuOpen((prop) => !prop)}
                         className={clsx(
-                            "text-white flex flex-col h-screen w-full bg-black fixed left-0 top-[5.5rem] items-center py-10 z-50 text-2xl transition-all duration-500",
+                            "h-full w-full bg-black fixed left-0 top-[5.5rem] py-10 z-50",
+                            "flex flex-col items-center",
+                            "text-2xl text-white",
+                            "transition-all duration-500",
+                            'overflow-y-scroll',
+                            'lg:hidden',
                             isMobileMenuOpen
                                 ? "translate-x-0"
                                 : "translate-x-full",
@@ -208,9 +218,19 @@ const Navigation = () => {
                                 Health Assesment
                             </p>
                         </Link>
-                        <Link to="/blogs" className="w-full">
+                        <Link to="/blogs" className="w-full mb-3">
                             <p className="py-2 w-full text-center border border-white focus:bg-white hover:bg-white hover:text-black">
                                 Blogs
+                            </p>
+                        </Link>
+                        <Link to="/profile" className="w-full mb-3">
+                            <p className="py-2 w-full text-center border border-white focus:bg-white hover:bg-white hover:text-black">
+                                Profile
+                            </p>
+                        </Link>
+                        <Link to="/profile/wishlist" className="w-full">
+                            <p className="py-2 w-full text-center border border-white focus:bg-white hover:bg-white hover:text-black">
+                                Wishlist
                             </p>
                         </Link>
                     </div>
