@@ -1,10 +1,8 @@
 import clsx from "clsx";
 import { useSelector } from "react-redux";
-
 import { selectProducts } from "../../store/categories/categories.selector";
 import { ProductCard } from "../../components/Card";
 import Footer from "../../components/Footer/Footer";
-
 import {
     FilterIcon,
     OpenBoxImage,
@@ -22,8 +20,8 @@ const Products = () => {
     return (
         <div className="newpage-container">
             <div className="py-4 w-full">
-                <div className="flex items-center justify-between mt-20 w-full px-14">
-                    <h1 className="label-arial text-left text-4xl text-white">
+                <div className="flex items-center justify-between mt-20 w-full px-8 sm:px-14">
+                    <h1 className="label-arial text-left text-2xl sm:text-4xl text-white">
                         All Products
                     </h1>
                     <div className="flex items-center justify-between text-xl text-white">
@@ -42,7 +40,7 @@ const Products = () => {
                     <div
                         className={clsx(
                             "py-12 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-3 w-full",
-                            "gap-[3.56rem] md:gap-x-[10rem] lg:gap-x-[20rem] xl:gap-x-[6rem] 2xl:gap-x-[13rem]",
+                            "gap-[3.56rem] md:gap-x-[10rem] lg:gap-x-[20rem] xl:gap-x-[6rem] 2xl:gap-x-[13rem]"
                         )}
                     >
                         <div className="min-h-[22.0625rem] min-w-[21.76969rem] relative">

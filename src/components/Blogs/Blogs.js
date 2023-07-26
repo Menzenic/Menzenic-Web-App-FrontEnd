@@ -14,7 +14,7 @@ const Blogs = () => {
             <section
                 className={clsx(
                     "blogs-container relative flex flex-col items-center py-6",
-                    location.pathname === "/blogs" ? "pt-32 h-screen" : "h-full"
+                    location.pathname === "/blogs" ? "pt-32" : "h-full"
                 )}
             >
                 <h2

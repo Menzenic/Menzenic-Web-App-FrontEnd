@@ -21,8 +21,8 @@ const MenzenicSignature = () => {
                 backgroundSize: "cover",
             }}
         >
-            <MenzenicFullLogoBlack className='w-full text-center mt-[3.44rem]' />
-            <p className="text-xl font-bold mt-12 px-20">
+            <MenzenicFullLogoBlack className="w-full text-center mt-[3.44rem]" />
+            <p className="text-xl font-bold mt-12 px-1 sm:px-20">
                 Menzenic is more than a collection of products, here we believe
                 it is a celebration to be a modern man in today's world. We are
                 here to inspire and empower you on your journey towards becoming

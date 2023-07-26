@@ -27,13 +27,13 @@ const Footer = () => {
                 "bg-[#F0F0F0] pt-12 pb-16 px-12 sm:px-16 sm:pl-77 min-h-400",
                 {
                     "text-center": isMobileScreen,
-                },
+                }
             )}
         >
             <h1 className="text-left font-bold text-5xl text-black">
                 Contact Us
             </h1>
-            <div className="flex justify-between items-center">
+            <div className="flex flex-col sm:flex-row justify-between items-center">
                 <div className="flex flex-col pl-0 sm:pl-6">
                     <div className="flex justify-between my-10">
                         <div className="mr-10">
@@ -53,7 +53,12 @@ const Footer = () => {
                             <p className="text-left my-2">+915654623164</p>
                         </div>
                     </div>
-                    <div className={clsx("flex items-center")}>
+                    <div
+                        className={clsx("flex items-center", {
+                            "flex-row": isMobileScreen,
+                            "items-end": !isMobileScreen,
+                        })}
+                    >
                         <input
                             type="email"
                             placeholder="Email"
@@ -62,7 +67,7 @@ const Footer = () => {
                                 {
                                     "w-[209px]": isMobileScreen,
                                     "w-64": !isMobileScreen,
-                                },
+                                }
                             )}
                             style={{
                                 width: isMobileScreen ? "100%" : "auto",
@@ -78,7 +83,12 @@ const Footer = () => {
                         </button>
                     </div>
                 </div>
-                <MenzenicFullLogoBlack />
+                {isMobileScreen && (
+                    <div className="mt-10">
+                        <MenzenicFullLogoBlack />
+                    </div>
+                )}
+                {!isMobileScreen && <MenzenicFullLogoBlack />}
             </div>
         </footer>
     );

@@ -1,17 +1,15 @@
 import React from "react";
 import { useSelector } from "react-redux";
-
 import { WishlistProductCard } from "../Card";
-
 import { selectWishlistItems } from "../../store/wishlist/wishlist.selector";
 
 const WishList = () => {
     const wishlistItemsFromStore = useSelector(selectWishlistItems);
 
     return (
-        <section className="h-full w-max ml-[1.56rem]">
+        <section className="h-full w-max my-8 md:ml-[1.56rem] px-8 md:px-16 sm:p-1">
             {wishlistItemsFromStore?.length > 0 ? (
-                <div className="grid grid-cols-4 gap-4">
+                <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
                     {wishlistItemsFromStore.map((wishlistItem) => {
                         return (
                             <WishlistProductCard

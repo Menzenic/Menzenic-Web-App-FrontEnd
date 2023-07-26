@@ -1,11 +1,9 @@
 import clsx from "clsx";
 import React, { useEffect } from "react";
 import { Link, Outlet, useLocation } from "react-router-dom";
-
 import Footer from "../../components/Footer/Footer";
 import { useDispatch, useSelector } from "react-redux";
 import { selectCurrentUser } from "../../store/user/user.selector";
-
 import profilePic from "../../images/Pngs/profile-pic.png";
 import { fetchOrdersAsync } from "../../store/orders/orders.action";
 
@@ -22,8 +20,8 @@ const Profile = () => {
     return (
         <div className="flex flex-col min-h-[66rem]">
             <div className="newpage-container pt-14 sm:pt-0 flex flex-col md:flex-row items-center min-h-[47.87rem] w-full">
-                <div className="md:w-1/3 h-full">
-                    <div className="flex flex-col text-white justify-center items-center">
+                <div className="md:w-1/3 h-full pt-40 pb-8">
+                    <div className="flex flex-col  text-white justify-center items-center">
                         <div className="flex flex-col items-center overflow-hidden">
                             <img
                                 src={
@@ -64,7 +62,7 @@ const Profile = () => {
                                         className={clsx(
                                             location.pathname ===
                                                 "/profile/orders" &&
-                                                "font-extrabold",
+                                                "font-extrabold"
                                         )}
                                     >
                                         Order History
@@ -90,10 +88,10 @@ const Profile = () => {
                         </div>
                     </div>
                 </div>
-                <div className="w-[30.25rem] h-px sm:w-px sm:h-[30.25rem] bg-white my-auto"></div>
+                <div className="w-[25.25rem] h-px md:w-px md:h-[30.25rem] bg-white my-auto"></div>
 
-                <div className="md:w-3/4 pl-2 h-[30rem] flex items-center justify-center">
-                    <div className="max-h-[31rem]">
+                <div className="md:w-3/4 pt-8 sm:pl-2 flex items-center justify-center">
+                    <div>
                         <Outlet />
                     </div>
                 </div>
