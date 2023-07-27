@@ -29,7 +29,9 @@ const ProductCard = React.memo(
             price: null,
         },
         variant,
-    }) => {
+    }) => { 
+        console.log('product:', product)
+
         const dispatch = useDispatch();
 
         const orders = useSelector(selectOrders)
@@ -47,10 +49,6 @@ const ProductCard = React.memo(
             dispatch(addItemToOrders(orders, product))
             // dispatch(fetchOrdersAsync(product));
         };
-
-        // useEffect(() => {
-        //     fe
-        // }, [])
 
         useEffect(() => {
             if (variant === "product" && dimensions !== productVariant) {

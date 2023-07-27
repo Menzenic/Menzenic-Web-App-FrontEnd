@@ -199,9 +199,7 @@ export const addToOrders = async (product) => {
 
             console.log('product:', product)
 
-            currOrders.push({
-                id: product.id,
-            });
+            currOrders.push(product);
 
             console.log('after currOrders:::: ', currOrders)
 
@@ -233,6 +231,7 @@ export const getOrders = async () => {
         const ordersSnap = await getDoc(ordersRef)
 
         const data = ordersSnap.data() || []
+        console.log('data::::::', data)
         return data
     } catch (err) {
         console.log('error while fetching from orders', err)
