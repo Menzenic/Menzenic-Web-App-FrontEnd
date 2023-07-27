@@ -22,10 +22,8 @@ const Testimonials = () => {
         const handleResize = () => {
             if (window.innerWidth < 768) {
                 setSlidesVisible(1);
-            } else if (window.innerWidth >= 768 && window.innerWidth < 1024) {
-                setSlidesVisible(2);
             } else {
-                setSlidesVisible(4);
+                setSlidesVisible(2);
             }
         };
 
@@ -37,7 +35,7 @@ const Testimonials = () => {
 
     return (
         <section className="min-h-[500px]">
-            <h2 className="font-semibold text-[44px] text-center mt-12">
+            <h2 className="font-semibold text-3xl sm:text-[44px] text-center mt-12">
                 Customer Testimonials
             </h2>
             <div className="w-full mt-10">
@@ -48,7 +46,7 @@ const Testimonials = () => {
                     visibleSlides={slidesVisible}
                     totalSlides={6}
                 >
-                    <Slider className="w-full pr-10 pl-24">
+                    <Slider className="w-full sm:pr-10 pl-12 sm:pl-24">
                         {testimonialData.map((testimonial, idx) => (
                             <Slide index={idx} key={idx}>
                                 {" "}

@@ -19,7 +19,7 @@ const Blogs = () => {
             >
                 <h2
                     className={clsx(
-                        "blog-section-title font-semibold text-[44px] text-white text-left w-full px-16 mt-2",
+                        "blog-section-title font-semibold text-4xl sm:text-[44px] text-white text-left w-full px-16 mt-2",
                         location.pathname === "/blogs"
                             ? "text-left"
                             : "text-center"
@@ -31,7 +31,7 @@ const Blogs = () => {
                     {blogData.map((blog) => (
                         <div
                             className={clsx(
-                                "blog-data flex flex-col text-center rounded-md w-full mx-4"
+                                "blog-data flex flex-col text-center rounded-md w-full mx-0 sm:mx-4"
                             )}
                             key={blog.id}
                         >
@@ -44,7 +44,7 @@ const Blogs = () => {
                                     src={blog.image}
                                     alt="Blog"
                                     className={clsx(
-                                        "blog-image w-11/12 h-52 md:w-full md:h-64 object-cover rounded-md shadow transition-all duration-300 transform hover:scale-105 cursor-pointer"
+                                        "blog-image h-52 w-full md:h-64 object-cover rounded-md shadow transition-all duration-300 transform hover:scale-105 cursor-pointer"
                                     )}
                                 />
                             </a>

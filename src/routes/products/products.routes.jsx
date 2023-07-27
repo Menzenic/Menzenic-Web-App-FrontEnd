@@ -20,11 +20,11 @@ const Products = () => {
     return (
         <div className="newpage-container">
             <div className="py-4 w-full">
-                <div className="flex items-center justify-between mt-20 w-full px-8 sm:px-14">
-                    <h1 className="label-arial text-left text-2xl sm:text-4xl text-white">
+                <div className="flex items-center justify-between mt-20 w-full px-6 sm:px-14">
+                    <h1 className="label-arial text-left text-xl sm:text-4xl text-white">
                         All Products
                     </h1>
-                    <div className="flex items-center justify-between text-xl text-white">
+                    <div className="flex items-center justify-between text-base sm:text-xl text-white">
                         <FilterIcon />
                         <button
                             className={`ml-2 font-bold underline underline-offset-8`}
@@ -36,7 +36,7 @@ const Products = () => {
                         </button>
                     </div>
                 </div>
-                <div className="w-full px-14">
+                <div className="w-full px-4 sm:px-14">
                     <div
                         className={clsx(
                             "py-12 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-3 w-full",

@@ -1,4 +1,16 @@
+/* Default styles for .header-image */
 .header-image {
-    background: url('../../images/Jpgs/header_bg.jpg') no-repeat center center;
+    background: url("../../images/Jpgs/header_bg.jpg") no-repeat center center;
     background-size: cover;
+}
+
+/* Media query for small screens (max-width: 767px) */
+@media only screen and (max-width: 767px) {
+    .header-image {
+        /* Adjust the background properties to fit small screens */
+        background-size: cover;
+        /* You can also adjust other properties like position or repeat if needed */
+        /* background-position: center top; */
+        /* background-repeat: repeat-x; */
+    }
 }

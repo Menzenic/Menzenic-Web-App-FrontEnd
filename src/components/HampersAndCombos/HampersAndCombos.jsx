@@ -30,7 +30,7 @@ const HampersAndCombos = () => {
                 backgroundSize: "cover",
             }}
         >
-            <h1 className="relative z-10 text-white label-arial text-4xl font-bold my-2">
+            <h1 className="relative z-10 text-white label-arial  text-3xl sm:text-4xl font-bold my-2">
                 Hampers & Combos
             </h1>
             <div className="flex flex-wrap justify-around">

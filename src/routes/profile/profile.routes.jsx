@@ -88,9 +88,9 @@ const Profile = () => {
                         </div>
                     </div>
                 </div>
-                <div className="w-[25.25rem] h-px md:w-px md:h-[30.25rem] bg-white my-auto"></div>
+                <div className="w-[20.25rem] h-px md:w-px md:h-[30.25rem] bg-white my-auto"></div>
 
-                <div className="md:w-3/4 pt-8 sm:pl-2 flex items-center justify-center">
+                <div className="w-1/2 md:w-3/4 pt-8 sm:pl-2 flex items-center justify-center">
                     <div>
                         <Outlet />
                     </div>

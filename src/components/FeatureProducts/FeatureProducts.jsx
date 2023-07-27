@@ -9,7 +9,6 @@ import {
     ButtonNext,
 } from "pure-react-carousel";
 import "pure-react-carousel/dist/react-carousel.es.css";
-
 import {
     selectFeaturedProducts,
     selectHampers,
@@ -59,8 +58,8 @@ const FeaturedProducts = () => {
     }, []);
 
     return (
-        <section className="min-h-[500px]">
-            <p className="text-[44px] font-semibold text-center mt-12">
+        <section className="h-[430px] sm:min-h-[450px]">
+            <p className="text-3xl sm:text-[44px] font-semibold text-center mt-12">
                 {Strings.PRODUCTS_TITLE}
             </p>
             <div className="w-full">
@@ -72,7 +71,7 @@ const FeaturedProducts = () => {
                     totalSlides={featuredProducts?.length}
                     infinite
                 >
-                    <Slider className="min-h-[450px] w-full pr-0 sm:pr-10 pl-20 pt-10">
+                    <Slider className="min-h-[450px] w-full pr-0 sm:pr-10 pl-14 sm:pl-20 pt-10">
                         {featuredProducts?.map((prod, idx) => (
                             <Slide index={idx} key={idx}>
                                 <ProductCard
