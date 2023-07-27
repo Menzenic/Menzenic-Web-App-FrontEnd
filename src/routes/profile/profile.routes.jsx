@@ -11,10 +11,10 @@ const Profile = () => {
     const location = useLocation();
 
     return (
-        <div className="flex flex-col min-h-[66rem]">
+        <div className="flex flex-col min-h-screen">
             <div className="newpage-container pt-14 sm:pt-0 flex flex-col md:flex-row items-center min-h-[47.87rem] w-full">
                 <div className="md:w-1/3 h-full pt-40 pb-8">
-                    <div className="flex flex-col  text-white justify-center items-center">
+                    <div className="flex flex-col text-white justify-center items-center">
                         <div className="flex flex-col items-center overflow-hidden">
                             <img
                                 src={
@@ -42,7 +42,7 @@ const Profile = () => {
                                     className={clsx(
                                         "cursor-pointer hover:font-extrabold",
                                         location.pathname === "/profile" &&
-                                            "font-extrabold",
+                                            "font-extrabold"
                                     )}
                                 >
                                     <Link to="/profile">
@@ -63,7 +63,7 @@ const Profile = () => {
                                 </li>
                                 <li
                                     className={clsx(
-                                        "cursor-pointer hover:font-extrabold",
+                                        "cursor-pointer hover:font-extrabold"
                                     )}
                                 >
                                     <Link
@@ -71,7 +71,7 @@ const Profile = () => {
                                         className={clsx(
                                             location.pathname ===
                                                 "/profile/wishlist" &&
-                                                "font-extrabold",
+                                                "font-extrabold"
                                         )}
                                     >
                                         Wishlist
@@ -83,7 +83,7 @@ const Profile = () => {
                 </div>
                 <div className="w-[20.25rem] h-px md:w-px md:h-[30.25rem] bg-white my-auto"></div>
 
-                <div className="w-1/2 md:w-3/4 pt-8 sm:pl-2 flex items-center justify-center">
+                <div className="w-full md:pl-2 pt-8 flex items-center justify-center sm:justify-start">
                     <div>
                         <Outlet />
                     </div>
