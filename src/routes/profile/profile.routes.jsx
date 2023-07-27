@@ -1,19 +1,12 @@
 import clsx from "clsx";
-import React, { useEffect } from "react";
+import React from "react";
 import { Link, Outlet, useLocation } from "react-router-dom";
 import Footer from "../../components/Footer/Footer";
-import { useDispatch, useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 import { selectCurrentUser } from "../../store/user/user.selector";
 import profilePic from "../../images/Pngs/profile-pic.png";
-import { fetchOrdersAsync } from "../../store/orders/orders.action";
 
 const Profile = () => {
-    const dispatch = useDispatch();
-
-    useEffect(() => {
-        dispatch(fetchOrdersAsync());
-    }, []);
-
     const currentUser = useSelector(selectCurrentUser);
     const location = useLocation();
 
@@ -49,7 +42,7 @@ const Profile = () => {
                                     className={clsx(
                                         "cursor-pointer hover:font-extrabold",
                                         location.pathname === "/profile" &&
-                                            "font-extrabold"
+                                            "font-extrabold",
                                     )}
                                 >
                                     <Link to="/profile">
@@ -70,7 +63,7 @@ const Profile = () => {
                                 </li>
                                 <li
                                     className={clsx(
-                                        "cursor-pointer hover:font-extrabold"
+                                        "cursor-pointer hover:font-extrabold",
                                     )}
                                 >
                                     <Link
@@ -78,7 +71,7 @@ const Profile = () => {
                                         className={clsx(
                                             location.pathname ===
                                                 "/profile/wishlist" &&
-                                                "font-extrabold"
+                                                "font-extrabold",
                                         )}
                                     >
                                         Wishlist
