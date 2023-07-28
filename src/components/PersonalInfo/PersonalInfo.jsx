@@ -64,7 +64,9 @@ const PersonalInfo = () => {
             <h2 className="font-bold mb-4 mt-10">Address</h2>
             <div className="flex flex-col md:flex-row">
                 <div className="mb-4 w-1/2 pr-2">
-                    <label className="block mb-2">House/Flat Number</label>
+                    <label className="w-[17rem] block mb-2">
+                        House/Flat Number
+                    </label>
                     <input type="text" className={clsx("input-field")} />
                 </div>
                 <div className="mb-4 w-1/2 md:pl-6">

@@ -13,7 +13,7 @@ const Profile = () => {
     return (
         <div className="flex flex-col min-h-screen">
             <div className="newpage-container pt-14 sm:pt-0 flex flex-col md:flex-row items-center min-h-[47.87rem] w-full">
-                <div className="md:w-1/3 h-full pt-40 pb-8">
+                <div className="md:w-1/3 h-full pt-24 sm:pt-40 pb-8">
                     <div className="flex flex-col text-white justify-center items-center">
                         <div className="flex flex-col items-center overflow-hidden">
                             <img
@@ -81,7 +81,7 @@ const Profile = () => {
                         </div>
                     </div>
                 </div>
-                <div className="w-[20.25rem] h-px md:w-px md:h-[30.25rem] bg-white my-auto"></div>
+                <div className="w-[22.25rem] h-px md:w-px md:h-[30.25rem] bg-white my-auto"></div>
 
                 <div className="w-full md:pl-2 pt-8 flex items-center justify-center sm:justify-start">
                     <div>

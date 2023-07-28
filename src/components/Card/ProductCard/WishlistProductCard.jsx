@@ -40,14 +40,14 @@ const WishlistProductCard = React.memo(
             setBool((prevBool) => ({
                 ...prevBool,
                 isPresentInCart: cartItems.find(
-                    (cartItem) => cartItem.id === product.id,
+                    (cartItem) => cartItem.id === product.id
                 ),
             }));
         }, [cartItems, product]);
 
         useEffect(() => {
             const isPresent = wishlistItems.find(
-                (wishlistItem) => wishlistItem.id === product.id,
+                (wishlistItem) => wishlistItem.id === product.id
             );
             setBool((prevBool) => ({
                 ...prevBool,
@@ -57,28 +57,26 @@ const WishlistProductCard = React.memo(
 
         return (
             <div
-                className={clsx("flex flex-col bg-white items-center relative")}
+                className={clsx(
+                    "flex flex-col bg-white items-center relative w-[10.55rem] sm:w-[12.25rem] "
+                )}
                 style={{
                     boxShadow: "19px 14px 77px 0px rgba(0, 0, 0, 0.11)",
                     height: "12.25rem",
-                    width: "12.25rem",
                 }}
             >
                 <div
                     className={clsx(
                         "absolute top-5 right-5",
-                        "hover:cursor-pointer",
+                        "hover:cursor-pointer"
                     )}
                     onClick={() => {
                         bool.isPresentInWishList
                             ? dispatch(
-                                  removeItemFromWishlist(
-                                      wishlistItems,
-                                      product,
-                                  ),
+                                  removeItemFromWishlist(wishlistItems, product)
                               )
                             : dispatch(
-                                  addItemToWishlist(wishlistItems, product),
+                                  addItemToWishlist(wishlistItems, product)
                               );
                     }}
                     onMouseEnter={() => {
@@ -105,10 +103,7 @@ const WishlistProductCard = React.memo(
                             width={"1rem"}
                         />
                     ) : (
-                        <WishListedIcon
-                            height={"0.875rem"}
-                            width={"1rem"}
-                        />
+                        <WishListedIcon height={"0.875rem"} width={"1rem"} />
                     )}
                 </div>
                 <Link to={`/product-details/${product.id}`}>
@@ -152,12 +147,12 @@ const WishlistProductCard = React.memo(
                         className={clsx(
                             "flex-grow border border-[#A4A4A4] rounded-md mr-1",
                             "hover:bg-black hover:text-white",
-                            bool.isPresentInCart && "bg-black text-white",
+                            bool.isPresentInCart && "bg-black text-white"
                         )}
                         onClick={() => {
                             bool.isPresentInCart
                                 ? dispatch(
-                                      clearItemFromCart(cartItems, product),
+                                      clearItemFromCart(cartItems, product)
                                   )
                                 : dispatch(addItemToCart(cartItems, product));
                         }}
@@ -171,7 +166,7 @@ const WishlistProductCard = React.memo(
                     <button
                         className={clsx(
                             "flex-grow border rounded-md",
-                            "bg-[#0D0A0A] text-white",
+                            "bg-[#0D0A0A] text-white"
                         )}
                         style={{
                             height: "1.937rem",
@@ -184,7 +179,7 @@ const WishlistProductCard = React.memo(
                 </div>
             </div>
         );
-    },
+    }
 );
 
 export default WishlistProductCard;

@@ -39,7 +39,7 @@ const Products = () => {
                 <div className="w-full px-4 sm:px-14">
                     <div
                         className={clsx(
-                            "py-12 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-3 w-full",
+                            "py-12 grid grid-cols-2 md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-3 w-full",
                             "gap-[3.56rem] md:gap-x-[10rem] lg:gap-x-[20rem] xl:gap-x-[6rem] 2xl:gap-x-[13rem]"
                         )}
                     >

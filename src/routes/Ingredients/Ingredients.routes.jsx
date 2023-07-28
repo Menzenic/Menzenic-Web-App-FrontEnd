@@ -1,12 +1,12 @@
 import React from "react";
 import "./Ingredients.css";
-import IngredientsData from "../../data/IngredientsData";
+// import IngredientsData from "../../data/IngredientsData";
 
 const Ingredients = () => {
     return (
         <div className="ingredients">
             <h1 className="title">Pure and Natural Ingredients</h1>
-            <div className="ingredient-list">
+            {/* <div className="ingredient-list">
                 {IngredientsData.map((ingredient) => (
                     <div className="ingredient-item" key={ingredient.id}>
                         <img
@@ -20,7 +20,7 @@ const Ingredients = () => {
                         </p>
                     </div>
                 ))}
-            </div>
+            </div> */}
         </div>
     );
 };

@@ -11,6 +11,12 @@ import {
     Profile,
     HealthAssessment,
     ProductDetail,
+    Faqs,
+    Ingredients,
+    ShippingDetails,
+    RefundsReturns,
+    TermsConditions,
+    PrivacyPolicy,
 } from "./routes";
 import { Blogs, Orders, PersonalInfo, WishList } from "./components";
 import { setCurrentUser } from "./store/user/user.action";
@@ -67,6 +73,12 @@ const App = () => {
                 />
                 <Route path="/auth" element={<Auth />} />
                 <Route path="/blogs" element={<Blogs />} />
+                <Route path="/faqs" element={<Faqs />} />
+                <Route path="/our-ingredients" element={<Ingredients />} />
+                <Route path="/shipping-details" element={<ShippingDetails />} />
+                <Route path="/refund-return" element={<RefundsReturns />} />
+                <Route path="/terms-conditions" element={<TermsConditions />} />
+                <Route path="/privacy-policy" element={<PrivacyPolicy />} />
             </Route>
         </Routes>
     );

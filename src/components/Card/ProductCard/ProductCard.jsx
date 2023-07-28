@@ -17,7 +17,10 @@ import {
 import { featuredProductsVariant, productVariant } from "./ProductCard.styles";
 import { WishListedIcon, WishListedProductCard } from "../../../utils/assets";
 import { addToOrders } from "../../../utils/firebase/firebase.utils";
-import { addItemToOrders, fetchOrdersAsync } from "../../../store/orders/orders.action";
+import {
+    addItemToOrders,
+    fetchOrdersAsync,
+} from "../../../store/orders/orders.action";
 import { selectOrders } from "../../../store/orders/orders.selector";
 
 const ProductCard = React.memo(
@@ -29,12 +32,12 @@ const ProductCard = React.memo(
             price: null,
         },
         variant,
-    }) => { 
-        console.log('product:', product)
+    }) => {
+        console.log("product:", product);
 
         const dispatch = useDispatch();
 
-        const orders = useSelector(selectOrders)
+        const orders = useSelector(selectOrders);
         const wishlistItems = useSelector(selectWishlistItems);
         const cartItems = useSelector(selectCartItems);
 
@@ -46,7 +49,7 @@ const ProductCard = React.memo(
         });
 
         const addItemToOrdersHandler = () => {
-            dispatch(addItemToOrders(orders, product))
+            dispatch(addItemToOrders(orders, product));
             // dispatch(fetchOrdersAsync(product));
         };
 
@@ -65,14 +68,14 @@ const ProductCard = React.memo(
             setBool((prevBool) => ({
                 ...prevBool,
                 isPresentInCart: cartItems.find(
-                    (cartItem) => cartItem.id === product.id,
+                    (cartItem) => cartItem.id === product.id
                 ),
             }));
         }, [cartItems, product]);
 
         useEffect(() => {
             const isPresent = wishlistItems.find(
-                (wishlistItem) => wishlistItem.id === product.id,
+                (wishlistItem) => wishlistItem.id === product.id
             );
             setBool((prevBool) => ({
                 ...prevBool,
@@ -93,18 +96,15 @@ const ProductCard = React.memo(
                 <div
                     className={clsx(
                         "absolute top-5 right-5",
-                        "hover:cursor-pointer",
+                        "hover:cursor-pointer"
                     )}
                     onClick={() => {
                         bool.isPresentInWishList
                             ? dispatch(
-                                  removeItemFromWishlist(
-                                      wishlistItems,
-                                      product,
-                                  ),
+                                  removeItemFromWishlist(wishlistItems, product)
                               )
                             : dispatch(
-                                  addItemToWishlist(wishlistItems, product),
+                                  addItemToWishlist(wishlistItems, product)
                               );
                     }}
                     onMouseEnter={() => {
@@ -178,12 +178,12 @@ const ProductCard = React.memo(
                         className={clsx(
                             "flex-grow border border-[#A4A4A4] rounded-md mr-1",
                             "hover:bg-black hover:text-white",
-                            bool.isPresentInCart && "bg-black text-white",
+                            bool.isPresentInCart && "bg-black text-white"
                         )}
                         onClick={() => {
                             bool.isPresentInCart
                                 ? dispatch(
-                                      clearItemFromCart(cartItems, product),
+                                      clearItemFromCart(cartItems, product)
                                   )
                                 : dispatch(addItemToCart(cartItems, product));
                         }}
@@ -197,7 +197,7 @@ const ProductCard = React.memo(
                     <button
                         className={clsx(
                             "flex-grow border rounded-md",
-                            "bg-[#0D0A0A] text-white",
+                            "bg-[#0D0A0A] text-white"
                         )}
                         style={{
                             height: dimensions.buttonSize.height,
@@ -211,7 +211,7 @@ const ProductCard = React.memo(
                 </div>
             </div>
         );
-    },
+    }
 );
 
 export default ProductCard;
