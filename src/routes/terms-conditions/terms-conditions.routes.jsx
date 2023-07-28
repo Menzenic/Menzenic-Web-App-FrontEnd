@@ -1,6 +1,11 @@
 import React from "react";
 import { Footer } from "../../components";
-import { FaLock, FaBalanceScale, FaTimesCircle } from "react-icons/fa";
+import {
+    FaLock,
+    FaBalanceScale,
+    FaTimesCircle,
+    FaExclamationTriangle,
+} from "react-icons/fa";
 
 const TermsConditions = () => {
     return (
@@ -39,7 +44,10 @@ const TermsConditions = () => {
                         this website in a damaging or unlawful way.
                     </p>
 
-                    <h2 className="text-xl font-semibold mb-4">Disclaimer</h2>
+                    <h2 className="text-xl font-semibold mb-4">
+                        <FaExclamationTriangle className="inline mr-2" />
+                        Disclaimer
+                    </h2>
                     <p className="text-gray-600">
                         The information on this website is for general purposes
                         only. We make no representations or warranties about its

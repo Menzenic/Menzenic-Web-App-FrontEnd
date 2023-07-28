@@ -9,7 +9,7 @@ import HealthAssessment from "./health-assesment/health-assesment.routes";
 import ProductDetail from "./product-detail/product-detail.routes";
 import Faqs from "./faqs/faqs.routes";
 import Ingredients from "./Ingredients/Ingredients.routes";
-import ShippingDetails from "./shipping-details/shipping-details.routes";
+import PaymentMethods from "./payment-methods/payment-methods.routes";
 import RefundsReturns from "./refund-returns/refund-return.routes";
 import TermsConditions from "./terms-conditions/terms-conditions.routes";
 import PrivacyPolicy from "./privacy-policy/privacy-policy.routes";
@@ -27,7 +27,7 @@ export {
     ProductDetail,
     Faqs,
     Ingredients,
-    ShippingDetails,
+    PaymentMethods,
     RefundsReturns,
     TermsConditions,
     PrivacyPolicy,

@@ -127,8 +127,8 @@ const Footer = () => {
 
                         <ul className="text-left">
                             <li className="my-2">
-                                <Link to="/shipping-details">
-                                    Shipping Details
+                                <Link to="/payment-methods">
+                                    Payment Methods
                                 </Link>
                             </li>
                             <li className="my-2">

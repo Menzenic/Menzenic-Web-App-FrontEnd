@@ -13,7 +13,7 @@ import {
     ProductDetail,
     Faqs,
     Ingredients,
-    ShippingDetails,
+    PaymentMethods,
     RefundsReturns,
     TermsConditions,
     PrivacyPolicy,
@@ -75,7 +75,7 @@ const App = () => {
                 <Route path="/blogs" element={<Blogs />} />
                 <Route path="/faqs" element={<Faqs />} />
                 <Route path="/our-ingredients" element={<Ingredients />} />
-                <Route path="/shipping-details" element={<ShippingDetails />} />
+                <Route path="/payment-methods" element={<PaymentMethods />} />
                 <Route path="/refund-return" element={<RefundsReturns />} />
                 <Route path="/terms-conditions" element={<TermsConditions />} />
                 <Route path="/privacy-policy" element={<PrivacyPolicy />} />
