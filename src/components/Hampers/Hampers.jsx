@@ -1,3 +1,6 @@
+import clsx from "clsx"
+import { useEffect, useState } from "react"
+import { useSelector } from "react-redux"
 import {
     CarouselProvider,
     Slider,
@@ -6,14 +9,13 @@ import {
     ButtonNext,
 } from "pure-react-carousel"
 import "pure-react-carousel/dist/react-carousel.es.css"
-import { useContext, useEffect, useState } from "react"
-import { CategoriesContext } from "../../contexts/categories.context"
-import { ProductCard } from "../Card"
+
+import { selectCategoriesMap } from "../../store/categories/categories.selector"
+
 import { LeftSliderArrow, RightSliderArrow, WishListedIcon } from "../../utils/assets"
-import clsx from "clsx"
 
 const Hampers = () => {
-    const { categoriesMap } = useContext(CategoriesContext)
+    const categoriesMap = useSelector(selectCategoriesMap)
     const [slidesVisible, setSlidesVisible] = useState(4)
     const [isSmall, setIsSmall] = useState(false)
 

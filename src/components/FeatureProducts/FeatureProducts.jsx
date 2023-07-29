@@ -1,6 +1,6 @@
-import React, { useContext, useEffect, useRef, useState } from "react";
 import clsx from "clsx";
-
+import React, { useEffect, useState } from "react";
+import { useSelector } from "react-redux";
 import {
     CarouselProvider,
     Slider,
@@ -9,10 +9,12 @@ import {
     ButtonNext,
 } from "pure-react-carousel";
 import "pure-react-carousel/dist/react-carousel.es.css";
-
-import { Strings } from "../../utils/constants/Strings/Strings";
+import {
+    selectFeaturedProducts,
+    selectHampers,
+} from "../../store/categories/categories.selector";
 import { ProductCard } from "../Card";
-import { CategoriesContext } from "../../contexts/categories.context";
+import { Strings } from "../../utils/constants/Strings/Strings";
 
 import {
     LeftSliderArrow,
@@ -21,42 +23,43 @@ import {
 } from "../../utils/assets/svg";
 
 const FeaturedProducts = () => {
-    const { categoriesMap } = useContext(CategoriesContext);
+    const featuredProductsFromStore = useSelector(selectFeaturedProducts);
+    const hampersFromStore = useSelector(selectHampers);
+
+    const [featuredProducts, setFeaturedProducts] = useState(
+        featuredProductsFromStore
+    );
+    const [hampers, setHampers] = useState(hampersFromStore);
+
     const [slidesVisible, setSlidesVisible] = useState(4);
-    const [isSmall, setIsSmall] = useState(false);
+
+    useEffect(() => {
+        setFeaturedProducts(featuredProductsFromStore);
+        setHampers(hampersFromStore);
+    }, [featuredProductsFromStore, hampersFromStore]);
 
     useEffect(() => {
         const handleResize = () => {
-            if (window.innerHeight < 740) {
-                setIsSmall(true);
+            if (window.innerWidth < 640) {
+                setSlidesVisible(1);
+            } else if (window.innerWidth >= 640 && window.innerWidth < 1024) {
+                setSlidesVisible(2);
+            } else if (window.innerWidth >= 1024 && window.innerWidth < 1280) {
+                setSlidesVisible(3);
             } else {
-                setIsSmall(false);
+                setSlidesVisible(4);
             }
         };
+
         window.addEventListener("resize", handleResize);
         handleResize();
 
-        if (isSmall) {
-            setSlidesVisible(3);
-        } else {
-            setSlidesVisible(4);
-        }
         return () => window.removeEventListener("resize", handleResize);
-    }, [isSmall]);
-
-    const FeaturedProducts = Object.keys(categoriesMap)
-        .filter((categoryMap) => categoryMap === "featured")
-        .map((categoryMap) => categoriesMap[categoryMap])
-        .flat();
-
-    const Hampers = Object.keys(categoriesMap)
-        .filter((categoryMap) => categoryMap === "hampers")
-        .map((categoryMap) => categoriesMap[categoryMap])
-        .flat();
+    }, []);
 
     return (
-        <section className="min-h-[500px]">
-            <p className="text-[44px] font-semibold text-center mt-12">
+        <section className="h-[430px] sm:min-h-[450px]">
+            <p className="text-3xl sm:text-[44px] font-semibold text-center mt-12">
                 {Strings.PRODUCTS_TITLE}
             </p>
             <div className="w-full">
@@ -65,29 +68,15 @@ const FeaturedProducts = () => {
                     naturalSlideHeight={50}
                     naturalSlideWidth={50}
                     visibleSlides={slidesVisible}
-                    totalSlides={4}
+                    totalSlides={featuredProducts?.length}
                     infinite
                 >
-                    <Slider className="min-h-[450px] w-full pr-10 pl-20 pt-10">
-                        {FeaturedProducts.map((prod, idx) => (
-                            <Slide index={idx}>
+                    <Slider className="min-h-[450px] w-full pr-0 sm:pr-10 pl-14 sm:pl-20 pt-10">
+                        {featuredProducts?.map((prod, idx) => (
+                            <Slide index={idx} key={idx}>
                                 <ProductCard
-                                    key={idx}
                                     product={prod}
-                                    card={{
-                                        height: "20.375rem",
-                                        width: "16.175rem",
-                                    }}
-                                    imageSize={{
-                                        height: "7.875rem",
-                                        width: "5.125rem",
-                                    }}
-                                    wishListIcon={{
-                                        height: "1.5rem",
-                                        width: "1.75rem",
-                                    }}
-                                    titleFontSize="26px"
-                                    priceFontSize="22px"
+                                    variant={"featured"}
                                 />
                             </Slide>
                         ))}
@@ -102,7 +91,7 @@ const FeaturedProducts = () => {
             </div>
 
             {/* Hampers section */}
-            <div className="w-full px-20 mb-28">
+            {/* <div className="w-full px-20 mb-28">
                 <div className="newpage-container section-background-image w-full min-h-[400px] items-center rounded-3xl">
                     <p className="text-[44px] font-semibold pt-12 pb-10 text-center w-full text-white">
                         Hampers
@@ -117,7 +106,7 @@ const FeaturedProducts = () => {
                             infinite
                         >
                             <Slider className="h-[500px] w-full pr-10 pl-12">
-                                {Hampers.map((prod, idx) => (
+                                {hampers?.length > 0 && Object.keys(hampers).map((prod, idx) => (
                                     <Slide index={idx}>
                                         <div className="flex flex-col bg-white rounded-xl shadow-xl w-[21.77rem] min-h-[22.063rem] items-center relative m-5">
                                             <div
@@ -131,25 +120,25 @@ const FeaturedProducts = () => {
                                             >
                                                 <WishListedIcon />
                                             </div>
-                                            {prod.image ? (
+                                            {hampers[prod].image ? (
                                                 <img
                                                     className="w-full h-[12.25rem] rounded-t-xl"
-                                                    src={prod.image}
-                                                    alt={prod.title}
+                                                    src={hampers[prod].image}
+                                                    alt={hampers[prod].title}
                                                 />
                                             ) : (
                                                 <div>IMAGE</div>
                                             )}
-                                            {prod.title ? (
+                                            {hampers[prod].title ? (
                                                 <p className="text-xl mt-4">
                                                     {prod.title}
                                                 </p>
                                             ) : (
                                                 <p>HEADING</p>
                                             )}
-                                            {prod.rate ? (
+                                            {hampers[prod].rate ? (
                                                 <p className="text-xl mt-2">
-                                                    {prod.rate}
+                                                    {hampers[prod].rate}
                                                 </p>
                                             ) : (
                                                 <p>200</p>
@@ -189,7 +178,7 @@ const FeaturedProducts = () => {
                         </CarouselProvider>
                     </div>
                 </div>
-            </div>
+            </div> */}
         </section>
     );
 };

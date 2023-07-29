@@ -7,23 +7,29 @@ import {
     Footer,
     HomeAboutUs,
     WhyIntimateHygiene,
-    Hampers
-} from "../../components"
+    Hampers,
+    WhyIntimateCare,
+    MenzenicSignature,
+    HampersAndCombos,
+} from "../../components";
 
 const Home = () => {
     return (
         <>
             <Header />
-            <HomeAboutUs />
-            <WhyIntimateHygiene />
+            {/* <HomeAboutUs /> */}
+            {/* <WhyIntimateHygiene /> */}
             <FeaturedProducts />
             <ProductQuality />
-            <Hampers />
+            <WhyIntimateCare />
+            {/* <Hampers /> */}
+            <HampersAndCombos />
             <Testimonials />
             <Blogs />
+            <MenzenicSignature />
             <Footer />
         </>
-    )
-}
+    );
+};
 
-export default Home
+export default Home;

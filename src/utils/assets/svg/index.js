@@ -22,10 +22,16 @@ import MenzenicFullLogo from "./MenzenicFullLogo.js";
 import WishListedProductCard from "./WishListedProductCard.js";
 import NoWishlistIcon from "./NoWishlistIcon.js";
 import HealthAssesmentRobotIcon from "./HealthAssesmentRobot.js";
+import HeartBeatIcon from "./HeartBeatIcon.js";
+import LikeIcon from "./LikeIcon.js";
+import SmileIcon from "./SmileIcon.js";
+import SearchIcon from "./SearchIcon.js";
+import MenzenicFullLogoBlack from "./MenzenicFullLogoBlack.js";
 
 export {
     HealthAssesmentRobotIcon,
     WishListedProductCard,
+    MenzenicFullLogoBlack,
     MenzenicFullLogo,
     UserLoginLogo,
     ShoppingCart,
@@ -47,5 +53,8 @@ export {
     WishListedIcon,
     HeartIcon,
     FilterIcon,
-    NoWishlistIcon,
+    HeartBeatIcon,
+    LikeIcon,
+    SmileIcon,
+    SearchIcon,
 };

@@ -1,9 +1,8 @@
-import { createContext, useContext, useEffect, useState } from "react";
-import {
-    getChatFromFirebase,
-    storeChatIntoFirebase,
-} from "../utils/firebase/firebase.utils";
-import { UserContext } from "./user.context";
+import { createContext, useEffect, useState } from "react";
+import { useSelector } from "react-redux";
+
+import { getChatFromFirebase, storeChatIntoFirebase } from "../utils/firebase/firebase.utils";
+import { selectCurrentUser } from "../store/user/user.selector";
 
 export const ChatContext = createContext({
     chatVal: [],
@@ -11,8 +10,9 @@ export const ChatContext = createContext({
 });
 
 export const ChatProvider = ({ children }) => {
-    const { currentUser } = useContext(UserContext);
-    const [chatVal, setChatVal] = useState([]);
+    const currentUser = useSelector(selectCurrentUser)
+
+    const [chatVal, setChatVal] = useState([])
 
     const chatStore = async (message) => {
         await storeChatIntoFirebase(message);

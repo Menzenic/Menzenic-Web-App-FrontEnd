@@ -1,47 +1,41 @@
-import React, { useEffect, useState } from "react"
+import React, { useEffect, useState } from "react";
 import {
     CarouselProvider,
     Slider,
     Slide,
     ButtonBack,
     ButtonNext,
-} from "pure-react-carousel"
-import "pure-react-carousel/dist/react-carousel.es.css"
+} from "pure-react-carousel";
+import "pure-react-carousel/dist/react-carousel.es.css";
 
-import testimonialData from "../../data/TestimonialData"
-import { TestimonialCard } from "../Card"
-import { LeftSliderArrow, RightSliderArrow } from "../../utils/assets/svg"
+import testimonialData from "../../data/TestimonialData";
+import { TestimonialCard } from "../Card";
+import { LeftSliderArrow, RightSliderArrow } from "../../utils/assets/svg";
 
-import "./Testimonials.css"
-import "../../utils/styles/styles.css"
+import "./Testimonials.css";
+import "../../utils/styles/styles.css";
 
 const Testimonials = () => {
-    const [slidesVisible, setSlidesVisible] = useState(4)
-    const [isSmall, setIsSmall] = useState(false)
+    const [slidesVisible, setSlidesVisible] = useState(4);
 
     useEffect(() => {
         const handleResize = () => {
-			if (window.innerWidth < 1440 || window.innerHeight < 940) {
-				setIsSmall(true)
-			} else {
-				setIsSmall(false)
-			}
-		}
-		window.addEventListener('resize', handleResize)
-		handleResize()
+            if (window.innerWidth < 768) {
+                setSlidesVisible(1);
+            } else {
+                setSlidesVisible(2);
+            }
+        };
 
-        if (isSmall) {
-            setSlidesVisible(2)
-        } else {
-            setSlidesVisible(3)
-        }
-        return () => window.removeEventListener('resize', handleResize)
-    }, [isSmall])
+        window.addEventListener("resize", handleResize);
+        handleResize();
 
+        return () => window.removeEventListener("resize", handleResize);
+    }, []);
 
     return (
         <section className="min-h-[500px]">
-            <h2 className="font-semibold text-[44px] text-center mt-12">
+            <h2 className="font-semibold text-3xl sm:text-[44px] text-center mt-12">
                 Customer Testimonials
             </h2>
             <div className="w-full mt-10">
@@ -52,9 +46,11 @@ const Testimonials = () => {
                     visibleSlides={slidesVisible}
                     totalSlides={6}
                 >
-                    <Slider className="w-full pr-10 pl-24">
+                    <Slider className="w-full sm:pr-10 pl-12 sm:pl-24">
                         {testimonialData.map((testimonial, idx) => (
-                            <Slide index={idx}>
+                            <Slide index={idx} key={idx}>
+                                {" "}
+                                {/* Added a unique key prop */}
                                 <TestimonialCard
                                     rating={testimonial.rating}
                                     description={
@@ -76,7 +72,7 @@ const Testimonials = () => {
                 </CarouselProvider>
             </div>
         </section>
-    )
-}
+    );
+};
 
-export default Testimonials
+export default Testimonials;

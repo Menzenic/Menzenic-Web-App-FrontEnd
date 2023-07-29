@@ -1,6 +1,6 @@
 import Blogimg1 from "../images/Jpgs/blog1.jpg";
 import Blogimg2 from "../images/Jpgs/blog2.jpg";
-import Blogimg3 from "../images/Pngs/blog3.png";
+import Blogimg3 from "../images/Pngs/blog3.jpg";
 import Blogimg4 from "../images/Jpgs/blog4.jpg";
 
 const blogData = [

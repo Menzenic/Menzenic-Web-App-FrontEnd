@@ -1,126 +1,217 @@
-import { useContext, useEffect, useState } from "react"
-import clsx from "clsx"
+import clsx from "clsx";
+import React, { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
 
-import { CartContext } from "../../../contexts/cart.context"
-import { WishListedIcon, WishListedProductCard } from "../../../utils/assets"
-import { WishListContext } from "../../../contexts/wishlist.context"
-import { Link } from "react-router-dom"
+import { selectCartItems } from "../../../store/cart/cart.selector";
+import { selectWishlistItems } from "../../../store/wishlist/wishlist.selector";
+import {
+    addItemToCart,
+    clearItemFromCart,
+} from "../../../store/cart/cart.action";
+import {
+    addItemToWishlist,
+    removeItemFromWishlist,
+} from "../../../store/wishlist/wishlist.action";
 
-const ProductCard = ({
-    product = {
-        id: null,
-        image: null,
-        title: null,
-        price: null,
-    },
-    card = {
-        height: "18.375rem",
-        width: "16.125rem",
-        minWidth: "16.125rem",
-    },
-    imageSize = {
-        height: "7.875rem",
-        width: "5.125rem",
-    },
-    wishListIcon = {
-        height: "1.5rem",
-        width: "1.75rem",
-    },
-    titleFontSize = "26px",
-    priceFontSize = "22px",
-}) => {
-    const [bool, setBool] = useState(false)
+import { featuredProductsVariant, productVariant } from "./ProductCard.styles";
+import { WishListedIcon, WishListedProductCard } from "../../../utils/assets";
+import { addToOrders } from "../../../utils/firebase/firebase.utils";
+import {
+    addItemToOrders,
+    fetchOrdersAsync,
+} from "../../../store/orders/orders.action";
+import { selectOrders } from "../../../store/orders/orders.selector";
 
-    const { wishList, addItemToWishList, checkItem } =
-        useContext(WishListContext)
-    const { addItemToCart } = useContext(CartContext)
+const ProductCard = React.memo(
+    ({
+        product = {
+            id: null,
+            image: null,
+            title: null,
+            price: null,
+        },
+        variant,
+    }) => {
+        console.log("product:", product);
 
-    useEffect(() => {
-        setBool(checkItem(product.id))
-    }, [wishList, product.id, checkItem])
+        const dispatch = useDispatch();
 
-    return (
-        <div
-            className={clsx(
-                "flex flex-col bg-white min-w-[16.125rem] min-h-[18.375rem] items-center relative rounded-[5px]"
-            )}
-            style={{
-                boxShadow: "19px 14px 77px 0px rgba(0, 0, 0, 0.11)",
-                height: card.height,
-                width: card.width,
-                minWidth: card.minWidth,
-            }}
-        >
+        const orders = useSelector(selectOrders);
+        const wishlistItems = useSelector(selectWishlistItems);
+        const cartItems = useSelector(selectCartItems);
+
+        const [dimensions, setDimensions] = useState(productVariant);
+        const [bool, setBool] = useState({
+            isPresentInCart: false,
+            isPresentInWishList: false,
+            hoverWishList: false,
+        });
+
+        const addItemToOrdersHandler = () => {
+            dispatch(addItemToOrders(orders, product));
+            // dispatch(fetchOrdersAsync(product));
+        };
+
+        useEffect(() => {
+            if (variant === "product" && dimensions !== productVariant) {
+                setDimensions(productVariant);
+            } else if (
+                variant === "featured" &&
+                dimensions !== featuredProductsVariant
+            ) {
+                setDimensions(featuredProductsVariant);
+            }
+        }, [variant, dimensions]);
+
+        useEffect(() => {
+            setBool((prevBool) => ({
+                ...prevBool,
+                isPresentInCart: cartItems.find(
+                    (cartItem) => cartItem.id === product.id
+                ),
+            }));
+        }, [cartItems, product]);
+
+        useEffect(() => {
+            const isPresent = wishlistItems.find(
+                (wishlistItem) => wishlistItem.id === product.id
+            );
+            setBool((prevBool) => ({
+                ...prevBool,
+                isPresentInWishList: isPresent,
+            }));
+        }, [wishlistItems, product]);
+
+        return (
             <div
-                className={clsx(
-                    "absolute top-5 right-5",
-                    "hover:cursor-pointer"
-                )}
-                onClick={() => addItemToWishList(product.id)}
-            >
-                <div
-                    style={{
-                        height: wishListIcon.height,
-                        width: wishListIcon.width,
-                    }}
-                >
-                    {bool ? <WishListedIcon /> : <WishListedProductCard />}
-                </div>
-            </div>
-            <Link to={`/product-details/${product.id}`}>
-                <img
-                    className={clsx("w-[6.625rem] h-[10.25rem] mt-2")}
-                    style={{
-                        height: imageSize.height,
-                        width: imageSize.width,
-                    }}
-                    src={product.image}
-                    alt={product.title}
-                />
-            </Link>
-            <Link to={`/product-details/${product.id}`}>
-                <p
-                    className={clsx("text-[26px] mt-3")}
-                    style={{
-                        fontSize: titleFontSize,
-                    }}
-                >
-                    {product.title}
-                </p>
-            </Link>
-
-            <p
-                className={clsx("text-[22px] mt-2")}
+                className={clsx("flex flex-col bg-white items-center relative")}
                 style={{
-                    fontSize: priceFontSize,
+                    boxShadow: "19px 14px 77px 0px rgba(0, 0, 0, 0.11)",
+                    height: dimensions.cardSize.height,
+                    width: dimensions.cardSize.width,
+                    borderRadius: dimensions.cardBorderRadius,
                 }}
             >
-                {product.price}
-            </p>
-            <div className="flex w-full px-3 mt-4 mb-6">
-                <button
+                <div
                     className={clsx(
-                        "flex-grow border border-[#A4A4A4] rounded-md mr-1 py-3",
-                        "hover:bg-black hover:text-white",
-                        "transition-all duration-200"
+                        "absolute top-5 right-5",
+                        "hover:cursor-pointer"
                     )}
-                    onClick={() => addItemToCart(product)}
+                    onClick={() => {
+                        bool.isPresentInWishList
+                            ? dispatch(
+                                  removeItemFromWishlist(wishlistItems, product)
+                              )
+                            : dispatch(
+                                  addItemToWishlist(wishlistItems, product)
+                              );
+                    }}
+                    onMouseEnter={() => {
+                        setBool((prevBool) => ({
+                            ...prevBool,
+                            hoverWishList: true,
+                        }));
+                    }}
+                    onMouseLeave={() => {
+                        setBool((prevBool) => ({
+                            ...prevBool,
+                            hoverWishList: false,
+                        }));
+                    }}
                 >
-                    Add to cart
-                </button>
-                <button
-                    className={clsx(
-                        "flex-grow border rounded-md px-1 py-3",
-                        "bg-[#0D0A0A] text-white",
-                        "transition-all duration-200"
+                    {bool.isPresentInWishList ? (
+                        <WishListedProductCard
+                            height={dimensions.wishListIconSize.height}
+                            width={dimensions.wishListIconSize.width}
+                        />
+                    ) : bool.hoverWishList ? (
+                        <WishListedProductCard
+                            height={dimensions.wishListIconSize.height}
+                            width={dimensions.wishListIconSize.width}
+                        />
+                    ) : (
+                        <WishListedIcon
+                            height={dimensions.wishListIconSize.height}
+                            width={dimensions.wishListIconSize.width}
+                        />
                     )}
-                    onClick={() => addItemToCart(product)}
-                >
-                    Buy Now
-                </button>
-            </div>
-        </div>
-    )
-}
+                </div>
+                <Link to={`/product-details/${product.id}`}>
+                    <img
+                        style={{
+                            height: dimensions.imageSize.height,
+                            width: dimensions.imageSize.width,
+                            marginTop: dimensions.marginTopImage,
+                        }}
+                        src={product.image}
+                        alt={product.title}
+                    />
+                </Link>
+                <Link to={`/product-details/${product.id}`}>
+                    <p
+                        style={{
+                            fontSize: dimensions.titleFontSize,
+                            marginTop: dimensions.marginTopImageTitle,
+                        }}
+                    >
+                        {product.title}
+                    </p>
+                </Link>
 
-export default ProductCard
+                <p
+                    style={{
+                        fontSize: dimensions.priceFontSize,
+                        marginTop: dimensions.marginTopTitlePrice,
+                    }}
+                >
+                    {product.price}
+                </p>
+                <div
+                    className="flex w-full px-3"
+                    style={{
+                        marginTop: dimensions.marginTopPriceButton,
+                        fontSize: dimensions.buttonFontSize,
+                    }}
+                >
+                    <button
+                        className={clsx(
+                            "flex-grow border border-[#A4A4A4] rounded-md mr-1",
+                            "hover:bg-black hover:text-white",
+                            bool.isPresentInCart && "bg-black text-white"
+                        )}
+                        onClick={() => {
+                            bool.isPresentInCart
+                                ? dispatch(
+                                      clearItemFromCart(cartItems, product)
+                                  )
+                                : dispatch(addItemToCart(cartItems, product));
+                        }}
+                        style={{
+                            height: dimensions.buttonSize.height,
+                            width: dimensions.buttonSize.width,
+                        }}
+                    >
+                        Add to cart
+                    </button>
+                    <button
+                        className={clsx(
+                            "flex-grow border rounded-md",
+                            "bg-[#0D0A0A] text-white"
+                        )}
+                        style={{
+                            height: dimensions.buttonSize.height,
+                            width: dimensions.buttonSize.width,
+                        }}
+                        // onClick={() => addItemToCartHandler(product)}
+                        onClick={() => addItemToOrdersHandler()}
+                    >
+                        Buy Now
+                    </button>
+                </div>
+            </div>
+        );
+    }
+);
+
+export default ProductCard;

@@ -65,8 +65,8 @@
     border: 1px solid;
     border-radius: 0.25rem;
     padding: 0.5rem 0.75rem;
-    width: 24rem;
-    height: 3rem;
+    width: 19.5rem;
+    height: 3.25rem;
     background-color: transparent;
 }
 .input-field-country-code {
@@ -81,7 +81,7 @@
     border: 1px solid;
     border-radius: 0.25rem;
     padding: 0.5rem 0.75rem;
-    width: 20.3rem;
+    width: 14.3rem;
     height: 3rem;
     background-color: transparent;
 }
@@ -97,39 +97,9 @@
     line-height: 14px;
     color: #999999;
 }
-.ordered-product {
-    width: 312px;
-    height: 105px;
-    background: #ffffff;
-    box-shadow: 19px 14px 77px rgba(0, 0, 0, 0.11);
-    border-radius: 3px;
-}
-.rating-line {
-    margin: 0 20px;
-    height: 74px;
-    left: 568px;
-    top: 258px;
-    border: 1px solid #dbdbdb;
-}
 
-/* .input-field:focus {
-    background-color: transparent;
-    outline: none;
+@media screen and (max-width: 768px) {
+    .input-field {
+        width: 19rem;
+    }
 }
-
-.input-field::-webkit-input-placeholder {
-    color: #a0aec0;
-}
-
-.input-field::-moz-placeholder {
-    color: #a0aec0;
-    opacity: 1;
-}
-
-.input-field:-ms-input-placeholder {
-    color: #a0aec0;
-}
-
-.input-field::placeholder {
-    color: #a0aec0;
-} */

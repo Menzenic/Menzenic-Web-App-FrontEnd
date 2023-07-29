@@ -1,13 +1,10 @@
-import React, { useEffect, useRef, useState } from "react";
-import { flushSync } from "react-dom";
-import clsx from "clsx";
-import { useNavigate } from "react-router-dom";
+import React, { useEffect, useRef, useState } from "react"
+import { flushSync } from "react-dom"
+import clsx from "clsx"
 
-import HealthChatbot from "../../Screens/HealthChatbot/HealthChatbot.jsx";
-import { Button, ChatRoom } from "../../components";
-import HealthAssesmentImage from "../../images/Pngs/Frame.png";
+import { Button, ChatRoom } from "../../components"
 
-import { HealthAssesmentRobotIcon } from "../../utils/";
+import { HealthAssesmentImage } from "../../utils/"
 
 const HealthAssessment = () => {
     // const navigate = useNavigate()

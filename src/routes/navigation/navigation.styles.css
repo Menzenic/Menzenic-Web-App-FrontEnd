@@ -1,5 +1,12 @@
 .navbar-image {
-    background: url('../../images/Jpgs/logo.jpg');
+    background: url("../../images/Jpgs/logo.jpg");
     background-size: cover;
     background-position: center;
+}
+
+@media (max-width: 768px) {
+    .navbar-image {
+        width: 134px;
+        height: 17px;
+    }
 }
