@@ -1,5 +1,5 @@
 import Login from "./Login/Login";
-import Signup from "./Signup/Signup";
+import Signup from "./SignUp/SignUp";
 import Blogs from "./Blogs/Blogs";
 import FeaturedProducts from "./FeatureProducts/FeatureProducts";
 import Footer from "./Footer/Footer";

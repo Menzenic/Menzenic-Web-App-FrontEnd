@@ -26,8 +26,10 @@ import LikeIcon from "./LikeIcon.js";
 import SmileIcon from "./SmileIcon.js";
 import SearchIcon from "./SearchIcon.js";
 import MenzenicFullLogoBlack from "./MenzenicFullLogoBlack.js";
+import HealthAssesmentBackdrop from "./HealthAssesmentBackdrop.js";
 
 export {
+    HealthAssesmentBackdrop,
     HealthAssesmentRobotIcon,
     WishListedProductCard,
     MenzenicFullLogoBlack,
