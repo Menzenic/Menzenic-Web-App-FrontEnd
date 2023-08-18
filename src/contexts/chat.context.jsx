@@ -6,8 +6,8 @@ import { selectCurrentUser } from "../store/user/user.selector";
 
 export const ChatContext = createContext({
     chatVal: [],
-    chatStore: () => {}
-})
+    chatStore: () => {},
+});
 
 export const ChatProvider = ({ children }) => {
     const currentUser = useSelector(selectCurrentUser)
@@ -15,24 +15,24 @@ export const ChatProvider = ({ children }) => {
     const [chatVal, setChatVal] = useState([])
 
     const chatStore = async (message) => {
-        await storeChatIntoFirebase(message)
+        await storeChatIntoFirebase(message);
 
-        const updatedChat = await getChatFromFirebase()
-        setChatVal(updatedChat)
-    }
+        const updatedChat = await getChatFromFirebase();
+        setChatVal(updatedChat);
+    };
 
     useEffect(() => {
-        if(currentUser) {
-            (async function() {
-                const res = await getChatFromFirebase()
-                setChatVal(res)
+        if (currentUser) {
+            (async function () {
+                const res = await getChatFromFirebase();
+                setChatVal(res);
             })();
         }
-    }, [currentUser])
-    
-    const value = { chatVal, chatStore }
+    }, [currentUser]);
+
+    const value = { chatVal, chatStore };
 
     return (
         <ChatContext.Provider value={value}>{children}</ChatContext.Provider>
-    )
-}
+    );
+};

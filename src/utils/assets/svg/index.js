@@ -20,6 +20,7 @@ import HeartIcon from "./HeartIcon.js";
 import FilterIcon from "./FilterIcon.js";
 import MenzenicFullLogo from "./MenzenicFullLogo.js";
 import WishListedProductCard from "./WishListedProductCard.js";
+import NoWishlistIcon from "./NoWishlistIcon.js";
 import HealthAssesmentRobotIcon from "./HealthAssesmentRobot.js";
 import HeartBeatIcon from "./HeartBeatIcon.js";
 import LikeIcon from "./LikeIcon.js";
