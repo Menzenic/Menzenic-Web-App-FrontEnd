@@ -21,7 +21,7 @@ const Products = () => {
 	return (
 		<div className="newpage-container">
 			<div className="min-h-[700px] flex justify-between items-center">
-				<div className="pl-20 text-2xl text-white h-[300px] flex flex-col justify-between">
+				<div className="pl-20 text-sm lg:text-2xl text-white h-[300px] flex flex-col justify-between">
 					<p className="text-4xl font-bold">Claims</p>
 					<p>
 						&#x2022; The best product in the hair removal space - if

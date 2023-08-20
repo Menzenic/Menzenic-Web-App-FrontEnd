@@ -203,7 +203,7 @@ const Navigation = () => {
 								Home
 							</p>
 						</Link>
-						<Link to="/products" className="w-full mb-3">
+						<Link to="/product" className="w-full mb-3">
 							<p className="py-2 w-full text-center border border-white focus:bg-white hover:bg-white hover:text-black">
 								Products
 							</p>

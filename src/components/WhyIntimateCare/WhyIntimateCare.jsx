@@ -21,7 +21,12 @@ const WhyIntimateCare = () => {
 				well-being.
 			</p> */}
 			<div className="flex justify-center items-center w-full mt-16">
-				<div className=" w-[80%] flex justify-between">
+				<div
+					className={clsx(
+						"w-[80%] flex flex-col justify-between",
+						"lg:flex-row"
+					)}
+				>
 					{/* Hygiene and comfort */}
 					<AnimatedFlipCard
 						image={<HygieneAndComfortIcon />}
