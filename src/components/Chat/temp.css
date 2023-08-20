@@ -1,17 +1,48 @@
 .pic {
-    display: inline-block;
-    vertical-align: top;
-    width: 0;
-    height: 0;
+	display: inline-block;
+	vertical-align: top;
+	width: 0;
+	height: 0;
 }
 
 .arrow-left-pic {
-    border-top: 5px solid transparent;
-    border-bottom: 5px solid transparent;
-    border-right: 5px solid #ffff;
+	border-top: 5px solid transparent;
+	border-bottom: 5px solid transparent;
+	border-right: 5px solid #ffff;
 }
 .arrow-right-pic {
-    border-top: 5px solid transparent;
-    border-left: 5px solid #fff;
-    border-bottom: 5px solid transparent;
+	border-top: 5px solid transparent;
+	border-left: 5px solid #fff;
+	border-bottom: 5px solid transparent;
+}
+
+.scrollbar-hidden::-webkit-scrollbar {
+	display: none;
+}
+/* Hide scrollbar for IE, Edge add Firefox */
+.scrollbar-hidden {
+	-ms-overflow-style: none;
+	scrollbar-width: none; /* Firefox */
+}
+
+/* Ball bounce animation */
+.bounce1 {
+	animation: bounce 500ms ease infinite;
+}
+.bounce2 {
+	animation: bounce 600ms ease infinite;
+}
+.bounce3 {
+	animation: bounce 700ms ease infinite;
+}
+@keyframes bounce {
+	0%,
+	100% {
+		transform: translateY(-25%);
+		animation-timing-function: cubic-bezier(0.8, 0, 1, 1);
+	}
+	50% {
+		transform: none;
+		animation-timing-function: cubic-bezier(0, 0, 0.2, 1);
+	}
 }

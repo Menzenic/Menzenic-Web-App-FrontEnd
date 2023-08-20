@@ -7,11 +7,13 @@ import OpenBoxImage2 from "./open_box_image_2.png";
 import RollOnMockUp from "./RollOnMockupPng.png";
 import WipesMockUp from "./WipesPng.png";
 import HairRemovalSprayPng from "./HairRemovalSprayPng.png";
+import HairRemovalSprayBgRemPng from "./HairRemovalSprayBgRem.png";
 
 export {
-    RollOnMockUp,
-    WipesMockUp,
-    HairRemovalSprayPng,
+	HairRemovalSprayBgRemPng,
+	RollOnMockUp,
+	WipesMockUp,
+	HairRemovalSprayPng,
 	ProuctQualityBackground,
 	OpenBoxImage,
 	HealthAssesmentImage,

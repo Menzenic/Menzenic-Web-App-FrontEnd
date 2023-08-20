@@ -25,7 +25,7 @@ const ArmpitHealthQuiz = {
         },
         {
             question: "Do you shave or wax your underarms regularly?",
-            options: [" Yes, regularly", "Occasionally", "Rarely", "Never"],
+            options: ["Yes, regularly", "Occasionally", "Rarely", "Never"],
         },
         {
             question: "How often do you cleanse your underarms during the day?",
@@ -42,7 +42,7 @@ const ArmpitHealthQuiz = {
             options: [
                 "No",
                 "Slight discoloration",
-                " Moderate discoloration",
+                "Moderate discoloration",
                 "Severe discoloration",
             ],
         },
@@ -91,7 +91,7 @@ const ArmpitHealthQuiz = {
                 "No",
                 "Occasionally",
                 "Frequently",
-                " Yes, they are persistent",
+                "Yes, they are persistent",
             ],
         },
         {

@@ -19,8 +19,10 @@ import ChatRoom from "./Chat/ChatRoom";
 import WhyIntimateCare from "./WhyIntimateCare/WhyIntimateCare";
 import MenzenicSignature from "./MenzenicSignature/MenzenicSignature";
 import HampersAndCombos from "./HampersAndCombos/HampersAndCombos";
+import AnimatedFlipCard from "./AnimatedFlipCard/AnimatedFlipCard";
 
 export {
+    AnimatedFlipCard,
     ChatRoom,
     SearchBar,
     Button,

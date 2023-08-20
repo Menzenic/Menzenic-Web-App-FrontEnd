@@ -28,8 +28,10 @@ import SmileIcon from "./SmileIcon.js";
 import SearchIcon from "./SearchIcon.js";
 import MenzenicFullLogoBlack from "./MenzenicFullLogoBlack.js";
 import HealthAssesmentBackdrop from "./HealthAssesmentBackdrop.js";
+import HygieneAndComfortIcon from "./HygieneAndComfortIcon.js";
 
 export {
+    HygieneAndComfortIcon,
     HealthAssesmentBackdrop,
     HealthAssesmentRobotIcon,
     WishListedProductCard,

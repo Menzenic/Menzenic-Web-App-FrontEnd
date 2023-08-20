@@ -4,22 +4,40 @@ import { selectProducts } from "../../store/categories/categories.selector";
 import { ProductCard } from "../../components/Card";
 import Footer from "../../components/Footer/Footer";
 import {
-    FilterIcon,
-    OpenBoxImage,
-    OpenBoxImage2,
-    TemplateProductMockupBgRem,
+	FilterIcon,
+	HairRemovalSprayBgRemPng,
+	OpenBoxImage,
+	OpenBoxImage2,
+	TemplateProductMockupBgRem,
 } from "../../utils/assets";
 
 const Products = () => {
-    const categoriesMap = useSelector(selectProducts);
+	const categoriesMap = useSelector(selectProducts);
 
-    const Products = Object.keys(categoriesMap)
-        .map((categoryMap) => categoriesMap[categoryMap])
-        .flat();
+	const Products = Object.keys(categoriesMap)
+		.map((categoryMap) => categoriesMap[categoryMap])
+		.flat();
 
-    return (
-        <div className="newpage-container">
-            <div className="py-4 w-full">
+	return (
+		<div className="newpage-container">
+			<div className="min-h-[700px] flex justify-between items-center">
+				<div className="pl-20 text-2xl text-white h-[300px] flex flex-col justify-between">
+					<p className="text-4xl font-bold">Claims</p>
+					<p>
+						&#x2022; The best product in the hair removal space - if
+						you don’t believe us, try it out for yourself.
+					</p>
+					<p>&#x2022; Saves you time, removes hair in just 5 mins.</p>
+					<p>
+						&#x2022; No side effects, applicable on all skin types.
+					</p>
+					<p>[One Product, honed to perfection]</p>
+				</div>
+				<div className="">
+					<img src={HairRemovalSprayBgRemPng} alt="Product Pic" />
+				</div>
+			</div>
+			{/* <div className="py-4 w-full">
                 <div className="flex items-center justify-between mt-20 w-full px-6 sm:px-14">
                     <h1 className="label-arial text-left text-xl sm:text-4xl text-white">
                         All Products
@@ -67,10 +85,10 @@ const Products = () => {
                         ))}
                     </div>
                 </div>
-            </div>
-            <Footer />
-        </div>
-    );
+            </div> */}
+			<Footer />
+		</div>
+	);
 };
 
 export default Products;

@@ -17,7 +17,7 @@ const Header = () => {
                         cleanliness is key
                     </p>
                 </div>
-                <div className="flex items-center w-full justify-center sm:justify-start">
+                <div className="mt-5 flex items-center w-full justify-center sm:justify-start">
                     <Button
                         title={"Shop Now"}
                         onClick={() => navigate("/products")}
