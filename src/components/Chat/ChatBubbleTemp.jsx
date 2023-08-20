@@ -11,7 +11,7 @@ const ChatBubbleTemp = (props) => {
 			<div
 				className={clsx(
 					"h-0 w-0 border-y-8 border-r-[10px] border-y-transparent border-r-white",
-					!props.arrow && "border-y-0",
+					props.arrow ? "border-y-8" : "border-y-0",
 					props.user && "hidden"
 				)}
 			/>
