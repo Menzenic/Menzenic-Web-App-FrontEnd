@@ -34,7 +34,10 @@ const Products = () => {
 					<p>[One Product, honed to perfection]</p>
 				</div>
 				<div className="">
-					<img src={HairRemovalSprayBgRemPng} alt="Product Pic" />
+					<img
+						src={HairRemovalSprayBgRemPng}
+						alt="Hair Removal Spray"
+					/>
 				</div>
 			</div>
 			{/* <div className="py-4 w-full">

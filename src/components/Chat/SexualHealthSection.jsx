@@ -1,11 +1,12 @@
+import clsx from "clsx";
+
 import { useEffect, useRef, useState } from "react";
 import ChatBubbleTemp from "./ChatBubbleTemp";
 import { HealthAssesmentRobotIcon } from "../../utils";
 
 import "./temp.css";
-import clsx from "clsx";
 
-const ChatRoomTemp = (chatRoomProps) => {
+const SexualHealthSection = ({ props, finalPageHandler }) => {
 	const ref = useRef();
 
 	const [welcomeMessage, setWelcomeMessage] = useState(false);
@@ -66,11 +67,16 @@ const ChatRoomTemp = (chatRoomProps) => {
 				<>
 					<ChatBubbleTemp
 						arrow={true}
-						content={"Welcome to Menzenic Health Assesment"}
+						content={props.welcomeContent.title}
 					/>
 					<ChatBubbleTemp
 						arrow={false}
-						content={<WelcomeContent click={startClickHandler} />}
+						content={
+							<WelcomeContent
+								para={props.welcomeContent.para}
+								click={startClickHandler}
+							/>
+						}
 					/>
 				</>
 			)}
@@ -82,14 +88,8 @@ const ChatRoomTemp = (chatRoomProps) => {
 						arrow={true}
 						content={
 							<Conversation
-								title={"How active are you sexually?"}
-								options={[
-									"Very active",
-									"Moderate (few times a week)",
-									"Once a week",
-									"Been a while",
-									"Never had sex",
-								]}
+								title={props.conversation1.title}
+								options={props.conversation1.options}
 								onClick={(e) => {
 									setUserOption1({
 										render: e.render,
@@ -122,13 +122,8 @@ const ChatRoomTemp = (chatRoomProps) => {
 						arrow={true}
 						content={
 							<Conversation
-								title={"When was the last time you had sex?"}
-								options={[
-									"Recently",
-									"6 to 12 months",
-									"Over an year ago",
-									"Never",
-								]}
+								title={props.conversation2.title}
+								options={props.conversation2.options}
 								onClick={(e) => {
 									setUserOption2({
 										render: e.render,
@@ -161,14 +156,8 @@ const ChatRoomTemp = (chatRoomProps) => {
 						arrow={true}
 						content={
 							<Conversation
-								title={
-									"How would you describe your erectile health while sex?"
-								}
-								options={[
-									"Good strong erection",
-									"Occasionally not hard enough for penetration",
-									"Usually find it difficult to stay hard enough",
-								]}
+								title={props.conversation3.title}
+								options={props.conversation2.options}
 								onClick={(e) => {
 									setUserOption3({
 										render: e.render,
@@ -204,10 +193,8 @@ const ChatRoomTemp = (chatRoomProps) => {
 						arrow={true}
 						content={
 							<Conversation
-								title={
-									"How often do you use protection while having sex?"
-								}
-								options={["Always", "Sometimes", "Never"]}
+								title={props.conversation3.title}
+								options={props.conversation3.options}
 								onClick={(e) => {
 									setUserOption4({
 										render: e.render,
@@ -220,9 +207,7 @@ const ChatRoomTemp = (chatRoomProps) => {
 										setTimeout(() => {
 											// setFinalMessage(true);
 											// setFinalLoader(false);
-											chatRoomProps.finalPageHandler(
-												true
-											);
+											finalPageHandler(true);
 										}, 5000);
 									}, 2000);
 								}}
@@ -266,11 +251,7 @@ const ChatRoomTemp = (chatRoomProps) => {
 const WelcomeContent = (props) => {
 	return (
 		<div>
-			We got you with our doctor recommended questionnaire.
-			<br />
-			Be open about your concerns, this test is confidential.
-			<br />
-			Designed by experts. Let's Begin when you are ready.{" "}
+			{props.para}.{" "}
 			<button
 				className="rounded-md text-sm px-5 py-2"
 				style={{
@@ -346,4 +327,4 @@ const LoadingBalls = () => {
 	);
 };
 
-export default ChatRoomTemp;
+export default SexualHealthSection;
