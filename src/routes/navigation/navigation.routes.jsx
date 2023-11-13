@@ -92,7 +92,13 @@ const Navigation = () => {
 							<MenzenicFullLogo className="h-9 xl:h-7" />
 						</Link>
 
-						<div className="hidden lg:flex lg:text-base lg:w-[25.813rem] xl:h-[1.625rem] xl:w-[31.8125rem] items-center justify-between xl:text-xl font-medium -mt-2">
+						<div
+							className={clsx(
+								"hidden items-center justify-between font-medium -mt-2",
+								"lg:flex lg:text-base lg:w-[300px]",
+								"xl:h-[1.625rem] xl:text-xl"
+							)}
+						>
 							<Link
 								to="/"
 								className={clsx(
@@ -103,7 +109,7 @@ const Navigation = () => {
 							>
 								<p>Home</p>
 							</Link>
-							<Link
+							{/* <Link
 								to="/product"
 								className={clsx(
 									"hover-underline-animation",
@@ -112,7 +118,7 @@ const Navigation = () => {
 								)}
 							>
 								<p>Product</p>
-							</Link>
+							</Link> */}
 							<Link
 								to="/about-us"
 								className={clsx(
@@ -123,7 +129,7 @@ const Navigation = () => {
 							>
 								<p>About us</p>
 							</Link>
-							<Link
+							{/* <Link
 								to="/health-assesment"
 								className={clsx(
 									"hover-underline-animation",
@@ -132,7 +138,7 @@ const Navigation = () => {
 								)}
 							>
 								<p>Health Assesment</p>
-							</Link>
+							</Link> */}
 							<Link
 								to="/blogs"
 								className={clsx(
@@ -165,7 +171,7 @@ const Navigation = () => {
 									)}
 								</button>
 							</div>
-							<SearchBar
+							{/* <SearchBar
 								className="hidden lg:block"
 								icon={<FiSearch />}
 							/>
@@ -180,7 +186,7 @@ const Navigation = () => {
 							</Link>
 							<Link to="/profile/wishlist">
 								<WishListIcon className="h-7 w-7 hidden ml-4 sm:ml-4 lg:block" />
-							</Link>
+							</Link> */}
 						</div>
 					</div>
 
@@ -203,36 +209,36 @@ const Navigation = () => {
 								Home
 							</p>
 						</Link>
-						<Link to="/product" className="w-full mb-3">
+						{/* <Link to="/product" className="w-full mb-3">
 							<p className="py-2 w-full text-center border border-white focus:bg-white hover:bg-white hover:text-black">
 								Products
 							</p>
-						</Link>
+						</Link> */}
 						<Link to="/about-us" className="w-full mb-3">
 							<p className="py-2 w-full text-center border border-white focus:bg-white hover:bg-white hover:text-black">
 								About us
 							</p>
 						</Link>
-						<Link to="/health-assesment" className="w-full mb-3">
+						{/* <Link to="/health-assesment" className="w-full mb-3">
 							<p className="py-2 w-full text-center border border-white focus:bg-white hover:bg-white hover:text-black">
 								Health Assesment
 							</p>
-						</Link>
+						</Link> */}
 						<Link to="/blogs" className="w-full mb-3">
 							<p className="py-2 w-full text-center border border-white focus:bg-white hover:bg-white hover:text-black">
 								Blogs
 							</p>
 						</Link>
-						<Link to="/profile" className="w-full mb-3">
+						{/* <Link to="/profile" className="w-full mb-3">
 							<p className="py-2 w-full text-center border border-white focus:bg-white hover:bg-white hover:text-black">
 								Profile
 							</p>
-						</Link>
-						<Link to="/profile/wishlist" className="w-full">
+						</Link> */}
+						{/* <Link to="/profile/wishlist" className="w-full">
 							<p className="py-2 w-full text-center border border-white focus:bg-white hover:bg-white hover:text-black">
 								Wishlist
 							</p>
-						</Link>
+						</Link> */}
 					</div>
 				</>
 			) : (

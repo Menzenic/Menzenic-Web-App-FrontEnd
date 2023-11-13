@@ -14,6 +14,7 @@ import {
 	HomeDesign,
 	HomeDoubleDotBar,
 } from "../../utils";
+import clsx from "clsx";
 
 const Header = () => {
 	const navigate = useNavigate();
@@ -31,7 +32,12 @@ const Header = () => {
 			>
 				<SwiperSlide>
 					<>
-						<div className="h-[400px] sm:h-[682px] header-image"></div>
+						<div
+							className={clsx(
+								"h-[400px] header-image",
+								"lg:h-[682px]"
+							)}
+						></div>
 						<div className="absolute top-[12.688rem] sm:top-[17.688rem] left-[3.188rem]">
 							<div className="text-[24px] sm:text-5xl text-white text-left font-['Arial'] leading-[35px] sm:leading-[55px] font-normal">
 								<p>When it comes to your body,</p>
@@ -42,8 +48,9 @@ const Header = () => {
 							</div>
 							<div className="mt-5 flex items-center w-full justify-center sm:justify-start">
 								<Button
-									title={"Shop Now"}
-									onClick={() => navigate("/product")}
+									title={"Coming soon"}
+									// onClick={() => navigate("/product")}
+									disabled
 								/>
 							</div>
 						</div>
@@ -51,19 +58,42 @@ const Header = () => {
 				</SwiperSlide>
 				<SwiperSlide>
 					<>
-						<div className="h-[680px] w-screen bg-[#080808] text-white relative flex justify- items-center">
+						<div
+							className={clsx(
+								"h-[400px] bg-[#080808] text-white relative flex items-center",
+								"lg:h-[682px]"
+							)}
+						>
 							<img
 								src={HairRemovalSprayBgRemPng}
 								alt="Hair Removal Spray"
+								className={clsx("h-[50%]", "lg:h-[80%]")}
 							/>
-							<div className="flex flex-col h-[474px] -ml-32">
-								<p className="text-4xl">WHY BUY FROM US?</p>
-								<p className="italic mt-10 text-2xl max-w-[80%]">
+							<div
+								className={clsx(
+									"flex flex-col h-[40%] -ml-10",
+									"lg:h-[474px] lg:-ml-32"
+								)}
+							>
+								<p className={clsx("text-xs", "lg:text-4xl")}>
+									WHY BUY FROM US?
+								</p>
+								<p
+									className={clsx(
+										"text-xs italic mt-5 max-w-[80%]",
+										"lg:text-2xl lg:mt-10"
+									)}
+								>
 									The best product in the hair removal space -
 									if you don't believe us, try it out for
 									yourself.
 								</p>
-								<div className="mt-7 flex items-center relative text-2xl h-[203px]">
+								<div
+									className={clsx(
+										"hidden items-center relative text-xs h-[50%]",
+										"lg:text-2xl lg:h-[203px] lg:mt-7 lg:flex"
+									)}
+								>
 									<HomeDoubleDotBar className="absolute top-0" />
 									<p className="absolute top-9 left-10">
 										Saves you time, removes hair in just 5
@@ -73,12 +103,18 @@ const Header = () => {
 										No side effects, applicable on all skin
 										types.
 									</p>
-									<div className="ml-4 h-[86px] flex flex-col justify-between"></div>
+									<div
+										className={clsx(
+											"ml-4 flex flex-col justify-between h-[50%]",
+											"lg:h-[86px]"
+										)}
+									></div>
 								</div>
 								<Button
-									title={"Buy Now"}
-									onClick={() => navigate("/product")}
+									title={"Coming soon"}
+									// onClick={() => navigate("/product")}
 									className="mt-7 ml-3 z-10"
+									disabled={true}
 								/>
 							</div>
 							<HomeDesign className="absolute bottom-0" />

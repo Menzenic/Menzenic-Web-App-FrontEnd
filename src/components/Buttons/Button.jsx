@@ -18,8 +18,9 @@ const Button = (props) => {
 	return (
 		<div
 			className={clsx(
-				"group hover:cursor-pointer w-[12rem] sm:w-[9rem] h-[2.438rem] flex justify-between items-center px-3 rounded-sm",
-				props.className
+				"w-[12rem] sm:w-[9rem] h-[2.438rem] flex justify-between items-center px-3 rounded-sm",
+				props.className,
+				!props.disabled ? "group hover:cursor-pointer" : "opacity-70"
 			)}
 			style={{
 				background:

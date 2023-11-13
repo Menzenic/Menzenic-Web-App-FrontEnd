@@ -24,7 +24,7 @@ const Home = () => {
 			<ProductQuality />
 			{/* <Hampers /> */}
 			{/* <HampersAndCombos /> */}
-			<Testimonials />
+			{/* <Testimonials /> */}
 			<Blogs />
 			<MenzenicSignature />
 			<Footer />
