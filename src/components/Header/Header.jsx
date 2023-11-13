@@ -56,7 +56,7 @@ const Header = () => {
 						</div>
 					</>
 				</SwiperSlide>
-				<SwiperSlide>
+				{/* <SwiperSlide>
 					<>
 						<div
 							className={clsx(
@@ -120,7 +120,7 @@ const Header = () => {
 							<HomeDesign className="absolute bottom-0" />
 						</div>
 					</>
-				</SwiperSlide>
+				</SwiperSlide> */}
 			</Swiper>
 		</div>
 	);
